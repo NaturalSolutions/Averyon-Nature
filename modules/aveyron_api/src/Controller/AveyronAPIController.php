@@ -96,7 +96,10 @@ class AveyronAPIController extends ControllerBase {
     $query->condition('status', 1);
     $query->condition('type', 'taxon');
 
-    $conditions = json_decode($request->get('conditions'), true);
+    $conditions = $request->get('conditions');
+    if (is_string($conditions)) {
+        $conditions = json_decode($conditions, true);
+    }
     foreach ($conditions as $key => $condition) {
       $query->condition($condition['field'], $condition['value'], $condition['operator'] ? $condition['operator'] : '=');
     }
