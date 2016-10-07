@@ -1,0 +1,14 @@
+# Après avoir cloner le projet dans un répertoire du type "code-aveyron-custom" vierge, suivre les instructions :
+1/ En dehors du répertoire versionné, télécharger Drupal8 depuis "https://www.drupal.org/download", déziper et renomer "www" (pas obligatoire)
+2/ Suivre les recommandations pour la configuration serveur (version de php > 5.5 etc) et installer Drupal8 en version minimum - timezone : Français et Europe/Paris
+3-a/ Créer un lien symbolique à l'aide de la commande "ln -s destination cible" dans le répertoire themes de Drupal. La destination étant le themes versionné (../code-aveyron-csutom/themes/) et la cible le nom du répertoire des themes (themes), 
+3-b/Créer un répertoire custom dans "www/modules/" du site et faire la même lien vers le répertoire modules versionné
+4/ Activer le theme "bootstrap" dans "admin/appearance" ainsi que "seven" et le définir comme theme d'administration. Bootstrap en front.
+
+# Pour plus de confort dans la navigation du back-office, et pour être cohérent avec les autres instances : 
+4/ Activer le module Toolbar dans "admin/modules" 
+5/ Dans la page "admin/structure/block" modifier la région du block "Administration" à "Aucune" (liste déroulante)
+6/ Télécharger le module "Admin Toolbar" sur "https://www.drupal.org/project/admin_toolbar" dans le répertoire "www/modules" du site (pas dans répertoire versionné) et l'activer ainsi que "Admin Toolbar Extra Tools
+" sur "admin/modules"
+
+### Penser à faire des "update.php" après installation de nouveaux modules.
