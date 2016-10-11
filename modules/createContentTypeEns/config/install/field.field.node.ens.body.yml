@@ -1,0 +1,23 @@
+# field.field.node.ens.body.yml
+# This file will add the body field to our content type.
+langcode: fr
+status: true
+dependencies:
+    config:
+        - field.storage.node.body
+        - node.type.ens
+    module:
+        - text
+id: node.ens.body
+field_name: body
+entity_type: node
+bundle: ens
+label: Description
+description: 'Information about the ens.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+    display_summary: true
+field_type: text_with_summary
