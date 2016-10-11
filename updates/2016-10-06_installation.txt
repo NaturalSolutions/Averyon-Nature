@@ -13,11 +13,15 @@
 7/ Ajout du module devel (https://www.drupal.org/project/devel) et de ses composants
 8/ Activation du module "web profiler" présent dans le coeur.
 9/ Dans "admin/config/development/logging" activer la journalisation des erreurs "Erreurs et avertissements"
-10 / Aussi possible d'ajouter ceci dans "www/sites/default/settings.php"
+10/ Aussi possible d'ajouter ces instructions dans "www/sites/default/settings.php"
 
+'''
 error_reporting(E_ALL);
 ini_set('display_errors', TRUE);
 ini_set('display_startup_errors', TRUE);
+'''
+
+11/ Activer le module "Field UI"
 
 ### Penser à faire des "update.php" après installation de nouveaux modules.
 ### Penser à désactiver l'agrégation des js et css en dev ainsi que les caches

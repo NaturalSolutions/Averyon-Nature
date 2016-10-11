@@ -12,7 +12,7 @@ id: node.ens.body
 field_name: body
 entity_type: node
 bundle: ens
-label: Description
+label: Body
 description: 'Information about the ens.'
 required: false
 translatable: true

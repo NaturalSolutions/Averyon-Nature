@@ -10,6 +10,6 @@ name: 'ens'
 type: ens
 description: 'Content type that can be used to provide additional information on <em>ENS</em>'
 help: ''
-new_revision: true
+new_revision: false
 preview_mode: 1
 display_submitted: true
