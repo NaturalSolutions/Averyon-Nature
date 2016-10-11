@@ -1,0 +1,6 @@
+administer entity:
+  title: 'Administer ens entity'
+  description: 'Allows user to administer ens entities.'
+administer types:
+  title: 'Administer ens types'
+  description: 'Allows user to administer ens types.'

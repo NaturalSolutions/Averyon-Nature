@@ -1,0 +1,5 @@
+name: createEntityEns
+description: To cerate new entity "Ens"
+type: module
+core: 8.x
+version: 0.1

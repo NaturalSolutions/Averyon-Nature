@@ -1,0 +1,93 @@
+<?php
+use Drupal\Core\Language\Language;
+use Drupal\Core\Cache\CacheBackendInterface;
+
+
+/**
+ * Menu argument loader: Loads a ens type by string.
+ *
+ * @param $name
+ *   The machine name of a Foo type to load.
+ *
+ * @return \Drupal\foo\Entity\FooTypeInterface
+ *   A Foo type object or NULL if $name does not exist.
+ */
+function foo_type_load($name) {
+  return entity_load('ens_type', $name);
+}
+
+
+/**
+ * Loads a ens entity from the database.
+ *
+ * @param int $id
+ *   The ens entity ID.
+ * @param bool $reset
+ *   (optional) Whether to reset the static cache. Defaults to
+ *   FALSE.
+ *
+ * @return \Drupal\ens\Entity\ensInterface|null
+ *   A fully-populated ens entity, or NULL if the entity is not found.
+ */
+function ens_load($id, $reset = FALSE) {
+  return entity_load('ens', $id, $reset);
+}
+
+
+/**
+ * Implements hook_entity_bundle_info().
+ */
+function ens_entity_bundle_info() {
+  $bundles = array();
+  // Bundles must provide a human readable name so we can create help and error
+  // messages.
+  foreach (ens_type_get_names() as $id => $label) {
+    $bundles['ens'][$id]['label'] = $label;
+  }
+  return $bundles;
+}
+
+
+/**
+ * Returns a list of available ens type names.
+ *
+ * This list can include types that are queued for addition or deletion.
+ *
+ * @return array
+ *   An array of ens type labels, keyed by the ens type name.
+ */
+function ens_type_get_names() {
+  $cid = 'ens_type:names:' . language(Language::TYPE_INTERFACE)->id; // this name is completly custom
+  if ($cache = cache()->get($cid)) {
+    return $cache->data;
+  }
+  // Not using ens_type_get_types() or entity_load_multiple() here, to allow
+  // this function being used in hook_entity_info() implementations.
+  // @todo Consider to convert this into a generic config entity helper.
+  $config_names = config_get_storage_names_with_prefix('ens.type.'); // the 'ens.type' is defined in ens entiy definition
+  $names = array();
+  foreach ($config_names as $config_name) {
+    $config = \Drupal::config($config_name);
+    $names[$config->get('type')] = $config->get('name');
+  }
+  cache()->set($cid, $names, CacheBackendInterface::CACHE_PERMANENT, array(
+    'ens_type' => array_keys($names),
+    'ens_types' => TRUE,
+  ));
+  return $names;
+}
+
+
+/**
+ * Returns a list of all the available ens types.
+ *
+ * This list can include types that are queued for addition or deletion.
+ *
+ * @return array
+ *   An array of ens type entities, keyed by ID.
+ *
+ * @see ens_type_load()
+ */
+function ens_type_get_types() {
+  return entity_load_multiple('ens_type');
+}
