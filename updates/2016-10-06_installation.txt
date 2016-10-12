@@ -21,7 +21,7 @@ ini_set('display_errors', TRUE);
 ini_set('display_startup_errors', TRUE);
 '''
 
-11/ Activer le module "Field UI"
-
 ### Penser à faire des "update.php" après installation de nouveaux modules.
 ### Penser à désactiver l'agrégation des js et css en dev ainsi que les caches
+
+

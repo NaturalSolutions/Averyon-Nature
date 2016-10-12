@@ -15,6 +15,7 @@ https://www.drupal.org/docs/8
    - Voir les log apache : tail -f /var/log/apache2/error.log
    - Augmenter "memory_limit" dans le php.ini
    - Example de phpinfo.php 
+
 '''
 <?php
 
