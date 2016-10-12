@@ -1,7 +1,7 @@
 # field.field.node.ens.body.yml
 # This file will add the body field to our content type.
 langcode: fr
-status: true
+status: 0
 dependencies:
     config:
         - field.storage.node.body
@@ -12,9 +12,9 @@ id: node.ens.body
 field_name: body
 entity_type: node
 bundle: ens
-label: Body
-description: 'Information about the ens.'
-required: false
+label: Description
+description: 'Description of the ens.'
+required: true
 translatable: true
 default_value: {  }
 default_value_callback: ''

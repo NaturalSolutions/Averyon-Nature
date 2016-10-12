@@ -11,7 +11,7 @@
 6/ Télécharger le module "Admin Toolbar" sur "https://www.drupal.org/project/admin_toolbar" dans le répertoire "www/modules" du site (pas dans répertoire versionné) et l'activer ainsi que "Admin Toolbar Extra Tools
 " sur "admin/modules"
 7/ Ajout du module devel (https://www.drupal.org/project/devel) et de ses composants
-8/ Activation du module "web profiler" présent dans le coeur.
+8/ Activation du module "web profiler" présent dans le coeur ainsi que le module "Configuration manager".
 9/ Dans "admin/config/development/logging" activer la journalisation des erreurs "Erreurs et avertissements"
 10/ Aussi possible d'ajouter ces instructions dans "www/sites/default/settings.php"
 

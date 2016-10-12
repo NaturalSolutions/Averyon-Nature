@@ -1,7 +1,7 @@
 # core.entity_view_display.node.ens.default.yml
 # This file tells Drupal how the content of our custom content type should be displayed by default.
 langcode: fr
-status: true
+status: 0
 dependencies:
     config:
         - field.field.node.ens.body

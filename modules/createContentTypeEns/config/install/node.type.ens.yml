@@ -1,15 +1,22 @@
 # node.type.ens.yml
 # This file will inform Drupal that it should create a new content type.
 langcode: fr
-status: true
+status: 0
 dependencies:
   enforced:
     module:
-      - createContentTypeEns # This is the name of the module we're using for this example
-name: 'ens'
+      - createContentTypeEns
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: ens
 type: ens
 description: 'Content type that can be used to provide additional information on <em>ENS</em>'
 help: ''
-new_revision: false
-preview_mode: 1
-display_submitted: true
+new_revision: true
+preview_mode: 0
+display_submitted: false
+
