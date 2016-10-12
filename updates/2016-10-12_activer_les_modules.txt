@@ -1,0 +1,3 @@
+11/ Activer le module "Field UI" du coeur de drupal
+12/ Activer le module "CreateContentTypeEns"
+
