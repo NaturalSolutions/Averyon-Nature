@@ -1,0 +1,23 @@
+# Pour un environemment de développement (https://www.drupal.org/docs/8/theming/twig/debugging-compiled-twig-templates) :
+
+1/ Copier le fichier "www/sites/default/default.services.yml" en "www/sites/default/services.yml" et spécifier les valeurs suivantes : 
+	
+	twig.config: debug: true 
+	auto_reload: true
+	cache: false
+
+2/ Décommenté ces lignes dans le fichier "settings.php" :
+	
+	if (file_exists(__DIR__ . '/settings.local.php')) {
+	   include __DIR__ . '/settings.local.php';
+	}
+
+3/ Copier "sites/example.settings.local.php" vers "sites/default/settings.local.php"
+4/ Vérifier que ces lignes sont décommentés :
+
+	$settings['container_yamls'][] = DRUPAL_ROOT . '/sites/development.services.yml'; 
+	$settings['cache']['bins']['render'] = 'cache.backend.null'; 
+	$settings['cache']['bins']['dynamic_page_cache'] = 'cache.backend.null'; 
+
+# A ce stade il est possible d'éditer des templates twig sans avoir de caches.
+5/ Récupérer une backup du serveur de dev 
