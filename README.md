@@ -2,8 +2,21 @@
 La plateforme web de l'Aveyron-Nature (Drupal 8)
 
 - Le répertoire "themes" contient le(s) themes versionné
-- Le répertoire "updates" contient toutes les instructions
+- Le répertoire "doc" contient toutes les instructions
 - Le répertoire "modules" contient les modules personalisé.
+- Le répertoire "ressources" contient les exports de configuration
+
+# Liste des modules utilisé (www/modules)
+
+admin_toolbar 8.x-1.17
+backup_migrate 8.x-4.0-alpha1
+captcha 8.x-1.0-alpha1
+devel 8.x-1.0-alpha1
+geolocation 8.x-1.8
+honeypot 8.x-1.23
+metatag 8.x-1.0-beta11
+recaptcha 8.x-2.2
+xmlsitemap 8.x-1.0-alpha2
 
 # Documentation 
 https://www.drupal.org/docs/8
