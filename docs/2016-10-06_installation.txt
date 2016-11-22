@@ -7,8 +7,21 @@
 
 # Pour plus de confort dans la navigation du back-office, et pour être cohérent avec les autres instances : 
 4/ Activer le module Toolbar dans "admin/modules" 
-5/ Dans la page "admin/structure/block" modifier la région du block "Administration" à "Aucune" (liste déroulante)
+5/ Dans la page "admin/structure/block", pour le theme seven éditez la région du block "Administration" à "Aucune" (liste déroulante)
 6/ Télécharger le module "Admin Toolbar" sur "https://www.drupal.org/project/admin_toolbar" dans le répertoire "www/modules" du site (pas dans répertoire versionné) et l'activer ainsi que "Admin Toolbar Extra Tools
 " sur "admin/modules"
+7/ Ajout du module devel (https://www.drupal.org/project/devel) et de ses composants
+8/ Activation du module "web profiler" présent dans le coeur ainsi que le module "Configuration manager".
+9/ Dans "admin/config/development/logging" activer la journalisation des erreurs "Erreurs et avertissements"
+10/ Aussi possible d'ajouter ces instructions dans "www/sites/default/settings.php"
+
+'''
+error_reporting(E_ALL);
+ini_set('display_errors', TRUE);
+ini_set('display_startup_errors', TRUE);
+'''
 
 ### Penser à faire des "update.php" après installation de nouveaux modules.
+### Penser à désactiver l'agrégation des js et css en dev ainsi que les caches
+
+

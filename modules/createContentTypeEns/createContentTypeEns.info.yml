@@ -1,0 +1,9 @@
+name: createContentTypeEns
+description: Create new content type "ens"
+package: Custom
+type: module
+core: 8.x
+dependencies: 
+  - drupal:field_ui
+version: 0.1
+# Online doc to complete this file at "https://www.drupal.org/docs/8/creating-custom-modules/let-drupal-8-know-about-your-module-with-an-infoyml-file"

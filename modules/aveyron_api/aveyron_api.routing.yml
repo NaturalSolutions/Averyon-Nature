@@ -1,0 +1,29 @@
+# Test API endpoints
+
+aveyron_api.vids:
+  path: 'api/vids'
+  defaults: { _controller: '\Drupal\aveyron_api\Controller\AveyronAPIController::vidsAction' }
+  methods:  [GET]
+  requirements:
+    _access: 'TRUE'
+
+aveyron_api.enss:
+  path: 'api/enss'
+  defaults: { _controller: '\Drupal\aveyron_api\Controller\AveyronAPIController::enss' }
+  methods:  [GET]
+  requirements:
+    _access: 'TRUE'
+
+aveyron_api.ens:
+  path: 'api/enss/{id}'
+  defaults: { _controller: '\Drupal\aveyron_api\Controller\AveyronAPIController::ens' }
+  methods:  [GET]
+  requirements:
+    _access: 'TRUE'
+
+aveyron_api.taxa:
+  path: 'api/taxa'
+  defaults: { _controller: '\Drupal\aveyron_api\Controller\AveyronAPIController::taxa' }
+  methods:  [GET]
+  requirements:
+    _access: 'TRUE'
