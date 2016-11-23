@@ -1,6 +1,5 @@
 # La plateforme web de l'Aveyron-Nature (Drupal 8)
 ![Aveyron Nature](http://www.tourisme-aveyron.com/fr/decouvrir/images/nature-paysages/chateau-de-vallon.jpg "Aveyron Nature")
-![Drupal8](http://www.drupal8-guide.com/sites/default/files/styles/news_small/public/media/news/images/drupal8-1_2.jpg?itok=YxHfKDBT "Drupal8")  
 
 - Le répertoire "themes" contient le(s) themes versionné
 - Le répertoire "doc" contient toutes les instructions
