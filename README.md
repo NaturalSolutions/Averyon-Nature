@@ -1,4 +1,5 @@
 # Aveyron-Nature-Web
+![Aveyron Nature](http://www.tourisme-aveyron.com/fr/decouvrir/images/nature-paysages/chateau-de-vallon.jpg "Aveyron Nature")
 La plateforme web de l'Aveyron-Nature (Drupal 8)
 
 - Le répertoire "themes" contient le(s) themes versionné
