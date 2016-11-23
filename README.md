@@ -8,15 +8,15 @@ La plateforme web de l'Aveyron-Nature (Drupal 8)
 
 # Liste des modules utilisé (www/modules)
 
-[admin_toolbar 8.x-1.17](https://ftp.drupal.org/files/projects/admin_toolbar-8.x-1.17.zip)
-[backup_migrate 8.x-4.0-alpha1](https://ftp.drupal.org/files/projects/backup_migrate-8.x-4.0-alpha1.zip)
-[captcha 8.x-1.0-alpha1](https://ftp.drupal.org/files/projects/captcha-8.x-1.0-alpha1.zip)
-[devel 8.x-1.0-alpha1](https://ftp.drupal.org/files/projects/devel-8.x-1.0-alpha1.zip)
-[geolocation 8.x-1.8](https://ftp.drupal.org/files/projects/geolocation-8.x-1.8.zip)
-[honeypot 8.x-1.23](https://ftp.drupal.org/files/projects/honeypot-8.x-1.23.zip)
-[metatag 8.x-1.0-beta11](https://ftp.drupal.org/files/projects/metatag-8.x-1.0-beta11.zip)
-[recaptcha 8.x-2.2](https://ftp.drupal.org/files/projects/recaptcha-8.x-2.2.zip)
-[xmlsitemap 8.x-1.0-alpha2](https://ftp.drupal.org/files/projects/xmlsitemap-8.x-1.0-alpha2.zip)
+[admin_toolbar 8.x-1.17](https://ftp.drupal.org/files/projects/admin_toolbar-8.x-1.17.zip)  
+[backup_migrate 8.x-4.0-alpha1](https://ftp.drupal.org/files/projects/backup_migrate-8.x-4.0-alpha1.zip)  
+[captcha 8.x-1.0-alpha1](https://ftp.drupal.org/files/projects/captcha-8.x-1.0-alpha1.zip)  
+[devel 8.x-1.0-alpha1](https://ftp.drupal.org/files/projects/devel-8.x-1.0-alpha1.zip)  
+[geolocation 8.x-1.8](https://ftp.drupal.org/files/projects/geolocation-8.x-1.8.zip)  
+[honeypot 8.x-1.23](https://ftp.drupal.org/files/projects/honeypot-8.x-1.23.zip)  
+[metatag 8.x-1.0-beta11](https://ftp.drupal.org/files/projects/metatag-8.x-1.0-beta11.zip)  
+[recaptcha 8.x-2.2](https://ftp.drupal.org/files/projects/recaptcha-8.x-2.2.zip)  
+[xmlsitemap 8.x-1.0-alpha2](https://ftp.drupal.org/files/projects/xmlsitemap-8.x-1.0-alpha2.zip)  
 
 # Documentation 
 https://www.drupal.org/docs/8
