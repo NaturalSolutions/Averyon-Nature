@@ -20,4 +20,3 @@
 	$settings['cache']['bins']['dynamic_page_cache'] = 'cache.backend.null'; 
 
 # A ce stade il est possible d'éditer des templates twig sans avoir de caches.
-5/ Récupérer une backup du serveur de dev 
