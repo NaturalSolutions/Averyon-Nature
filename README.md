@@ -19,7 +19,7 @@ La plateforme web de l'Aveyron-Nature (Drupal 8)
 [xmlsitemap 8.x-1.0-alpha2](https://ftp.drupal.org/files/projects/xmlsitemap-8.x-1.0-alpha2.zip)  
 
 # Documentation 
-https://www.drupal.org/docs/8  
+[Documentation officiel D8](https://www.drupal.org/docs/8)  
 [Convention de nommage](https://www.drupal.org/node/318)  
 
 # Debug tips
