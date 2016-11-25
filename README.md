@@ -18,9 +18,13 @@
 [recaptcha 8.x-2.2](https://ftp.drupal.org/files/projects/recaptcha-8.x-2.2.zip)  
 [xmlsitemap 8.x-1.0-alpha2](https://ftp.drupal.org/files/projects/xmlsitemap-8.x-1.0-alpha2.zip)  
 
+# Démo
+[http://151.80.132.63/aveyron-demo/](http://151.80.132.63/aveyron-demo/)
+
 # Documentation 
 [Documentation officiel D8](https://www.drupal.org/docs/8)  
 [Convention de nommage](https://www.drupal.org/node/318)  
+[Drupal Bootstrap Documentation](http://drupal-bootstrap.org/api/bootstrap)  
 
 # Debug tips
 
