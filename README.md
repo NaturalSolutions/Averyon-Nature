@@ -1,5 +1,5 @@
-# Aveyron-Nature-Web
-La plateforme web de l'Aveyron-Nature (Drupal 8)
+# La plateforme web de l'Aveyron-Nature (Drupal 8)
+![Aveyron Nature](http://www.tourisme-aveyron.com/fr/decouvrir/images/nature-paysages/chateau-de-vallon.jpg "Aveyron Nature")
 
 - Le répertoire "themes" contient le(s) themes versionné
 - Le répertoire "doc" contient toutes les instructions
@@ -8,20 +8,23 @@ La plateforme web de l'Aveyron-Nature (Drupal 8)
 
 # Liste des modules utilisé (www/modules)
 
-- admin_toolbar 8.x-1.17
-- backup_migrate 8.x-4.0-alpha1
-- captcha 8.x-1.0-alpha1
-- devel 8.x-1.0-alpha1
-- geolocation 8.x-1.8
-- honeypot 8.x-1.23
-- metatag 8.x-1.0-beta11
-- recaptcha 8.x-2.2
-- xmlsitemap 8.x-1.0-alpha2
+[admin_toolbar 8.x-1.17](https://ftp.drupal.org/files/projects/admin_toolbar-8.x-1.17.zip)  
+[backup_migrate 8.x-4.0-alpha1](https://ftp.drupal.org/files/projects/backup_migrate-8.x-4.0-alpha1.zip)  
+[captcha 8.x-1.0-alpha1](https://ftp.drupal.org/files/projects/captcha-8.x-1.0-alpha1.zip)  
+[devel 8.x-1.0-alpha1](https://ftp.drupal.org/files/projects/devel-8.x-1.0-alpha1.zip)  
+[geolocation 8.x-1.8](https://ftp.drupal.org/files/projects/geolocation-8.x-1.8.zip)  
+[honeypot 8.x-1.23](https://ftp.drupal.org/files/projects/honeypot-8.x-1.23.zip)  
+[metatag 8.x-1.0-beta11](https://ftp.drupal.org/files/projects/metatag-8.x-1.0-beta11.zip)  
+[recaptcha 8.x-2.2](https://ftp.drupal.org/files/projects/recaptcha-8.x-2.2.zip)  
+[xmlsitemap 8.x-1.0-alpha2](https://ftp.drupal.org/files/projects/xmlsitemap-8.x-1.0-alpha2.zip)  
+
+# Démo
+[http://151.80.132.63/aveyron-demo/](http://151.80.132.63/aveyron-demo/)
 
 # Documentation 
-https://www.drupal.org/docs/8
-
-  - Convention de nommage : https://www.drupal.org/node/318
+[Documentation officiel D8](https://www.drupal.org/docs/8)  
+[Convention de nommage](https://www.drupal.org/node/318)  
+[Drupal Bootstrap Documentation](http://drupal-bootstrap.org/api/bootstrap)  
 
 # Debug tips
 
