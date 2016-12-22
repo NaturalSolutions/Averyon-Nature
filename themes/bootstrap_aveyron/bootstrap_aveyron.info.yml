@@ -7,7 +7,7 @@ description: 'Le thème personalisé pour aveyron-nature hérité de bootstrap'
 package: 'Bootstrap'
 
 regions:
-  navigation: 'Navigation'
+  #navigation: 'Navigation'
   navigation_collapsible: 'Navigation (Collapsible)'
   header: 'Top Bar'
   highlighted: 'Highlighted'
