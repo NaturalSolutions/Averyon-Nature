@@ -6,13 +6,15 @@
  */
 
 /*
-Exemple : 
+Exemple :
 http://192.168.0.114/aveyron-pierre/api/enss?conditions=[{%22field%22:%22nid%22,%22value%22:[2,4],%22operator%22:%22in%22}]
 */
 
 namespace Drupal\aveyron_api\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
+
+use Drupal\geoPHP;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -23,7 +25,7 @@ class AveyronAPIController extends ControllerBase {
   public function vidsAction( Request $request ) {
     $entityManager = \Drupal::entityManager();
 
-    $types = array('ens', 'taxon');
+    $types = array('tours', 'taxon');
     $result = array();
     foreach ($types as $type) {
       $query = \Drupal::entityQuery('node');
@@ -57,7 +59,7 @@ class AveyronAPIController extends ControllerBase {
 
     $query = \Drupal::entityQuery('node');
     $query->condition('status', 1);
-    $query->condition('type', 'ens');
+    $query->condition('type', 'tours');
 
     $conditions = $request->get('conditions');
     if (is_string($conditions)) {
@@ -80,11 +82,14 @@ class AveyronAPIController extends ControllerBase {
       $thumbnail = $entity->field_thumbnail->entity;
       $poster = $entity->field_poster->entity;
       $itemId = (int) $entity->nid->value;
+      $geom = \geoPHP::load($entity->field_start_trace->value,'wkt');
+
       $item = array(
         //a => json_decode($serializer->serialize($thumbnail, 'json', ['plugin_id' => 'entity'])),
         id => $itemId,
         vid => (int) $entity->vid->value,
         title => $entity->title->value,
+        startTrace => $geom->out('json'),
         thumbnail => array(
           fid => $thumbnail->fid->value,
           url => file_create_url($thumbnail->uri->value),
@@ -117,20 +122,23 @@ class AveyronAPIController extends ControllerBase {
   }
 
   public function ens( $id, Request $request ) {
-
     $entityManager = \Drupal::entityManager();
     $entity = $entityManager->getStorage('node')->load($id);
 
-    if (!$entity->nid->value || $entity->getType() != 'ens') {
+    if (!$entity->nid->value || $entity->getType() != 'tours') {
       return new Response(null, 404);
     }
+
     $serializer = \Drupal::service('serializer');
     $thumbnail = $entity->field_thumbnail->entity;
     $poster = $entity->field_poster->entity;
+    $geomTrace = \geoPHP::load($entity->field_trace->value,'wkt');
+
     $result = array(
       id => (int) $entity->nid->value,
       vid => (int) $entity->vid->value,
       title => $entity->title->value,
+      trace => $geomTrace->out('json'),
       thumbnail => array(
         fid => $thumbnail->fid->value,
         url => file_create_url($thumbnail->uri->value),
