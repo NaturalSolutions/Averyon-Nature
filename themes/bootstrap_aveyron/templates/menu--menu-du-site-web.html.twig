@@ -31,6 +31,7 @@
     {% else %}
       <ul{{ attributes.addClass('dropdown-menu') }}>
     {% endif %}
+        <button class="btn close">X</button>
     {% for item in items %}
       {%
         set item_classes = [

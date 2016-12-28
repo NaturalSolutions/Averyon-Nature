@@ -238,7 +238,7 @@
   @media (min-width: @grid-float-breakpoint) {
     //display: none;
     display: block;
-    z-index: 1;
+    z-index: 0;
   }  
 }
 /*
@@ -250,6 +250,15 @@
 */
 .in .navbar-nav {
   background-color: @navbar-collapsed-bg-aveyron;
+  button.close{
+    opacity: 1;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: #fff;
+    font-weight: normal;
+    font-size: small;
+  }
   > li > a{
     color: @navbar-default-color;
   }
@@ -257,6 +266,11 @@
 .navbar-nav {
   transition: background-color 0.2s; 
   -webkit-transition: background-color 0.2s;
+  button.close{
+    opacity: 0;
+    transition: opacity 0.2s; 
+    -webkit-transition: opacity 0.2s;
+  }
   > li > a{
     transition: color 0.2s; 
     -webkit-transition: color 0.2s;
@@ -303,20 +317,72 @@
     margin: 0;
     min-height: 100%;
     position: fixed;
-    width: 50%;
-    padding-top: 100px;
+    width: 30%;
+    padding-top: 300px;
     left: 0;
     top: 0;
     > li {
       
       float: none;
+      &:nth-child(2){
+        background: url(../images/menu/icon_menu_accueil.png) no-repeat 60px 50%;
+        background-size: 30px;        
+      }
+      &:nth-child(3){
+        background: url(../images/menu/icon_menu_listel.png) no-repeat 60px 50%;
+        background-size: 30px;        
+      }
+      &:nth-child(4){
+        background: url(../images/menu/icon_menu_carte.png) no-repeat 60px 50%;
+        background-size: 30px;        
+      }
+      &:nth-child(5){
+        background: url(../images/menu/icon_menu_evenement.png) no-repeat 60px 50%;
+        background-size: 30px;        
+      }
+      &:nth-child(6){
+        background: url(../images/menu/icon_menu_gallerie.png) no-repeat 60px 50%;
+        background-size: 30px;        
+      }
+      &:nth-child(7){
+        background: url(../images/menu/icon_menu_contact.png) no-repeat 60px 50%;
+        background-size: 30px;        
+      }
+      &:nth-child(8){
+        background: url(../images/menu/icon_fb.png) no-repeat 0% 50%;
+        background-size: 30px;
+        display: inline-block;
+        position: absolute;
+        bottom: 30px;
+        left: 65px;
+        a{
+          color: transparent !important;
+          width: 45px;
+        }
+      }
+      &:nth-child(9){
+        background: url(../images/menu/icon_twt.png) no-repeat 0% 50%;
+        background-size: 30px;
+        display: inline-block;
+        position: absolute;
+        bottom: 30px;
+        left: 110px;
+        a{          
+          color: transparent !important;
+          width: 45px;
+        }
+      }
       //float: left;
-      /*
+      
       > a {
+        padding-left: @navbar-padding-left-aveyron;
+        text-transform: uppercase;
+        /*
         padding-top:    @navbar-padding-vertical;
         padding-bottom: @navbar-padding-vertical;
+        */
       }
-      */
+      
     }
     
   }
@@ -435,9 +501,10 @@
 
 // Alternate navbars
 // --------------------------------------------------
-
+*/
 // Default navbar
 .navbar-default {
+  /*
   background-color: @navbar-default-bg;
   border-color: @navbar-default-border;
 
@@ -454,7 +521,12 @@
     color: @navbar-default-color;
   }
 
+  */
   .navbar-nav {
+    background-image: url('../images/logo_aveyron.png');
+    background-repeat: no-repeat;
+    background-position: 50% 100px;
+    background-size: 150px;
     > li > a {
       color: @navbar-default-link-color;
 
@@ -464,7 +536,8 @@
         background-color: @navbar-default-link-hover-bg;
       }
     }
-    > .active > a {
+    /*
+    > .active > a { 
       &,
       &:hover,
       &:focus {
@@ -479,9 +552,10 @@
         color: @navbar-default-link-disabled-color;
         background-color: @navbar-default-link-disabled-bg;
       }
-    }
+    */
   }
-
+}
+  /*
   
   .navbar-toggle {
     border-color: @navbar-default-toggle-border-color;

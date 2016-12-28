@@ -13,7 +13,8 @@
 //== Colors
 //
 //## Gray and brand colors for use across Bootstrap.
-
+*/
+/*
 @gray-base:              #000;
 @gray-darker:            lighten(@gray-base, 13.5%); // #222
 @gray-dark:              lighten(@gray-base, 20%);   // #333
@@ -377,8 +378,8 @@
 @navbar-default-border:            darken(@navbar-default-bg, 6.5%);
 
 // Navbar links
-@navbar-default-link-color:                #777;
-@navbar-default-link-hover-color:          #333;
+*/
+/*
 @navbar-default-link-hover-bg:             transparent;
 @navbar-default-link-active-color:         #555;
 @navbar-default-link-active-bg:            darken(@navbar-default-bg, 6.5%);
@@ -5350,22 +5351,22 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   border-color: rgba(0, 0, 0, 0);
 }
 .navbar-default .navbar-brand {
-  color: #777;
+  color: #fff;
 }
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus {
-  color: #5e5e5e;
+  color: #e6e6e6;
   background-color: transparent;
 }
 .navbar-default .navbar-text {
   color: #fff;
 }
 .navbar-default .navbar-nav > li > a {
-  color: #777;
+  color: #fff;
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-  color: #333;
+  color: #e95a18;
   background-color: transparent;
 }
 .navbar-default .navbar-nav > .active > a,
@@ -5402,11 +5403,11 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 @media (max-width: -1) {
   .navbar-default .navbar-nav .open .dropdown-menu > li > a {
-    color: #777;
+    color: #fff;
   }
   .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
   .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
-    color: #333;
+    color: #e95a18;
     background-color: transparent;
   }
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a,
@@ -5423,17 +5424,17 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-default .navbar-link {
-  color: #777;
+  color: #fff;
 }
 .navbar-default .navbar-link:hover {
-  color: #333;
+  color: #e95a18;
 }
 .navbar-default .btn-link {
-  color: #777;
+  color: #fff;
 }
 .navbar-default .btn-link:hover,
 .navbar-default .btn-link:focus {
-  color: #333;
+  color: #e95a18;
 }
 .navbar-default .btn-link[disabled]:hover,
 fieldset[disabled] .navbar-default .btn-link:hover,
@@ -5772,7 +5773,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 @media (min-width: 0) {
   .navbar-toggle {
     display: block;
-    z-index: 1;
+    z-index: 0;
   }
 }
 /*
@@ -5784,6 +5785,15 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 */
 .in .navbar-nav {
   background-color: #2f2f2f;
+}
+.in .navbar-nav button.close {
+  opacity: 1;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  color: #fff;
+  font-weight: normal;
+  font-size: small;
 }
 .in .navbar-nav > li > a {
   color: #fff;
@@ -5825,6 +5835,11 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   }
   */
 }
+.navbar-nav button.close {
+  opacity: 0;
+  transition: opacity 0.2s;
+  -webkit-transition: opacity 0.2s;
+}
 .navbar-nav > li > a {
   transition: color 0.2s;
   -webkit-transition: color 0.2s;
@@ -5838,19 +5853,69 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
     margin: 0;
     min-height: 100%;
     position: fixed;
-    width: 50%;
-    padding-top: 100px;
+    width: 30%;
+    padding-top: 300px;
     left: 0;
     top: 0;
   }
   .navbar-nav > li {
     float: none;
+  }
+  .navbar-nav > li:nth-child(2) {
+    background: url(../images/menu/icon_menu_accueil.png) no-repeat 60px 50%;
+    background-size: 30px;
+  }
+  .navbar-nav > li:nth-child(3) {
+    background: url(../images/menu/icon_menu_listel.png) no-repeat 60px 50%;
+    background-size: 30px;
+  }
+  .navbar-nav > li:nth-child(4) {
+    background: url(../images/menu/icon_menu_carte.png) no-repeat 60px 50%;
+    background-size: 30px;
+  }
+  .navbar-nav > li:nth-child(5) {
+    background: url(../images/menu/icon_menu_evenement.png) no-repeat 60px 50%;
+    background-size: 30px;
+  }
+  .navbar-nav > li:nth-child(6) {
+    background: url(../images/menu/icon_menu_gallerie.png) no-repeat 60px 50%;
+    background-size: 30px;
+  }
+  .navbar-nav > li:nth-child(7) {
+    background: url(../images/menu/icon_menu_contact.png) no-repeat 60px 50%;
+    background-size: 30px;
+  }
+  .navbar-nav > li:nth-child(8) {
+    background: url(../images/menu/icon_fb.png) no-repeat 0% 50%;
+    background-size: 30px;
+    display: inline-block;
+    position: absolute;
+    bottom: 30px;
+    left: 65px;
+  }
+  .navbar-nav > li:nth-child(8) a {
+    color: transparent !important;
+    width: 45px;
+  }
+  .navbar-nav > li:nth-child(9) {
+    background: url(../images/menu/icon_twt.png) no-repeat 0% 50%;
+    background-size: 30px;
+    display: inline-block;
+    position: absolute;
+    bottom: 30px;
+    left: 110px;
+  }
+  .navbar-nav > li:nth-child(9) a {
+    color: transparent !important;
+    width: 45px;
+  }
+  .navbar-nav > li > a {
+    padding-left: 130px;
+    text-transform: uppercase;
     /*
-      > a {
         padding-top:    @navbar-padding-vertical;
         padding-bottom: @navbar-padding-vertical;
-      }
-      */
+        */
   }
 }
 /*
@@ -5967,9 +6032,9 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 
 // Alternate navbars
 // --------------------------------------------------
-
-// Default navbar
+*/
 .navbar-default {
+  /*
   background-color: @navbar-default-bg;
   border-color: @navbar-default-border;
 
@@ -5986,17 +6051,15 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
     color: @navbar-default-color;
   }
 
-  .navbar-nav {
-    > li > a {
-      color: @navbar-default-link-color;
-
-      &:hover,
-      &:focus {
-        color: @navbar-default-link-hover-color;
-        background-color: @navbar-default-link-hover-bg;
-      }
-    }
-    > .active > a {
+  */
+}
+.navbar-default .navbar-nav {
+  background-image: url('../images/logo_aveyron.png');
+  background-repeat: no-repeat;
+  background-position: 50% 100px;
+  background-size: 150px;
+  /*
+    > .active > a { 
       &,
       &:hover,
       &:focus {
@@ -6011,9 +6074,17 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
         color: @navbar-default-link-disabled-color;
         background-color: @navbar-default-link-disabled-bg;
       }
-    }
-  }
-
+    */
+}
+.navbar-default .navbar-nav > li > a {
+  color: #fff;
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+  color: #e95a18;
+  background-color: transparent;
+}
+/*
   
   .navbar-toggle {
     border-color: @navbar-default-toggle-border-color;
