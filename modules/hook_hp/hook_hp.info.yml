@@ -1,0 +1,7 @@
+name: Hook Module for HP
+description: Hook Module for HP
+package: Custom
+author: Natural Solutions
+type: module
+version: 1.0
+core: 8.x

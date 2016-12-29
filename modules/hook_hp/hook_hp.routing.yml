@@ -1,0 +1,4 @@
+hook_hp.content:
+  path: '/'
+  defaults:
+    _controller: 'Drupal\hook_hp\Controller\hook_hp_Controller::content'
