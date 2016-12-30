@@ -18,3 +18,16 @@ bootstrap-scripts:
     bootstrap/js/tab.js: {}
     bootstrap/js/transition.js: {}
     scripts/script.js: {}
+
+swiper:
+  version: 1.x
+  css:
+    theme:
+      css/swiper/swiper.min.css: {}
+  js:
+    scripts/swiper/swiper.min.js: {}
+
+script-hp:
+  version: 1.x  
+  js:
+    scripts/script-hp.js: {}

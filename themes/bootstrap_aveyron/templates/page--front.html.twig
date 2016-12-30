@@ -113,15 +113,30 @@
           </aside>
         {% endblock %}
       {% endif %}
-
+      
       {# Content #}      
+
+      {{ attach_library('bootstrap_aveyron/swiper') }}
+      {{ attach_library('bootstrap_aveyron/script-hp') }}
+
       <section class="col-sm-12 wrapper">
     
-          
-      
+        <!-- <pre>{{  dump(pictures) }}</pre> -->
+        
+        <div class="row fold1">
+          <!-- Slider main container -->
+          <div class="swiper-container">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+              <!-- Slides -->
+              {% for picture in pictures %}     
+                <div class="swiper-slide"><img src="{{ picture.uri }}" /></div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
 
-        
-        
+
       </section>
       
     </div>

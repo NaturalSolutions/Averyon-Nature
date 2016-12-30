@@ -4,3 +4,41 @@
  * @file
  * hook_hp module.
  */
+
+
+/*
+	this function to add many variable for this specific template
+*/
+function hook_hp_preprocess_page__front(&$variables){
+
+	$pictures = getSliderPictures();
+
+
+	//set variables
+	$variables['pictures'] = $pictures;
+	
+}
+
+function getSliderPictures(){
+	
+	/*
+	SELECT f.filename FROM aveyron.file_managed f 
+	join aveyron.node__field_slider s
+	on f.fid = s.field_slider_target_id
+	where s.entity_id = 1;
+	*/
+	$query = \Drupal::database()->select('file_managed', 'f');	
+	$query->addField('f', 'filename');
+	$query->addField('f', 'uri');
+	$query->join('node__field_slider', 's', 'f.fid = s.field_slider_target_id');
+	$query->condition('s.entity_id', 1);	
+	$pictures = $query->execute()->fetchAll();
+
+	foreach ($pictures as $key => $picture) {		
+
+		//Convert url of pictures
+		$picture->uri = file_create_url($picture->uri);
+	}
+
+	return $pictures;	
+}

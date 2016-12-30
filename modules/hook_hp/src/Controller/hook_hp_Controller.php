@@ -10,7 +10,7 @@ Faire ici un hook hook_page_preprocess() : https://api.drupal.org/api/drupal/cor
 doc query :  http://www.eilyin.name/note/database-queries-drupal-8-7
 */
 
-namespace Drupal\hook_hp\Controller;
+/*namespace Drupal\hook_hp\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
 
@@ -19,8 +19,9 @@ class hook_hp_Controller extends ControllerBase {
 	public function content() {		
 
 		$query = \Drupal::database()->select('file_managed', 'f');
+		drupal_set_message($message = 'NULL', $type = 'status', $repeat = FALSE);
 
 
 	}
-}
+}*/
 
