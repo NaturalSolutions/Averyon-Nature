@@ -5636,6 +5636,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   }
   .navbar-collapse.collapse.in {
     display: block !important;
+    height: 0 !important;
   }
 }
 .navbar-collapse.collapsing ul.navbar-nav > li > a {
@@ -5785,6 +5786,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 */
 .in .navbar-nav {
   background-color: #2f2f2f;
+  background-size: 150px;
 }
 .in .navbar-nav button.close {
   opacity: 1;
@@ -5795,10 +5797,51 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   font-weight: normal;
   font-size: small;
 }
+.in .navbar-nav > li {
+  background-size: 30px;
+}
+.in .navbar-nav > li:nth-child(2) {
+  background-image: url(../images/menu/icon_menu_accueil.png);
+}
+.in .navbar-nav > li:nth-child(3) {
+  background-image: url(../images/menu/icon_menu_listel.png);
+}
+.in .navbar-nav > li:nth-child(4) {
+  background-image: url(../images/menu/icon_menu_carte.png);
+}
+.in .navbar-nav > li:nth-child(5) {
+  background-image: url(../images/menu/icon_menu_evenement.png);
+}
+.in .navbar-nav > li:nth-child(6) {
+  background-image: url(../images/menu/icon_menu_gallerie.png);
+}
+.in .navbar-nav > li:nth-child(7) {
+  background-image: url(../images/menu/icon_menu_contact.png);
+}
+.in .navbar-nav > li:nth-child(8) {
+  background-image: url(../images/menu/icon_fb.png);
+}
+.in .navbar-nav > li:nth-child(9) {
+  background-image: url(../images/menu/icon_twt.png);
+}
 .in .navbar-nav > li > a {
   color: #fff;
 }
 .navbar-nav {
+  margin: 0;
+  min-height: 100%;
+  position: absolute;
+  height: 2500px;
+  width: 30%;
+  padding-top: 270px;
+  left: 0;
+  top: 0;
+  background-image: url('../images/logo_aveyron.png');
+  background-repeat: no-repeat;
+  background-position: 50% 60px;
+  background-size: 0px;
+  transition: background-size 0.2s;
+  -webkit-transition: background-size 0.2s;
   transition: background-color 0.2s;
   -webkit-transition: background-color 0.2s;
   /*
@@ -5834,89 +5877,88 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
     }
   }
   */
+  /*
+  // Uncollapse the nav
+  @media (min-width: @grid-float-breakpoint) {
+    float: left;
+    margin: 0; 
+    
+    > li {
+     
+            
+      
+    }
+    
+  }
+    */
 }
 .navbar-nav button.close {
   opacity: 0;
   transition: opacity 0.2s;
   -webkit-transition: opacity 0.2s;
 }
+.navbar-nav > li {
+  background-color: transparent;
+  background-position: 60px 50%;
+  background-repeat: no-repeat;
+  display: block;
+  float: none;
+  transition: background-size 0.2s;
+  -webkit-transition: background-size 0.2s;
+  background-size: 0px;
+}
+.navbar-nav > li:nth-child(2) {
+  background-image: url(../images/menu/icon_menu_accueil.png);
+}
+.navbar-nav > li:nth-child(3) {
+  background-image: url(../images/menu/icon_menu_listel.png);
+}
+.navbar-nav > li:nth-child(4) {
+  background-image: url(../images/menu/icon_menu_carte.png);
+}
+.navbar-nav > li:nth-child(5) {
+  background-image: url(../images/menu/icon_menu_evenement.png);
+}
+.navbar-nav > li:nth-child(6) {
+  background-image: url(../images/menu/icon_menu_gallerie.png);
+}
+.navbar-nav > li:nth-child(7) {
+  background-image: url(../images/menu/icon_menu_contact.png);
+}
+.navbar-nav > li:nth-child(8),
+.navbar-nav > li:nth-child(9) {
+  /* position: fixed;
+      z-index: 999;
+      bottom: 30px;
+      left: 65px; */
+  display: inline-block;
+  width: 50px;
+  background-position: 0 50%;
+}
+.navbar-nav > li:nth-child(8) a,
+.navbar-nav > li:nth-child(9) a {
+  color: transparent !important;
+  width: 45px;
+}
+.navbar-nav > li:nth-child(8) {
+  background-image: url(../images/menu/icon_fb.png);
+  margin-left: 60px;
+  margin-top: 25px;
+}
+.navbar-nav > li:nth-child(9) {
+  background-image: url(../images/menu/icon_twt.png);
+}
 .navbar-nav > li > a {
   transition: color 0.2s;
   -webkit-transition: color 0.2s;
+  padding-left: 130px;
+  text-transform: uppercase;
+  color: #fff;
 }
-@media (min-width: 0) {
-  .navbar-nav {
-    /*
-    float: left;
-    margin: 0; 
-    */
-    margin: 0;
-    min-height: 100%;
-    position: fixed;
-    width: 30%;
-    padding-top: 300px;
-    left: 0;
-    top: 0;
-  }
-  .navbar-nav > li {
-    float: none;
-  }
-  .navbar-nav > li:nth-child(2) {
-    background: url(../images/menu/icon_menu_accueil.png) no-repeat 60px 50%;
-    background-size: 30px;
-  }
-  .navbar-nav > li:nth-child(3) {
-    background: url(../images/menu/icon_menu_listel.png) no-repeat 60px 50%;
-    background-size: 30px;
-  }
-  .navbar-nav > li:nth-child(4) {
-    background: url(../images/menu/icon_menu_carte.png) no-repeat 60px 50%;
-    background-size: 30px;
-  }
-  .navbar-nav > li:nth-child(5) {
-    background: url(../images/menu/icon_menu_evenement.png) no-repeat 60px 50%;
-    background-size: 30px;
-  }
-  .navbar-nav > li:nth-child(6) {
-    background: url(../images/menu/icon_menu_gallerie.png) no-repeat 60px 50%;
-    background-size: 30px;
-  }
-  .navbar-nav > li:nth-child(7) {
-    background: url(../images/menu/icon_menu_contact.png) no-repeat 60px 50%;
-    background-size: 30px;
-  }
-  .navbar-nav > li:nth-child(8) {
-    background: url(../images/menu/icon_fb.png) no-repeat 0% 50%;
-    background-size: 30px;
-    display: inline-block;
-    position: absolute;
-    bottom: 30px;
-    left: 65px;
-  }
-  .navbar-nav > li:nth-child(8) a {
-    color: transparent !important;
-    width: 45px;
-  }
-  .navbar-nav > li:nth-child(9) {
-    background: url(../images/menu/icon_twt.png) no-repeat 0% 50%;
-    background-size: 30px;
-    display: inline-block;
-    position: absolute;
-    bottom: 30px;
-    left: 110px;
-  }
-  .navbar-nav > li:nth-child(9) a {
-    color: transparent !important;
-    width: 45px;
-  }
-  .navbar-nav > li > a {
-    padding-left: 130px;
-    text-transform: uppercase;
-    /*
-        padding-top:    @navbar-padding-vertical;
-        padding-bottom: @navbar-padding-vertical;
-        */
-  }
+.navbar-nav > li > a:hover,
+.navbar-nav > li > a:focus {
+  color: #e95a18;
+  background-color: transparent;
 }
 /*
 
@@ -6054,10 +6096,6 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   */
 }
 .navbar-default .navbar-nav {
-  background-image: url('../images/logo_aveyron.png');
-  background-repeat: no-repeat;
-  background-position: 50% 100px;
-  background-size: 150px;
   /*
     > .active > a { 
       &,
@@ -6075,14 +6113,6 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
         background-color: @navbar-default-link-disabled-bg;
       }
     */
-}
-.navbar-default .navbar-nav > li > a {
-  color: #fff;
-}
-.navbar-default .navbar-nav > li > a:hover,
-.navbar-default .navbar-nav > li > a:focus {
-  color: #e95a18;
-  background-color: transparent;
 }
 /*
   
@@ -8984,6 +9014,6 @@ p:last-child,
   margin-top: 0;
 }
 body.path-frontpage section.wrapper {
-  min-height: 3000px;
+  /* min-height: 3000px; */
 }
 /*# sourceMappingURL=style.css.map */
