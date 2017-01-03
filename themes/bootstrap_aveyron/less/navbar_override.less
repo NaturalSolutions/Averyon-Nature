@@ -208,6 +208,9 @@
 
 .navbar-toggle {
   float: none;
+  &:after{
+    content:"MENU";
+  }
   /*
   position: relative;
   margin-right: @navbar-padding-horizontal;
@@ -249,9 +252,6 @@
 // Builds on top of the `.nav` components with its own modifier class to make
 // the nav the full height of the horizontal nav (above 768px).
 */
-.in .navbar-nav {
-
-}
 .in .navbar-nav {
   background-color: @navbar-collapsed-bg-aveyron;
   background-size: 150px;
@@ -549,6 +549,7 @@
 // --------------------------------------------------
 */
 // Default navbar
+  
 .navbar-default {
   /*
   background-color: @navbar-default-bg;
@@ -567,7 +568,7 @@
     color: @navbar-default-color;
   }
 
-  */
+  
   .navbar-nav {
    
     > li > a {
@@ -589,11 +590,11 @@
         color: @navbar-default-link-disabled-color;
         background-color: @navbar-default-link-disabled-bg;
       }
-    */
+  
   }
 }
   /*
-  
+  */
   .navbar-toggle {
     border-color: @navbar-default-toggle-border-color;
     &:hover,
@@ -604,7 +605,7 @@
       background-color: @navbar-default-toggle-icon-bar-bg;
     }
   }
-  
+  /*
 
   .navbar-collapse,
   .navbar-form {
@@ -815,5 +816,5 @@
       }
     }
   }
-}
 */
+}

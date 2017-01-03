@@ -393,7 +393,8 @@
 
 // Navbar toggle
 @navbar-default-toggle-hover-bg:           #ddd;
-@navbar-default-toggle-icon-bar-bg:        #888;
+*/
+/*
 @navbar-default-toggle-border-color:       #ddd;
 
 
@@ -5389,7 +5390,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   background-color: #ddd;
 }
 .navbar-default .navbar-toggle .icon-bar {
-  background-color: #888;
+  background-color: #fff;
 }
 .navbar-default .navbar-collapse,
 .navbar-default .navbar-form {
@@ -5771,6 +5772,9 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   }
   */
 }
+.navbar-toggle:after {
+  content: "MENU";
+}
 @media (min-width: 0) {
   .navbar-toggle {
     display: block;
@@ -6093,10 +6097,13 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
     color: @navbar-default-color;
   }
 
-  */
-}
-.navbar-default .navbar-nav {
-  /*
+  
+  .navbar-nav {
+   
+    > li > a {
+      
+    }
+    /*
     > .active > a { 
       &,
       &:hover,
@@ -6112,21 +6119,12 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
         color: @navbar-default-link-disabled-color;
         background-color: @navbar-default-link-disabled-bg;
       }
-    */
-}
-/*
   
-  .navbar-toggle {
-    border-color: @navbar-default-toggle-border-color;
-    &:hover,
-    &:focus {
-      background-color: @navbar-default-toggle-hover-bg;
-    }
-    .icon-bar {
-      background-color: @navbar-default-toggle-icon-bar-bg;
-    }
   }
-  
+}
+  /*
+  */
+  /*
 
   .navbar-collapse,
   .navbar-form {
@@ -6337,8 +6335,18 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
       }
     }
   }
-}
 */
+}
+.navbar-default .navbar-toggle {
+  border-color: #ddd;
+}
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+  background-color: #ddd;
+}
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #fff;
+}
 .breadcrumb {
   padding: 8px 15px;
   margin-bottom: 20px;
@@ -9013,7 +9021,30 @@ p:last-child,
 .control-group .help-inline:first-child {
   margin-top: 0;
 }
+/*
+	Specific font for Homepage
+*/
+@font-face {
+  font-family: 'Viper Nora';
+  src: url('../fonts/viper_nora.otf') format("opentype");
+}
+body.path-frontpage div.region-header h1 {
+  font-family: 'Viper Nora';
+  position: absolute;
+  top: 250px;
+  z-index: 2;
+  left: 0;
+  color: #fff;
+  text-align: center;
+  width: 100%;
+  border: 0;
+  padding: 0 27%;
+  font-size: 4em;
+  line-height: 80px;
+  letter-spacing: 2px;
+}
 body.path-frontpage section.wrapper {
   /* min-height: 3000px; */
+  margin-top: -134px;
 }
 /*# sourceMappingURL=style.css.map */
