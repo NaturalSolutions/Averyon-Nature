@@ -66,9 +66,10 @@
     width: auto;
     border-top: 0;
     box-shadow: none;
+    max-height: none;
     */
-    &.collapse {
-      display: none !important;
+    &.collapse { 
+      
       /*
       display: block !important;
       height: auto !important;
@@ -76,8 +77,11 @@
       overflow: visible !important;
       */
       &.in{
-        display: block !important;    
-        height: 0 !important;    
+        .region-navigation-collapsible{          
+          .translate(0; 0);           
+        } 
+        /* display: block !important;    
+        height: 0 !important;     */
       }
     }
     /*
@@ -96,9 +100,24 @@
   */
   }
   &.collapsing{
-    ul.navbar-nav > li > a{
-      color: transparent;
-    }
+    overflow: visible;
+    .region-navigation-collapsible{          
+      .translate(0; 0);           
+    }    
+  }
+  
+  .region-navigation-collapsible{
+    .transition(transform 0.2s);
+    .translate(-100%; 0);
+    background-color: @navbar-collapsed-bg-aveyron;    
+    background-size: 150px;
+    width: 30%;
+    position: fixed;
+    height: 100% !important;
+    padding-top: 270px;
+    background-image: url(../images/logo_aveyron.png);
+    background-repeat: no-repeat;
+    background-position: 50% @navbar-item-padding-left-aveyron;  
   }
   
 }
@@ -209,7 +228,11 @@
 .navbar-toggle {
   float: none;
   &:after{
-    content:"MENU";
+    content: "MENU";
+    color: #fff;
+    position: absolute;
+    top: 7px;
+    right: 9px; 
   }
   /*
   position: relative;
@@ -253,8 +276,10 @@
 // the nav the full height of the horizontal nav (above 768px).
 */
 .in .navbar-nav {
-  background-color: @navbar-collapsed-bg-aveyron;
-  background-size: 150px;
+ 
+}
+.navbar-nav {
+  
   button.close{
     opacity: 1;
     position: absolute;
@@ -264,72 +289,13 @@
     font-weight: normal;
     font-size: small;
   }
-  > li{    
-    background-size: 30px;    
-    &:nth-child(2){        
-      background-image: url(../images/menu/icon_menu_accueil.png);        
-    }
-    &:nth-child(3){
-      background-image: url(../images/menu/icon_menu_listel.png);          
-    }
-    &:nth-child(4){
-      background-image: url(../images/menu/icon_menu_carte.png);    
-    }
-    &:nth-child(5){
-      background-image: url(../images/menu/icon_menu_evenement.png);    
-    }
-    &:nth-child(6){
-      background-image: url(../images/menu/icon_menu_gallerie.png);    
-    }
-    &:nth-child(7){
-      background-image: url(../images/menu/icon_menu_contact.png);    
-    }
-    &:nth-child(8){
-      background-image: url(../images/menu/icon_fb.png);    
-    }
-    &:nth-child(9){
-      background-image: url(../images/menu/icon_twt.png);    
-    }
-    > a{
-      color: @navbar-default-color;
-    }
-  }
-}
-.navbar-nav {
-  margin: 0;
-  min-height: 100%;
-  position: absolute;
-  height: 2500px;
-  width: 30%;
-  padding-top: 270px;
-  left: 0;
-  top: 0;
-  
-  background-image: url('../images/logo_aveyron.png');
-  background-repeat: no-repeat;
-  background-position: 50% @navbar-item-padding-left-aveyron;
-  background-size: 0px;
-  
-  transition: background-size 0.2s; 
-  -webkit-transition: background-size 0.2s;
-  
-  transition: background-color 0.2s; 
-  -webkit-transition: background-color 0.2s;
-  button.close{
-    opacity: 0;
-    transition: opacity 0.2s;
-    -webkit-transition: opacity 0.2s;
-  }
   > li {
+    background-size: 30px;  
     background-color: transparent;
     background-position: @navbar-item-padding-left-aveyron 50%;
     background-repeat: no-repeat;
     display: block;
-    float: none;
-    
-    transition: background-size 0.2s;
-    -webkit-transition: background-size 0.2s;
-    background-size: 0px;
+    float: none;    
 
     &:nth-child(2){
       background-image: url(../images/menu/icon_menu_accueil.png);
@@ -349,11 +315,7 @@
     &:nth-child(7){
       background-image: url(../images/menu/icon_menu_contact.png);
     }
-    &:nth-child(8), &:nth-child(9){
-      /* position: fixed;
-      z-index: 999;
-      bottom: 30px;
-      left: 65px; */
+    &:nth-child(8), &:nth-child(9){      
       display: inline-block;
       width: 50px;
       background-position: 0 50%;
@@ -371,13 +333,11 @@
       background-image: url(../images/menu/icon_twt.png);
     }
     & > a{
-      transition: color 0.2s; 
-      -webkit-transition: color 0.2s;
-
+      
+      color: @navbar-default-color;
       padding-left: @navbar-padding-left-aveyron;
-      text-transform: uppercase;
-    
-      color: @navbar-default-link-color; 
+      text-transform: uppercase;    
+      
       &:hover,
       &:focus {
         color: @navbar-default-link-hover-color;
@@ -596,6 +556,13 @@
   /*
   */
   .navbar-toggle {
+    position: relative;
+    padding-right: 60px;
+    border-radius: 0;
+    margin-top: 40px;
+    margin-left: 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     border-color: @navbar-default-toggle-border-color;
     &:hover,
     &:focus {

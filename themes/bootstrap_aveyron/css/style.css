@@ -5610,6 +5610,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
     width: auto;
     border-top: 0;
     box-shadow: none;
+    max-height: none;
     */
     /*
     &.in {
@@ -5627,7 +5628,6 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   */
   }
   .navbar-collapse.collapse {
-    display: none !important;
     /*
       display: block !important;
       height: auto !important;
@@ -5636,12 +5636,42 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
       */
   }
   .navbar-collapse.collapse.in {
-    display: block !important;
-    height: 0 !important;
+    /* display: block !important;    
+        height: 0 !important;     */
+  }
+  .navbar-collapse.collapse.in .region-navigation-collapsible {
+    -webkit-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    -o-transform: translate(0, 0);
+    transform: translate(0, 0);
   }
 }
-.navbar-collapse.collapsing ul.navbar-nav > li > a {
-  color: transparent;
+.navbar-collapse.collapsing {
+  overflow: visible;
+}
+.navbar-collapse.collapsing .region-navigation-collapsible {
+  -webkit-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  -o-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+.navbar-collapse .region-navigation-collapsible {
+  -webkit-transition: transform 0.2s;
+  -o-transition: transform 0.2s;
+  transition: transform 0.2s;
+  -webkit-transform: translate(-100%, 0);
+  -ms-transform: translate(-100%, 0);
+  -o-transform: translate(-100%, 0);
+  transform: translate(-100%, 0);
+  background-color: #2f2f2f;
+  background-size: 150px;
+  width: 30%;
+  position: fixed;
+  height: 100% !important;
+  padding-top: 270px;
+  background-image: url(../images/logo_aveyron.png);
+  background-repeat: no-repeat;
+  background-position: 50% 60px;
 }
 /*
 .navbar-fixed-top,
@@ -5774,6 +5804,10 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 }
 .navbar-toggle:after {
   content: "MENU";
+  color: #fff;
+  position: absolute;
+  top: 7px;
+  right: 9px;
 }
 @media (min-width: 0) {
   .navbar-toggle {
@@ -5788,66 +5822,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 // Builds on top of the `.nav` components with its own modifier class to make
 // the nav the full height of the horizontal nav (above 768px).
 */
-.in .navbar-nav {
-  background-color: #2f2f2f;
-  background-size: 150px;
-}
-.in .navbar-nav button.close {
-  opacity: 1;
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  color: #fff;
-  font-weight: normal;
-  font-size: small;
-}
-.in .navbar-nav > li {
-  background-size: 30px;
-}
-.in .navbar-nav > li:nth-child(2) {
-  background-image: url(../images/menu/icon_menu_accueil.png);
-}
-.in .navbar-nav > li:nth-child(3) {
-  background-image: url(../images/menu/icon_menu_listel.png);
-}
-.in .navbar-nav > li:nth-child(4) {
-  background-image: url(../images/menu/icon_menu_carte.png);
-}
-.in .navbar-nav > li:nth-child(5) {
-  background-image: url(../images/menu/icon_menu_evenement.png);
-}
-.in .navbar-nav > li:nth-child(6) {
-  background-image: url(../images/menu/icon_menu_gallerie.png);
-}
-.in .navbar-nav > li:nth-child(7) {
-  background-image: url(../images/menu/icon_menu_contact.png);
-}
-.in .navbar-nav > li:nth-child(8) {
-  background-image: url(../images/menu/icon_fb.png);
-}
-.in .navbar-nav > li:nth-child(9) {
-  background-image: url(../images/menu/icon_twt.png);
-}
-.in .navbar-nav > li > a {
-  color: #fff;
-}
 .navbar-nav {
-  margin: 0;
-  min-height: 100%;
-  position: absolute;
-  height: 2500px;
-  width: 30%;
-  padding-top: 270px;
-  left: 0;
-  top: 0;
-  background-image: url('../images/logo_aveyron.png');
-  background-repeat: no-repeat;
-  background-position: 50% 60px;
-  background-size: 0px;
-  transition: background-size 0.2s;
-  -webkit-transition: background-size 0.2s;
-  transition: background-color 0.2s;
-  -webkit-transition: background-color 0.2s;
   /*
   margin: (@navbar-padding-vertical / 2) -@navbar-padding-horizontal;
 
@@ -5897,19 +5872,21 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
     */
 }
 .navbar-nav button.close {
-  opacity: 0;
-  transition: opacity 0.2s;
-  -webkit-transition: opacity 0.2s;
+  opacity: 1;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  color: #fff;
+  font-weight: normal;
+  font-size: small;
 }
 .navbar-nav > li {
+  background-size: 30px;
   background-color: transparent;
   background-position: 60px 50%;
   background-repeat: no-repeat;
   display: block;
   float: none;
-  transition: background-size 0.2s;
-  -webkit-transition: background-size 0.2s;
-  background-size: 0px;
 }
 .navbar-nav > li:nth-child(2) {
   background-image: url(../images/menu/icon_menu_accueil.png);
@@ -5931,10 +5908,6 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 }
 .navbar-nav > li:nth-child(8),
 .navbar-nav > li:nth-child(9) {
-  /* position: fixed;
-      z-index: 999;
-      bottom: 30px;
-      left: 65px; */
   display: inline-block;
   width: 50px;
   background-position: 0 50%;
@@ -5953,11 +5926,9 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   background-image: url(../images/menu/icon_twt.png);
 }
 .navbar-nav > li > a {
-  transition: color 0.2s;
-  -webkit-transition: color 0.2s;
+  color: #fff;
   padding-left: 130px;
   text-transform: uppercase;
-  color: #fff;
 }
 .navbar-nav > li > a:hover,
 .navbar-nav > li > a:focus {
@@ -6338,6 +6309,13 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 */
 }
 .navbar-default .navbar-toggle {
+  position: relative;
+  padding-right: 60px;
+  border-radius: 0;
+  margin-top: 40px;
+  margin-left: 40px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   border-color: #ddd;
 }
 .navbar-default .navbar-toggle:hover,
@@ -9046,5 +9024,11 @@ body.path-frontpage div.region-header h1 {
 body.path-frontpage section.wrapper {
   /* min-height: 3000px; */
   margin-top: -134px;
+}
+body.path-frontpage section.wrapper div.fold1 button {
+  position: absolute;
+  left: 200px;
+  top: 350px;
+  z-index: 2;
 }
 /*# sourceMappingURL=style.css.map */
