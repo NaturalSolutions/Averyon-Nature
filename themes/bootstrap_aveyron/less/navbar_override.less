@@ -113,11 +113,35 @@
     background-size: 150px;
     width: 30%;
     position: fixed;
+    overflow: hidden;
     height: 100% !important;
     padding-top: 270px;
     background-image: url(../images/logo_aveyron.png);
     background-repeat: no-repeat;
     background-position: 50% @navbar-item-padding-left-aveyron;  
+  }
+  //- de 992px
+  @media (max-width: @screen-md-min) {
+    .region-navigation-collapsible{
+      width: 40%;
+    }
+  }
+  //- de 768px
+  @media (max-width: @screen-sm-min) {
+    .region-navigation-collapsible{
+      width: 50%;
+    }
+  }
+  @media (max-width: 600px) {
+    .region-navigation-collapsible{
+      width: 70%;
+    }
+  }
+  //- de 480px
+  @media (max-width: @screen-xs-min) {
+    .region-navigation-collapsible{
+      width: 100%;
+    }    
   }
   
 }
@@ -279,7 +303,12 @@
  
 }
 .navbar-nav {
-  
+  //- de 480px
+  @media (max-width: @screen-xs-min) {
+    button.close{
+      font-size: 20px !important;
+    }
+  }
   button.close{
     opacity: 1;
     position: absolute;
@@ -288,6 +317,13 @@
     color: #fff;
     font-weight: normal;
     font-size: small;
+    &:hover{
+      color: @base-color-aveyron;
+      text-shadow: 0 1px 0 @base-color-aveyron;
+    }
+    &:focus{
+      outline: none;
+    }
   }
   > li {
     background-size: 30px;  
@@ -566,7 +602,14 @@
     border-color: @navbar-default-toggle-border-color;
     &:hover,
     &:focus {
+      border-color: @base-color-aveyron;
       background-color: @navbar-default-toggle-hover-bg;
+      .icon-bar {
+          background-color: @base-color-aveyron;
+      }
+      &:after{
+        color: @base-color-aveyron;
+      }
     }
     .icon-bar {
       background-color: @navbar-default-toggle-icon-bar-bg;
