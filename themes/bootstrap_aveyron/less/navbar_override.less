@@ -66,9 +66,10 @@
     width: auto;
     border-top: 0;
     box-shadow: none;
+    max-height: none;
     */
-    &.collapse {
-      display: none !important;
+    &.collapse { 
+      
       /*
       display: block !important;
       height: auto !important;
@@ -76,7 +77,11 @@
       overflow: visible !important;
       */
       &.in{
-        display: block !important;        
+        .region-navigation-collapsible{          
+          .translate(0; 0);           
+        } 
+        /* display: block !important;    
+        height: 0 !important;     */
       }
     }
     /*
@@ -95,9 +100,48 @@
   */
   }
   &.collapsing{
-    ul.navbar-nav > li > a{
-      color: transparent;
+    overflow: visible;
+    .region-navigation-collapsible{          
+      .translate(0; 0);           
+    }    
+  }
+  
+  .region-navigation-collapsible{
+    .transition(transform 0.2s);
+    .translate(-100%; 0);
+    background-color: @navbar-collapsed-bg-aveyron;    
+    background-size: 150px;
+    width: 30%;
+    position: fixed;
+    overflow: hidden;
+    height: 100% !important;
+    padding-top: 270px;
+    background-image: url(../images/logo_aveyron.png);
+    background-repeat: no-repeat;
+    background-position: 50% @navbar-item-padding-left-aveyron;  
+  }
+  //- de 992px
+  @media (max-width: @screen-md-min) {
+    .region-navigation-collapsible{
+      width: 40%;
     }
+  }
+  //- de 768px
+  @media (max-width: @screen-sm-min) {
+    .region-navigation-collapsible{
+      width: 50%;
+    }
+  }
+  @media (max-width: 600px) {
+    .region-navigation-collapsible{
+      width: 70%;
+    }
+  }
+  //- de 480px
+  @media (max-width: @screen-xs-min) {
+    .region-navigation-collapsible{
+      width: 100%;
+    }    
   }
   
 }
@@ -207,6 +251,13 @@
 
 .navbar-toggle {
   float: none;
+  &:after{
+    content: "MENU";
+    color: #fff;
+    position: absolute;
+    top: 7px;
+    right: 9px; 
+  }
   /*
   position: relative;
   margin-right: @navbar-padding-horizontal;
@@ -249,7 +300,15 @@
 // the nav the full height of the horizontal nav (above 768px).
 */
 .in .navbar-nav {
-  background-color: @navbar-collapsed-bg-aveyron;
+ 
+}
+.navbar-nav {
+  //- de 480px
+  @media (max-width: @screen-xs-min) {
+    button.close{
+      font-size: 20px !important;
+    }
+  }
   button.close{
     opacity: 1;
     position: absolute;
@@ -258,23 +317,70 @@
     color: #fff;
     font-weight: normal;
     font-size: small;
+    &:hover{
+      color: @base-color-aveyron;
+      text-shadow: 0 1px 0 @base-color-aveyron;
+    }
+    &:focus{
+      outline: none;
+    }
   }
-  > li > a{
-    color: @navbar-default-color;
-  }
-}
-.navbar-nav {
-  transition: background-color 0.2s; 
-  -webkit-transition: background-color 0.2s;
-  button.close{
-    opacity: 0;
-    transition: opacity 0.2s; 
-    -webkit-transition: opacity 0.2s;
-  }
-  > li > a{
-    transition: color 0.2s; 
-    -webkit-transition: color 0.2s;
-  }
+  > li {
+    background-size: 30px;  
+    background-color: transparent;
+    background-position: @navbar-item-padding-left-aveyron 50%;
+    background-repeat: no-repeat;
+    display: block;
+    float: none;    
+
+    &:nth-child(2){
+      background-image: url(../images/menu/icon_menu_accueil.png);
+    }
+    &:nth-child(3){
+      background-image: url(../images/menu/icon_menu_listel.png);
+    }
+    &:nth-child(4){
+      background-image: url(../images/menu/icon_menu_carte.png);
+    }
+    &:nth-child(5){
+      background-image: url(../images/menu/icon_menu_evenement.png);
+    }
+    &:nth-child(6){
+      background-image: url(../images/menu/icon_menu_gallerie.png);
+    }
+    &:nth-child(7){
+      background-image: url(../images/menu/icon_menu_contact.png);
+    }
+    &:nth-child(8), &:nth-child(9){      
+      display: inline-block;
+      width: 50px;
+      background-position: 0 50%;
+      a{
+        color: transparent !important;
+        width: 45px;
+      }
+    } 
+    &:nth-child(8){
+      background-image: url(../images/menu/icon_fb.png);
+      margin-left: @navbar-item-padding-left-aveyron;
+      margin-top: 25px;
+    }
+    &:nth-child(9){
+      background-image: url(../images/menu/icon_twt.png);
+    }
+    & > a{
+      
+      color: @navbar-default-color;
+      padding-left: @navbar-padding-left-aveyron;
+      text-transform: uppercase;    
+      
+      &:hover,
+      &:focus {
+        color: @navbar-default-link-hover-color;
+        background-color: @navbar-default-link-hover-bg;
+      }     
+    }
+  } 
   /*
   margin: (@navbar-padding-vertical / 2) -@navbar-padding-horizontal;
 
@@ -308,84 +414,20 @@
     }
   }
   */
+    /*
   // Uncollapse the nav
   @media (min-width: @grid-float-breakpoint) {
-    /*
     float: left;
     margin: 0; 
-    */
-    margin: 0;
-    min-height: 100%;
-    position: fixed;
-    width: 30%;
-    padding-top: 300px;
-    left: 0;
-    top: 0;
+    
     > li {
-      
-      float: none;
-      &:nth-child(2){
-        background: url(../images/menu/icon_menu_accueil.png) no-repeat 60px 50%;
-        background-size: 30px;        
-      }
-      &:nth-child(3){
-        background: url(../images/menu/icon_menu_listel.png) no-repeat 60px 50%;
-        background-size: 30px;        
-      }
-      &:nth-child(4){
-        background: url(../images/menu/icon_menu_carte.png) no-repeat 60px 50%;
-        background-size: 30px;        
-      }
-      &:nth-child(5){
-        background: url(../images/menu/icon_menu_evenement.png) no-repeat 60px 50%;
-        background-size: 30px;        
-      }
-      &:nth-child(6){
-        background: url(../images/menu/icon_menu_gallerie.png) no-repeat 60px 50%;
-        background-size: 30px;        
-      }
-      &:nth-child(7){
-        background: url(../images/menu/icon_menu_contact.png) no-repeat 60px 50%;
-        background-size: 30px;        
-      }
-      &:nth-child(8){
-        background: url(../images/menu/icon_fb.png) no-repeat 0% 50%;
-        background-size: 30px;
-        display: inline-block;
-        position: absolute;
-        bottom: 30px;
-        left: 65px;
-        a{
-          color: transparent !important;
-          width: 45px;
-        }
-      }
-      &:nth-child(9){
-        background: url(../images/menu/icon_twt.png) no-repeat 0% 50%;
-        background-size: 30px;
-        display: inline-block;
-        position: absolute;
-        bottom: 30px;
-        left: 110px;
-        a{          
-          color: transparent !important;
-          width: 45px;
-        }
-      }
-      //float: left;
-      
-      > a {
-        padding-left: @navbar-padding-left-aveyron;
-        text-transform: uppercase;
-        /*
-        padding-top:    @navbar-padding-vertical;
-        padding-bottom: @navbar-padding-vertical;
-        */
-      }
+     
+            
       
     }
     
   }
+    */
 }
 /*
 
@@ -503,6 +545,7 @@
 // --------------------------------------------------
 */
 // Default navbar
+  
 .navbar-default {
   /*
   background-color: @navbar-default-bg;
@@ -521,20 +564,11 @@
     color: @navbar-default-color;
   }
 
-  */
+  
   .navbar-nav {
-    background-image: url('../images/logo_aveyron.png');
-    background-repeat: no-repeat;
-    background-position: 50% 100px;
-    background-size: 150px;
+   
     > li > a {
-      color: @navbar-default-link-color;
-
-      &:hover,
-      &:focus {
-        color: @navbar-default-link-hover-color;
-        background-color: @navbar-default-link-hover-bg;
-      }
+      
     }
     /*
     > .active > a { 
@@ -552,22 +586,36 @@
         color: @navbar-default-link-disabled-color;
         background-color: @navbar-default-link-disabled-bg;
       }
-    */
+  
   }
 }
   /*
-  
+  */
   .navbar-toggle {
+    position: relative;
+    padding-right: 60px;
+    border-radius: 0;
+    margin-top: 40px;
+    margin-left: 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     border-color: @navbar-default-toggle-border-color;
     &:hover,
     &:focus {
+      border-color: @base-color-aveyron;
       background-color: @navbar-default-toggle-hover-bg;
+      .icon-bar {
+          background-color: @base-color-aveyron;
+      }
+      &:after{
+        color: @base-color-aveyron;
+      }
     }
     .icon-bar {
       background-color: @navbar-default-toggle-icon-bar-bg;
     }
   }
-  
+  /*
 
   .navbar-collapse,
   .navbar-form {
@@ -778,5 +826,5 @@
       }
     }
   }
-}
 */
+}

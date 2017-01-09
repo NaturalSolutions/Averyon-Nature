@@ -1,5 +1,161 @@
+/*
+	Specific font for Homepage
+*/
+@font-face {
+    font-family: 'Viper Nora';
+    src: url('../fonts/viper_nora.otf') format("opentype");    
+}
+@font-face { 
+    font-family: 'Proxima Nova Regular';
+    src: url('../fonts/Proxima Nova Regular.otf') format("opentype");    
+}
 body.path-frontpage{
+	div.region-header{
+		h1{
+			font-family: 'Viper Nora';
+		    position: absolute;
+		    top: 250px;
+		    z-index: 2;
+		    left: 0;
+		    color: #fff;
+		    text-align: center;
+		    width: 100%;
+		    border: 0;
+		    padding: 0px 20%;
+		    font-size: 4em;
+		    line-height: 80px;
+		    letter-spacing: 2px;
+		}
+	}
 	section.wrapper{
-		min-height: 3000px;
+		/* min-height: 3000px; */
+		margin-top: -134px;
+
+		div.fold1{
+			text-align: center;
+			button{
+				position: relative;
+				top: 600px;
+				z-index: 2;
+			}
+			div.progressBar{				
+			    width: 0%;
+			    position: absolute;
+			    bottom: 0;
+			    left: 0;
+			    background-color: @base-color-aveyron;
+			    height: 2px;
+			    width: 0;
+			    z-index: 99;
+			}
+		}
 	}	
 } 
+
+@media (max-width: 1450px) {
+	body.path-frontpage{
+		div.region-header{
+			h1{
+				padding: 0px 12%;
+			}
+		}
+	}
+}
+
+//- de 1200
+@media (max-width: @screen-lg-min) {
+	body.path-frontpage{
+		div.region-header{
+			h1{
+				padding: 0px 6%;
+			}
+		}
+	}
+}
+//- de 992
+@media (max-width: @screen-md-min) {
+	body.path-frontpage{
+		div.region-header{
+			h1{
+				padding: 0px 1%;
+			}
+		}		
+	}
+}
+
+@media (max-width: 877px) {
+	body.path-frontpage{
+		section.wrapper{
+			div.fold1{				
+				button{					
+					top: 650px;					
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 608px) {
+	body.path-frontpage{
+		section.wrapper{
+			div.fold1{				
+				button{					
+					top: 760px;
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 482px) {
+	body.path-frontpage{
+		section.wrapper{
+			div.fold1{				
+				button{					
+					top: 850px;
+				}
+			}
+		}
+	}
+}
+
+//- de 480
+@media (max-width: @screen-xs-min) {
+	body.path-frontpage{
+		div.region-header{
+			h1{
+				font-size: 3.8em;
+				padding: 0px 3%;
+    			top: 200px;
+			}
+		}
+		section.wrapper{
+			div.fold1{ 
+				button{					
+					top: 760px;
+				}
+			}
+		}
+	} 
+}
+
+@media (max-width: 394px) {
+	body.path-frontpage{		
+		section.wrapper{
+			div.fold1{ 
+				button{					
+					top: 865px;
+				}
+			}
+		}
+	} 
+}
+@media (max-width: 289px) {
+	body.path-frontpage{	
+		div.region-header{
+			h1{
+				font-size: 3.4em;
+			}
+		}			
+	} 
+}

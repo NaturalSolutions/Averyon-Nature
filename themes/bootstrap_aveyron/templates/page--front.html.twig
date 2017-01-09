@@ -113,43 +113,36 @@
           </aside>
         {% endblock %}
       {% endif %}
-
+      
       {# Content #}      
+
+      {{ attach_library('bootstrap_aveyron/swiper') }}
+      {{ attach_library('bootstrap_aveyron/script-hp') }}
+
       <section class="col-sm-12 wrapper">
+        
+        <!-- <pre>{{  dump(pictures) }}</pre> -->
 
-        {# Highlighted #}
-        {% if page.highlighted %}
-          {% block highlighted %}
-            <div class="highlighted">{{ page.highlighted }}</div>
-          {% endblock %}
-        {% endif %}
+        <!-- Standard button -->
+        
+        <div class="row fold1">        
+          
+          <button type="button" class="btn btn-primary">Découvrir</button>
+          <!-- Slider main container -->
+          <div class="swiper-container">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+              <!-- Slides -->
+              {% for picture in pictures %}     
+                <div class="swiper-slide"><img src="{{ picture.uri }}" /></div>
+              {% endfor %}
+            </div>
+          </div>
 
-        {# Breadcrumbs #}
-        {% if breadcrumb %}
-          {% block breadcrumb %}
-            {{ breadcrumb }}
-          {% endblock %}
-        {% endif %}
+          <div class="progressBar"></div>
+        </div>
 
-        {# Action Links #}
-        {% if action_links %}
-          {% block action_links %}
-            <ul class="action-links">{{ action_links }}</ul>
-          {% endblock %}
-        {% endif %}
 
-        {# Help #}
-        {% if page.help %}
-          {% block help %}
-            {{ page.help }}
-          {% endblock %}
-        {% endif %}
-
-        {# Content #}
-        {% block content %}
-          <a id="main-content"></a>
-          {{ page.content }}
-        {% endblock %}
       </section>
       
     </div>

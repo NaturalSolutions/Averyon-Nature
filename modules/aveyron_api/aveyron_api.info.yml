@@ -2,6 +2,8 @@ name: Aveyron API
 type: module
 description: Custom RESTful API module with GET/POST/PUT/DELETE etc.. method examples.
 author: Natural Solutions
+package: Custom
+version: 1.0
 core: 8.x
 dependencies:
   - geofield

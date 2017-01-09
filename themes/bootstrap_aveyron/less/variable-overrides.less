@@ -18,7 +18,7 @@
 //
 //## Gray and brand colors for use across Bootstrap.
 */
-@base-color-aveyron : 	#e95a18;
+@base-color-aveyron : 	#e95a18; 
 /*
 @gray-base:              #000;
 @gray-darker:            lighten(@gray-base, 13.5%); // #222
@@ -27,7 +27,9 @@
 @gray-light:             lighten(@gray-base, 46.7%); // #777
 @gray-lighter:           lighten(@gray-base, 93.5%); // #eee
 
-@brand-primary:         darken(#428bca, 6.5%); // #337ab7
+*/
+@brand-primary:         @base-color-aveyron; // #337ab7
+/* 
 @brand-success:         #5cb85c;
 @brand-info:            #5bc0de;
 @brand-warning:         #f0ad4e;
@@ -162,8 +164,10 @@
 @btn-default-border:             #ccc;
 
 @btn-primary-color:              #fff;
+*/
 @btn-primary-bg:                 @brand-primary;
 @btn-primary-border:             darken(@btn-primary-bg, 5%);
+/*
 
 @btn-success-color:              #fff;
 @btn-success-bg:                 @brand-success;
@@ -381,6 +385,7 @@
 
 */
 @navbar-padding-left-aveyron: 	   130px;
+@navbar-item-padding-left-aveyron: 60px;
 @navbar-default-color:             #fff; 
 @navbar-default-bg:                transparent;
 @navbar-collapsed-bg-aveyron:      #2f2f2f;
@@ -404,8 +409,10 @@
 @navbar-default-brand-hover-bg:            transparent;
 
 // Navbar toggle
-@navbar-default-toggle-hover-bg:           #ddd;
-@navbar-default-toggle-icon-bar-bg:        #888;
+*/
+@navbar-default-toggle-hover-bg:           transparent;
+@navbar-default-toggle-icon-bar-bg:        #fff;
+/*
 @navbar-default-toggle-border-color:       #ddd;
 
 
