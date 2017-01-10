@@ -4,7 +4,8 @@
 3-a/ Créer un lien symbolique à l'aide de la commande "ln -s destination cible" dans le répertoire themes de Drupal. La destination étant le themes versionné (../code-aveyron-csutom/themes/) et la cible le nom du répertoire des themes (themes), 
 3-b/Créer un répertoire custom dans "www/modules/" du site et faire la même lien vers le répertoire modules versionné
 4/ Activer le theme "bootstrap" dans "admin/appearance" ainsi que "seven" et le définir comme theme d'administration afin de naviguer facilement.
-5/ Activation du module "web profiler" présent dans le coeur ainsi que le module "Configuration manager" pour pouvoir importer des configurations.
+5/ Télécharger tous les modules listés dans le README et installer au moins "Backup and Migrate"
+6/ Activation du module "web profiler" présent dans le coeur ainsi que le module "Configuration manager" pour pouvoir importer des configurations.
 
 # Pour voir les erreurs il est possilbe d'ajouter ces instructions dans "www/sites/default/settings.php"
 
