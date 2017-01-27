@@ -100,7 +100,9 @@
       {% if page.header %}
         {% block header %}
           <div class="col-sm-12" role="heading">
-            {{ page.header }}
+            <h1 class="page-header">
+              {{ titleFold1 }}
+            </h1>
           </div>
         {% endblock %}
       {% endif %}
@@ -114,7 +116,7 @@
         {% endblock %}
       {% endif %}
       
-      {# Content #}      
+      {# Content #}
 
       {{ attach_library('bootstrap_aveyron/swiper') }}
       {{ attach_library('bootstrap_aveyron/script-hp') }}
@@ -140,6 +142,14 @@
           </div>
 
           <div class="progressBar"></div>
+        </div>
+
+        <div class="row fold2">
+          <div class="col-lg-12">
+            <h2>{{ titleFold2 }}</h2>
+            <div class="trait"></div>
+            <p class="subTitleFold2">{{ subTitleFold2 }}</p>
+          </div>
         </div>
 
 

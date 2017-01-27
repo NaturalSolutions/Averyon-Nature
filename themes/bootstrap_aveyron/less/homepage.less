@@ -2,51 +2,68 @@
 	Specific font for Homepage
 */
 @font-face {
-    font-family: 'Viper Nora';
-    src: url('../fonts/viper_nora.otf') format("opentype");    
+	font-family: 'Viper Nora';
+	src: url('../fonts/viper_nora.otf') format("opentype");
 }
-@font-face { 
-    font-family: 'Proxima Nova Regular';
-    src: url('../fonts/Proxima Nova Regular.otf') format("opentype");    
+@font-face {
+	font-family: 'Proxima Nova Regular';
+	src: url('../fonts/Proxima Nova Regular.otf') format("opentype");
 }
 body.path-frontpage{
-	div.region-header{
-		h1{
-			font-family: 'Viper Nora';
-		    position: absolute;
-		    top: 250px;
-		    z-index: 2;
-		    left: 0;
-		    color: #fff;
-		    text-align: center;
-		    width: 100%;
-		    border: 0;
-		    padding: 0px 20%;
-		    font-size: 4em;
-		    line-height: 80px;
-		    letter-spacing: 2px;
-		}
+	h1{
+		font-family: 'Viper Nora';
+		position: absolute;
+		top: 250px;
+		z-index: 2;
+		left: 0;
+		color: #fff;
+		text-align: center;
+		width: 100%;
+		border: 0;
+		padding: 0px 20%;
+		font-size: 4em;
+		line-height: 80px;
+		letter-spacing: 2px;
 	}
 	section.wrapper{
 		/* min-height: 3000px; */
 		margin-top: -134px;
 
 		div.fold1{
+			position: relative;
 			text-align: center;
 			button{
 				position: relative;
 				top: 600px;
 				z-index: 2;
 			}
-			div.progressBar{				
-			    width: 0%;
-			    position: absolute;
-			    bottom: 0;
-			    left: 0;
-			    background-color: @base-color-aveyron;
-			    height: 2px;
-			    width: 0;
-			    z-index: 99;
+			div.progressBar{
+				width: 0%;
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				background-color: @base-color-aveyron;
+				height: 2px;
+				width: 0;
+				z-index: 99;
+			}
+		}
+		div.fold2{
+			h2{
+				text-align: center;
+				text-transform: uppercase;
+			}
+			div.trait{
+				width: 4%;
+				height: 1px;
+				opacity: 0.8;
+				text-align: center;
+				margin: 10px auto;
+				background-color: @base-color-aveyron;
+			}
+			p.subTitleFold2{
+				text-align: center;
+    			padding: 0 25%;
 			}
 		}
 	}	
@@ -86,9 +103,9 @@ body.path-frontpage{
 @media (max-width: 877px) {
 	body.path-frontpage{
 		section.wrapper{
-			div.fold1{				
-				button{					
-					top: 650px;					
+			div.fold1{
+				button{
+					top: 650px;
 				}
 			}
 		}
@@ -98,8 +115,8 @@ body.path-frontpage{
 @media (max-width: 608px) {
 	body.path-frontpage{
 		section.wrapper{
-			div.fold1{				
-				button{					
+			div.fold1{
+				button{
 					top: 760px;
 				}
 			}
@@ -110,8 +127,8 @@ body.path-frontpage{
 @media (max-width: 482px) {
 	body.path-frontpage{
 		section.wrapper{
-			div.fold1{				
-				button{					
+			div.fold1{
+				button{
 					top: 850px;
 				}
 			}
@@ -126,12 +143,12 @@ body.path-frontpage{
 			h1{
 				font-size: 3.8em;
 				padding: 0px 3%;
-    			top: 200px;
+				top: 200px;
 			}
 		}
 		section.wrapper{
-			div.fold1{ 
-				button{					
+			div.fold1{
+				button{
 					top: 760px;
 				}
 			}
@@ -140,10 +157,10 @@ body.path-frontpage{
 }
 
 @media (max-width: 394px) {
-	body.path-frontpage{		
+	body.path-frontpage{
 		section.wrapper{
-			div.fold1{ 
-				button{					
+			div.fold1{
+				button{
 					top: 865px;
 				}
 			}
@@ -151,11 +168,11 @@ body.path-frontpage{
 	} 
 }
 @media (max-width: 289px) {
-	body.path-frontpage{	
+	body.path-frontpage{
 		div.region-header{
 			h1{
 				font-size: 3.4em;
 			}
-		}			
+		}
 	} 
 }

@@ -9284,7 +9284,7 @@ p:last-child,
   font-family: 'Proxima Nova Regular';
   src: url('../fonts/Proxima Nova Regular.otf') format("opentype");
 }
-body.path-frontpage div.region-header h1 {
+body.path-frontpage h1 {
   font-family: 'Viper Nora';
   position: absolute;
   top: 250px;
@@ -9304,6 +9304,7 @@ body.path-frontpage section.wrapper {
   margin-top: -134px;
 }
 body.path-frontpage section.wrapper div.fold1 {
+  position: relative;
   text-align: center;
 }
 body.path-frontpage section.wrapper div.fold1 button {
@@ -9320,6 +9321,22 @@ body.path-frontpage section.wrapper div.fold1 div.progressBar {
   height: 2px;
   width: 0;
   z-index: 99;
+}
+body.path-frontpage section.wrapper div.fold2 h2 {
+  text-align: center;
+  text-transform: uppercase;
+}
+body.path-frontpage section.wrapper div.fold2 div.trait {
+  width: 4%;
+  height: 1px;
+  opacity: 0.8;
+  text-align: center;
+  margin: 10px auto;
+  background-color: #e95a18;
+}
+body.path-frontpage section.wrapper div.fold2 p.subTitleFold2 {
+  text-align: center;
+  padding: 0 25%;
 }
 @media (max-width: 1450px) {
   body.path-frontpage div.region-header h1 {

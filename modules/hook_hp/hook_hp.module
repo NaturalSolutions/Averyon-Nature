@@ -12,11 +12,16 @@
 function hook_hp_preprocess_page__front(&$variables){
 
 	$pictures = getSliderPictures();
-
+	$titleFold1 = getTitleFold1();
+	$titleFold2 = getTitleFold2();
+	$subTitleFold2 = getSubTitleFold2();
 
 	//set variables
 	$variables['pictures'] = $pictures;
-	
+	$variables['titleFold1'] = $titleFold1;
+	$variables['titleFold2'] = $titleFold2;
+	$variables['subTitleFold2'] = $subTitleFold2;
+
 }
 
 function getSliderPictures(){
@@ -27,18 +32,67 @@ function getSliderPictures(){
 	on f.fid = s.field_slider_target_id
 	where s.entity_id = 1;
 	*/
-	$query = \Drupal::database()->select('file_managed', 'f');	
+	$query = \Drupal::database()->select('file_managed', 'f');
 	$query->addField('f', 'filename');
 	$query->addField('f', 'uri');
-	$query->join('node__field_slider', 's', 'f.fid = s.field_slider_target_id');
-	$query->condition('s.entity_id', 1);	
+	$query->join('node_revision__field_slider', 's', 'f.fid = s.field_slider_target_id');
+	$query->condition('s.entity_id', 1);
 	$pictures = $query->execute()->fetchAll();
 
-	foreach ($pictures as $key => $picture) {		
+	foreach ($pictures as $key => $picture) {
 
 		//Convert url of pictures
 		$picture->uri = file_create_url($picture->uri);
 	}
 
-	return $pictures;	
+	return $pictures;
+}
+
+function getTitleFold1(){
+	
+	/*
+	SELECT t.field_titre_fold1_value 
+	FROM aveyron.node__field_titre_fold1 t
+	WHERE t.entity_id = 1;
+	*/
+	$query = \Drupal::database()->select('node_revision__field_titre_fold1', 't');
+	$query->addField('t', 'field_titre_fold1_value');
+	$query->condition('t.entity_id', 1);
+	$titleFold1 = $query->execute()->fetchAll();
+	$titleFold1 = $titleFold1[0]->field_titre_fold1_value;
+
+	return $titleFold1;
+}
+
+function getTitleFold2(){
+	
+	/*
+	SELECT t.field_titre_fold1_value 
+	FROM aveyron.node__field_titre_fold1 t
+	WHERE t.entity_id = 1;
+	*/
+	$query = \Drupal::database()->select('node_revision__field_titre_fold2', 't');
+	$query->addField('t', 'field_titre_fold2_value');
+	$query->condition('t.entity_id', 1);
+	$titleFold2 = $query->execute()->fetchAll();
+	$titleFold2 = $titleFold2[0]->field_titre_fold2_value;
+
+	return $titleFold2;
+}
+
+function getSubTitleFold2(){
+	
+	/*
+	SELECT t.field_titre_fold1_value 
+	FROM aveyron.node__field_titre_fold1 t
+	WHERE t.entity_id = 1;
+	*/
+	$query = \Drupal::database()->select('node_revision__field_sous_titre_fold2', 't');
+	$query->addField('t', 'field_sous_titre_fold2_value');
+	$query->condition('t.entity_id', 1);
+	$subTitleFold2 = $query->execute()->fetchAll();
+	if (isset($subTitleFold2[0]->field_sous_titre_fold2_value))	$subTitleFold2 = $subTitleFold2[0]->field_sous_titre_fold2_value;
+	else $subTitleFold2 = '';
+
+	return $subTitleFold2;
 }
