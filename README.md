@@ -17,14 +17,17 @@
 [metatag 8.x-1.0-beta11](https://ftp.drupal.org/files/projects/metatag-8.x-1.0-beta11.zip)  
 [recaptcha 8.x-2.2](https://ftp.drupal.org/files/projects/recaptcha-8.x-2.2.zip)  
 [xmlsitemap 8.x-1.0-alpha2](https://ftp.drupal.org/files/projects/xmlsitemap-8.x-1.0-alpha2.zip)  
-[geoPHP 8.x-1.0-beta1](https://ftp.drupal.org/files/projects/geophp-8.x-1.0-beta1.zip)
 [Geofield 8.x-1.0-alpha2](https://ftp.drupal.org/files/projects/geofield-8.x-1.0-alpha2.zip)
+
+# Installation des dépendances pour le module geofield
+le tag --ignore-platform-reqs permet d'ignorer la version de php
+composer require drupal/geofield 1.0-alpha2 --ignore-platform-reqs
 
 
 # Démo
 [http://151.80.132.63/aveyron-demo/](http://151.80.132.63/aveyron-demo/)
 
-# Documentation 
+# Documentation
 [Documentation officiel D8](https://www.drupal.org/docs/8)  
 [Convention de nommage](https://www.drupal.org/node/318)  
 [Drupal Bootstrap Documentation](http://drupal-bootstrap.org/api/bootstrap)  
@@ -33,7 +36,7 @@
 
    - Voir les log apache : tail -f /var/log/apache2/error.log
    - Augmenter "memory_limit" dans le php.ini
-   - Example de phpinfo.php 
+   - Example de phpinfo.php
 
 '''
 <?php
@@ -47,6 +50,3 @@ phpinfo(INFO_MODULES);
 
 ?>
 '''
-
-
-
