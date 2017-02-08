@@ -17,7 +17,6 @@
 [metatag 8.x-1.0-beta11](https://ftp.drupal.org/files/projects/metatag-8.x-1.0-beta11.zip)  
 [recaptcha 8.x-2.2](https://ftp.drupal.org/files/projects/recaptcha-8.x-2.2.zip)  
 [xmlsitemap 8.x-1.0-alpha2](https://ftp.drupal.org/files/projects/xmlsitemap-8.x-1.0-alpha2.zip)  
-[geoPHP 8.x-1.0-beta1](https://ftp.drupal.org/files/projects/geophp-8.x-1.0-beta1.zip)
 [Geofield 8.x-1.0-alpha2](https://ftp.drupal.org/files/projects/geofield-8.x-1.0-alpha2.zip)
 
 

@@ -11,16 +11,19 @@
 */
 function hook_hp_preprocess_page__front(&$variables){
 
-	$pictures = getSliderPictures();
+	$picturesFold1 = getSliderPictures();
 	$titleFold1 = getTitleFold1();
+	
 	$titleFold2 = getTitleFold2();
 	$subTitleFold2 = getSubTitleFold2();
+	$ensFold2 = getEnsFold2();
 
 	//set variables
-	$variables['pictures'] = $pictures;
+	$variables['picturesFold1'] = $picturesFold1;
 	$variables['titleFold1'] = $titleFold1;
 	$variables['titleFold2'] = $titleFold2;
 	$variables['subTitleFold2'] = $subTitleFold2;
+	$variables['ensFold2'] = $ensFold2;
 
 }
 
@@ -37,15 +40,15 @@ function getSliderPictures(){
 	$query->addField('f', 'uri');
 	$query->join('node_revision__field_slider', 's', 'f.fid = s.field_slider_target_id');
 	$query->condition('s.entity_id', 1);
-	$pictures = $query->execute()->fetchAll();
+	$picturesFold1 = $query->execute()->fetchAll();
 
-	foreach ($pictures as $key => $picture) {
+	foreach ($picturesFold1 as $key => $picture) {
 
-		//Convert url of pictures
+		//Convert url of picturesFold1
 		$picture->uri = file_create_url($picture->uri);
 	}
 
-	return $pictures;
+	return $picturesFold1;
 }
 
 function getTitleFold1(){
@@ -95,4 +98,110 @@ function getSubTitleFold2(){
 	else $subTitleFold2 = '';
 
 	return $subTitleFold2;
+}
+
+/*function haversineGreatCircleDistance($latitudeFrom, $longitudeFrom, $latitudeTo, $longitudeTo, $earthRadius = 6371000){
+	// convert from degrees to radians
+	$latFrom = deg2rad($latitudeFrom);
+	$lonFrom = deg2rad($longitudeFrom);
+	$latTo = deg2rad($latitudeTo);
+	$lonTo = deg2rad($longitudeTo);
+
+	$latDelta = $latTo - $latFrom;
+	$lonDelta = $lonTo - $lonFrom;
+
+	$angle = 2 * asin(sqrt(pow(sin($latDelta / 2), 2) +
+	cos($latFrom) * cos($latTo) * pow(sin($lonDelta / 2), 2)));
+	
+	return $angle * $earthRadius;
+}*/
+
+/*function getCurrentLocation(){
+	//$ip  = !empty($_SERVER['HTTP_X_FORWARDED_FOR']) ? $_SERVER['HTTP_X_FORWARDED_FOR'] : $_SERVER['REMOTE_ADDR'];
+	$ip  = '151.80.132.63';
+	$url = "http://freegeoip.net/json/$ip";
+	$ch  = curl_init();
+
+	curl_setopt($ch, CURLOPT_URL, $url);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+	curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+	$data = curl_exec($ch);
+	curl_close($ch);
+
+	
+
+	if ($data) {
+
+		$location = json_decode($data);
+
+		$lat = $location->latitude;
+		$lon = $location->longitude;
+
+		//$sun_info = date_sun_info(time(), $lat, $lon);
+		return $lat.';'.$lon;
+
+	}
+}
+*/
+function getEnsFold2(){
+	
+	/*
+	SELECT f.filename, s.entity_id FROM aveyron.file_managed f
+	join aveyron.node_revision__field_poster s
+	on f.fid = s.field_poster_target_id
+	join aveyron.node_revision__field_ens_mis_en_avant_fold2 d
+	on s.revision_id = d.field_ens_mis_en_avant_fold2_target_id;
+	*/
+	$query = \Drupal::database()->select('file_managed', 'f' );
+	$query->addField('f', 'uri');
+	$query->addField('s', 'revision_id');
+	$query->addField('s', 'field_poster_alt');
+	$query->addField('s', 'field_poster_title');
+	$query->join('node_revision__field_poster', 's', 'f.fid = s.field_poster_target_id');
+	$query->join('node_revision__field_ens_mis_en_avant_fold2', 'd', 'd.field_ens_mis_en_avant_fold2_target_id = s.revision_id');	
+	$picturesFold2 = $query->execute()->fetchAll();
+
+
+	foreach ($picturesFold2 as $key => $picture) {
+
+		//Convert uri to the good style
+		if( $key == 0 )	$picture->uri = entity_load('image_style', '1000_par_700')->buildUrl($picture->uri);
+		else $picture->uri = entity_load('image_style', '500_par_350')->buildUrl($picture->uri);
+
+		/*  get title
+			SELECT title FROM aveyron.node_field_data where vid = 1;
+		*/
+
+		$query2 = \Drupal::database()->select('node_field_data', 'n');
+		$query2->addField('n', 'title');
+		$query2->condition('n.nid', $picture->revision_id);
+		$titleEnsFold2 = $query2->execute()->fetchAll();
+		$titleEnsFold2 = $titleEnsFold2[0]->title;
+		$picturesFold2[$key]->title = $titleEnsFold2;
+		
+		/*
+			Get GPS point of ENS :			
+			SELECT t.field_start_trace_lat, t.field_start_trace_lon 
+			FROM aveyron.node_revision__field_start_trace t
+			where t.revision_id = 10;
+		*/
+
+		$query3 = \Drupal::database()->select('node_revision__field_start_trace', 't');
+		$query3->addField('t', 'field_start_trace_lat');
+		$query3->addField('t', 'field_start_trace_lon');
+		$query3->condition('t.entity_id', $picture->revision_id);
+		$GPSEnsFold2 = $query3->execute()->fetchAll();
+		$GPSEnsFold2 = $GPSEnsFold2[0]->field_start_trace_lat.';'.$GPSEnsFold2[0]->field_start_trace_lon;
+		$picturesFold2[$key]->gps = $GPSEnsFold2;
+
+		
+
+		//$picturesFold2[$key]->gps = haversineGreatCircleDistance($latitudeFrom, $longitudeFrom, $latitudeTo, $longitudeTo);
+
+
+
+
+	}
+
+	return $picturesFold2;
 }

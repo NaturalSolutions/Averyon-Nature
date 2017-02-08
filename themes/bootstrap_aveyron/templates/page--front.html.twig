@@ -117,41 +117,73 @@
       {% endif %}
       
       {# Content #}
-
       {{ attach_library('bootstrap_aveyron/swiper') }}
       {{ attach_library('bootstrap_aveyron/script-hp') }}
 
       <section class="col-sm-12 wrapper">
-        
-        <!-- <pre>{{  dump(pictures) }}</pre> -->
+
 
         <!-- Standard button -->
-        
-        <div class="row fold1">        
-          
-          <button type="button" class="btn btn-primary">Découvrir</button>
-          <!-- Slider main container -->
-          <div class="swiper-container">
+        <div class="row fold1">
+
+            <button type="button" class="btn btn-primary">Découvrir</button>
+            <!-- Slider main container -->
+            <div class="swiper-container">
             <!-- Additional required wrapper -->
-            <div class="swiper-wrapper">
-              <!-- Slides -->
-              {% for picture in pictures %}     
-                <div class="swiper-slide"><img src="{{ picture.uri }}" /></div>
-              {% endfor %}
+                <div class="swiper-wrapper">
+                <!-- Slides -->
+                    {% for picture in picturesFold1 %}
+                        <div class="swiper-slide"><img src="{{ picture.uri }}" /></div>
+                    {% endfor %}
+                </div>
             </div>
-          </div>
 
-          <div class="progressBar"></div>
+            <div class="progressBar">
+            </div>
+
         </div>
 
-        <div class="row fold2">
-          <div class="col-lg-12">
-            <h2>{{ titleFold2 }}</h2>
-            <div class="trait"></div>
-            <p class="subTitleFold2">{{ subTitleFold2 }}</p>
-          </div>
-        </div>
+        <div class="container-fluid fold2">
 
+            <div class="row txtRow">
+                <div class="col-lg-12">
+                    <h2>{{ titleFold2 }}</h2>
+                    <div class="trait"></div>
+                    <p class="subTitleFold2">{{ subTitleFold2 }}</p>
+                </div>
+            </div>
+
+            <!-- <pre>{{  dump(ensFold2) }}</pre> -->
+
+            <div class="row imagesRow">
+                <div class="col-sm-8 left">
+                    <div class="relative">
+                        <div class="absolute">
+                            <h2>{{ ensFold2[0].title }}</h2>
+                            <p class="hidden"><span id="latLon" class="latLon">{{ ensFold2[0].gps }}</span><span id="valDistance"></span> KM du départ</p>
+                        </div>
+                        <img src="{{ ensFold2[0].uri }}" alt="{{ ensFold2[0].field_poster_alt }}" title="{{ ensFold2[0].field_poster_title }}">
+                    </div>
+                </div>
+                <div class="col-sm-4 right">
+                    <div class="relative">
+                        <div class="absolute">
+                            <h2>{{ ensFold2[1].title }}</h2>
+                            <p class="hidden"><span id="latLon" class="latLon">{{ ensFold2[1].gps }}</span><span id="valDistance"></span> KM du départ</p>
+                        </div>
+                        <img class="image2" src="{{ ensFold2[1].uri }}" alt="{{ ensFold2[1].field_poster_alt }}" title="{{ ensFold2[1].field_poster_title }}">
+                    </div>
+                    <div class="relative">
+                        <div class="absolute">
+                            <h2>{{ ensFold2[2].title }}</h2>
+                            <p class="hidden"><span id="latLon" class="latLon">{{ ensFold2[2].gps }}</span><span id="valDistance"></span> KM du départ</p>
+                        </div>
+                        <img src="{{ ensFold2[2].uri }}" alt="{{ ensFold2[2].field_poster_alt }}" title="{{ ensFold2[2].field_poster_title }}">
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn btn-primary inverse">voir plus d’espace naturels</button>
+        </div>
 
       </section>
       

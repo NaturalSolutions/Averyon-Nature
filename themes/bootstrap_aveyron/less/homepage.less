@@ -9,6 +9,13 @@
 	font-family: 'Proxima Nova Regular';
 	src: url('../fonts/Proxima Nova Regular.otf') format("opentype");
 }
+@font-face {
+	font-family: 'Proxima Nova Light';
+	src: url('../fonts/Proxima Nova Light.otf') format("opentype");
+}
+
+@color_hn_aveyron : #565656;
+
 body.path-frontpage{
 	h1{
 		font-family: 'Viper Nora';
@@ -28,14 +35,15 @@ body.path-frontpage{
 	section.wrapper{
 		/* min-height: 3000px; */
 		margin-top: -134px;
-
 		div.fold1{
 			position: relative;
 			text-align: center;
 			button{
-				position: relative;
+				position: absolute;
 				top: 600px;
+				margin-left: -80px;
 				z-index: 2;
+				left: 46%;
 			}
 			div.progressBar{
 				width: 0%;
@@ -49,21 +57,82 @@ body.path-frontpage{
 			}
 		}
 		div.fold2{
-			h2{
-				text-align: center;
-				text-transform: uppercase;
+			button{
+				margin: 0 auto;
+				display: inherit;
+				margin-top: 75px;
 			}
-			div.trait{
-				width: 4%;
-				height: 1px;
-				opacity: 0.8;
-				text-align: center;
-				margin: 10px auto;
-				background-color: @base-color-aveyron;
+			div.txtRow{
+				h2{
+					text-align: center;
+					text-transform: uppercase;
+					font-family: 'Proxima Nova Light';
+					color: @color_hn_aveyron;
+					margin-top: 70px;
+					font-size: 2.8em;
+					margin-bottom: 25px;
+				}
+				div.trait{
+					width: 70px;
+					height: 1px;
+					opacity: 0.8;
+					text-align: center;
+					margin: 10px auto;
+					background-color: @base-color-aveyron;
+				}
+				p.subTitleFold2{
+					font-family: 'Proxima Nova Light';
+					text-align: center;
+					padding: 0 25%;
+					margin-top: 30px;
+					margin-bottom: 85px;
+				}
 			}
-			p.subTitleFold2{
-				text-align: center;
-    			padding: 0 25%;
+			div.imagesRow{
+				padding: 0 10%;
+				div.right{
+					padding-left: 0px;
+				}
+				div.left{
+					padding-right: 6px;
+				}
+				img{
+					width: 100%;
+					&.image2{
+						padding-bottom: 6px;
+					}
+				}
+				div.relative{
+					position: relative;
+					text-align: center;
+					div.absolute{
+						position: absolute;
+						padding: 0 5%;
+						color: #fff;
+						width: 100%;
+						display: flex;
+						flex-direction: column;
+						justify-content: center;
+						height: 97%;
+						h2{
+							text-transform: uppercase;
+							font-family: 'Viper Nora';
+							width: 100%;
+						}
+						p{
+							text-indent: 23px;
+							background: url(../images/pinsMap.png) no-repeat 0% 4px;
+							display: inline-block;
+							width: auto;
+							margin: 0 auto;
+							text-transform: uppercase;
+							font-family: 'Proxima Nova Regular';
+							font-size: 1.2em;
+							letter-spacing: 2px;
+							background-size: 11px;
+						}
+					}
+				}
 			}
 		}
 	}	
@@ -71,10 +140,8 @@ body.path-frontpage{
 
 @media (max-width: 1450px) {
 	body.path-frontpage{
-		div.region-header{
-			h1{
-				padding: 0px 12%;
-			}
+		h1{
+			padding: 0px 12%;
 		}
 	}
 }
@@ -82,21 +149,20 @@ body.path-frontpage{
 //- de 1200
 @media (max-width: @screen-lg-min) {
 	body.path-frontpage{
-		div.region-header{
-			h1{
-				padding: 0px 6%;
-			}
+		h1{
+			padding: 0px 6%;
 		}
 	}
 }
 //- de 992
 @media (max-width: @screen-md-min) {
 	body.path-frontpage{
-		div.region-header{
-			h1{
-				padding: 0px 1%;
-			}
-		}		
+		h1{
+			padding: 0px 1%;
+		}
+		section.wrapper div.fold2 div.txtRow p.subTitleFold2{
+			padding: 0 17%;
+		}
 	}
 }
 
@@ -108,6 +174,20 @@ body.path-frontpage{
 					top: 650px;
 				}
 			}
+		}
+	}
+}
+
+@media (max-width: @screen-sm-min) {
+	body.path-frontpage section.wrapper div.fold2 div.imagesRow {
+		img.image2{
+			padding-top: 6px;
+		}
+		div.left{
+			padding-right: 15px;
+		}
+		div.right{
+			padding-left: 15px;
 		}
 	}
 }
@@ -139,12 +219,10 @@ body.path-frontpage{
 //- de 480
 @media (max-width: @screen-xs-min) {
 	body.path-frontpage{
-		div.region-header{
-			h1{
-				font-size: 3.8em;
-				padding: 0px 3%;
-				top: 200px;
-			}
+		h1{
+			font-size: 3.8em;
+			padding: 0px 3%;
+			top: 200px;
 		}
 		section.wrapper{
 			div.fold1{
@@ -152,8 +230,21 @@ body.path-frontpage{
 					top: 760px;
 				}
 			}
+			div.fold2{
+				div.txtRow p.subTitleFold2{
+					padding: 0 9%;
+				}
+				div.imagesRow div.relative div.absolute {
+					h2{
+						font-size: 1.5em;
+					}
+					p{
+						font-size: 0.8em;
+					}
+				}
+			}
 		}
-	} 
+	}
 }
 
 @media (max-width: 394px) {
@@ -169,10 +260,8 @@ body.path-frontpage{
 }
 @media (max-width: 289px) {
 	body.path-frontpage{
-		div.region-header{
-			h1{
-				font-size: 3.4em;
-			}
+		h1{
+			font-size: 3.4em;
 		}
 	} 
 }

@@ -77,6 +77,14 @@
   letter-spacing: 1px;
   padding: 11px 36px;
   .button-variant(@btn-primary-color; @btn-primary-bg; @btn-primary-border);
+  &.inverse{
+    color: @btn-primary-bg;
+    background-color: transparent;
+    border-color: @btn-primary-border;
+    &:hover{
+      .button-variant(@btn-primary-color; @btn-primary-bg; @btn-primary-border);
+    }
+  }
 }
 /*
 // Success appears as green
