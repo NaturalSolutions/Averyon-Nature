@@ -21,6 +21,13 @@ aveyron_api.ens:
   requirements:
     _access: 'TRUE'
 
+aveyron_api.ens_quiz:
+  path: 'api/enss/{id}/quiz'
+  defaults: { _controller: '\Drupal\aveyron_api\Controller\AveyronAPIController::ensQuiz' }
+  methods:  [GET]
+  requirements:
+    _access: 'TRUE'
+
 aveyron_api.taxa:
   path: 'api/taxa'
   defaults: { _controller: '\Drupal\aveyron_api\Controller\AveyronAPIController::taxa' }
