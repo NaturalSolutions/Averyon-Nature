@@ -19,9 +19,9 @@
 [xmlsitemap 8.x-1.0-alpha2](https://ftp.drupal.org/files/projects/xmlsitemap-8.x-1.0-alpha2.zip)  
 [Geofield 8.x-1.0-alpha2](https://ftp.drupal.org/files/projects/geofield-8.x-1.0-alpha2.zip)
 
-# Installation des dépendances pour le module geofield
-le tag --ignore-platform-reqs permet d'ignorer la version de php
-composer require drupal/geofield 1.0-alpha2 --ignore-platform-reqs
+## Installation de la dépendance geoPhp pour le module geofield
+Le tag --ignore-platform-reqs permet d'ignorer la version de php.
+>composer require "phayes/geophp" --ignore-platform-reqs
 
 
 # Démo
