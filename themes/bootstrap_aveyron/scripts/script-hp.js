@@ -21,6 +21,7 @@ jQuery( document ).ready(function() {
 
     function calcPositionFromLatLonENS(currentPosUser) {
 
+        console.log(currentPosUser);
 
         var lat1 = currentPosUser.coords.latitude;
         var lon1 = currentPosUser.coords.longitude;

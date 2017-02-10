@@ -153,7 +153,7 @@
                 </div>
             </div>
 
-            <!-- <pre>{{  dump(ensFold2) }}</pre> -->
+            <pre>{{  dump(ensFold3) }}</pre>
 
             <div class="row imagesRow">
                 <div class="col-sm-8 left">
@@ -183,6 +183,43 @@
                 </div>
             </div>
             <button type="button" class="btn btn-primary inverse">voir plus d’espace naturels</button>
+        </div>
+
+        <div class="container-fluid fold3">
+          
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="traitVertical"></div>
+              <h2>CARTE</h2>
+              <div class="trait"></div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-8 map">
+
+              {% for ens in ensFold3 %}
+
+                <div class="pointEns nidEns_{{ ens.nid }}"><span class="pointBtn"><span class="secondPoint"></span></span><a href="node/{{ ens.nid }}">{{ ens.title }}</a></div>
+
+              {% endfor %}
+
+            </div>
+            <div class="col-md-4">
+              {% for ens in ensFold3 %}
+
+                <img src="{{ ens.uri }}" alt="{{ ens.field_poster_alt }}" title="{{ ens.field_poster_title }}">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <p class="titleEns">{{ ens.title }}</p>
+                    <div class="descroEns">{{ ens.body_value }}</div>
+                  </div>
+                </div>
+
+              {% endfor %}
+            </div>
+          </div>
+
         </div>
 
       </section>
