@@ -6,14 +6,13 @@
  */
 
 /*
-Exemple :
+Exemple : 
 http://192.168.0.114/aveyron-pierre/api/enss?conditions=[{%22field%22:%22nid%22,%22value%22:[2,4],%22operator%22:%22in%22}]
 */
 
 namespace Drupal\aveyron_api\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
-
 use Drupal\geoPHP;
 
 use Symfony\Component\HttpFoundation\Request;
@@ -25,16 +24,16 @@ class AveyronAPIController extends ControllerBase {
   public function vidsAction( Request $request ) {
     $entityManager = \Drupal::entityManager();
 
-    $types = array('tours', 'taxon');
+    $types = array('ens', 'taxon');
     $result = array();
     foreach ($types as $type) {
       $query = \Drupal::entityQuery('node');
       $query->condition('status', 1);
       $query->condition('type', $type);
       $ids = $query->execute();
-      $entites = $entityManager->getStorage('node')->loadMultiple($ids);
+      $entities = $entityManager->getStorage('node')->loadMultiple($ids);
       $items = array();
-      foreach ($entites as $entity) {
+      foreach ($entities as $entity) {
         $items[] = array(
           id => (int) $entity->nid->value,
           vid => (int) $entity->vid->value
@@ -59,7 +58,7 @@ class AveyronAPIController extends ControllerBase {
 
     $query = \Drupal::entityQuery('node');
     $query->condition('status', 1);
-    $query->condition('type', 'tours');
+    $query->condition('type', 'ens');
 
     $conditions = $request->get('conditions');
     if (is_string($conditions)) {
@@ -81,9 +80,8 @@ class AveyronAPIController extends ControllerBase {
       $item = array();
       $thumbnail = $entity->field_thumbnail->entity;
       $poster = $entity->field_poster->entity;
-      $itemId = (int) $entity->nid->value;
       $geom = \geoPHP::load($entity->field_start_trace->value,'wkt');
-
+      $itemId = (int) $entity->nid->value;
       $item = array(
         //a => json_decode($serializer->serialize($thumbnail, 'json', ['plugin_id' => 'entity'])),
         id => $itemId,
@@ -100,10 +98,10 @@ class AveyronAPIController extends ControllerBase {
           url => file_create_url($poster->uri->value),
           filesize => $poster->filesize->value,
         ),
-        descriptionShort => substr($entity->field_description->value, 0, 255),
+        descriptionShort => substr($entity->body->summary, 0, 255),
       );
       if (in_array($itemId, $fullItemIds)) {
-        $item['description'] = $entity->field_description->value;
+        $item['description'] = $entity->body->value;
         $item['taxonIds'] = array();
         $taxa = $entity->field_taxa;
         foreach ($taxa as $taxon) {
@@ -122,23 +120,24 @@ class AveyronAPIController extends ControllerBase {
   }
 
   public function ens( $id, Request $request ) {
+
     $entityManager = \Drupal::entityManager();
     $entity = $entityManager->getStorage('node')->load($id);
 
-    if (!$entity->nid->value || $entity->getType() != 'tours') {
+    if (!$entity->nid->value || $entity->getType() != 'ens') {
       return new Response(null, 404);
     }
-
     $serializer = \Drupal::service('serializer');
     $thumbnail = $entity->field_thumbnail->entity;
     $poster = $entity->field_poster->entity;
+    $geom = \geoPHP::load($entity->field_start_trace->value,'wkt');
     $geomTrace = \geoPHP::load($entity->field_trace->value,'wkt');
-
     $result = array(
       id => (int) $entity->nid->value,
       vid => (int) $entity->vid->value,
       title => $entity->title->value,
-      trace => $geomTrace->out('json'),
+      startPoint => json_decode($geom->out('json'), true),
+      trace => json_decode($geomTrace->out('json'), true),
       thumbnail => array(
         fid => $thumbnail->fid->value,
         url => file_create_url($thumbnail->uri->value),
@@ -149,11 +148,12 @@ class AveyronAPIController extends ControllerBase {
         url => file_create_url($poster->uri->value),
         filesize => $poster->filesize->value,
       ),
-      description => $entity->field_description->value,
-      descriptionShort => substr($entity->field_description->value, 0, 255),
+      description => $entity->body->value,
+      descriptionShort => substr($entity->body->summary, 0, 255),
       gallery => array(),
       taxonIds => array(),
     );
+
     $gallery = $entity->field_gallery;
     foreach ($gallery as $img) {
       //TODO
@@ -167,6 +167,41 @@ class AveyronAPIController extends ControllerBase {
     $taxa = $entity->field_taxa;
     foreach ($taxa as $taxon) {
       $result['taxonIds'][] = (int) $taxon->target_id;
+    }
+
+    return new JsonResponse($result);
+  }
+
+  public function ensQuiz( $id, Request $request ) {
+    $serializer = \Drupal::service('serializer');
+    $entityManager = \Drupal::entityManager();
+
+    $entity = $entityManager->getStorage('node')->load($id);
+    if (!$entity->nid->value || $entity->getType() != 'ens') {
+      return new Response(null, 404);
+    }
+
+    $questionIds = array();
+    foreach ($entity->field_quiz as $question) {
+      $questionIds[] = $question->target_id;
+    }
+    $entities = $entityManager->getStorage('node')->loadMultiple($questionIds);
+    $result = array(
+      questions => array()
+    );
+    foreach ($entities as $question) {
+      $answers = array();
+      foreach ($question->field_answers as $answer) {
+        $answers[] = $answer->value;
+      }
+      $result['questions'][] = array(
+        id => (int) $question->nid->value,
+        vid => (int) $question->vid->value,
+        title => $question->title->value,
+        poster => file_create_url($question->field_poster->entity->uri->value),
+        goodAnswer => (int) $question->field_good_answer[0]->value,
+        answers => $answers,
+      );
     }
 
     return new JsonResponse($result);
@@ -213,7 +248,8 @@ class AveyronAPIController extends ControllerBase {
           url => file_create_url($poster->uri->value),
           filesize => $poster->filesize->value,
         ),
-        descriptionShort => substr($entity->field_description->value, 0, 255),
+        description => $entity->body->summary,
+        descriptionShort => substr($entity->body->summary, 0, 255),
         gallery => array(),
       );
       $gallery = $entity->field_gallery;
