@@ -20,6 +20,8 @@ function hook_hp_preprocess_page__front(&$variables){
 
 	$ensFold3 = getEnsFold3();
 
+	$ensFold4 = getInfoFold4();
+
 	//set variables
 	$variables['picturesFold1'] = $picturesFold1;
 	$variables['titleFold1'] = $titleFold1;
@@ -29,6 +31,8 @@ function hook_hp_preprocess_page__front(&$variables){
 	$variables['ensFold2'] = $ensFold2;
 
 	$variables['ensFold3'] = $ensFold3;
+	
+	$variables['ensFold4'] = $ensFold4;
 
 }
 
@@ -179,10 +183,48 @@ function getEnsFold3(){
 	foreach ($ensFold3 as $key => $ens) {
 
 		$ens->uri = entity_load('image_style', '470_par_750')->buildUrl($ens->uri);
-		//$ens->body_value = str_replace('"', "", $ens->body_value);
 
 	}
 
 	return $ensFold3;
 
+}
+
+function getInfoFold4(){
+
+	$query = db_query("
+		SELECT f.uri, s.field_illus_thematik_ens_alt, 
+		s.field_illus_thematik_ens_title 
+		from file_managed f
+		join aveyron.node__field_illus_thematik_ens s 
+		on f.fid = s.field_illus_thematik_ens_target_id
+	");
+
+	$ensFold4 = $query->fetchAll();
+
+	foreach ($ensFold4 as $key => $ens) {
+
+		$ens->uri = entity_load('image_style', '570_par_900')->buildUrl($ens->uri);
+
+	}
+
+	// Get title fold4
+	$query = db_query("
+		SELECT t.field_titre_fold3_value FROM aveyron.node__field_titre_fold3 t
+	");
+
+	$titleFold4 = $query->fetchAll();
+
+	// Get subTitle fold4
+	$query = db_query("
+		SELECT t.field_sous_titre_fold3_value FROM aveyron.node__field_sous_titre_fold3 t
+	");
+
+	$SubTitleFold4 = $query->fetchAll();
+
+	// Add to ens variable
+	$ensFold4[4] = $titleFold4[0];
+	$ensFold4[5] = $SubTitleFold4[0];
+
+	return $ensFold4;
 }

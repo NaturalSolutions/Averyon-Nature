@@ -1,5 +1,6 @@
 jQuery( document ).ready(function() {  
 
+
     var startGallery = function(){
     //slideshow on en parle
         var galleryTopHp = new Swiper('.swiper-container', {
@@ -20,8 +21,6 @@ jQuery( document ).ready(function() {
     }
 
     function calcPositionFromLatLonENS(currentPosUser) {
-
-        console.log(currentPosUser);
 
         var lat1 = currentPosUser.coords.latitude;
         var lon1 = currentPosUser.coords.longitude;
@@ -132,12 +131,144 @@ jQuery( document ).ready(function() {
 
     };
 
+    var toggleShowHideEnsFold3 = function(){
+
+        // Show an only random ENS when the page load
+        var nbEns = parseInt(jQuery('div.fold3 div.descroZone > div').length) - 1;
+        var ensShowed = Math.floor((Math.random() * nbEns) + 0);
+
+        jQuery("div.fold3 div.descroZone div.index" + ensShowed).removeClass('hidden');
+
+        // Toggle show/hide when hover ENS on Map Fold3
+        var ensHovered = 'nidEns_'+ensShowed;
+        jQuery("div.fold3 div.map div.pointEns").hover(function() {
+
+            // if the focus ens changed
+            if( ensHovered != jQuery(this).attr('class').split(' ')[2].split('_')[1] ){
+
+                // Get id ens hovered
+                ensHovered = jQuery(this).attr('class').split(' ')[2].split('_')[1];
+
+                // Hide the current Ens showed
+                jQuery("div.fold3 div.descroZone div.index" + ensShowed).addClass('hidden');
+
+                // Show the new Ens Hovered
+                jQuery("div.fold3 div.descroZone div.index" + ensHovered).removeClass('hidden');
+
+                ensShowed = ensHovered;
+
+            }
+
+        });
+
+    }
+
+    var toggleMobileDisplay = function(isMobile, fromResize){
+        
+        if(isMobile){
+
+            jQuery("div.fold3 div.map").addClass('hidden');
+            jQuery("div.fold3 h2").text("Découvrir");
+
+            /*
+                Random show/hide ens on fold3
+            */
+            // Count nb ENS
+            var nbEns = parseInt(jQuery('div.fold3 div.descroZone > div').length) - 1;
+
+            if(!fromResize){
+
+                setInterval(function(){ 
+
+                    // Get id ens showed
+                    var ensShowed = jQuery("div.fold3 div.descroZone > div").not(".hidden").attr('class');
+                    var ensToShow = 'index'+Math.floor((Math.random() * nbEns) + 0);
+
+                    if( ensToShow != ensShowed ){
+
+                        // Hide the current Ens showed
+                        jQuery("div.fold3 div.descroZone div." + ensShowed).addClass('hidden');
+                        jQuery("div.fold3 div.descroZone div." + ensToShow).removeClass('hidden');
+
+                    }
+
+                }, 5000);
+            }
+        }
+        else{
+
+            jQuery("div.fold3 div.map").removeClass('hidden');
+
+        }
+    }
+
+    var checkWidthDevice = function(){
+        
+        //detect the width on page load
+        var current_width = jQuery(window).width();
+        var isMobile;
+        //do something with the width value here!
+        if(current_width < 608){
+
+            console.log('probably-mobile on load');
+            toggleMobileDisplay(isMobile = true, fromResize = false);
+
+        }else{
+            console.log('not probably-mobile on load');
+            toggleMobileDisplay(isMobile = false, fromResize = false);
+        }
+
+        //update the width value when the browser is resized (useful for devices which switch from portrait to landscape)
+        jQuery(window).resize(function(){
+            var current_width = jQuery(window).width();
+            //do something with the width value here!
+            if(current_width < 608){
+                toggleMobileDisplay(isMobile = true, fromResize = true);
+                console.log('probably-mobile');
+            }else{
+                toggleMobileDisplay(isMobile = false, fromResize = true);
+                console.log('not probably-mobile');
+            }
+        });
+    }
+
+    var toggleShowHideFold4 = function(){
+
+        jQuery('div.fold4 div.blockInTextZone').hover(function() {
+
+            // if hover an hidding block
+            if( !jQuery(this).hasClass('isHovered') ){
+
+                // Remove the status hoverd of old block
+                jQuery('div.fold4 div.blockInTextZone.isHovered').removeClass('isHovered');
+
+                // Specify hovered status for the hovered block
+                jQuery(this).addClass('isHovered');
+                
+                // Get name of the thematique hovered
+                var nameThematik = jQuery(this).attr('class').split(' ')[2].split('row')[1];
+
+                // Change image on left zone with the correct thematik hovered
+                jQuery('div.fold4 div.imageZone img').not('.hidden').addClass('hidden');
+                jQuery('div.fold4 div.imageZone img.img'+nameThematik).removeClass('hidden');
+            }
+
+        }, function() {
+            
+
+        });
+
+    }
+
 
     window.init = function() {
 
         startGallery();
         displayLocationFold2();
         checkHeader();
+        toggleShowHideEnsFold3();
+        checkWidthDevice();
+        toggleShowHideFold4();
 
     }
 

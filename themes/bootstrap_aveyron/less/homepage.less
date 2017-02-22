@@ -14,6 +14,10 @@
 	src: url('../fonts/Proxima Nova Light.otf') format("opentype");
 }
 @font-face {
+	font-family: 'Proxima Nova Thin';
+	src: url('../fonts/ProximaNova-Thin_0.otf') format("opentype");
+}
+@font-face {
 	font-family: 'Myriad Pro semiBold';
 	src: url('../fonts/MyriadPro-Semibold.otf') format("opentype");
 }
@@ -164,6 +168,36 @@ body.path-frontpage{
 				background-color: #c9c9c9;
 				margin: 0 auto;
 				margin-top: 50px;
+			}
+			div.descroZone{
+				padding-right: 150px;
+				margin-top: 100px;
+				margin-left: -5%;
+				img{
+					width: 100%;
+				}
+				a{
+					margin-left: -57%;
+					margin-top: 30px;
+				}
+				div.descroBlock{
+					background-color: rgba(255, 255, 255, 0.8);
+					margin-left: -62%;
+					margin-top: -132px;
+					position: relative;
+					max-width: 120%;
+					padding: 20px 15% 15px 5%;
+					p.titleEns{
+						font-family: 'Proxima Nova Thin';
+						font-size: 2.3em;
+						text-transform: uppercase;
+					}
+					div.descroEns {
+						p {
+							font-family: 'Proxima Nova Light';
+						}
+					}
+				}
 			}
 			div.map{
 				position: relative;
@@ -326,8 +360,185 @@ body.path-frontpage{
 				}
 			}
 		}
+		div.fold4{
+			div.traitSpecial{
+				background: url(../images/traitSpecial.png) no-repeat 50% 50%;
+				width: 75px;
+				height: 189px;
+				margin: 0 auto;
+				margin-top: 70px;
+				left: 86px;
+				position: relative;
+			}
+			div.wrapperFold4{
+				padding: 0 12%;
+				div.imageZone{
+					 margin-top: -50px;
+					text-align: center;
+					img{
+						display: inline-block;
+					}
+				}
+				div.textZone{
+					padding-right: 15%;
+					padding-left: 8%;
+					h2{
+						text-transform: uppercase;
+						color: #565656;
+						font-size: 3em;
+						margin-top: 40px;
+						font-family: 'Proxima Nova Light';
+						margin-bottom: 15px;
+					}
+					p.subTitleFold4{
+						color: #565656;
+						margin-bottom: 55px;
+						font-family: 'Proxima Nova Light';
+					}
+					div.traitVertical{
+						height: 90px;
+						width: 1px;
+						background-color: #d9d9d9;
+						margin-left: 5%;
+						margin-top: -15px;
+						margin-bottom: 20px;
+					}
+					div.blockInTextZone{
+						cursor: pointer;
+						&.isHovered{
+							div.iconPatrimoine{
+								background: url(../images/icon_patrimoine_hover.jpg) no-repeat 50% 50%;
+							}
+							div.iconPaysage{
+								background: url(../images/icon_paysage_hover.jpg) no-repeat 50% 50%;
+							}
+							div.iconFaune{
+								background: url(../images/icon_faune_hover.jpg) no-repeat 50% 50%;
+							}
+							div.iconFlore{
+								background: url(../images/icon_flore_hover.jpg) no-repeat 50% 50%;
+							}
+							p.labelText{
+								color: #88c146;
+							}
+							p.descroIcon{
+								visibility: visible;
+							}
+						}
+						div.iconFaune{
+							background: url(../images/icon_faune.jpg) no-repeat 50% 50%;
+							width: 81px;
+							height: 81px;
+						}
+						div.iconFlore{
+							background: url(../images/icon_flore.jpg) no-repeat 50% 50%;
+							width: 81px;
+							height: 81px;
+						}
+						div.iconPaysage{
+							background: url(../images/icon_paysage.jpg) no-repeat 50% 50%;
+							width: 81px;
+							height: 81px;
+						}
+						div.iconPatrimoine{
+							background: url(../images/icon_patrimoine.jpg) no-repeat 50% 50%;
+							width: 81px;
+							height: 81px;
+						}
+						p.labelText{
+							text-transform: uppercase;
+							font-family: 'Proxima Nova Light';
+							color: #989898;
+							margin-top: 25px;
+							margin-left: 33px;
+							font-size: 1.3em;
+							letter-spacing: 0.8px;
+						}
+						p.descroIcon{
+							 margin-left: 33px;
+							visibility: hidden;
+						}
+					}
+				}
+			}
+		}
 	}
 } 
+
+@media (max-width: 1800px) {
+	body.path-frontpage section.wrapper {
+		div.fold3 div.descroZone {
+			margin-top: 120px;
+			margin-left: -3%;
+		}
+		div.fold4 {
+			div.traitSpecial{
+				left: 130px;
+			}
+			div.wrapperFold4 div.textZone {
+				padding-right: 9%;
+				padding-left: 12%;
+			}
+		}
+	}
+}
+
+@media (max-width: 1700px) {
+	body.path-frontpage section.wrapper {
+		div.fold3 div.descroZone {
+			margin-top: 130px;
+			padding-right: 115px;
+			div.descroBlock{
+				margin-top: -110px;
+			}
+		}
+		div.fold4 {
+			div.traitSpecial {
+				left: 112px;
+			}
+			div.wrapperFold4 div.textZone {
+				padding-right: 2%;
+				padding-left: 17%;
+			}
+		}
+	}
+}
+
+@media (max-width: 1600px) {
+	body.path-frontpage section.wrapper {
+		div.fold3 div.descroZone {
+			padding-right: 70px;
+		}
+		div.fold4 {
+			div.traitSpecial {
+				left: 100px;
+			}
+			div.wrapperFold4 {
+				padding: 0px 9%;
+				div.textZone {
+					padding-right: 15px;
+					padding-left: 16%;
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 1500px) {
+	body.path-frontpage section.wrapper {
+		div.fold3 div.descroZone {
+			padding-right: 25px;
+		}
+		div.fold4 {
+			div.wrapperFold4 {
+				padding: 0px 6%;
+			}
+			div.traitSpecial {
+				left: 80px;
+			}
+		}
+	}
+}
 
 @media (max-width: 1450px) {
 	body.path-frontpage{
@@ -337,22 +548,136 @@ body.path-frontpage{
 	}
 }
 
+@media (max-width: 1400px) {
+	body.path-frontpage section.wrapper{
+		div.fold3 div.descroZone div.descroBlock {
+			margin-top: -66px;
+		}
+		div.fold4 div.wrapperFold4 {
+			padding: 0px 2%;
+		}
+	}
+}
+
+@media (max-width: 1300px) {
+	body.path-frontpage section.wrapper {
+		div.fold3 div.descroZone {
+			padding-right: 0px;
+		}
+		div.fold4 div.wrapperFold4 {
+			padding: 0 0;
+		}
+	}
+}
+@media (width: @screen-lg-min) {
+	body.path-frontpage section.wrapper div.fold3 div.descroZone {
+		margin-top: 155px !important;
+	}
+}
+
 //- de 1200
 @media (max-width: @screen-lg-min) {
 	body.path-frontpage{
 		h1{
 			padding: 0px 6%;
+		}		
+		section.wrapper {
+			div.fold3 {
+				div.map{
+					background-position: -100px 50%;
+					background-size: 125%;
+				}
+				div.descroZone {
+					margin-top: 100px;
+					padding-left: 4%;
+					div.descroBlock {
+						padding: 10px 15% 15px 4%;
+						margin-top: -50px;
+					}
+				}
+			}
+			div.fold4 {
+				div.traitSpecial {
+					left: -21px;
+				}
+				div.wrapperFold4 {
+					div.textZone {
+						padding-right: 9%;
+						padding-left: 6%;
+						div.traitVertical{
+							height: 36px;
+						}
+					}
+					div.imageZone {
+						margin-top: 42px;
+						img{
+							width: 100%;
+						}
+					}
+				}
+			}
 		}
 	}
 }
+
+@media (max-width: 1100px) {
+	body.path-frontpage section.wrapper{
+		div.fold3 div.descroZone {
+			margin-top: 160px;
+		}
+		div.fold4 {
+			div.traitSpecial {
+				left: 0px;
+			}
+			div.wrapperFold4 div.textZone {
+				padding-right: 4%;
+				padding-left: 6%;
+			}
+		}
+	}
+}
+
 //- de 992
 @media (max-width: @screen-md-min) {
 	body.path-frontpage{
 		h1{
 			padding: 0px 1%;
 		}
-		section.wrapper div.fold2 div.txtRow p.subTitleFold2{
-			padding: 0 17%;
+		section.wrapper {
+			div.fold2 div.txtRow p.subTitleFold2{
+				padding: 0 17%;
+			}
+			div.fold3 div.descroZone {
+				a{
+					width: 100%;
+					margin-left: 0;
+				}
+				div.descroBlock {
+					margin-left: -4%;
+					padding: 10px 4% 15px 4%;
+					max-width: 104%;
+					text-align: center;
+					margin-top: -100px;
+					p.titleEns{
+						min-height: 90px;
+					}
+					div.descroEns p {
+						text-align: justify;
+					}
+				}
+			}
+			div.fold4 {
+				div.imageZone{
+					display: none;
+				}
+				div.traitSpecial{
+					display: none;
+				}
+				div.wrapperFold4 div.textZone div.traitVertical {
+					margin-left: 3%;
+					margin-top: -4px;
+				}
+			}
 		}
 	}
 }
@@ -369,16 +694,43 @@ body.path-frontpage{
 	}
 }
 
-@media (max-width: @screen-sm-min) {
-	body.path-frontpage section.wrapper div.fold2 div.imagesRow {
-		img.image2{
-			padding-top: 6px;
+// 768px
+@media (max-width: 767px) {
+	body.path-frontpage section.wrapper {
+		div.fold2 div.imagesRow {
+			img.image2{
+				padding-top: 6px;
+			}
+			div.left{
+				padding-right: 15px;
+			}
+			div.right{
+				padding-left: 15px;
+			}
 		}
-		div.left{
-			padding-right: 15px;
-		}
-		div.right{
+		div.fold3 div.descroZone {
+			margin-top: 30px;
 			padding-left: 15px;
+			padding-right: 15px;
+			margin-left: 0;
+			div.descroBlock{
+				margin-top: -130px;
+				padding: 40px 4% 15px 4%;
+				div.descroEns p{
+					text-align: center;
+					padding: 0 10%;
+				}
+			}
+		}
+		div.fold4{
+			div.wrapperFold4 div.textZone {
+				h2{
+					text-align: center;
+				}
+				p.subTitleFold4{
+					text-align: center;
+				}
+			}
 		}
 	}
 }
@@ -390,6 +742,9 @@ body.path-frontpage{
 				button{
 					top: 760px;
 				}
+			}
+			div.fold3 div.map{
+				display: none;
 			}
 		}
 	}
