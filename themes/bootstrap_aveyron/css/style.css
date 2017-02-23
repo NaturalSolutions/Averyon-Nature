@@ -10390,6 +10390,15 @@ body.path-frontpage section.wrapper div.fold4 div.traitSpecial {
   left: 86px;
   position: relative;
 }
+body.path-frontpage section.wrapper div.fold4 div.traitSpecial2 {
+  background: url(../images/traitSpecial2.png) no-repeat 50% 50%;
+  width: 75px;
+  height: 189px;
+  margin: 0 auto;
+  margin-top: -48px;
+  left: -13px;
+  position: relative;
+}
 body.path-frontpage section.wrapper div.fold4 div.wrapperFold4 {
   padding: 0 12%;
 }
@@ -10479,6 +10488,22 @@ body.path-frontpage section.wrapper div.fold4 div.wrapperFold4 div.textZone div.
   margin-left: 33px;
   visibility: hidden;
 }
+body.path-frontpage section.wrapper div.fold5 h2 {
+  text-transform: uppercase;
+  color: #565656;
+  font-size: 3em;
+  margin-top: 12px;
+  font-family: 'Proxima Nova Light';
+  margin-bottom: 15px;
+  text-align: center;
+  left: -43px;
+  position: relative;
+}
+body.path-frontpage section.wrapper div.fold5 p.subTitleFold5 {
+  padding: 0 10%;
+  text-align: center;
+  font-family: 'Proxima Nova Light';
+}
 @media (max-width: 1800px) {
   body.path-frontpage section.wrapper div.fold3 div.descroZone {
     margin-top: 120px;
@@ -10487,9 +10512,16 @@ body.path-frontpage section.wrapper div.fold4 div.wrapperFold4 div.textZone div.
   body.path-frontpage section.wrapper div.fold4 div.traitSpecial {
     left: 130px;
   }
+  body.path-frontpage section.wrapper div.fold4 div.traitSpecial2 {
+    left: 39px;
+    margin-top: -44px;
+  }
   body.path-frontpage section.wrapper div.fold4 div.wrapperFold4 div.textZone {
     padding-right: 9%;
     padding-left: 12%;
+  }
+  body.path-frontpage section.wrapper div.fold5 h2 {
+    left: 0px;
   }
 }
 @media (max-width: 1700px) {
@@ -10502,6 +10534,10 @@ body.path-frontpage section.wrapper div.fold4 div.wrapperFold4 div.textZone div.
   }
   body.path-frontpage section.wrapper div.fold4 div.traitSpecial {
     left: 112px;
+  }
+  body.path-frontpage section.wrapper div.fold4 div.traitSpecial2 {
+    left: 6%;
+    margin-top: -44px;
   }
   body.path-frontpage section.wrapper div.fold4 div.wrapperFold4 div.textZone {
     padding-right: 2%;
@@ -10546,6 +10582,9 @@ body.path-frontpage section.wrapper div.fold4 div.wrapperFold4 div.textZone div.
   body.path-frontpage section.wrapper div.fold4 div.wrapperFold4 {
     padding: 0px 2%;
   }
+  body.path-frontpage section.wrapper div.fold4 div.traitSpecial2 {
+    left: 7%;
+  }
 }
 @media (max-width: 1300px) {
   body.path-frontpage section.wrapper div.fold3 div.descroZone {
@@ -10578,6 +10617,9 @@ body.path-frontpage section.wrapper div.fold4 div.wrapperFold4 div.textZone div.
   }
   body.path-frontpage section.wrapper div.fold4 div.traitSpecial {
     left: -21px;
+  }
+  body.path-frontpage section.wrapper div.fold4 div.traitSpecial2 {
+    left: -4%;
   }
   body.path-frontpage section.wrapper div.fold4 div.wrapperFold4 div.textZone {
     padding-right: 9%;
@@ -10629,10 +10671,9 @@ body.path-frontpage section.wrapper div.fold4 div.wrapperFold4 div.textZone div.
   body.path-frontpage section.wrapper div.fold3 div.descroZone div.descroBlock div.descroEns p {
     text-align: justify;
   }
+  body.path-frontpage section.wrapper div.fold4 div.traitSpecial,
+  body.path-frontpage section.wrapper div.fold4 div.traitSpecial2,
   body.path-frontpage section.wrapper div.fold4 div.imageZone {
-    display: none;
-  }
-  body.path-frontpage section.wrapper div.fold4 div.traitSpecial {
     display: none;
   }
   body.path-frontpage section.wrapper div.fold4 div.wrapperFold4 div.textZone div.traitVertical {
@@ -10668,6 +10709,27 @@ body.path-frontpage section.wrapper div.fold4 div.wrapperFold4 div.textZone div.
   body.path-frontpage section.wrapper div.fold3 div.descroZone div.descroBlock div.descroEns p {
     text-align: center;
     padding: 0 10%;
+  }
+  body.path-frontpage section.wrapper div.fold4 div.wrapperFold4 div.textZone {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  body.path-frontpage section.wrapper div.fold4 div.wrapperFold4 div.textZone div.blockInTextZone {
+    margin-bottom: 45px;
+    text-align: center;
+  }
+  body.path-frontpage section.wrapper div.fold4 div.wrapperFold4 div.textZone div.blockInTextZone div.iconFaune,
+  body.path-frontpage section.wrapper div.fold4 div.wrapperFold4 div.textZone div.blockInTextZone div.iconFlore,
+  body.path-frontpage section.wrapper div.fold4 div.wrapperFold4 div.textZone div.blockInTextZone div.iconPaysage,
+  body.path-frontpage section.wrapper div.fold4 div.wrapperFold4 div.textZone div.blockInTextZone div.iconPatrimoine {
+    margin: 0 auto;
+  }
+  body.path-frontpage section.wrapper div.fold4 div.wrapperFold4 div.textZone div.blockInTextZone p.labelText,
+  body.path-frontpage section.wrapper div.fold4 div.wrapperFold4 div.textZone div.blockInTextZone p.descroIcon {
+    margin-left: 0;
+  }
+  body.path-frontpage section.wrapper div.fold4 div.wrapperFold4 div.textZone div.traitVertical {
+    display: none;
   }
   body.path-frontpage section.wrapper div.fold4 div.wrapperFold4 div.textZone h2 {
     text-align: center;

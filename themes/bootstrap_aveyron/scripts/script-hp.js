@@ -202,16 +202,37 @@ jQuery( document ).ready(function() {
         }
     }
 
+    var startAutoFocusThematikFold4 = function(){
+        
+        var cpt = 1;
+        
+        setInterval(function(){ 
+            if(cpt > 3) cpt = 0;
+
+                jQuery('div.fold4 div.textZone div.blockInTextZone').each(function(index, el) {
+                    if(index == cpt){
+                        jQuery('div.fold4 div.textZone div.blockInTextZone.isHovered').removeClass('isHovered');
+                        jQuery(this).addClass('isHovered');
+                    }
+                });
+
+            cpt++;
+        }, 3000);
+
+    }
+
     var checkWidthDevice = function(){
         
         //detect the width on page load
         var current_width = jQuery(window).width();
         var isMobile;
+
         //do something with the width value here!
-        if(current_width < 608){
+        if(current_width <= 750){
 
             console.log('probably-mobile on load');
             toggleMobileDisplay(isMobile = true, fromResize = false);
+            startAutoFocusThematikFold4();
 
         }else{
             console.log('not probably-mobile on load');
@@ -222,7 +243,7 @@ jQuery( document ).ready(function() {
         jQuery(window).resize(function(){
             var current_width = jQuery(window).width();
             //do something with the width value here!
-            if(current_width < 608){
+            if(current_width <= 750){
                 toggleMobileDisplay(isMobile = true, fromResize = true);
                 console.log('probably-mobile');
             }else{

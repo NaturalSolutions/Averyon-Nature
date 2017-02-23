@@ -18,9 +18,12 @@ function hook_hp_preprocess_page__front(&$variables){
 	$subTitleFold2 = getSubTitleFold2();
 	$ensFold2 = getEnsFold2();
 
+	$titleFold3 = getTitleFold3();
 	$ensFold3 = getEnsFold3();
 
 	$ensFold4 = getInfoFold4();
+	
+	$infoFold5 = getInfoFold5();
 
 	//set variables
 	$variables['picturesFold1'] = $picturesFold1;
@@ -30,9 +33,12 @@ function hook_hp_preprocess_page__front(&$variables){
 	$variables['subTitleFold2'] = $subTitleFold2;
 	$variables['ensFold2'] = $ensFold2;
 
+	$variables['titleFold3'] = $titleFold3;
 	$variables['ensFold3'] = $ensFold3;
 	
 	$variables['ensFold4'] = $ensFold4;
+	
+	$variables['infoFold5'] = $infoFold5;
 
 }
 
@@ -162,6 +168,17 @@ function getEnsFold2(){
 	return $picturesFold2;
 }
 
+function getTitleFold3(){
+
+	$query = db_query("
+		SELECT t.field_titre_fold3_value FROM node__field_titre_fold3 t
+	");
+
+	$titleFold3 = $query->fetchAll();
+
+	return $titleFold3[0]->field_titre_fold3_value;
+}
+
 function getEnsFold3(){
 
 	$query = db_query("
@@ -196,7 +213,7 @@ function getInfoFold4(){
 		SELECT f.uri, s.field_illus_thematik_ens_alt, 
 		s.field_illus_thematik_ens_title 
 		from file_managed f
-		join aveyron.node__field_illus_thematik_ens s 
+		join node__field_illus_thematik_ens s 
 		on f.fid = s.field_illus_thematik_ens_target_id
 	");
 
@@ -210,14 +227,14 @@ function getInfoFold4(){
 
 	// Get title fold4
 	$query = db_query("
-		SELECT t.field_titre_fold3_value FROM aveyron.node__field_titre_fold3 t
+		SELECT t.field_titre_fold4_value FROM node__field_titre_fold4 t
 	");
 
 	$titleFold4 = $query->fetchAll();
 
 	// Get subTitle fold4
 	$query = db_query("
-		SELECT t.field_sous_titre_fold3_value FROM aveyron.node__field_sous_titre_fold3 t
+		SELECT t.field_sous_titre_fold4_value FROM node__field_sous_titre_fold4 t
 	");
 
 	$SubTitleFold4 = $query->fetchAll();
@@ -227,4 +244,23 @@ function getInfoFold4(){
 	$ensFold4[5] = $SubTitleFold4[0];
 
 	return $ensFold4;
+}
+
+function getInfoFold5(){
+
+	// Get title
+	$query = db_query("
+		SELECT t.field_titre_fold5_value FROM node__field_titre_fold5 t
+	");
+
+	$infoFold5 = $query->fetchAll();
+
+	// Get sub-title
+	$query = db_query("
+		SELECT t.field_sous_titre_fold5_value FROM node__field_sous_titre_fold5 t
+	");
+
+	$infoFold5[1] = $query->fetchAll()[0];
+
+	return $infoFold5;
 }

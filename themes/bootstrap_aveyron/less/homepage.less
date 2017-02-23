@@ -370,6 +370,15 @@ body.path-frontpage{
 				left: 86px;
 				position: relative;
 			}
+			div.traitSpecial2{
+				background: url(../images/traitSpecial2.png) no-repeat 50% 50%;
+				width: 75px;
+				height: 189px;
+				margin: 0 auto;
+				margin-top: -48px;
+				left: -13px;
+				position: relative;
+			}
 			div.wrapperFold4{
 				padding: 0 12%;
 				div.imageZone{
@@ -462,6 +471,24 @@ body.path-frontpage{
 				}
 			}
 		}
+		div.fold5{
+			h2{
+				text-transform: uppercase;
+				color: #565656;
+				font-size: 3em;
+				margin-top: 12px;
+				font-family: 'Proxima Nova Light';
+				margin-bottom: 15px;
+				text-align: center;
+				left: -43px;
+				position: relative;
+			}
+			p.subTitleFold5{
+				padding: 0 10%;
+				text-align: center;
+				font-family: 'Proxima Nova Light';
+			}
+		}
 	}
 } 
 
@@ -475,9 +502,18 @@ body.path-frontpage{
 			div.traitSpecial{
 				left: 130px;
 			}
+			div.traitSpecial2 {
+				left: 39px;
+				margin-top: -44px;
+			}
 			div.wrapperFold4 div.textZone {
 				padding-right: 9%;
 				padding-left: 12%;
+			}
+		}
+		div.fold5 {
+			h2{
+				left: 0px;
 			}
 		}
 	}
@@ -495,6 +531,10 @@ body.path-frontpage{
 		div.fold4 {
 			div.traitSpecial {
 				left: 112px;
+			}
+			div.traitSpecial2 {
+				left: 6%;
+				margin-top: -44px;
 			}
 			div.wrapperFold4 div.textZone {
 				padding-right: 2%;
@@ -553,8 +593,13 @@ body.path-frontpage{
 		div.fold3 div.descroZone div.descroBlock {
 			margin-top: -66px;
 		}
-		div.fold4 div.wrapperFold4 {
-			padding: 0px 2%;
+		div.fold4 {
+			div.wrapperFold4 {
+				padding: 0px 2%;
+			}
+			div.traitSpecial2{
+				left: 7%;
+			}
 		}
 	}
 }
@@ -599,6 +644,9 @@ body.path-frontpage{
 			div.fold4 {
 				div.traitSpecial {
 					left: -21px;
+				}
+				div.traitSpecial2 {
+					left: -4%;
 				}
 				div.wrapperFold4 {
 					div.textZone {
@@ -667,10 +715,9 @@ body.path-frontpage{
 				}
 			}
 			div.fold4 {
+				div.traitSpecial,
+				div.traitSpecial2,
 				div.imageZone{
-					display: none;
-				}
-				div.traitSpecial{
 					display: none;
 				}
 				div.wrapperFold4 div.textZone div.traitVertical {
@@ -696,6 +743,7 @@ body.path-frontpage{
 
 // 768px
 @media (max-width: 767px) {
+
 	body.path-frontpage section.wrapper {
 		div.fold2 div.imagesRow {
 			img.image2{
@@ -724,6 +772,25 @@ body.path-frontpage{
 		}
 		div.fold4{
 			div.wrapperFold4 div.textZone {
+				padding-right: 15px;
+				padding-left: 15px;
+				div.blockInTextZone {
+					margin-bottom: 45px;
+					text-align: center;
+					div.iconFaune,
+					div.iconFlore,
+					div.iconPaysage,
+					div.iconPatrimoine{
+						margin: 0 auto;
+					}
+					p.labelText,
+					p.descroIcon{
+						margin-left: 0;
+					}
+				}
+				div.traitVertical{
+					display: none;
+				}
 				h2{
 					text-align: center;
 				}
