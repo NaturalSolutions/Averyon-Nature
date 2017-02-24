@@ -132,14 +132,12 @@ function getEnsFold2(){
 
 	foreach ($picturesFold2 as $key => $picture) {
 
-
 		//Convert uri to the good style
 		if( $key == 0 )	$picture->uri = entity_load('image_style', '1000_par_700')->buildUrl($picture->uri);
 		else $picture->uri = entity_load('image_style', '500_par_350')->buildUrl($picture->uri);
 
 		//  get title
 		//	SELECT title FROM aveyron.node_field_data where vid = 1;
-		//
 
 		$query2 = \Drupal::database()->select('node_field_data', 'n');
 		$query2->addField('n', 'title');
@@ -147,13 +145,11 @@ function getEnsFold2(){
 		$titleEnsFold2 = $query2->execute()->fetchAll();
 		$titleEnsFold2 = $titleEnsFold2[0]->title;
 		$picturesFold2[$key]->title = $titleEnsFold2;
-		
-		//
+
 		//	Get GPS point of ENS :			
 		//	SELECT t.field_start_trace_lat, t.field_start_trace_lon 
 		//	FROM aveyron.node_revision__field_start_trace t
 		//	where t.revision_id = 10;
-		//
 
 		$query3 = \Drupal::database()->select('node_revision__field_start_trace', 't');
 		$query3->addField('t', 'field_start_trace_lat');
@@ -166,6 +162,7 @@ function getEnsFold2(){
 	}
 
 	return $picturesFold2;
+
 }
 
 function getTitleFold3(){
@@ -261,6 +258,13 @@ function getInfoFold5(){
 	");
 
 	$infoFold5[1] = $query->fetchAll()[0];
+
+	// Get ens video
+	$query = db_query("
+		SELECT v.field_video_ens_value FROM aveyron.node__field_video_ens v ORDER BY RAND() LIMIT 4
+	");
+
+	$infoFold5[2] = $query->fetchAll();
 
 	return $infoFold5;
 }

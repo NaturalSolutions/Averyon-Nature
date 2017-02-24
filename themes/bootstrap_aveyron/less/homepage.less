@@ -484,9 +484,44 @@ body.path-frontpage{
 				position: relative;
 			}
 			p.subTitleFold5{
-				padding: 0 10%;
+				padding: 0 22%;
 				text-align: center;
 				font-family: 'Proxima Nova Light';
+				margin-top: 33px;
+				margin-left: -90px;
+			}
+			button{
+				margin: 0 auto;
+				display: block;
+			}
+			div.videoRow{
+				margin-top: 50px;
+				padding: 0 15%;
+				max-height: 480px;
+				div.leftZone{
+					iframe{
+						background: url(../images/fold5_image_video_1.jpg) no-repeat 50% 0%;
+					}
+				}
+				div.rightZone{
+					padding-left: 0;
+					iframe{
+						height: 150px;
+						margin-bottom: 9px;
+						&.video2{
+							background: url(../images/fold5_image_video_2.jpg) no-repeat 0% 0%;
+						}
+						&.video3{
+							background: url(../images/fold5_image_video_3.jpg) no-repeat 0% 0%;
+						}
+						&.video4{
+							background: url(../images/fold5_image_video_4.jpg) no-repeat 0% 0%;
+						}
+					}
+				}
+			}
+			button{
+				margin-top: -70px;
 			}
 		}
 	}
@@ -663,6 +698,10 @@ body.path-frontpage{
 						}
 					}
 				}
+			}
+			div.fold5 div.videoRow {
+				padding: 0 2%;
+				margin-left: 55px;
 			}
 		}
 	}
