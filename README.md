@@ -1,4 +1,4 @@
-# La plateforme web de l'Aveyron-Nature (Drupal 8)
+# La plateforme web de l'Aveyron-Nature (Drupal 8.2.6)
 ![Aveyron Nature](https://raw.githubusercontent.com/gitkyo/Aveyron-Nature-Web/master/themes/bootstrap_aveyron/images/aveyron.gif  "Aveyron Nature")
 
 - Le répertoire "themes" contient le(s) themes versionné
@@ -8,14 +8,12 @@
 
 # Liste des modules utilisé (www/modules)
 
-[admin_toolbar 8.x-1.17](https://ftp.drupal.org/files/projects/admin_toolbar-8.x-1.17.zip)  
+[admin_toolbar 8.x-1.18](https://ftp.drupal.org/files/projects/admin_toolbar-8.x-1.18.zip)  
 [backup_migrate 8.x-4.0-alpha1](https://ftp.drupal.org/files/projects/backup_migrate-8.x-4.0-alpha1.zip)  
-[captcha 8.x-1.0-alpha1](https://ftp.drupal.org/files/projects/captcha-8.x-1.0-alpha1.zip)  
-[devel 8.x-1.0-alpha1](https://ftp.drupal.org/files/projects/devel-8.x-1.0-alpha1.zip)  
-[geolocation 8.x-1.8](https://ftp.drupal.org/files/projects/geolocation-8.x-1.8.zip)  
+[captcha 8.x-1.0-beta1](https://ftp.drupal.org/files/projects/captcha-8.x-1.0-beta1.zip)  
+[devel 8.x-1.0-rc1](https://ftp.drupal.org/files/projects/devel-8.x-1.0-rc1.zip)  
+[geolocation 8.x-1.10](https://ftp.drupal.org/files/projects/geolocation-8.x-1.10.zip)  
 [honeypot 8.x-1.23](https://ftp.drupal.org/files/projects/honeypot-8.x-1.23.zip)  
-[metatag 8.x-1.0-beta11](https://ftp.drupal.org/files/projects/metatag-8.x-1.0-beta11.zip)  
-[recaptcha 8.x-2.2](https://ftp.drupal.org/files/projects/recaptcha-8.x-2.2.zip)  
 [xmlsitemap 8.x-1.0-alpha2](https://ftp.drupal.org/files/projects/xmlsitemap-8.x-1.0-alpha2.zip)  
 [Geofield 8.x-1.0-alpha2](https://ftp.drupal.org/files/projects/geofield-8.x-1.0-alpha2.zip)
 

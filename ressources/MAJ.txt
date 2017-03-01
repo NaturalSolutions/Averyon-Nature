@@ -1,0 +1,17 @@
+/*
+* Exporter ici la configuration de ce que vous avez dernièrement ajouté en base via l'interface (admin/config/development/configuration/single/export): 
+*
+* Exemple :
+* Pierre le 01/03/17, ajout d'un champ : quiz de l'ens (node.en.field_quiz)
+* uuid: 29470b22-aaa6-422a-a60c-d4aed7fb76fa
+* langcode: fr
+* status: true
+* dependencies:
+*   config:
+*     - field.storage.node.field_quiz
+*     - node.type.ens
+*     - node.type.quiz
+* id: node.ens.field_quiz
+* field_name: field_quiz
+* ...
+*/
