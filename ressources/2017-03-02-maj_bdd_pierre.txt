@@ -1,0 +1,139 @@
+## Pierre le 02/03/17, plusieurs modifs mineurs
+# Type de configuration : Affichage du formulaire de l'entité
+# Nom de la configuration : node.en.default
+uuid: 4d4166a5-6bbd-4ef5-b29b-3e1e7b9ca891
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.node.ens.body
+    - field.field.node.ens.field_gallery
+    - field.field.node.ens.field_poster
+    - field.field.node.ens.field_quiz
+    - field.field.node.ens.field_start_trace
+    - field.field.node.ens.field_taxa
+    - field.field.node.ens.field_thumbnail
+    - field.field.node.ens.field_trace
+    - field.field.node.ens.field_video_ens
+    - image.style.thumbnail
+    - node.type.ens
+  module:
+    - geofield
+    - image
+    - path
+    - text
+id: node.ens.default
+targetEntityType: node
+bundle: ens
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 6
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+    third_party_settings: {  }
+  created:
+    type: datetime_timestamp
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+  field_gallery:
+    weight: 11
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+  field_poster:
+    weight: 8
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+  field_quiz:
+    weight: 10
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+  field_start_trace:
+    weight: 12
+    settings:
+      html5_geolocation: false
+    third_party_settings: {  }
+    type: geofield_latlon
+  field_taxa:
+    weight: 9
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+  field_thumbnail:
+    type: image_image
+    weight: 15
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_trace:
+    type: geofield_default
+    weight: 14
+    settings: {  }
+    third_party_settings: {  }
+  field_video_ens:
+    weight: 13
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  langcode:
+    type: language_select
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 7
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 4
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 5
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 2
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }
+
+
+# Type de configuration : 
+# Nom de la configuration : 

@@ -2,7 +2,7 @@
 ![Aveyron Nature](https://raw.githubusercontent.com/gitkyo/Aveyron-Nature-Web/master/themes/bootstrap_aveyron/images/aveyron.gif  "Aveyron Nature")
 
 - Le répertoire "themes" contient le(s) themes versionné
-- Le répertoire "doc" contient toutes les instructions
+- Le répertoire "doc" contient toutes les instructions (configuration, instllation, gestion de la base...)
 - Le répertoire "modules" contient les modules personalisé.
 - Le répertoire "ressources" contient les exports de configuration
 
@@ -20,7 +20,7 @@
 ## Installation de la dépendance geoPhp pour le module geofield
 Le tag --ignore-platform-reqs permet d'ignorer la version de php.
 >composer require "phayes/geophp" --ignore-platform-reqs
-
+Executer cette commande à la racine du projet
 
 # Démo
 [http://151.80.132.63/aveyron-demo/](http://151.80.132.63/aveyron-demo/)
@@ -30,21 +30,9 @@ Le tag --ignore-platform-reqs permet d'ignorer la version de php.
 [Convention de nommage](https://www.drupal.org/node/318)  
 [Drupal Bootstrap Documentation](http://drupal-bootstrap.org/api/bootstrap)  
 
-# Debug tips
+# Some tips
 
-   - Voir les log apache : tail -f /var/log/apache2/error.log
-   - Augmenter "memory_limit" dans le php.ini
-   - Example de phpinfo.php
-
-'''
-<?php
-
-// Affiche toutes les informations, comme le ferait INFO_ALL
-phpinfo();
-
-// Affiche uniquement le module d'information.
-// phpinfo(8) fournirait les mêmes informations.
-phpinfo(INFO_MODULES);
-
-?>
-'''
+	- Voir les log apache : tail -f /var/log/apache2/error.log
+	- Afficher le contenu d'une variable dans twig : <pre>{{  dump(infoFold5) }}</pre>
+	- Charger une image avec un style prédéfinit depuis un uri : $myPicture = entity_load('image_style', '[nom_machine_du_style]')->buildUrl([uri_image]);
+	- Requette simple : $query = db_query("[ma_requette_sql]]"); $titleFold4 = $query->fetchAll();

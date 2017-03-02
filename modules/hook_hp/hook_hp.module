@@ -13,7 +13,7 @@ function hook_hp_preprocess_page__front(&$variables){
 
 	$picturesFold1 = getSliderPictures();
 	$titleFold1 = getTitleFold1();
-	
+
 	$titleFold2 = getTitleFold2();
 	$subTitleFold2 = getSubTitleFold2();
 	$ensFold2 = getEnsFold2();
@@ -22,8 +22,10 @@ function hook_hp_preprocess_page__front(&$variables){
 	$ensFold3 = getEnsFold3();
 
 	$ensFold4 = getInfoFold4();
-	
+
 	$infoFold5 = getInfoFold5();
+
+	$infoFold6 = getInfoFold6();
 
 	//set variables
 	$variables['picturesFold1'] = $picturesFold1;
@@ -35,17 +37,19 @@ function hook_hp_preprocess_page__front(&$variables){
 
 	$variables['titleFold3'] = $titleFold3;
 	$variables['ensFold3'] = $ensFold3;
-	
+
 	$variables['ensFold4'] = $ensFold4;
-	
+
 	$variables['infoFold5'] = $infoFold5;
+
+	$variables['infoFold6'] = $infoFold6;
 
 }
 
 function getSliderPictures(){
-	
+
 	/*
-	SELECT f.filename FROM aveyron.file_managed f 
+	SELECT f.filename FROM aveyron.file_managed f
 	join aveyron.node__field_slider s
 	on f.fid = s.field_slider_target_id
 	where s.entity_id = 1;
@@ -67,9 +71,9 @@ function getSliderPictures(){
 }
 
 function getTitleFold1(){
-	
+
 	/*
-	SELECT t.field_titre_fold1_value 
+	SELECT t.field_titre_fold1_value
 	FROM aveyron.node__field_titre_fold1 t
 	WHERE t.entity_id = 1;
 	*/
@@ -83,9 +87,9 @@ function getTitleFold1(){
 }
 
 function getTitleFold2(){
-	
+
 	/*
-	SELECT t.field_titre_fold1_value 
+	SELECT t.field_titre_fold1_value
 	FROM aveyron.node__field_titre_fold1 t
 	WHERE t.entity_id = 1;
 	*/
@@ -99,9 +103,9 @@ function getTitleFold2(){
 }
 
 function getSubTitleFold2(){
-	
+
 	/*
-	SELECT t.field_titre_fold1_value 
+	SELECT t.field_titre_fold1_value
 	FROM aveyron.node__field_titre_fold1 t
 	WHERE t.entity_id = 1;
 	*/
@@ -121,7 +125,7 @@ function getEnsFold2(){
 	$query = db_query("select f.uri, s.field_poster_alt, s.field_poster_title, s.entity_id, s.revision_id from node_revision a
 		join node_revision__field_poster s
 		on s.revision_id = a.vid
-		join file_managed f 
+		join file_managed f
 		on f.fid = s.field_poster_target_id
 		join node_revision__field_ens_mis_en_avant_fold2 d
 		on a.nid = d.field_ens_mis_en_avant_fold2_target_id
@@ -146,8 +150,8 @@ function getEnsFold2(){
 		$titleEnsFold2 = $titleEnsFold2[0]->title;
 		$picturesFold2[$key]->title = $titleEnsFold2;
 
-		//	Get GPS point of ENS :			
-		//	SELECT t.field_start_trace_lat, t.field_start_trace_lon 
+		//	Get GPS point of ENS :
+		//	SELECT t.field_start_trace_lat, t.field_start_trace_lon
 		//	FROM aveyron.node_revision__field_start_trace t
 		//	where t.revision_id = 10;
 
@@ -187,7 +191,7 @@ function getEnsFold3(){
 		on b.revision_id = d.vid
 		join node_revision__field_poster s
 		on s.revision_id = d.vid
-		join file_managed f 
+		join file_managed f
 		on f.fid = s.field_poster_target_id
 		WHERE n.type = 'ens'"
 	);
@@ -207,10 +211,10 @@ function getEnsFold3(){
 function getInfoFold4(){
 
 	$query = db_query("
-		SELECT f.uri, s.field_illus_thematik_ens_alt, 
-		s.field_illus_thematik_ens_title 
+		SELECT f.uri, s.field_illus_thematik_ens_alt,
+		s.field_illus_thematik_ens_title
 		from file_managed f
-		join node__field_illus_thematik_ens s 
+		join node__field_illus_thematik_ens s
 		on f.fid = s.field_illus_thematik_ens_target_id
 	");
 
@@ -267,4 +271,23 @@ function getInfoFold5(){
 	$infoFold5[2] = $query->fetchAll();
 
 	return $infoFold5;
+}
+
+function getInfoFold6(){
+
+	// Get title
+	$query = db_query("
+		SELECT t.field_titre_fold6_value FROM node__field_titre_fold6 t
+	");
+
+	$infoFold6 = $query->fetchAll();
+
+	// Get sub-title
+	$query = db_query("
+		SELECT t.field_sous_titre_fold6_value FROM node__field_sous_titre_fold6 t
+	");
+
+	$infoFold6[1] = $query->fetchAll()[0];
+
+	return $infoFold6;
 }

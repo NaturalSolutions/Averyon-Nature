@@ -10516,26 +10516,29 @@ body.path-frontpage section.wrapper div.fold5 div.videoRow {
   max-height: 480px;
 }
 body.path-frontpage section.wrapper div.fold5 div.videoRow div.leftZone iframe {
-  background: url(../images/fold5_image_video_1.jpg) no-repeat 50% 0%;
+  width: 100%;
+  height: 478px;
+  /* background: url(../images/fold5_image_video_1.jpg) no-repeat 50% 0%; */
 }
 body.path-frontpage section.wrapper div.fold5 div.videoRow div.rightZone {
   padding-left: 0;
 }
 body.path-frontpage section.wrapper div.fold5 div.videoRow div.rightZone iframe {
+  width: 100%;
   height: 150px;
   margin-bottom: 9px;
-}
-body.path-frontpage section.wrapper div.fold5 div.videoRow div.rightZone iframe.video2 {
-  background: url(../images/fold5_image_video_2.jpg) no-repeat 0% 0%;
-}
-body.path-frontpage section.wrapper div.fold5 div.videoRow div.rightZone iframe.video3 {
-  background: url(../images/fold5_image_video_3.jpg) no-repeat 0% 0%;
-}
-body.path-frontpage section.wrapper div.fold5 div.videoRow div.rightZone iframe.video4 {
-  background: url(../images/fold5_image_video_4.jpg) no-repeat 0% 0%;
+  /* &.video2{
+							background: url(../images/fold5_image_video_2.jpg) no-repeat 0% 0%;
+						}
+						&.video3{
+							background: url(../images/fold5_image_video_3.jpg) no-repeat 0% 0%;
+						}
+						&.video4{
+							background: url(../images/fold5_image_video_4.jpg) no-repeat 0% 0%;
+						} */
 }
 body.path-frontpage section.wrapper div.fold5 button {
-  margin-top: -70px;
+  margin-top: 50px;
 }
 @media (max-width: 1800px) {
   body.path-frontpage section.wrapper div.fold3 div.descroZone {
@@ -10556,6 +10559,9 @@ body.path-frontpage section.wrapper div.fold5 button {
   body.path-frontpage section.wrapper div.fold5 h2 {
     left: 0px;
   }
+  body.path-frontpage section.wrapper div.fold5 p.subTitleFold5 {
+    margin-left: 0;
+  }
 }
 @media (max-width: 1700px) {
   body.path-frontpage section.wrapper div.fold3 div.descroZone {
@@ -10569,8 +10575,10 @@ body.path-frontpage section.wrapper div.fold5 button {
     left: 112px;
   }
   body.path-frontpage section.wrapper div.fold4 div.traitSpecial2 {
-    left: 6%;
-    margin-top: -44px;
+    left: 4.1%;
+    width: auto;
+    margin-top: -40px;
+    background: url(../images/traitSpecial2_large.png) no-repeat 50% 50%;
   }
   body.path-frontpage section.wrapper div.fold4 div.wrapperFold4 div.textZone {
     padding-right: 2%;
@@ -10616,7 +10624,8 @@ body.path-frontpage section.wrapper div.fold5 button {
     padding: 0px 2%;
   }
   body.path-frontpage section.wrapper div.fold4 div.traitSpecial2 {
-    left: 7%;
+    left: 5.5%;
+    background: url(../images/traitSpecial2_medium.png) no-repeat 50% 50%;
   }
 }
 @media (max-width: 1300px) {
@@ -10652,7 +10661,8 @@ body.path-frontpage section.wrapper div.fold5 button {
     left: -21px;
   }
   body.path-frontpage section.wrapper div.fold4 div.traitSpecial2 {
-    left: -4%;
+    left: 0%;
+    background: url(../images/traitSpecial2_droit.png) no-repeat 50% 50%;
   }
   body.path-frontpage section.wrapper div.fold4 div.wrapperFold4 div.textZone {
     padding-right: 9%;
@@ -10669,7 +10679,8 @@ body.path-frontpage section.wrapper div.fold5 button {
   }
   body.path-frontpage section.wrapper div.fold5 div.videoRow {
     padding: 0 2%;
-    margin-left: 55px;
+    margin-left: -15px;
+    max-height: inherit;
   }
 }
 @media (max-width: 1100px) {
@@ -10717,6 +10728,18 @@ body.path-frontpage section.wrapper div.fold5 button {
     margin-left: 3%;
     margin-top: -4px;
   }
+  body.path-frontpage section.wrapper div.fold5 {
+    margin-top: 90px;
+  }
+  body.path-frontpage section.wrapper div.fold5 div.videoRow div.leftZone {
+    margin-bottom: 9px;
+  }
+  body.path-frontpage section.wrapper div.fold5 div.videoRow div.rightZone {
+    padding: 0 15px;
+  }
+  body.path-frontpage section.wrapper div.fold5 div.videoRow div.rightZone iframe {
+    height: 478px;
+  }
 }
 @media (max-width: 877px) {
   body.path-frontpage section.wrapper div.fold1 button {
@@ -10747,6 +10770,9 @@ body.path-frontpage section.wrapper div.fold5 button {
     text-align: center;
     padding: 0 10%;
   }
+  body.path-frontpage section.wrapper div.fold4 {
+    margin-top: 90px;
+  }
   body.path-frontpage section.wrapper div.fold4 div.wrapperFold4 div.textZone {
     padding-right: 15px;
     padding-left: 15px;
@@ -10773,6 +10799,9 @@ body.path-frontpage section.wrapper div.fold5 button {
   }
   body.path-frontpage section.wrapper div.fold4 div.wrapperFold4 div.textZone p.subTitleFold4 {
     text-align: center;
+  }
+  body.path-frontpage section.wrapper div.fold5 p.subTitleFold5 {
+    padding: 0 10%;
   }
 }
 @media (max-width: 608px) {
@@ -10806,15 +10835,30 @@ body.path-frontpage section.wrapper div.fold5 button {
   body.path-frontpage section.wrapper div.fold2 div.imagesRow div.relative div.absolute p {
     font-size: 0.8em;
   }
+  body.path-frontpage section.wrapper div.fold2 button {
+    width: 100%;
+    padding: 11px 10px;
+    font-size: 0.7em;
+  }
+  body.path-frontpage section.wrapper div.fold5 button {
+    width: 100%;
+    padding: 11px 10px;
+    font-size: 0.9em;
+  }
+  body.path-frontpage section.wrapper div.fold5 div.videoRow div.rightZone iframe,
+  body.path-frontpage section.wrapper div.fold5 div.videoRow div.leftZone iframe {
+    height: 300px;
+  }
 }
 @media (max-width: 394px) {
+  body.path-frontpage h1 {
+    font-size: 3.3em;
+  }
   body.path-frontpage section.wrapper div.fold1 button {
     top: 865px;
   }
-}
-@media (max-width: 289px) {
-  body.path-frontpage h1 {
-    font-size: 3.4em;
+  body.path-frontpage section.wrapper div.fold4 div.wrapperFold4 div.textZone h2 {
+    font-size: 2.5em;
   }
 }
 /*# sourceMappingURL=style.css.map */
