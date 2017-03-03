@@ -100,7 +100,9 @@
       {% if page.header %}
         {% block header %}
           <div class="col-sm-12" role="heading">
-            {{ page.header }}
+            <h1 class="page-header">
+              {{ titleFold1 }}
+            </h1>
           </div>
         {% endblock %}
       {% endif %}
@@ -113,38 +115,219 @@
           </aside>
         {% endblock %}
       {% endif %}
-      
-      {# Content #}      
 
+      {# Content #}
       {{ attach_library('bootstrap_aveyron/swiper') }}
       {{ attach_library('bootstrap_aveyron/script-hp') }}
 
       <section class="col-sm-12 wrapper">
-        
-        <!-- <pre>{{  dump(pictures) }}</pre> -->
+
 
         <!-- Standard button -->
-        
-        <div class="row fold1">        
-          
-          <button type="button" class="btn btn-primary">Découvrir</button>
-          <!-- Slider main container -->
-          <div class="swiper-container">
+        <div class="row fold1">
+
+            <button type="button" class="btn btn-primary">Découvrir</button>
+            <!-- Slider main container -->
+            <div class="swiper-container">
             <!-- Additional required wrapper -->
-            <div class="swiper-wrapper">
-              <!-- Slides -->
-              {% for picture in pictures %}     
-                <div class="swiper-slide"><img src="{{ picture.uri }}" /></div>
+                <div class="swiper-wrapper">
+                <!-- Slides -->
+                    {% for picture in picturesFold1 %}
+                        <div class="swiper-slide"><img src="{{ picture.uri }}" /></div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="progressBar">
+            </div>
+
+        </div>
+
+        <div class="container-fluid fold2">
+
+            <div class="row txtRow">
+                <div class="col-lg-12">
+                    <h2>{{ titleFold2 }}</h2>
+                    <div class="trait"></div>
+                    <p class="subTitleFold2">{{ subTitleFold2 }}</p>
+                </div>
+            </div>
+
+            <!-- <pre>{{  dump(infoFold5) }}</pre> -->
+
+            <div class="row imagesRow">
+                <div class="col-sm-8 left">
+                    <div class="relative">
+                        <div class="absolute">
+                            <h2>{{ ensFold2[0].title }}</h2>
+                            <p class="hidden"><span id="latLon" class="latLon">{{ ensFold2[0].gps }}</span><span id="valDistance"></span> KM du départ</p>
+                        </div>
+                        <img src="{{ ensFold2[0].uri }}" alt="{{ ensFold2[0].field_poster_alt }}" title="{{ ensFold2[0].field_poster_title }}">
+                    </div>
+                </div>
+                <div class="col-sm-4 right">
+                    <div class="relative">
+                        <div class="absolute">
+                            <h2>{{ ensFold2[1].title }}</h2>
+                            <p class="hidden"><span id="latLon" class="latLon">{{ ensFold2[1].gps }}</span><span id="valDistance"></span> KM du départ</p>
+                        </div>
+                        <img class="image2" src="{{ ensFold2[1].uri }}" alt="{{ ensFold2[1].field_poster_alt }}" title="{{ ensFold2[1].field_poster_title }}">
+                    </div>
+                    <div class="relative">
+                        <div class="absolute">
+                            <h2>{{ ensFold2[2].title }}</h2>
+                            <p class="hidden"><span id="latLon" class="latLon">{{ ensFold2[2].gps }}</span><span id="valDistance"></span> KM du départ</p>
+                        </div>
+                        <img src="{{ ensFold2[2].uri }}" alt="{{ ensFold2[2].field_poster_alt }}" title="{{ ensFold2[2].field_poster_title }}">
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn btn-primary inverse">voir plus d’espace naturels</button>
+        </div>
+
+        <div class="container-fluid fold3">
+
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="traitVertical"></div>
+              <h2>{{ titleFold3 }}</h2>
+              <div class="trait"></div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-8 col-md-7 col-lg-8 map">
+
+              {% for key,ens in ensFold3 %}
+
+                <div class="pointEns nidEns_{{ ens.nid }} index_{{ key }}"><span class="pointBtn"><span class="secondPoint"></span></span><a href="node/{{ ens.nid }}">{{ ens.title }}</a></div>
+
+              {% endfor %}
+
+            </div>
+            <div class="col-sm-4 col-md-5 col-lg-4 descroZone">
+              {% for key,ens in ensFold3 %}
+
+                <div class="hidden index{{ key }}">
+                  <img src="{{ ens.uri }}" alt="{{ ens.field_poster_alt }}" title="{{ ens.field_poster_title }}">
+                  <div class="descroBlock">
+                    <p class="titleEns">{{ ens.title }}</p>
+                    <div class="descroEns">{{ ens.body_value|raw }}</div>
+                  </div>
+                  <a type="button" href="node/{{ ens.nid }}" alt="{{ ens.title }}" title="{{ ens.title }}" class="btn btn-primary inverse">voir plus</a>
+                </div>
+
               {% endfor %}
             </div>
           </div>
 
-          <div class="progressBar"></div>
         </div>
 
 
+        <div class="container-fluid fold4">
+
+          <div class="traitSpecial"></div>
+
+          <div class="row wrapperFold4">
+
+            <div class="col-md-5 imageZone">
+              <img src="{{ ensFold4[0].uri }}" alt="{{ ensFold4[0].field_illus_thematik_ens_alt }}" title="{{ ensFold4[0].field_illus_thematik_ens_alt }}" class="imgFaune">
+              <img src="{{ ensFold4[1].uri }}" alt="{{ ensFold4[1].field_illus_thematik_ens_alt }}" title="{{ ensFold4[1].field_illus_thematik_ens_alt }}" class="imgFlore hidden">
+              <img src="{{ ensFold4[2].uri }}" alt="{{ ensFold4[2].field_illus_thematik_ens_alt }}" title="{{ ensFold4[2].field_illus_thematik_ens_alt }}" class="imgPaysage hidden">
+              <img src="{{ ensFold4[3].uri }}" alt="{{ ensFold4[3].field_illus_thematik_ens_alt }}" title="{{ ensFold4[3].field_illus_thematik_ens_alt }}" class="imgPatrimoine hidden">
+            </div>
+            <div class="col-md-7 textZone">
+              <h2>{{ ensFold4[4].field_titre_fold4_value }}</h2>
+              <p class="subTitleFold4">{{ ensFold4[5].field_sous_titre_fold4_value }}</p>
+
+              <div class="row blockInTextZone rowFaune isHovered">
+                <div class="col-sm-2 iconFaune"></div>
+                <div class="col-sm-10">
+                  <p class="labelText">{{ ensFold4[0].field_illus_thematik_ens_alt }}</p>
+                  <p class="descroIcon">{{ ensFold4[0].field_illus_thematik_ens_title }}</p>
+                </div>
+              </div>
+
+              <div class="traitVertical"></div>
+
+              <div class="row blockInTextZone rowFlore">
+                <div class="col-sm-2 iconFlore"></div>
+                <div class="col-sm-10">
+                  <p class="labelText">{{ ensFold4[1].field_illus_thematik_ens_alt }}</p>
+                  <p class="descroIcon">{{ ensFold4[1].field_illus_thematik_ens_title }}</p>
+                </div>
+              </div>
+
+              <div class="traitVertical"></div>
+
+              <div class="row blockInTextZone rowPaysage">
+                <div class="col-sm-2 iconPaysage"></div>
+                <div class="col-sm-10">
+                  <p class="labelText">{{ ensFold4[2].field_illus_thematik_ens_alt }}</p>
+                  <p class="descroIcon">{{ ensFold4[2].field_illus_thematik_ens_title }}</p>
+                </div>
+              </div>
+
+              <div class="traitVertical"></div>
+
+              <div class="row blockInTextZone rowPatrimoine">
+                <div class="col-sm-2 iconPatrimoine"></div>
+                <div class="col-sm-10">
+                  <p class="labelText">{{ ensFold4[3].field_illus_thematik_ens_alt }}</p>
+                  <p class="descroIcon">{{ ensFold4[3].field_illus_thematik_ens_title }}</p>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="traitSpecial2"></div>
+
+        </div>
+
+        <div class="container-fluid fold5">
+
+          <div class="row">
+            <div class="col-lg-12">
+              <h2>{{infoFold5[0].field_titre_fold5_value}}</h2>
+              <p class="subTitleFold5">{{ infoFold5[1].field_sous_titre_fold5_value }}</p>
+            </div>
+          </div>
+
+          <div class="row videoRow">
+            <div class="col-md-8 leftZone">
+              <iframe frameborder="0" src="{{ infoFold5[2][0].field_video_ens_value }}" allowfullscreen></iframe>
+            </div>
+            <div class="col-md-4 rightZone">
+              <iframe class="video2" width="100%" src="{{ infoFold5[2][1].field_video_ens_value }}" frameborder="0" allowfullscreen></iframe>
+              <iframe class="video3" width="100%" src="{{ infoFold5[2][2].field_video_ens_value }}" frameborder="0" allowfullscreen></iframe>
+              <iframe class="video4" width="100%" src="{{ infoFold5[2][3].field_video_ens_value }}" frameborder="0" allowfullscreen></iframe>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12">
+              <button type="button" class="btn btn-primary inverse">voir la médiathèque</button>
+            </div>
+          </div>
+
+
+        </div>
+
+        <div class="container-fluid fold6">
+          <div class="traitSpecial3"></div>
+          <div class="row">
+              <div class="col-md-8 leftZone">PHOTO INSTA</div>
+              <div class="col-md-4 rightZone">
+                <h2>{{infoFold6[0].field_titre_fold6_value}}</h2>
+                <p class="subTitleFold5">{{ infoFold6[1].field_sous_titre_fold6_value }}</p>
+              </div>
+          </div>
+        </div>
+
       </section>
-      
+
     </div>
   </div>
 {% endblock %}

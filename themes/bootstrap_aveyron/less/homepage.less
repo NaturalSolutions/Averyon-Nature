@@ -2,95 +2,870 @@
 	Specific font for Homepage
 */
 @font-face {
-    font-family: 'Viper Nora';
-    src: url('../fonts/viper_nora.otf') format("opentype");    
+	font-family: 'Viper Nora';
+	src: url('../fonts/viper_nora.otf') format("opentype");
 }
-@font-face { 
-    font-family: 'Proxima Nova Regular';
-    src: url('../fonts/Proxima Nova Regular.otf') format("opentype");    
+@font-face {
+	font-family: 'Proxima Nova Regular';
+	src: url('../fonts/Proxima Nova Regular.otf') format("opentype");
 }
+@font-face {
+	font-family: 'Proxima Nova Light';
+	src: url('../fonts/Proxima Nova Light.otf') format("opentype");
+}
+@font-face {
+	font-family: 'Proxima Nova Thin';
+	src: url('../fonts/ProximaNova-Thin_0.otf') format("opentype");
+}
+@font-face {
+	font-family: 'Myriad Pro semiBold';
+	src: url('../fonts/MyriadPro-Semibold.otf') format("opentype");
+}
+
+@color-h2-aveyron : #565656;
+@bg-point-map-fold3-aveyron : #484848;
+
 body.path-frontpage{
-	div.region-header{
-		h1{
-			font-family: 'Viper Nora';
-		    position: absolute;
-		    top: 250px;
-		    z-index: 2;
-		    left: 0;
-		    color: #fff;
-		    text-align: center;
-		    width: 100%;
-		    border: 0;
-		    padding: 0px 20%;
-		    font-size: 4em;
-		    line-height: 80px;
-		    letter-spacing: 2px;
-		}
+	h1{
+		font-family: 'Viper Nora';
+		position: absolute;
+		top: 250px;
+		z-index: 2;
+		left: 0;
+		color: #fff;
+		text-align: center;
+		width: 100%;
+		border: 0;
+		padding: 0px 20%;
+		font-size: 4em;
+		line-height: 80px;
+		letter-spacing: 2px;
 	}
 	section.wrapper{
-		/* min-height: 3000px; */
+		/* min-height: 3000px;*/
 		margin-top: -134px;
-
 		div.fold1{
+			position: relative;
 			text-align: center;
 			button{
-				position: relative;
+				position: absolute;
 				top: 600px;
+				margin-left: -80px;
 				z-index: 2;
+				left: 50%;
 			}
-			div.progressBar{				
-			    width: 0%;
-			    position: absolute;
-			    bottom: 0;
-			    left: 0;
-			    background-color: @base-color-aveyron;
-			    height: 2px;
-			    width: 0;
-			    z-index: 99;
+			div.progressBar{
+				width: 0%;
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				background-color: @base-color-aveyron;
+				height: 2px;
+				width: 0;
+				z-index: 99;
 			}
 		}
-	}	
-} 
+		div.fold2{
+			button{
+				margin: 0 auto;
+				display: inherit;
+				margin-top: 75px;
+			}
+			div.txtRow{
+				h2{
+					text-align: center;
+					text-transform: uppercase;
+					font-family: 'Proxima Nova Light';
+					color: @color-h2-aveyron;
+					margin-top: 70px;
+					font-size: 2.8em;
+					margin-bottom: 25px;
+				}
+				div.trait{
+					width: 70px;
+					height: 1px;
+					opacity: 0.8;
+					text-align: center;
+					margin: 10px auto;
+					background-color: @base-color-aveyron;
+				}
+				p.subTitleFold2{
+					font-family: 'Proxima Nova Light';
+					text-align: center;
+					padding: 0 25%;
+					margin-top: 30px;
+					margin-bottom: 85px;
+				}
+			}
+			div.imagesRow{
+				padding: 0 10%;
+				div.right{
+					padding-left: 0px;
+				}
+				div.left{
+					padding-right: 6px;
+				}
+				img{
+					width: 100%;
+					&.image2{
+						padding-bottom: 6px;
+					}
+				}
+				div.relative{
+					position: relative;
+					text-align: center;
+					div.absolute{
+						position: absolute;
+						padding: 0 5%;
+						color: #fff;
+						width: 100%;
+						display: flex;
+						flex-direction: column;
+						justify-content: center;
+						height: 97%;
+						h2{
+							text-transform: uppercase;
+							font-family: 'Viper Nora';
+							width: 100%;
+						}
+						p{
+							text-indent: 23px;
+							background: url(../images/pinsMap.png) no-repeat 0% 4px;
+							display: inline-block;
+							width: auto;
+							margin: 0 auto;
+							text-transform: uppercase;
+							font-family: 'Proxima Nova Regular';
+							font-size: 1.2em;
+							letter-spacing: 2px;
+							background-size: 11px;
+						}
+					}
+				}
+			}
+		}
+		div.fold3{
+			h2{
+				text-align: center;
+				text-transform: uppercase;
+				font-family: 'Proxima Nova Light';
+				color: @color-h2-aveyron;
+				margin-top: 40px;
+				font-size: 2.8em;
+				margin-bottom: 25px;
+			}
+			div.trait{
+				width: 70px;
+				height: 1px;
+				opacity: 0.8;
+				text-align: center;
+				margin: 10px auto;
+				background-color: @base-color-aveyron;
+			}
+			div.traitVertical{
+				height: 90px;
+				width: 1px;
+				background-color: #c9c9c9;
+				margin: 0 auto;
+				margin-top: 50px;
+			}
+			div.descroZone{
+				padding-right: 150px;
+				margin-top: 100px;
+				margin-left: -5%;
+				img{
+					width: 100%;
+				}
+				a{
+					margin-left: -57%;
+					margin-top: 30px;
+				}
+				div.descroBlock{
+					background-color: rgba(255, 255, 255, 0.8);
+					margin-left: -62%;
+					margin-top: -132px;
+					position: relative;
+					max-width: 120%;
+					padding: 20px 15% 15px 5%;
+					p.titleEns{
+						font-family: 'Proxima Nova Thin';
+						font-size: 2.3em;
+						text-transform: uppercase;
+					}
+					div.descroEns {
+						p {
+							font-family: 'Proxima Nova Light';
+						}
+					}
+				}
+			}
+			div.map{
+				position: relative;
+				height: 800px;
+				background: url(../images/background_map_fold3.jpg) no-repeat 50% 50%;
+				.pointEns{
+					cursor: pointer;
+					position: absolute;
+					padding-left: 20px;
+					padding-right: 20px;
+					&:hover{
+						span.pointBtn, span.secondPoint{
+							border-color: @base-color-aveyron !important;
+						}
+						a{
+							color: @base-color-aveyron;
+							text-decoration: none;
+						}
+					}
+					&.nidEns_4{
+						left: 20%;
+						top: 323px;
+						span.pointBtn{
+							right: 0;
+							left: auto;
+						}
+					}
+					&.nidEns_5{
+						left: 39%;
+						top: 591px;
+						span.pointBtn{
+							right: 0;
+							left: auto;
+						}
+					}
+					&.nidEns_6{
+						left: 30%;
+						top: 401px;
+					}
+					&.nidEns_7{
+						left: 50%;
+						top: 141px;
+					}
+					&.nidEns_8{
+						left: 69%;
+						top: 567px;
+					}
+					&.nidEns_9{
+						left: 61%;
+						top: 606px;
+					}
+					&.nidEns_10{
+						left: 67%;
+						top: 536px;
+					}
+					&.nidEns_11{
+						left: 40.5%;
+						top: 549px;
+						span.pointBtn{
+							right: 0;
+							left: auto;
+						}
+					}
+					&.nidEns_12{
+						left: 51%;
+						top: 497px;
+					}
+					&.nidEns_13{
+						left: 42%;
+						top: 462px;
+						span.pointBtn{
+							right: 0;
+							left: auto;
+						}
+					}
+					&.nidEns_14{
+						left: 21%;
+						top: 450px;
+						span.pointBtn{
+							right: 0;
+							left: auto;
+						}
+					}
+					&.nidEns_15{
+						left: 21%;
+						top: 366px;
+						span.pointBtn{
+							right: 0;
+							left: auto;
+						}
+					}
+					&.nidEns_16{
+						left: 47%;
+						top: 636px;
+						width: 110px;
+						text-align: center;
+						span.pointBtn{
+							right: 0;
+							left: auto;
+						}
+					}
+					&.nidEns_17{
+						left: 66%;
+						top: 487px;
+					}
+					&.nidEns_18{
+						left: 57%;
+						top: 427px;
+					}
+					&.nidEns_19{
+						left: 49%;
+						top: 353px;
+					}
+					&.nidEns_20{
+						left: 40%;
+						top: 324px;
+						span.pointBtn{
+							right: 0;
+							left: auto;
+						}
+					}
+					&.nidEns_21{
+						left: 41%;
+						top: 286px;
+						span.pointBtn{
+							right: 0;
+							left: auto;
+						}
+					}
+					&.nidEns_22{
+						left: 47%;
+						top: 233px;
+					}
+					a{
+						font-family: 'Myriad Pro semiBold';
+						color: @bg-point-map-fold3-aveyron;
+						text-transform: uppercase;
+						display: inline-block;
+						font-size: 0.8em;
+						letter-spacing: 0.4px;
+					}
+					span.pointBtn{
+						border: 1px solid @bg-point-map-fold3-aveyron;
+						border-radius: 10px;
+						display: inline-block;
+						height: 14px;
+						width: 14px;
+						position: absolute;
+						left: 0px;
+						top: 5px;
+						span.secondPoint{
+							border: 3px solid @bg-point-map-fold3-aveyron;
+							border-radius: 16px;
+							display: inline-block;
+							position: absolute;
+							top: 3px;
+							left: 3px;
+						}
+					}
+				}
+			}
+		}
+		div.fold4{
+			div.traitSpecial{
+				background: url(../images/traitSpecial.png) no-repeat 50% 50%;
+				width: 75px;
+				height: 189px;
+				margin: 0 auto;
+				margin-top: 70px;
+				left: 86px;
+				position: relative;
+			}
+			div.traitSpecial2{
+				background: url(../images/traitSpecial2.png) no-repeat 50% 50%;
+				width: 75px;
+				height: 189px;
+				margin: 0 auto;
+				margin-top: -48px;
+				left: -13px;
+				position: relative;
+			}
+			div.wrapperFold4{
+				padding: 0 12%;
+				div.imageZone{
+					 margin-top: -50px;
+					text-align: center;
+					img{
+						display: inline-block;
+					}
+				}
+				div.textZone{
+					padding-right: 15%;
+					padding-left: 8%;
+					h2{
+						text-transform: uppercase;
+						color: #565656;
+						font-size: 3em;
+						margin-top: 40px;
+						font-family: 'Proxima Nova Light';
+						margin-bottom: 15px;
+					}
+					p.subTitleFold4{
+						color: #565656;
+						margin-bottom: 55px;
+						font-family: 'Proxima Nova Light';
+					}
+					div.traitVertical{
+						height: 90px;
+						width: 1px;
+						background-color: #d9d9d9;
+						margin-left: 5%;
+						margin-top: -15px;
+						margin-bottom: 20px;
+					}
+					div.blockInTextZone{
+						cursor: pointer;
+						&.isHovered{
+							div.iconPatrimoine{
+								background: url(../images/icon_patrimoine_hover.jpg) no-repeat 50% 50%;
+							}
+							div.iconPaysage{
+								background: url(../images/icon_paysage_hover.jpg) no-repeat 50% 50%;
+							}
+							div.iconFaune{
+								background: url(../images/icon_faune_hover.jpg) no-repeat 50% 50%;
+							}
+							div.iconFlore{
+								background: url(../images/icon_flore_hover.jpg) no-repeat 50% 50%;
+							}
+							p.labelText{
+								color: #88c146;
+							}
+							p.descroIcon{
+								visibility: visible;
+							}
+						}
+						div.iconFaune{
+							background: url(../images/icon_faune.jpg) no-repeat 50% 50%;
+							width: 81px;
+							height: 81px;
+						}
+						div.iconFlore{
+							background: url(../images/icon_flore.jpg) no-repeat 50% 50%;
+							width: 81px;
+							height: 81px;
+						}
+						div.iconPaysage{
+							background: url(../images/icon_paysage.jpg) no-repeat 50% 50%;
+							width: 81px;
+							height: 81px;
+						}
+						div.iconPatrimoine{
+							background: url(../images/icon_patrimoine.jpg) no-repeat 50% 50%;
+							width: 81px;
+							height: 81px;
+						}
+						p.labelText{
+							text-transform: uppercase;
+							font-family: 'Proxima Nova Light';
+							color: #989898;
+							margin-top: 25px;
+							margin-left: 33px;
+							font-size: 1.3em;
+							letter-spacing: 0.8px;
+						}
+						p.descroIcon{
+							 margin-left: 33px;
+							visibility: hidden;
+						}
+					}
+				}
+			}
+		}
+		div.fold5{
+			h2{
+				text-transform: uppercase;
+				color: #565656;
+				font-size: 3em;
+				margin-top: 12px;
+				font-family: 'Proxima Nova Light';
+				margin-bottom: 15px;
+				text-align: center;
+				left: -43px;
+				position: relative;
+			}
+			p.subTitleFold5{
+				padding: 0 22%;
+				text-align: center;
+				font-family: 'Proxima Nova Light';
+				margin-top: 33px;
+				margin-left: -90px;
+			}
+			button{
+				margin: 0 auto;
+				display: block;
+			}
+			div.videoRow{
+				margin-top: 50px;
+				padding: 0 15%;
+				max-height: 480px;
+				div.leftZone{
+					iframe{
+						width: 100%;
+						height: 478px;
+					/* background: url(../images/fold5_image_video_1.jpg) no-repeat 50% 0%; */
+					}
+				}
+				div.rightZone{
+					padding-left: 0;
+					iframe{
+						width: 100%;
+						height: 150px;
+						margin-bottom: 9px;
+						/* &.video2{
+							background: url(../images/fold5_image_video_2.jpg) no-repeat 0% 0%;
+						}
+						&.video3{
+							background: url(../images/fold5_image_video_3.jpg) no-repeat 0% 0%;
+						}
+						&.video4{
+							background: url(../images/fold5_image_video_4.jpg) no-repeat 0% 0%;
+						} */
+					}
+				}
+			}
+			button{
+				margin-top: 50px;
+			}
+		}
+	}
+}
+
+@media (max-width: 1800px) {
+	body.path-frontpage section.wrapper {
+		div.fold3 div.descroZone {
+			margin-top: 120px;
+			margin-left: -3%;
+		}
+		div.fold4 {
+			div.traitSpecial{
+				left: 130px;
+			}
+			div.traitSpecial2 {
+				left: 39px;
+				margin-top: -44px;
+			}
+			div.wrapperFold4 div.textZone {
+				padding-right: 9%;
+				padding-left: 12%;
+			}
+		}
+		div.fold5 {
+			h2{
+				left: 0px;
+			}
+			p.subTitleFold5{
+				margin-left: 0;
+			}
+		}
+	}
+}
+
+@media (max-width: 1700px) {
+	body.path-frontpage section.wrapper {
+		div.fold3 div.descroZone {
+			margin-top: 130px;
+			padding-right: 115px;
+			div.descroBlock{
+				margin-top: -110px;
+			}
+		}
+		div.fold4 {
+			div.traitSpecial {
+				left: 112px;
+			}
+			div.traitSpecial2 {
+				left: 4.1%;
+				width: auto;
+				margin-top: -40px;
+				background: url(../images/traitSpecial2_large.png) no-repeat 50% 50%;
+			}
+			div.wrapperFold4 div.textZone {
+				padding-right: 2%;
+				padding-left: 17%;
+			}
+		}
+	}
+}
+
+@media (max-width: 1600px) {
+	body.path-frontpage section.wrapper {
+		div.fold3 div.descroZone {
+			padding-right: 70px;
+		}
+		div.fold4 {
+			div.traitSpecial {
+				left: 100px;
+			}
+			div.wrapperFold4 {
+				padding: 0px 9%;
+				div.textZone {
+					padding-right: 15px;
+					padding-left: 16%;
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 1500px) {
+	body.path-frontpage section.wrapper {
+		div.fold3 div.descroZone {
+			padding-right: 25px;
+		}
+		div.fold4 {
+			div.wrapperFold4 {
+				padding: 0px 6%;
+			}
+			div.traitSpecial {
+				left: 80px;
+			}
+		}
+	}
+}
 
 @media (max-width: 1450px) {
 	body.path-frontpage{
-		div.region-header{
-			h1{
-				padding: 0px 12%;
+		h1{
+			padding: 0px 12%;
+		}
+	}
+}
+
+@media (max-width: 1400px) {
+	body.path-frontpage section.wrapper{
+		div.fold3 div.descroZone div.descroBlock {
+			margin-top: -66px;
+		}
+		div.fold4 {
+			div.wrapperFold4 {
+				padding: 0px 2%;
+			}
+			div.traitSpecial2{
+				left: 5.5%;
+				background: url(../images/traitSpecial2_medium.png) no-repeat 50% 50%;
 			}
 		}
+	}
+}
+
+@media (max-width: 1300px) {
+	body.path-frontpage section.wrapper {
+		div.fold3 div.descroZone {
+			padding-right: 0px;
+		}
+		div.fold4 div.wrapperFold4 {
+			padding: 0 0;
+		}
+	}
+}
+@media (width: @screen-lg-min) {
+	body.path-frontpage section.wrapper div.fold3 div.descroZone {
+		margin-top: 155px !important;
 	}
 }
 
 //- de 1200
 @media (max-width: @screen-lg-min) {
 	body.path-frontpage{
-		div.region-header{
-			h1{
-				padding: 0px 6%;
+		h1{
+			padding: 0px 6%;
+		}
+		section.wrapper {
+			div.fold3 {
+				div.map{
+					background-position: -100px 50%;
+					background-size: 125%;
+				}
+				div.descroZone {
+					margin-top: 100px;
+					padding-left: 4%;
+					div.descroBlock {
+						padding: 10px 15% 15px 4%;
+						margin-top: -50px;
+					}
+				}
+			}
+			div.fold4 {
+				div.traitSpecial {
+					left: -21px;
+				}
+				div.traitSpecial2{
+					left: 0%;
+					background: url(../images/traitSpecial2_droit.png) no-repeat 50% 50%;
+				}
+				div.wrapperFold4 {
+					div.textZone {
+						padding-right: 9%;
+						padding-left: 6%;
+						div.traitVertical{
+							height: 36px;
+						}
+					}
+					div.imageZone {
+						margin-top: 42px;
+						img{
+							width: 100%;
+						}
+					}
+				}
+			}
+			div.fold5 div.videoRow {
+				padding: 0 2%;
+				margin-left: -15px;
+				max-height: inherit;
 			}
 		}
 	}
 }
+
+@media (max-width: 1100px) {
+	body.path-frontpage section.wrapper{
+		div.fold3 div.descroZone {
+			margin-top: 160px;
+		}
+		div.fold4 {
+			div.traitSpecial {
+				left: 0px;
+			}
+			div.wrapperFold4 div.textZone {
+				padding-right: 4%;
+				padding-left: 6%;
+			}
+		}
+	}
+}
+
 //- de 992
 @media (max-width: @screen-md-min) {
 	body.path-frontpage{
-		div.region-header{
-			h1{
-				padding: 0px 1%;
+		h1{
+			padding: 0px 1%;
+		}
+		section.wrapper {
+			div.fold2 div.txtRow p.subTitleFold2{
+				padding: 0 17%;
 			}
-		}		
+			div.fold3 div.descroZone {
+				a{
+					width: 100%;
+					margin-left: 0;
+				}
+				div.descroBlock {
+					margin-left: -4%;
+					padding: 10px 4% 15px 4%;
+					max-width: 104%;
+					text-align: center;
+					margin-top: -100px;
+					p.titleEns{
+						min-height: 90px;
+					}
+					div.descroEns p {
+						text-align: justify;
+					}
+				}
+			}
+			div.fold4 {
+				div.traitSpecial,
+				div.traitSpecial2,
+				div.imageZone{
+					display: none;
+				}
+				div.wrapperFold4 div.textZone div.traitVertical {
+					margin-left: 3%;
+					margin-top: -4px;
+				}
+			}
+			div.fold5{
+				margin-top: 90px;
+				div.videoRow{
+					div.leftZone{
+						margin-bottom: 9px;
+					}
+					div.rightZone{
+						padding: 0 15px;
+						iframe {
+							height: 478px;
+						}
+					}
+				}
+			}
+		}
 	}
 }
 
 @media (max-width: 877px) {
 	body.path-frontpage{
 		section.wrapper{
-			div.fold1{				
-				button{					
-					top: 650px;					
+			div.fold1{
+				button{
+					top: 650px;
 				}
 			}
+		}
+	}
+}
+
+// 768px
+@media (max-width: 767px) {
+
+	body.path-frontpage section.wrapper {
+		div.fold2 div.imagesRow {
+			img.image2{
+				padding-top: 6px;
+			}
+			div.left{
+				padding-right: 15px;
+			}
+			div.right{
+				padding-left: 15px;
+			}
+		}
+		div.fold3 div.descroZone {
+			margin-top: 30px;
+			padding-left: 15px;
+			padding-right: 15px;
+			margin-left: 0;
+			div.descroBlock{
+				margin-top: -130px;
+				padding: 40px 4% 15px 4%;
+				div.descroEns p{
+					text-align: center;
+					padding: 0 10%;
+				}
+			}
+		}
+		div.fold4{
+			margin-top: 90px;
+			div.wrapperFold4 div.textZone {
+				padding-right: 15px;
+				padding-left: 15px;
+				div.blockInTextZone {
+					margin-bottom: 45px;
+					text-align: center;
+					div.iconFaune,
+					div.iconFlore,
+					div.iconPaysage,
+					div.iconPatrimoine{
+						margin: 0 auto;
+					}
+					p.labelText,
+					p.descroIcon{
+						margin-left: 0;
+					}
+				}
+				div.traitVertical{
+					display: none;
+				}
+				h2{
+					text-align: center;
+				}
+				p.subTitleFold4{
+					text-align: center;
+				}
+			}
+		}
+		div.fold5 p.subTitleFold5 {
+			padding: 0 10%;
 		}
 	}
 }
@@ -98,10 +873,13 @@ body.path-frontpage{
 @media (max-width: 608px) {
 	body.path-frontpage{
 		section.wrapper{
-			div.fold1{				
-				button{					
+			div.fold1{
+				button{
 					top: 760px;
 				}
+			}
+			div.fold3 div.map{
+				display: none;
 			}
 		}
 	}
@@ -110,8 +888,8 @@ body.path-frontpage{
 @media (max-width: 482px) {
 	body.path-frontpage{
 		section.wrapper{
-			div.fold1{				
-				button{					
+			div.fold1{
+				button{
 					top: 850px;
 				}
 			}
@@ -122,40 +900,71 @@ body.path-frontpage{
 //- de 480
 @media (max-width: @screen-xs-min) {
 	body.path-frontpage{
-		div.region-header{
-			h1{
-				font-size: 3.8em;
-				padding: 0px 3%;
-    			top: 200px;
-			}
+		h1{
+			font-size: 3.8em;
+			padding: 0px 3%;
+			top: 200px;
 		}
 		section.wrapper{
-			div.fold1{ 
-				button{					
+			div.fold1{
+				button{
 					top: 760px;
 				}
 			}
-		}
-	} 
-}
-
-@media (max-width: 394px) {
-	body.path-frontpage{		
-		section.wrapper{
-			div.fold1{ 
-				button{					
-					top: 865px;
+			div.fold2{
+				div.txtRow p.subTitleFold2{
+					padding: 0 9%;
+				}
+				div.imagesRow {
+					div.relative div.absolute {
+						h2{
+							font-size: 1.5em;
+						}
+						p{
+							font-size: 0.8em;
+						}
+					}
+				}
+				button{
+					width: 100%;
+					padding: 11px 10px;
+					font-size: 0.7em;
+				}
+			}
+			div.fold5 {
+				button{
+					width: 100%;
+					padding: 11px 10px;
+					font-size: 0.9em;
+				}
+				div.videoRow {
+					div.rightZone iframe,
+					div.leftZone iframe {
+						height: 300px;
+					}
 				}
 			}
 		}
-	} 
+	}
+}
+
+@media (max-width: 394px) {
+	body.path-frontpage{
+		h1 {
+			font-size: 3.3em;
+		}
+		section.wrapper{
+			div.fold1{
+				button{
+					top: 865px;
+				}
+			}
+			div.fold4 div.wrapperFold4 div.textZone h2 {
+				font-size: 2.5em;
+			}
+		}
+	}
 }
 @media (max-width: 289px) {
-	body.path-frontpage{	
-		div.region-header{
-			h1{
-				font-size: 3.4em;
-			}
-		}			
-	} 
+
 }

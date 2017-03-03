@@ -1,0 +1,48 @@
+1/ Lorsque vous ajoutez quoi que ce soit en base de donnée, pensez à exporter cet ajout depuis l'outil de synchronisation de configuration de Drupal (admin/config/development/configuration/single/export).
+
+2/ Pour chaque nouvelles configurations à exporter, vous pouvez créer un fichier .txt avec la date et le thème de la mise à jour (ex : 2017-02-28_maj_taxon.txt)
+
+3/ Dans votre fichier .txt, pensez à renseigner le "Type de configuration" et le "Nom de la configuration" car c'est util lors de l'import.
+
+4/ lors de l'ajout d'un champ avec un nouveau nom system par encore exploité, il faut exporter le "Type de configuration : stockage de champs" en plus du "Type de configuration : champ"
+
+5/ Exemple de fichier "2017-02-28_maj_taxon.txt" :
+
+## Pierre le 28/02/17, ajout de plusieurs champ pour un taxon.
+# Type de configuration : champ
+# Nom de la configuration : poster (node.taxon.field_poster)
+uuid: 817dc723-b68c-4f77-9f15-b969deae6adf
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_poster
+    - node.type.quiz
+  module:
+    - image
+id: node.quiz.field_poster
+field_name: field_poster
+entity_type: node
+bundle: quiz
+label: Poster
+
+# Type de configuration : champ
+# Nom de la configuration : gallerie (node.taxon.field_gallerie)
+uuid: 66d822f6-458f-469c-8fa6-b2344ecd05ad
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_gallery
+    - node.type.taxon
+  module:
+    - image
+id: node.taxon.field_gallery
+field_name: field_gallery
+
+6/ Une astuce pour vous souvenir si vous avez déjà procédé à une mise à jour est de créer un fichier .txt ignoré via le .gitignore ou en dehors du dossier versionné, inscrivez dans ce fichier la dernière maj effectué.
+Ex d'un fichier mesMajDone.txt: 
+Maj effectué : 
+2017-02-28_maj_taxon.txt
+2017-01-17_maj_quiz.txt
+2017-01-02_maj_ens.txt
