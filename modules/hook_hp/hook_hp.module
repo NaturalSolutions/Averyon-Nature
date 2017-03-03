@@ -289,5 +289,25 @@ function getInfoFold6(){
 
 	$infoFold6[1] = $query->fetchAll()[0];
 
+	// use this instagram access token generator http://instagram.pixelunion.net/
+	$access_token="769520940.1677ed0.b9d3f1ddacb24a01bd8d92b622a0a348";
+	$photo_count=13;
+
+
+	//Get instagram pics of tag - doesn't work
+	//$json_link="https://api.instagram.com/v1/tags/{nature}/media/recent?access_token={$access_token}&count={$photo_count}";
+
+	// Tuto : https://www.codeofaninja.com/2015/01/display-instagram-feed-website.html
+	// Doc  : https://www.instagram.com/developer/endpoints/users/
+	// Get token : http://instagram.pixelunion.net/
+
+	//Get photo of instagram account
+    $json_link="https://api.instagram.com/v1/users/self/media/recent/?access_token={$access_token}&count={$photo_count}";
+
+	$json = file_get_contents($json_link);
+	$obj = json_decode($json, true, 512, JSON_BIGINT_AS_STRING);
+
+	$infoFold6[2] = $obj;
+
 	return $infoFold6;
 }

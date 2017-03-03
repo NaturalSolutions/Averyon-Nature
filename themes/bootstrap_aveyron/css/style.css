@@ -10055,6 +10055,10 @@ p:last-child,
   font-family: 'Myriad Pro semiBold';
   src: url('../fonts/MyriadPro-Semibold.otf') format("opentype");
 }
+@font-face {
+  font-family: 'MyriadPro Light';
+  src: url('../fonts/MyriadPro-Light.otf') format("opentype");
+}
 body.path-frontpage h1 {
   font-family: 'Viper Nora';
   position: absolute;
@@ -10539,6 +10543,57 @@ body.path-frontpage section.wrapper div.fold5 div.videoRow div.rightZone iframe 
 }
 body.path-frontpage section.wrapper div.fold5 button {
   margin-top: 50px;
+}
+body.path-frontpage section.wrapper div.fold6 {
+  padding: 0 14%;
+}
+body.path-frontpage section.wrapper div.fold6 div.traitSpecial3 {
+  background: url(../images/traitSpecial2_large.png) no-repeat 50% 50%;
+  height: 200px;
+  margin-left: -11%;
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+body.path-frontpage section.wrapper div.fold6 div.rightZone {
+  margin-top: 50px;
+  padding-left: 6%;
+}
+body.path-frontpage section.wrapper div.fold6 div.rightZone h2 {
+  text-transform: uppercase;
+  font-family: 'Myriad Pro Light';
+  padding-right: 55%;
+  font-size: 2.8em;
+  color: #565656;
+}
+body.path-frontpage section.wrapper div.fold6 div.rightZone p {
+  font-family: 'Proxima Nova Light';
+}
+body.path-frontpage section.wrapper div.fold6 div.leftZone img {
+  width: 100%;
+}
+body.path-frontpage section.wrapper div.fold6 div.leftZone div.firstHalf div.largeBlock {
+  padding-right: 0;
+}
+body.path-frontpage section.wrapper div.fold6 div.leftZone div.firstHalf div.smallBlock {
+  padding-right: 0;
+}
+body.path-frontpage section.wrapper div.fold6 div.leftZone div.firstHalf img:first-of-type {
+  margin-bottom: 16px;
+}
+body.path-frontpage section.wrapper div.fold6 div.leftZone div.secondHalf div.smallBlock {
+  padding-right: 0;
+}
+body.path-frontpage section.wrapper div.fold6 div.leftZone div.secondHalf div.smallBlock img {
+  margin-bottom: 16px;
+}
+body.path-frontpage section.wrapper div.fold6 div.leftZone div.secondHalf div.largeBlock {
+  padding-right: 0;
+}
+body.path-frontpage section.wrapper div.fold6 div.leftZone div.secondHalf div.SpecialSmallBlock {
+  padding-right: 0;
+}
+body.path-frontpage section.wrapper div.fold6 div.leftZone div.secondHalf div.SpecialSmallBlock img {
+  margin-bottom: 15px;
 }
 @media (max-width: 1800px) {
   body.path-frontpage section.wrapper div.fold3 div.descroZone {

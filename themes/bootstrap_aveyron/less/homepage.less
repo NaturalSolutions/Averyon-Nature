@@ -21,6 +21,10 @@
 	font-family: 'Myriad Pro semiBold';
 	src: url('../fonts/MyriadPro-Semibold.otf') format("opentype");
 }
+@font-face {
+	font-family: 'MyriadPro Light';
+	src: url('../fonts/MyriadPro-Light.otf') format("opentype");
+}
 
 @color-h2-aveyron : #565656;
 @bg-point-map-fold3-aveyron : #484848;
@@ -393,14 +397,14 @@ body.path-frontpage{
 					padding-left: 8%;
 					h2{
 						text-transform: uppercase;
-						color: #565656;
+						color: @color-h2-aveyron;
 						font-size: 3em;
 						margin-top: 40px;
 						font-family: 'Proxima Nova Light';
 						margin-bottom: 15px;
 					}
 					p.subTitleFold4{
-						color: #565656;
+						color: @color-h2-aveyron;
 						margin-bottom: 55px;
 						font-family: 'Proxima Nova Light';
 					}
@@ -474,7 +478,7 @@ body.path-frontpage{
 		div.fold5{
 			h2{
 				text-transform: uppercase;
-				color: #565656;
+				color: @color-h2-aveyron;
 				font-size: 3em;
 				margin-top: 12px;
 				font-family: 'Proxima Nova Light';
@@ -525,6 +529,65 @@ body.path-frontpage{
 			}
 			button{
 				margin-top: 50px;
+			}
+		}
+		div.fold6{
+			padding: 0 14%;
+			div.traitSpecial3{
+				background: url(../images/traitSpecial2_large.png) no-repeat 50% 50%;
+				height: 200px;
+				margin-left: -11%;
+				margin-top: 30px;
+				margin-bottom: 50px;
+			}
+			div.rightZone{
+				margin-top: 50px;
+				padding-left: 6%;
+				h2{
+					text-transform: uppercase;
+					font-family: 'Myriad Pro Light';
+					padding-right: 55%;
+					font-size: 2.8em;
+					color : @color-h2-aveyron;
+				}
+				p{
+					font-family: 'Proxima Nova Light';
+				}
+			}
+			div.leftZone{
+				img{
+					width: 100%;
+				}
+				div.firstHalf{
+					div.largeBlock{
+						padding-right: 0;
+					}
+					div.smallBlock{
+						padding-right: 0;
+					}
+					img{
+						&:first-of-type{
+							margin-bottom: 16px;
+						}
+					}
+				}
+				div.secondHalf{
+					div.smallBlock{
+						img{
+							margin-bottom: 16px;
+						}
+						padding-right: 0;
+					}
+					div.largeBlock{
+						padding-right: 0;
+					}
+					div.SpecialSmallBlock{
+						padding-right: 0;
+						img{
+							margin-bottom: 15px;
+						}
+					}
+				}
 			}
 		}
 	}

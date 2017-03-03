@@ -118,6 +118,7 @@
 
       {# Content #}
       {{ attach_library('bootstrap_aveyron/swiper') }}
+      {{ attach_library('bootstrap_aveyron/instafeed') }}
       {{ attach_library('bootstrap_aveyron/script-hp') }}
 
       <section class="col-sm-12 wrapper">
@@ -153,7 +154,7 @@
                 </div>
             </div>
 
-            <!-- <pre>{{  dump(infoFold5) }}</pre> -->
+            <pre>{{  dump(infoFold6) }}</pre>
 
             <div class="row imagesRow">
                 <div class="col-sm-8 left">
@@ -312,16 +313,53 @@
             </div>
           </div>
 
-
         </div>
 
         <div class="container-fluid fold6">
           <div class="traitSpecial3"></div>
           <div class="row">
-              <div class="col-md-8 leftZone">PHOTO INSTA</div>
+              <div class="col-md-8 leftZone">
+                <div class="row">
+                  <!-- First hasf of image block -->
+                  <div class="col-md-6 firstHalf">
+                    <div class="row">
+                      <div class="col-md-12 largeBlock">
+                        <img src='{{ infoFold6[2]["data"][0]["images"]["standard_resolution"]["url"] }}' alt="">
+                      </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 smallBlock"><img src="{{ infoFold6[2]["data"][1]["images"]["low_resolution"]["url"] }}" alt=""></div>
+                        <div class="col-md-4 smallBlock"><img src="{{ infoFold6[2]["data"][2]["images"]["low_resolution"]["url"] }}" alt=""></div>
+                        <div class="col-md-4 smallBlock"><img src="{{ infoFold6[2]["data"][3]["images"]["low_resolution"]["url"] }}" alt=""></div>
+                    </div>
+                  </div>
+                  <!-- second hasf of image block -->
+                  <div class="col-md-6 secondHalf">
+                    <div class="row">
+                      <div class="col-md-4 smallBlock"><img src="{{ infoFold6[2]["data"][4]["images"]["low_resolution"]["url"] }}" alt=""></div>
+                      <div class="col-md-4 smallBlock"><img src="{{ infoFold6[2]["data"][5]["images"]["low_resolution"]["url"] }}" alt=""></div>
+                      <div class="col-md-4 smallBlock"><img src="{{ infoFold6[2]["data"][6]["images"]["low_resolution"]["url"] }}" alt=""></div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-4 smallBlock"><img src="{{ infoFold6[2]["data"][7]["images"]["low_resolution"]["url"] }}" alt=""></div>
+                      <div class="col-md-4 smallBlock"><img src="{{ infoFold6[2]["data"][8]["images"]["low_resolution"]["url"] }}" alt=""></div>
+                      <div class="col-md-4 smallBlock"><img src="{{ infoFold6[2]["data"][9]["images"]["low_resolution"]["url"] }}" alt=""></div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-4 SpecialSmallBlock">
+                        <img src="{{ infoFold6[2]["data"][10]["images"]["low_resolution"]["url"] }}" alt="">
+                        <img src="{{ infoFold6[2]["data"][11]["images"]["low_resolution"]["url"] }}" alt="">
+                      </div>
+                      <div class="col-md-8 largeBlock">
+                        <img src="{{ infoFold6[2]["data"][12]["images"]["low_resolution"]["url"] }}" alt="">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <div class="col-md-4 rightZone">
                 <h2>{{infoFold6[0].field_titre_fold6_value}}</h2>
-                <p class="subTitleFold5">{{ infoFold6[1].field_sous_titre_fold6_value }}</p>
+                <p>{{ infoFold6[1].field_sous_titre_fold6_value }}</p>
               </div>
           </div>
         </div>
