@@ -135,5 +135,205 @@ content:
 hidden: {  }
 
 
-# Type de configuration : 
-# Nom de la configuration : 
+# Type de configuration : Champ
+# Nom de la configuration : Tracé (node.ens.field_trace)
+uuid: 501e8ee2-f911-4d65-b7d3-79634a39d1b7
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_trace
+    - node.type.ens
+  module:
+    - geofield
+id: node.ens.field_trace
+field_name: field_trace
+entity_type: node
+bundle: ens
+label: Tracé
+description: 'Copiez le tracé du parcours au format WKT'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: geofield
+
+# Type de configuration : Champ
+# Nom de la configuration : Vidéo (node.ens.field_video_ens)
+uuid: 931a6496-3c71-4a7a-8e7d-4c4ffb702343
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_video_ens
+    - node.type.ens
+id: node.ens.field_video_ens
+field_name: field_video_ens
+entity_type: node
+bundle: ens
+label: Vidéo
+description: 'Copiez ici l''url de la vidéo dailymotion'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
+
+# Type de configuration : Champ
+# Nom de la configuration : Vignette (node.taxon.field_thumbnail)
+uuid: 12d17378-c970-475a-b84e-8c9c4b0d7fe2
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_thumbnail
+    - node.type.taxon
+  module:
+    - image
+id: node.taxon.field_thumbnail
+field_name: field_thumbnail
+entity_type: node
+bundle: taxon
+label: Vignette
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_extensions: 'png gif jpg jpeg'
+  alt_field: true
+  alt_field_required: true
+  title_field: false
+  title_field_required: false
+  max_resolution: ''
+  min_resolution: ''
+  default_image:
+    uuid: null
+    alt: ''
+    title: ''
+    width: null
+    height: null
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  max_filesize: ''
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: image
+
+# Type de configuration : Champ
+# Nom de la configuration : Point de départ (node.ens.field_start_trace)
+uuid: b2f1cfa2-45f0-419f-b64b-f3de63d7bf52
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_start_trace
+    - node.type.ens
+  module:
+    - geofield
+id: node.ens.field_start_trace
+field_name: field_start_trace
+entity_type: node
+bundle: ens
+label: 'Point de départ'
+description: 'Copiez ici les coordonnées lat/lon du point de départ de l''ENS'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: geofield
+
+# Type de configuration : Stockage de champ
+# Nom de la configuration : node.field_titre_fold6
+uuid: 65c47b69-434d-4659-9102-e2ecdadd44ed
+langcode: fr
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_titre_fold6
+field_name: field_titre_fold6
+entity_type: node
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
+
+# Type de configuration : Stockage de champ
+# Nom de la configuration : node.field_sous_titre_fold6
+uuid: 4a193bf7-89c1-4643-b97b-b38025174a50
+langcode: fr
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_sous_titre_fold6
+field_name: field_sous_titre_fold6
+entity_type: node
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
+
+# Type de configuration : champ
+# Nom de la configuration : Titre fold6 (node.page_d_accueil.field_titre_fold6)
+uuid: 52ec956c-2029-4e8b-8b02-5e48ff291832
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_titre_fold6
+    - node.type.page_d_accueil
+id: node.page_d_accueil.field_titre_fold6
+field_name: field_titre_fold6
+entity_type: node
+bundle: page_d_accueil
+label: 'Titre fold6'
+description: 'Éditez ici le titre visible en fold6 de la page d''accueil'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
+
+# Type de configuration : champ
+# Nom de la configuration : Sous titre fold6 (node.page_d_accueil.field_sous_titre_fold6)
+uuid: b60b2bee-70c1-4d26-80d5-f1828025de48
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_sous_titre_fold6
+    - node.type.page_d_accueil
+id: node.page_d_accueil.field_sous_titre_fold6
+field_name: field_sous_titre_fold6
+entity_type: node
+bundle: page_d_accueil
+label: 'Sous titre fold6'
+description: 'Éditez ici le sous titre visible dans le fold6 de la page d''accueil'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
