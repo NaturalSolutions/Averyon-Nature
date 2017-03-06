@@ -118,7 +118,6 @@
 
       {# Content #}
       {{ attach_library('bootstrap_aveyron/swiper') }}
-      {{ attach_library('bootstrap_aveyron/instafeed') }}
       {{ attach_library('bootstrap_aveyron/script-hp') }}
 
       <section class="col-sm-12 wrapper">
@@ -154,7 +153,7 @@
                 </div>
             </div>
 
-            <pre>{{  dump(infoFold6) }}</pre>
+            <!-- <pre>{{  dump(infoFold6) }}</pre> -->
 
             <div class="row imagesRow">
                 <div class="col-sm-8 left">
@@ -354,6 +353,11 @@
                         <img src="{{ infoFold6[2]["data"][12]["images"]["low_resolution"]["url"] }}" alt="">
                       </div>
                     </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-12">
+                    <button type="button" class="btn btn-primary inverse">voir plus de photos</button>
                   </div>
                 </div>
               </div>

@@ -1,0 +1,23 @@
+# Type de configuration : stockage de champ
+# Nom de la configuration : node.field_sous_titre_fold6
+uuid: 4a193bf7-89c1-4643-b97b-b38025174a50
+langcode: fr
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_sous_titre_fold6
+field_name: field_sous_titre_fold6
+entity_type: node
+type: string
+settings:
+  max_length: 500
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -23,11 +23,14 @@
 @gray-lighter:           lighten(@gray-base, 93.5%); // #eee
 
 */
-/* 
+/*
 @brand-success:         #5cb85c;
 @brand-info:            #5bc0de;
 @brand-warning:         #f0ad4e;
 @brand-danger:          #d9534f;
+
+*/
+/*
 
 
 //== Scaffolding
@@ -9991,6 +9994,18 @@ body.toolbar-fixed.toolbar-vertical.toolbar-tray-open.toolbar-fixed .toolbar-tra
   background: #ff7815;
   color: #fff;
 }
+@font-face {
+  font-family: 'TalkingToTheMoon';
+  src: url('../fonts/TalkingToTheMoon.ttf') format("truetype");
+}
+@font-face {
+  font-family: 'Asap-Bold';
+  src: url('../fonts/Asap-Bold.ttf') format("truetype");
+}
+@font-face {
+  font-family: 'Asap-Regular';
+  src: url('../fonts/Asap-Regular.ttf') format("truetype");
+}
 ol,
 ul {
   padding-left: 1.5em;
@@ -10004,9 +10019,106 @@ ul {
 }
 .footer {
   margin-top: 45px;
-  padding-top: 35px;
-  padding-bottom: 36px;
   border-top: 1px solid #E5E5E5;
+}
+.footer div.preFooter {
+  min-height: 150px;
+  padding-top: 15px;
+  background: url(../images/colorBarPreFooter.jpg) no-repeat 50% 100% #31342a;
+}
+.footer div.preFooter div.leftZone p {
+  color: #fff;
+  font-family: 'TalkingToTheMoon';
+  font-size: 1.6em;
+}
+.footer div.preFooter div.leftZone p span.icon_twt,
+.footer div.preFooter div.leftZone p span.icon_rss {
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+}
+.footer div.preFooter div.leftZone p span.icon_twt {
+  background: url(../images/icon_twt_footer.png) no-repeat 50% 100%;
+  background-size: 100%;
+}
+.footer div.preFooter div.leftZone p span.icon_rss {
+  background: url(../images/icon_rss_footer.png) no-repeat 50% 100%;
+  background-size: 100%;
+}
+.footer div.preFooter div.leftZone a.news {
+  padding: 10px 5px;
+  font-family: 'TalkingToTheMoon';
+  color: #fff;
+  width: 150px;
+  display: block;
+  text-align: center;
+  box-shadow: 1px 0px 8px #000;
+  background-color: #77ad1a;
+}
+.footer div.preFooter div.leftZone a.news:hover {
+  text-decoration: none;
+}
+.footer div.preFooter div.leftZone a.news:hover span {
+  text-decoration: underline;
+}
+.footer div.preFooter div.leftZone a.news span {
+  font-family: 'Asap-Bold';
+}
+.footer div.preFooter div.rightZone div.wrapperGris {
+  margin-top: -38px;
+  border: 1px solid #fff;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+  -webkit-box-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+  padding: 10px 1%;
+  background-color: #dfded8;
+}
+.footer div.preFooter div.rightZone div.wrapperGris div.logoBlock {
+  background: url(../images/logo_cg_aveyron.jpg) no-repeat 50% 50%;
+  height: 110px;
+}
+.footer div.preFooter div.rightZone div.wrapperGris div.infoBlock {
+  font-family: 'Asap-Regular';
+  margin-top: 10px;
+}
+.footer div.preFooter div.rightZone div.wrapperGris div.infoBlock p {
+  font-size: 0.9em;
+}
+.footer div.preFooter div.rightZone div.wrapperGris div.contactBlock {
+  background-color: #f3f5f2;
+  text-align: center;
+  padding: 10px 1%;
+  margin-top: 10px;
+}
+.footer div.preFooter div.rightZone div.wrapperGris div.contactBlock p {
+  padding: 0 20%;
+  font-size: 0.9em;
+  font-family: 'Asap-Regular';
+}
+.footer div.preFooter div.rightZone div.wrapperGris div.contactBlock p.preTitle {
+  padding: 0;
+  font-family: 'Asap-Bold';
+  font-size: 1.3em;
+  margin-bottom: 0;
+  text-transform: uppercase;
+}
+.footer div.footerAveyron {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #606257;
+  font-family: 'Asap-Regular';
+}
+.footer div.footerAveyron p.preTitle {
+  text-transform: uppercase;
+  color: #fff;
+  margin-bottom: 10px;
+}
+.footer div.footerAveyron a {
+  color: #fff;
+  width: 100%;
+  display: inline-block;
+  font-size: 0.9em;
+  margin-bottom: 2px;
 }
 p:last-child,
 .form-group:last-child,
@@ -10031,6 +10143,27 @@ p:last-child,
 .help-block:first-child,
 .control-group .help-inline:first-child {
   margin-top: 0;
+}
+@media (max-width: 992px) {
+  .footer div.preFooter {
+    padding-bottom: 25px;
+  }
+  .footer div.preFooter div.leftZone {
+    text-align: center;
+  }
+  .footer div.preFooter div.leftZone a.news {
+    margin: 0 auto;
+  }
+  .footer div.preFooter div.rightZone div.wrapperGris {
+    margin-top: 20px;
+  }
+  .footer div.footerAveyron {
+    padding-top: 60px;
+    text-align: center;
+  }
+  .footer div.footerAveyron div.block {
+    margin-bottom: 40px;
+  }
 }
 /*
 	Specific font for Homepage
@@ -10545,6 +10678,7 @@ body.path-frontpage section.wrapper div.fold5 button {
   margin-top: 50px;
 }
 body.path-frontpage section.wrapper div.fold6 {
+  margin-bottom: 90px;
   padding: 0 14%;
 }
 body.path-frontpage section.wrapper div.fold6 div.traitSpecial3 {
@@ -10559,14 +10693,20 @@ body.path-frontpage section.wrapper div.fold6 div.rightZone {
   padding-left: 6%;
 }
 body.path-frontpage section.wrapper div.fold6 div.rightZone h2 {
+  padding-bottom: 20px;
   text-transform: uppercase;
   font-family: 'Myriad Pro Light';
-  padding-right: 55%;
+  padding-right: 45%;
   font-size: 2.8em;
   color: #565656;
 }
 body.path-frontpage section.wrapper div.fold6 div.rightZone p {
+  padding-right: 32%;
   font-family: 'Proxima Nova Light';
+}
+body.path-frontpage section.wrapper div.fold6 div.leftZone button {
+  margin-left: 38%;
+  margin-top: 50px;
 }
 body.path-frontpage section.wrapper div.fold6 div.leftZone img {
   width: 100%;
@@ -10631,7 +10771,7 @@ body.path-frontpage section.wrapper div.fold6 div.leftZone div.secondHalf div.Sp
   }
   body.path-frontpage section.wrapper div.fold4 div.traitSpecial2 {
     left: 4.1%;
-    width: auto;
+    width: 300px;
     margin-top: -40px;
     background: url(../images/traitSpecial2_large.png) no-repeat 50% 50%;
   }
@@ -10653,6 +10793,15 @@ body.path-frontpage section.wrapper div.fold6 div.leftZone div.secondHalf div.Sp
   body.path-frontpage section.wrapper div.fold4 div.wrapperFold4 div.textZone {
     padding-right: 15px;
     padding-left: 16%;
+  }
+  body.path-frontpage section.wrapper div.fold6 div.rightZone {
+    margin-top: 20px;
+  }
+  body.path-frontpage section.wrapper div.fold6 div.rightZone h2 {
+    padding-right: 30%;
+  }
+  body.path-frontpage section.wrapper div.fold6 div.rightZone p {
+    padding-right: 10%;
   }
 }
 @media (max-width: 1500px) {
@@ -10682,6 +10831,15 @@ body.path-frontpage section.wrapper div.fold6 div.leftZone div.secondHalf div.Sp
     left: 5.5%;
     background: url(../images/traitSpecial2_medium.png) no-repeat 50% 50%;
   }
+  body.path-frontpage section.wrapper div.fold6 div.rightZone {
+    margin-top: 0;
+  }
+  body.path-frontpage section.wrapper div.fold6 div.rightZone h2 {
+    padding-right: 20%;
+  }
+  body.path-frontpage section.wrapper div.fold6 div.rightZone p {
+    padding-right: 0%;
+  }
 }
 @media (max-width: 1300px) {
   body.path-frontpage section.wrapper div.fold3 div.descroZone {
@@ -10689,6 +10847,9 @@ body.path-frontpage section.wrapper div.fold6 div.leftZone div.secondHalf div.Sp
   }
   body.path-frontpage section.wrapper div.fold4 div.wrapperFold4 {
     padding: 0 0;
+  }
+  body.path-frontpage section.wrapper div.fold6 {
+    padding: 0 3%;
   }
 }
 @media (width: 1200px) {
@@ -10794,6 +10955,27 @@ body.path-frontpage section.wrapper div.fold6 div.leftZone div.secondHalf div.Sp
   }
   body.path-frontpage section.wrapper div.fold5 div.videoRow div.rightZone iframe {
     height: 478px;
+  }
+  body.path-frontpage section.wrapper div.fold6 div.traitSpecial3 {
+    background: url(../images/traitSpecial2_droit.png) no-repeat 50% 50%;
+    margin: 0 auto;
+    margin-bottom: 40px;
+    margin-top: 35px;
+  }
+  body.path-frontpage section.wrapper div.fold6 div.leftZone {
+    text-align: center;
+    padding: 0 30%;
+    margin-bottom: 90px;
+  }
+  body.path-frontpage section.wrapper div.fold6 div.leftZone button {
+    margin-left: auto;
+  }
+  body.path-frontpage section.wrapper div.fold6 div.rightZone {
+    padding-left: 15px;
+    text-align: center;
+  }
+  body.path-frontpage section.wrapper div.fold6 div.rightZone h2 {
+    padding-right: 0;
   }
 }
 @media (max-width: 877px) {
@@ -10904,6 +11086,13 @@ body.path-frontpage section.wrapper div.fold6 div.leftZone div.secondHalf div.Sp
   body.path-frontpage section.wrapper div.fold5 div.videoRow div.leftZone iframe {
     height: 300px;
   }
+  body.path-frontpage section.wrapper div.fold6 div.leftZone {
+    padding: 0 70px;
+  }
+  body.path-frontpage section.wrapper div.fold6 div.leftZone button {
+    width: 100%;
+    font-size: 0.8em;
+  }
 }
 @media (max-width: 394px) {
   body.path-frontpage h1 {
@@ -10914,6 +11103,11 @@ body.path-frontpage section.wrapper div.fold6 div.leftZone div.secondHalf div.Sp
   }
   body.path-frontpage section.wrapper div.fold4 div.wrapperFold4 div.textZone h2 {
     font-size: 2.5em;
+  }
+  body.path-frontpage section.wrapper div.fold6 div.leftZone button {
+    width: 155%;
+    font-size: 0.7em;
+    margin-left: -30px;
   }
 }
 /*# sourceMappingURL=style.css.map */

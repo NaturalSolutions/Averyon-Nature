@@ -1,0 +1,14 @@
+<?php
+
+/**
+ * @file
+ * hook_footer module.
+ */
+
+/*
+	this function to add many variable for this specific template
+*/
+function hook_preprocess_region(&$variables){
+//function hook_preprocess_region__footer(&$variables){
+	$variables['toto'] = "caca";
+}
