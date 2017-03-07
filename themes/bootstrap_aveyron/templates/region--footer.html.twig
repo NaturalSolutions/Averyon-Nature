@@ -1,0 +1,60 @@
+{#
+/**
+ * @file
+ * Theme override to display a region.
+ *
+ * Available variables:
+ * - content: The content for this region, typically blocks.
+ * - attributes: HTML attributes for the region div.
+ * - region: The name of the region variable as defined in the theme's
+ *   .info.yml file.
+ *
+ * @ingroup templates
+ *
+ * @see template_preprocess_region()
+ */
+#}
+
+<div class="row preFooter">
+	<div class="container">
+		<div class="col-md-6 leftZone">
+			<p>Suivez-nous <span class="icon_twt"></span><span class="icon_rss"></span></p>
+			<a href="#" class="news">Newsletter<br/><span>Inscrivez-vous !</span></a>
+		</div>
+		<div class="col-md-6 rightZone">
+			<div class="row wrapperGris">
+				<div class="col-sm-2 logoBlock"></div>
+				<div class="col-sm-4 infoBlock">
+					{{ infoFooter.address[0].field_infos_gris_value|raw }}
+				</div>
+				<div class="col-sm-6 contactBlock">
+					<p class="preTitle">Contactez-nous </p>
+					<p>Retrouvez l’annuaire de tous nos services</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row footerAveyron">
+	<div class="container">
+		<div class="col-md-3 block">
+			<p class="preTitle">navigation</p>
+			{% for link in infoFooter.links %}
+			    <a href="{{ link.link__uri }}">{{ link.title }}</a>
+			{% endfor %}
+
+		</div>
+		<div class="col-md-3 block">
+			<p class="preTitle">informations</p>
+			{{ infoFooter.infos[0].field_footer_zone_information_value|raw }}
+		</div>
+		<div class="col-md-3 block">
+			<p class="preTitle">partenaires</p>
+			{{ infoFooter.parts[0].field_footer_zone_partenaires_value|raw }}
+		</div>
+		<div class="col-md-3 block">
+			<p class="preTitle">liens</p>
+			{{ infoFooter.external[0].field_footer_zone_liens_value|raw }}
+		</div>
+	</div>
+</div>
