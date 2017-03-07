@@ -24,7 +24,7 @@ function layer_leaflet_leaflet_map_info() {
     'settings' => $default_settings,
     'layers' => array(
       'layer' => array(
-        'urlTemplate' => '//wxs.ign.fr/keivyuqi9olxo91z3g5xvh5z/geoportail/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=GEOGRAPHICALGRIDSYSTEMS.MAPS&STYLE=normal&TILEMATRIXSET=PM&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}&FORMAT=image%2Fjpeg',
+        'urlTemplate' => '//wxs.ign.fr/q4f3fb4nf3i3kc8ackm8z464/geoportail/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=GEOGRAPHICALGRIDSYSTEMS.MAPS&STYLE=normal&TILEMATRIXSET=PM&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}&FORMAT=image%2Fjpeg',
         'options' => array(
           'attribution' => 'Carte IGN',
           'detectRetina' => TRUE,
