@@ -18,6 +18,21 @@
 // jQuery UI style overrides.
 @import "jquery-ui/autocomplete";
 
+@font-face {
+  font-family: 'TalkingToTheMoon';
+  src: url('../fonts/TalkingToTheMoon.ttf') format("truetype");
+}
+
+@font-face {
+  font-family: 'Asap-Bold';
+  src: url('../fonts/Asap-Bold.ttf') format("truetype");
+}
+
+@font-face {
+  font-family: 'Asap-Regular';
+  src: url('../fonts/Asap-Regular.ttf') format("truetype");
+}
+
 ol, ul {
   padding-left: 1.5em;
   .popover &:last-child {
@@ -33,9 +48,110 @@ ol, ul {
 // Footer.
 .footer {
   margin-top: 45px;
-  padding-top: 35px;
-  padding-bottom: 36px;
   border-top: 1px solid #E5E5E5;
+  div.preFooter{
+    min-height: 150px;
+    padding-top: 15px;
+    background: url(../images/colorBarPreFooter.jpg) no-repeat 50% 100% @bg-preFooter-aveyron;
+    div.leftZone{
+      p{
+        color: #fff;
+        font-family: 'TalkingToTheMoon';
+        font-size: 1.6em;
+        span.icon_twt,
+        span.icon_rss{
+          display: inline-block;
+          height: 20px;
+          width: 20px;
+        }
+        span.icon_twt{
+          background: url(../images/icon_twt_footer.png) no-repeat 50% 100%;
+          background-size: 100%;
+        }
+        span.icon_rss{
+          background: url(../images/icon_rss_footer.png) no-repeat 50% 100%;
+          background-size: 100%;
+        }
+      }
+      a.news{
+        padding: 10px 5px;
+        font-family: 'TalkingToTheMoon';
+        color: #fff;
+        width: 150px;
+        display: block;
+        text-align: center;
+        box-shadow: 1px 0px 8px #000;
+        background-color: @color-btn-news-preFooter-aveyron;
+        &:hover{
+          text-decoration: none;
+          span{
+            text-decoration: underline;
+          }
+        }
+        span{
+          font-family: 'Asap-Bold';
+        }
+      }
+    }
+    div.rightZone{
+      div.wrapperGris{
+        margin-top: -38px;
+        border: 1px solid #fff;
+        box-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+        -webkit-box-box-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+        -moz-box-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+        padding: 10px 1%;
+        background-color: @bg-wrapperBlock-preFooter-aveyron;
+        div.logoBlock{
+          background: url(../images/logo_cg_aveyron.jpg) no-repeat 50% 50%;
+          height: 110px;
+        }
+        div.infoBlock{
+          font-family: 'Asap-Regular';
+          margin-top: 10px;
+          p{
+            font-size: 0.9em;
+          }
+        }
+        div.contactBlock{
+          background-color: @bg-btn-preFooter-aveyron;
+          text-align: center;
+          padding: 10px 1%;
+          margin-top: 10px;
+          p{
+            padding: 0 20%;
+            font-size: 0.9em;
+            font-family: 'Asap-Regular';
+            &.preTitle{
+              padding: 0;
+              font-family: 'Asap-Bold';
+              font-size: 1.3em;
+              margin-bottom: 0;
+              text-transform: uppercase;
+            }
+          }
+        }
+      }
+    }
+  }
+  div.footerAveyron{
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: @bg-footer-aveyron;
+    font-family: 'Asap-Regular';
+    p.preTitle{
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    a{
+      color: #fff;
+      width: 100%;
+      display: inline-block;
+      font-size: 0.9em;
+      margin-bottom: 2px;
+    }
+  }
 }
 
 // Paragraphs.
@@ -65,5 +181,31 @@ p:last-child,
   padding: 0;
   &:first-child {
     margin-top: 0;
+  }
+}
+
+
+//- de 992
+@media (max-width: @screen-md-min) {
+  .footer {
+    div.preFooter {
+      padding-bottom: 25px;
+      div.leftZone{
+        text-align: center;
+        a.news{
+          margin: 0 auto;
+        }
+      }
+      div.rightZone div.wrapperGris{
+        margin-top: 20px;
+      }
+    }
+    div.footerAveyron{
+      padding-top: 60px;
+      text-align: center;
+      div.block{
+        margin-bottom: 40px;
+      }
+    }
   }
 }

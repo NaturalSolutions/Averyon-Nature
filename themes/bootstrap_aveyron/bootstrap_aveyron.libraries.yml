@@ -28,6 +28,6 @@ swiper:
     scripts/swiper/swiper.min.js: {}
 
 script-hp:
-  version: 1.x  
+  version: 1.x
   js:
     scripts/script-hp.js: {}

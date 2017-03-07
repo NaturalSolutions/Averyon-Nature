@@ -1,4 +1,4 @@
-jQuery( document ).ready(function() {  
+jQuery( document ).ready(function() {
 
 
     var startGallery = function(){
@@ -27,7 +27,7 @@ jQuery( document ).ready(function() {
 
         // Pour chaque bloc on va calculer la distance et l'insérer et l'afficher
         jQuery('.latLon').each(function(index, el) {
-            
+
             var coordEns = jQuery(this);
             coordEns = coordEns.html();
 
@@ -44,13 +44,13 @@ jQuery( document ).ready(function() {
         function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
             var R = 6371; // Radius of the earth in km
             var dLat = deg2rad(lat2-lat1);  // deg2rad below
-            var dLon = deg2rad(lon2-lon1); 
-            var a = 
+            var dLon = deg2rad(lon2-lon1);
+            var a =
             Math.sin(dLat/2) * Math.sin(dLat/2) +
-            Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
+            Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
             Math.sin(dLon/2) * Math.sin(dLon/2)
-            ; 
-            var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+            ;
+            var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
             var d = R * c; // Distance in km
             return d;
         }
@@ -120,7 +120,7 @@ jQuery( document ).ready(function() {
     var checkHeader = function(){
 
         jQuery(window).scroll(function (event) {
-            
+
             var scroll = jQuery(window).scrollTop();
             var btnMenu = jQuery('div.navbar-header button');
 
@@ -164,7 +164,7 @@ jQuery( document ).ready(function() {
     }
 
     var toggleMobileDisplay = function(isMobile, fromResize){
-        
+
         if(isMobile){
 
             jQuery("div.fold3 div.map").addClass('hidden');
@@ -178,7 +178,7 @@ jQuery( document ).ready(function() {
 
             if(!fromResize){
 
-                setInterval(function(){ 
+                setInterval(function(){
 
                     // Get id ens showed
                     var ensShowed = jQuery("div.fold3 div.descroZone > div").not(".hidden").attr('class');
@@ -203,10 +203,10 @@ jQuery( document ).ready(function() {
     }
 
     var startAutoFocusThematikFold4 = function(){
-        
+
         var cpt = 1;
-        
-        setInterval(function(){ 
+
+        setInterval(function(){
             if(cpt > 3) cpt = 0;
 
                 jQuery('div.fold4 div.textZone div.blockInTextZone').each(function(index, el) {
@@ -222,7 +222,7 @@ jQuery( document ).ready(function() {
     }
 
     var checkWidthDevice = function(){
-        
+
         //detect the width on page load
         var current_width = jQuery(window).width();
         var isMobile;
@@ -265,7 +265,7 @@ jQuery( document ).ready(function() {
 
                 // Specify hovered status for the hovered block
                 jQuery(this).addClass('isHovered');
-                
+
                 // Get name of the thematique hovered
                 var nameThematik = jQuery(this).attr('class').split(' ')[2].split('row')[1];
 
@@ -275,12 +275,11 @@ jQuery( document ).ready(function() {
             }
 
         }, function() {
-            
+
 
         });
 
     }
-
 
     window.init = function() {
 
@@ -293,6 +292,6 @@ jQuery( document ).ready(function() {
 
     }
 
-    init(); // true 
+    init(); // true
 
 });
