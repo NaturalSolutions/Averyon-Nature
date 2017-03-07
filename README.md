@@ -16,6 +16,8 @@
 [honeypot 8.x-1.23](https://ftp.drupal.org/files/projects/honeypot-8.x-1.23.zip)  
 [xmlsitemap 8.x-1.0-alpha2](https://ftp.drupal.org/files/projects/xmlsitemap-8.x-1.0-alpha2.zip)  
 [Geofield 8.x-1.0-alpha2](https://ftp.drupal.org/files/projects/geofield-8.x-1.0-alpha2.zip)
+[Leaflet 8.x-1.0-beta1](https://ftp.drupal.org/files/projects/leaflet-8.x-1.0-beta1.zip)
+
 
 ## Installation de la dépendance geoPhp pour le module geofield
 Le tag --ignore-platform-reqs permet d'ignorer la version de php.
@@ -28,7 +30,17 @@ Executer cette commande à la racine du projet
 # Documentation
 [Documentation officiel D8](https://www.drupal.org/docs/8)  
 [Convention de nommage](https://www.drupal.org/node/318)  
-[Drupal Bootstrap Documentation](http://drupal-bootstrap.org/api/bootstrap)  
+[Drupal Bootstrap Documentation](http://drupal-bootstrap.org/api/bootstrap)
+
+## Fond de carte IGN
+Pré-requis :
+- Installer le module contrib Geofield et Leaflet
+- Installer le module custom layer_leaflet
+
+Créer un affichage de type map :
+- Ajouter un champ de type geofield
+- Dans "Gérer l'affichage" du champ, choisissez le format "Leaflet Map" puis sélectionner dans les paramètres le type de "Carte Leaflet" IGN GRIDSYSTEM.
+
 
 # Some tips
 
