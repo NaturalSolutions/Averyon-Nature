@@ -14,6 +14,7 @@
  * @see template_preprocess_region()
  */
 #}
+
 <div class="row preFooter">
 	<div class="container">
 		<div class="col-md-6 leftZone">
@@ -24,13 +25,7 @@
 			<div class="row wrapperGris">
 				<div class="col-sm-2 logoBlock"></div>
 				<div class="col-sm-4 infoBlock">
-					<p>
-						Hôtel du Département<br/>
-						Place Charles de Gaulle<br/>
-						BP 724<br/>
-						12007 RODEZ Cedex<br/>
-						Tél : 05 65 75 80 00
-					</p>
+					{{ infoFooter.address[0].field_infos_gris_value|raw }}
 				</div>
 				<div class="col-sm-6 contactBlock">
 					<p class="preTitle">Contactez-nous </p>
@@ -40,37 +35,26 @@
 		</div>
 	</div>
 </div>
-<pre>{{  dump(toto) }}</pre>
 <div class="row footerAveyron">
 	<div class="container">
 		<div class="col-md-3 block">
-			<p class="preTitle">navigation ss {{ toto }}</p>
-			<a href="">Accueil</a>
-			<a href="">Liste des ENS</a>
-			<a href="">Carte</a>
-			<a href="">Evenements</a>
-			<a href="">Gallerie</a>
+			<p class="preTitle">navigation</p>
+			{% for link in infoFooter.links %}
+			    <a href="{{ link.link__uri }}">{{ link.title }}</a>
+			{% endfor %}
+
 		</div>
 		<div class="col-md-3 block">
 			<p class="preTitle">informations</p>
-			<a href="">Nous rejoindre</a>
-			<a href="">Mentions légales</a>
-			<a href="">Plan du site</a>
+			{{ infoFooter.infos[0].field_footer_zone_information_value|raw }}
 		</div>
 		<div class="col-md-3 block">
 			<p class="preTitle">partenaires</p>
-			<a href="">partenaire 1</a>
-			<a href="">partenaire 2</a>
-			<a href="">partenaire 3</a>
+			{{ infoFooter.parts[0].field_footer_zone_partenaires_value|raw }}
 		</div>
 		<div class="col-md-3 block">
 			<p class="preTitle">liens</p>
-			<a href="">Liens sortant 1</a>
-			<a href="">Liens sortant 2</a>
-			<a href="">Liens sortant 3</a>
-			<a href="">Liens sortant 4</a>
-			<a href="">Liens sortant 5</a>
+			{{ infoFooter.external[0].field_footer_zone_liens_value|raw }}
 		</div>
 	</div>
 </div>
-
