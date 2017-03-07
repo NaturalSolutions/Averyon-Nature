@@ -1,0 +1,10 @@
+name: Add map base for leaflet
+description: Add map base with the Leaflet mapping library
+package: Custom
+author: Natural Solutions
+type: module
+version: 1.0
+core: 8.x
+
+dependencies:
+- leaflet
