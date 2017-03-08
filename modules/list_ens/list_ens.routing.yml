@@ -1,0 +1,7 @@
+list_ens.content:
+  path: 'list-ens'
+  defaults:
+    _controller: '\Drupal\list_ens\Controller\list_ensController::content'
+    _title: 'Les espaces naturels'
+  requirements:
+    _access: 'TRUE'

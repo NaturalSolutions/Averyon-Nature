@@ -1,0 +1,7 @@
+name: Liste des ENS
+type: module
+description: Liste des ENS
+author: Natural Solutions
+package: Custom
+version: 1.0
+core: 8.x
