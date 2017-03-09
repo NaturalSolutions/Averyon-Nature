@@ -1,5 +1,5 @@
 list_ens.content:
-  path: 'list-ens'
+  path: 'les-espaces-naturels'
   defaults:
     _controller: '\Drupal\list_ens\Controller\list_ensController::content'
     _title: 'Les espaces naturels'

@@ -117,19 +117,7 @@ jQuery( document ).ready(function() {
 
     }
 
-    var checkHeader = function(){
 
-        jQuery(window).scroll(function (event) {
-
-            var scroll = jQuery(window).scrollTop();
-            var btnMenu = jQuery('div.navbar-header button');
-
-            if(parseInt(scroll) > 0 ) btnMenu.addClass('reduce');
-            else if(parseInt(scroll) == 0) btnMenu.removeClass('reduce');
-
-        });
-
-    };
 
     var toggleShowHideEnsFold3 = function(){
 
@@ -285,7 +273,6 @@ jQuery( document ).ready(function() {
 
         startGallery();
         displayLocationFold2();
-        checkHeader();
         toggleShowHideEnsFold3();
         checkWidthDevice();
         toggleShowHideFold4();

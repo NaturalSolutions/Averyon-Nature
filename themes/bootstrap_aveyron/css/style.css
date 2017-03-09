@@ -11113,10 +11113,7 @@ body.path-frontpage section.wrapper div.fold6 div.leftZone div.secondHalf div.Sp
     margin-left: -30px;
   }
 }
-body.path-list-ens div.main-container {
-  padding: 0;
-}
-body.path-list-ens h1 {
+body.path-les-espaces-naturels h1 {
   font-family: 'Viper Nora';
   position: absolute;
   top: 250px;
@@ -11131,10 +11128,17 @@ body.path-list-ens h1 {
   line-height: 80px;
   letter-spacing: 2px;
 }
-body.path-list-ens div.wrapper {
+body.path-les-espaces-naturels div.main-container section {
   padding: 0;
 }
-body.path-list-ens div.wrapper div.fold1 img {
+body.path-les-espaces-naturels div.main-container section div.wrapper {
+  margin-top: -134px;
+  /* padding: 0; */
+}
+body.path-les-espaces-naturels div.main-container section div.wrapper div.fold1 div.noPadding {
+  padding: 0 ;
+}
+body.path-les-espaces-naturels div.main-container section div.wrapper div.fold1 div.noPadding img {
   width: 100%;
 }
 /*# sourceMappingURL=style.css.map */

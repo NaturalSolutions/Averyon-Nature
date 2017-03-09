@@ -1,6 +1,6 @@
 name: Liste des ENS
 type: module
-description: Liste des ENS
+description: Créer la page "Les espaces naturels"
 author: Natural Solutions
 package: Custom
 version: 1.0
