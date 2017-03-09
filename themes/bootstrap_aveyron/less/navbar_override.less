@@ -1,5 +1,5 @@
 //
-// Oveeride version of Navbars.less file from bootstrap 
+// Oveeride version of Navbars.less file from bootstrap
 // -----------------------------------------------------
 
 /*
@@ -57,7 +57,7 @@
   &:extend(.clearfix all);
   -webkit-overflow-scrolling: touch;
   &.in {
-    overflow-y: auto;    
+    overflow-y: auto;
   }
   */
 
@@ -68,8 +68,8 @@
     box-shadow: none;
     max-height: none;
     */
-    &.collapse { 
-      
+    &.collapse {
+
       /*
       display: block !important;
       height: auto !important;
@@ -77,10 +77,10 @@
       overflow: visible !important;
       */
       &.in{
-        .region-navigation-collapsible{          
-          .translate(0; 0);           
-        } 
-        /* display: block !important;    
+        .region-navigation-collapsible{
+          .translate(0; 0);
+        }
+        /* display: block !important;
         height: 0 !important;     */
       }
     }
@@ -101,15 +101,15 @@
   }
   &.collapsing{
     overflow: visible;
-    .region-navigation-collapsible{          
-      .translate(0; 0);           
-    }    
+    .region-navigation-collapsible{
+      .translate(0; 0);
+    }
   }
-  
+
   .region-navigation-collapsible{
     .transition(transform 0.2s);
     .translate(-100%; 0);
-    background-color: @navbar-collapsed-bg-aveyron;    
+    background-color: @navbar-collapsed-bg-aveyron;
     background-size: 150px;
     width: 350px;
     position: fixed;
@@ -118,7 +118,7 @@
     padding-top: 270px;
     background-image: url(../images/logo_aveyron.png);
     background-repeat: no-repeat;
-    background-position: 50% @navbar-item-padding-left-aveyron;  
+    background-position: 50% @navbar-item-padding-left-aveyron;
   }
   //- de 992px
   @media (max-width: @screen-md-min) {
@@ -141,9 +141,9 @@
   @media (max-width: @screen-xs-min) {
     .region-navigation-collapsible{
       width: 100%;
-    }    
+    }
   }
-  
+
 }
 /*
 .navbar-fixed-top,
@@ -256,7 +256,7 @@
     color: #fff;
     position: absolute;
     top: 7px;
-    right: 9px; 
+    right: 9px;
   }
   /*
   position: relative;
@@ -275,7 +275,7 @@
     outline: 0;
   }
 
-  // Bars 
+  // Bars
   .icon-bar {
     display: block;
     width: 22px;
@@ -290,7 +290,7 @@
     //display: none;
     display: block;
     z-index: 0;
-  }  
+  }
 }
 /*
 
@@ -300,7 +300,7 @@
 // the nav the full height of the horizontal nav (above 768px).
 */
 .in .navbar-nav {
- 
+
 }
 .navbar-nav {
   //- de 480px
@@ -380,7 +380,7 @@
         color: transparent !important;
         width: 45px;
       }
-    } 
+    }
     &:nth-child(8){
       background-image: url(../images/menu/icon_fb.png);
       &:hover{
@@ -395,11 +395,11 @@
       }
     }
     & > a{
-      
+
       color: @navbar-default-color;
       padding-left: @navbar-padding-left-aveyron;
       text-transform: uppercase;
-      
+
       &:hover,
       &:focus {
         color: @navbar-default-link-hover-color;
@@ -407,7 +407,7 @@
         font-weight: 600;
       }
     }
-  } 
+  }
   /*
   margin: (@navbar-padding-vertical / 2) -@navbar-padding-horizontal;
 
@@ -445,14 +445,14 @@
   // Uncollapse the nav
   @media (min-width: @grid-float-breakpoint) {
     float: left;
-    margin: 0; 
-    
+    margin: 0;
+
     > li {
-     
-            
-      
+
+
+
     }
-    
+
   }
     */
 }
@@ -572,8 +572,12 @@
 // --------------------------------------------------
 */
 // Default navbar
-  
+
 .navbar-default {
+
+  > div{
+    padding: 0;
+  }
   /*
   background-color: @navbar-default-bg;
   border-color: @navbar-default-border;
@@ -591,14 +595,14 @@
     color: @navbar-default-color;
   }
 
-  
+
   .navbar-nav {
-   
+
     > li > a {
-      
+
     }
     /*
-    > .active > a { 
+    > .active > a {
       &,
       &:hover,
       &:focus {
@@ -613,7 +617,7 @@
         color: @navbar-default-link-disabled-color;
         background-color: @navbar-default-link-disabled-bg;
       }
-  
+
   }
 }
   /*

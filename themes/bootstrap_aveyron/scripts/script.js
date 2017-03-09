@@ -1,5 +1,19 @@
 jQuery( document ).ready(function() {
 
+  var checkHeader = function(){
+
+      jQuery(window).scroll(function (event) {
+
+          var scroll = jQuery(window).scrollTop();
+          var btnMenu = jQuery('div.navbar-header button');
+
+          if(parseInt(scroll) > 0 ) btnMenu.addClass('reduce');
+          else if(parseInt(scroll) == 0) btnMenu.removeClass('reduce');
+
+      });
+
+  };
+
   var toggleNavbar = function(){
 
   	jQuery(document).click(function(event) {
@@ -25,6 +39,7 @@ jQuery( document ).ready(function() {
 
   window.init = function() {
     toggleNavbar();
+    checkHeader();
   }
 
   init(); // true

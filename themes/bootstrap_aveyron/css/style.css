@@ -6561,7 +6561,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   &:extend(.clearfix all);
   -webkit-overflow-scrolling: touch;
   &.in {
-    overflow-y: auto;    
+    overflow-y: auto;
   }
   */
 }
@@ -6597,7 +6597,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
       */
   }
   .navbar-collapse.collapse.in {
-    /* display: block !important;    
+    /* display: block !important;
         height: 0 !important;     */
   }
   .navbar-collapse.collapse.in .region-navigation-collapsible {
@@ -6772,7 +6772,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
     outline: 0;
   }
 
-  // Bars 
+  // Bars
   .icon-bar {
     display: block;
     width: 22px;
@@ -6842,14 +6842,14 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   // Uncollapse the nav
   @media (min-width: @grid-float-breakpoint) {
     float: left;
-    margin: 0; 
-    
+    margin: 0;
+
     > li {
-     
-            
-      
+
+
+
     }
-    
+
   }
     */
 }
@@ -7089,14 +7089,14 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
     color: @navbar-default-color;
   }
 
-  
+
   .navbar-nav {
-   
+
     > li > a {
-      
+
     }
     /*
-    > .active > a { 
+    > .active > a {
       &,
       &:hover,
       &:focus {
@@ -7111,7 +7111,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
         color: @navbar-default-link-disabled-color;
         background-color: @navbar-default-link-disabled-bg;
       }
-  
+
   }
 }
   /*
@@ -7328,6 +7328,9 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
     }
   }
 */
+}
+.navbar-default > div {
+  padding: 0;
 }
 .navbar-default .navbar-toggle {
   position: relative;
@@ -11109,5 +11112,33 @@ body.path-frontpage section.wrapper div.fold6 div.leftZone div.secondHalf div.Sp
     font-size: 0.7em;
     margin-left: -30px;
   }
+}
+body.path-les-espaces-naturels h1 {
+  font-family: 'Viper Nora';
+  position: absolute;
+  top: 250px;
+  z-index: 2;
+  left: 0;
+  color: #fff;
+  text-align: center;
+  width: 100%;
+  border: 0;
+  padding: 0px 20%;
+  font-size: 4em;
+  line-height: 80px;
+  letter-spacing: 2px;
+}
+body.path-les-espaces-naturels div.main-container section {
+  padding: 0;
+}
+body.path-les-espaces-naturels div.main-container section div.wrapper {
+  margin-top: -134px;
+  /* padding: 0; */
+}
+body.path-les-espaces-naturels div.main-container section div.wrapper div.fold1 div.noPadding {
+  padding: 0 ;
+}
+body.path-les-espaces-naturels div.main-container section div.wrapper div.fold1 div.noPadding img {
+  width: 100%;
 }
 /*# sourceMappingURL=style.css.map */
