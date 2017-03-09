@@ -15,7 +15,7 @@
 [geolocation 8.x-1.10](https://ftp.drupal.org/files/projects/geolocation-8.x-1.10.zip)  
 [honeypot 8.x-1.23](https://ftp.drupal.org/files/projects/honeypot-8.x-1.23.zip)  
 [xmlsitemap 8.x-1.0-alpha2](https://ftp.drupal.org/files/projects/xmlsitemap-8.x-1.0-alpha2.zip)  
-[Geofield 8.x-1.0-alpha2](https://ftp.drupal.org/files/projects/geofield-8.x-1.0-alpha2.zip)
+[Geofield 8.x-1.0-alpha2](https://ftp.drupal.org/files/projects/geofield-8.x-1.0-alpha2.zip)  
 [Leaflet 8.x-1.0-beta1](https://ftp.drupal.org/files/projects/leaflet-8.x-1.0-beta1.zip)
 
 
