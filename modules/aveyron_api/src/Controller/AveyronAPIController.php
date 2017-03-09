@@ -87,7 +87,7 @@ class AveyronAPIController extends ControllerBase {
         id => $itemId,
         vid => (int) $entity->vid->value,
         title => $entity->title->value,
-        startTrace => $geom->out('json'),
+        startTrace => $geom ? json_decode($geom->out('json'), true) : null,
         thumbnail => array(
           fid => $thumbnail->fid->value,
           url => file_create_url($thumbnail->uri->value),
