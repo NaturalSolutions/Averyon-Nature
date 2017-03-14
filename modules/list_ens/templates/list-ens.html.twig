@@ -3,8 +3,68 @@
 	<div class="row fold1">
 		<div class="col-lg-12 noPadding">
 			<img src="{{ data.imageOnTop.uri }}" alt="{{ data.imageOnTop.field_image_on_top_alt }}" title="{{ data.imageOnTop.field_image_on_top_title }}">
+
+			<div class="row buttonThematiqueRow">
+				<div class="col-lg-12">
+					<button class="btn btn-primary all selected">Tout</button>
+				{% for thematique in data.thematiques %}
+				    <button class="btn btn-primary {{thematique.title}} inverse">{{thematique.title}}</button>
+				{% endfor %}
+				</div>
+			</div>
+
+			<p class="arianne">Accueil > <b>les espaces naturels</b></p>
+
+		</div>
+	</div>
+
+	<div class="container ensContainer">
+			{% for ens in data.ensFold2 %}
+
+
+				{% if loop.first %}
+
+					<div class="row {{loop.index}}">
+						<div class="col-md-8">coucou</div><div class="col-md-4">moi</div>
+					</div>
+
+				{% elseif loop.index is divisibleby(7) %}
+
+						<div class="row {{loop.index}} twoENS">
+						{% if loop.index is even %}
+							<div class="col-md-8">coucou</div><div class="col-md-4">moi</div>
+						{% else %}
+							<div class="col-md-4">moi</div><div class="col-md-8">coucou</div>
+						{% endif %}
+						</div>
+
+				{% else %}
+
+					<div class="row {{loop.index}}">
+						<div class="col-md-4">1</div><div class="col-md-4">2</div><div class="col-md-4">3</div>
+					</div>
+
+				{% endif %}
+
+			{% endfor %}
 		</div>
 	</div>
 
 </div>
-<!-- <pre>{{  dump(data) }}</pre> -->
+<pre>{{  dump(data) }}</pre>
+
+<script>
+
+	var displayENS = function(thematique){
+
+		console.log("allENS", allENS);
+
+		//var hmltENS = '<div class="col-md-8"></div>'+
+
+		//$(".ensContainer").append(hmltENS);
+
+	}
+
+	var allENS = {{ data.ensFold2|json_encode()|raw }};
+	displayENS("all");
+</script>

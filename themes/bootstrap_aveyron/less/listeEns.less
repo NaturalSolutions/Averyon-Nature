@@ -2,7 +2,7 @@ body.path-les-espaces-naturels {
     h1 {
         font-family: 'Viper Nora';
         position: absolute;
-        top: 250px;
+        top: 94px;
         z-index: 2;
         left: 0;
         color: #fff;
@@ -25,6 +25,38 @@ body.path-les-espaces-naturels {
                         padding: 0 ;
                         img{
                             width: 100%;
+                        }
+                        div.buttonThematiqueRow{
+                            top: -110px;
+                            position: relative;
+                            text-align: center;
+                            button{
+                                margin: 0 0.3%;
+                                border: 0;
+                                text-transform: uppercase;
+                                &:not(.selected){
+                                    background-color: rgba(255,255,255,0.5);
+                                    background-color: rgba(255, 255, 255, 0.9);
+                                    border: 0;
+                                    &:hover{
+                                        background-color: @base-color-aveyron;
+                                    }
+                                }
+                            }
+                        }
+                        p.arianne{
+                            font-family: 'MyriadPro Regular';
+                            text-transform: uppercase;
+                            top: -80px;
+                            position: relative;
+                            padding-left: 2%;
+                            color: #f6f4f1;
+                            b{
+                                color: #fff;
+                                font-family: 'MyriadPro semiBold';
+                                font-weight: normal;
+                                letter-spacing: 1px;
+                            }
                         }
                     }
                 }
