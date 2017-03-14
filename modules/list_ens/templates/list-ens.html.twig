@@ -16,48 +16,57 @@
 			<p class="arianne">Accueil > <b>les espaces naturels</b></p>
 
 		</div>
-	</div>
+	</div> <!-- fin fold1 -->
 
 	<div class="container ensContainer">
+
+		<!-- <div class="row">
+
 			{% for ens in data.ensFold2 %}
 
+				to alter display sometimes
+				{% if loop.index is divisibleby(6) %}
 
-				{% if loop.first %}
-
-					<div class="row {{loop.index}}">
-						<div class="col-md-8">coucou</div><div class="col-md-4">moi</div>
-					</div>
-
-				{% elseif loop.index is divisibleby(7) %}
-
-						<div class="row {{loop.index}} twoENS">
-						{% if loop.index is even %}
-							<div class="col-md-8">coucou</div><div class="col-md-4">moi</div>
-						{% else %}
-							<div class="col-md-4">moi</div><div class="col-md-8">coucou</div>
-						{% endif %}
-						</div>
+						<div class="col-md-8 ens{{loop.index}} big">{{ens.title}}</div>
 
 				{% else %}
 
-					<div class="row {{loop.index}}">
-						<div class="col-md-4">1</div><div class="col-md-4">2</div><div class="col-md-4">3</div>
-					</div>
+					<div class="col-md-4 small">{{ens.title}}</div>
 
 				{% endif %}
 
 			{% endfor %}
-		</div>
-	</div>
 
-</div>
+		</div> -->
+	</div><!-- fin ensContainer -->
+
+</div> <!-- fin wrapper -->
 <pre>{{  dump(data) }}</pre>
 
 <script>
 
 	var displayENS = function(thematique){
 
-		console.log("allENS", allENS);
+		//console.log("allENS", allENS);
+
+		// get number of all ENS
+		var nbENS = allENS.length;
+
+		// calc a number of ENS with different displayed in front
+		var nbLongerENS = parseInt(nbENS / 5);
+
+		// calc number of row we'll display with 3 ENS by row and the special display each 5 ENS
+		var nbRowOfENS = parseInt(nbENS / 3);
+
+		console.log(nbRowOfENS);
+
+		allENS.forEach(function(ens) {
+
+
+
+		});
+
+
 
 		//var hmltENS = '<div class="col-md-8"></div>'+
 
