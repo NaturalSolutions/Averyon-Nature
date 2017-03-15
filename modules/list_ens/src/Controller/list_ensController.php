@@ -49,12 +49,19 @@ class list_ensController extends ControllerBase {
 		* FOLD 2 - Get ENS
 		*/
 
-		$query = db_query("select f.uri, s.field_poster_alt, s.field_poster_title, s.entity_id, s.revision_id from node_revision a
+		$query = db_query(
+			"
+			select f.uri, d.title as thematique, s.field_poster_alt, s.field_poster_title, s.entity_id, s.revision_id from node_revision a
 			join node_revision__field_poster s
 			on s.revision_id = a.vid
 			join file_managed f
 			on f.fid = s.field_poster_target_id
-			where a.revision_timestamp = (select max(z.revision_timestamp) from node_revision z where z.nid = a.nid);"
+			join node__field_thematique_ens t
+			on t.revision_id = s.revision_id
+			join node_field_data d
+			on d.nid = t.field_thematique_ens_target_id
+			where a.revision_timestamp = (select max(z.revision_timestamp) from node_revision z where z.nid = a.nid);
+			"
 		);
 
 		$picturesFold2 = $query->fetchAll();
