@@ -33,14 +33,12 @@ body.path-les-espaces-naturels {
                             button{
                                 margin: 0 0.3%;
                                 border: 0;
+                                background-color: rgba(255, 255, 255, 0.85);
                                 text-transform: uppercase;
-                                &:not(.selected){
-                                    background-color: rgba(255,255,255,0.5);
-                                    background-color: rgba(255, 255, 255, 0.9);
-                                    border: 0;
-                                    &:hover{
-                                        background-color: @base-color-aveyron;
-                                    }
+                                border: 0;
+                                &.selected, &:hover{
+                                    background-color: @base-color-aveyron;
+                                    color:white;
                                 }
                             }
                         }
@@ -60,7 +58,57 @@ body.path-les-espaces-naturels {
                         }
                     }
                 }
-                div.ensContainer{
+                div.container{
+                    .ens{
+                        position: relative;
+                        height: 400px;
+                        padding: 5px;
+                    }
+                    .bg{
+                        background-repeat: no-repeat!important;
+                        background-position: center!important;
+                        background-size: cover!important;
+                        height: 100%;
+                        width: 100%;
+                    }
+                    .abs{
+                        position: absolute;
+                        height: 100%;
+                        width: 100%;
+                        top: 0;
+                        left: 0;
+                        padding: inherit;
+                        a{
+                            height: 100%;
+                            width: 100%;
+                            text-align: center;
+                            display: flex;
+                            flex-direction: column;
+
+                            text-transform: uppercase;                        
+                            color : white;
+                            font-family: "Proxima Nova Regular";
+                            
+                            word-spacing: 5px;
+                            background: rgba(0,0,0, 0.1);
+                            transition: .3s ease background;
+                            &:hover,&:focus{
+                                text-decoration: none;
+                                background: none;
+                            }
+                            &>div{
+                                margin: auto;
+                            }
+                            h2{
+                                //generic?
+                                font-weight: 600;
+                            }
+                            span.distance{
+                                letter-spacing: 1px;
+                            }
+
+                        }
+                    }
                 }
             }
         }

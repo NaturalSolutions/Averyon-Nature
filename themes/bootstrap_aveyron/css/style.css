@@ -11147,16 +11147,14 @@ body.path-les-espaces-naturels div.main-container section div.wrapper div.fold1 
 }
 body.path-les-espaces-naturels div.main-container section div.wrapper div.fold1 div.noPadding div.buttonThematiqueRow button {
   margin: 0 0.3%;
-  border: 0;
+  background-color: rgba(255, 255, 255, 0.85);
   text-transform: uppercase;
-}
-body.path-les-espaces-naturels div.main-container section div.wrapper div.fold1 div.noPadding div.buttonThematiqueRow button:not(.selected) {
-  background-color: rgba(255, 255, 255, 0.5);
-  background-color: rgba(255, 255, 255, 0.9);
   border: 0;
 }
-body.path-les-espaces-naturels div.main-container section div.wrapper div.fold1 div.noPadding div.buttonThematiqueRow button:not(.selected):hover {
+body.path-les-espaces-naturels div.main-container section div.wrapper div.fold1 div.noPadding div.buttonThematiqueRow button.selected,
+body.path-les-espaces-naturels div.main-container section div.wrapper div.fold1 div.noPadding div.buttonThematiqueRow button:hover {
   background-color: #ff7815;
+  color: white;
 }
 body.path-les-espaces-naturels div.main-container section div.wrapper div.fold1 div.noPadding p.arianne {
   font-family: 'MyriadPro Regular';
@@ -11170,6 +11168,53 @@ body.path-les-espaces-naturels div.main-container section div.wrapper div.fold1 
   color: #fff;
   font-family: 'MyriadPro semiBold';
   font-weight: normal;
+  letter-spacing: 1px;
+}
+body.path-les-espaces-naturels div.main-container section div.wrapper div.container .ens {
+  position: relative;
+  height: 400px;
+  padding: 5px;
+}
+body.path-les-espaces-naturels div.main-container section div.wrapper div.container .bg {
+  background-repeat: no-repeat !important;
+  background-position: center!important;
+  background-size: cover!important;
+  height: 100%;
+  width: 100%;
+}
+body.path-les-espaces-naturels div.main-container section div.wrapper div.container .abs {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  padding: inherit;
+}
+body.path-les-espaces-naturels div.main-container section div.wrapper div.container .abs a {
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  text-transform: uppercase;
+  color: white;
+  font-family: "Proxima Nova Regular";
+  word-spacing: 5px;
+  background: rgba(0, 0, 0, 0.1);
+  transition: .3s ease background;
+}
+body.path-les-espaces-naturels div.main-container section div.wrapper div.container .abs a:hover,
+body.path-les-espaces-naturels div.main-container section div.wrapper div.container .abs a:focus {
+  text-decoration: none;
+  background: none;
+}
+body.path-les-espaces-naturels div.main-container section div.wrapper div.container .abs a > div {
+  margin: auto;
+}
+body.path-les-espaces-naturels div.main-container section div.wrapper div.container .abs a h2 {
+  font-weight: 600;
+}
+body.path-les-espaces-naturels div.main-container section div.wrapper div.container .abs a span.distance {
   letter-spacing: 1px;
 }
 /*# sourceMappingURL=style.css.map */
