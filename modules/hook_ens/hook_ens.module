@@ -2,7 +2,7 @@
 
 /**
  * @file
- * hook_hp module.
+ * hook_ens module.
  */
 
 /*
@@ -10,29 +10,93 @@
 */
 function hook_hp_preprocess_node__ens(&$variables){
 
+	// get current node ID
 	$node = \Drupal::routeMatch()->getParameter('node');
 
-	$picturesFold1 = getPicturesFold1($node->id());
-	$variables['picturesFold1'] = $node->id();
+	// get all data for the page
+	$data = getContent($node->id());
 
-	//set variables
+	//set variables, get them from twig template
+	$variables['data'] = $data;
 
 }
 
-function getPicturesFold1($nid){
+function getContent($nid){
 
+	$data = [];
+
+	/*
+	* Get picture on top for fold1
+	*/
 	$query = db_query("
-		SELECT f.uri, s.field_image_on_top_alt,
-		s.field_image_on_top_title
+		SELECT f.uri, p.field_poster_alt,
+		p.field_poster_title
 		from file_managed f
-		join node__field_image_on_top s
-		on f.fid = s.field_image_on_top_target_id
+		join node__field_poster p
+		on f.fid = p.field_poster_target_id
+		where p.entity_id = $nid
 	");
 
 	$pictureOnTop = $query->fetchAll();
 
-	//$ens->uri = entity_load('image_style', '470_par_750')->buildUrl($ens->uri);
-	$pictureOnTop[0]->uri = file_create_url($pictureOnTop[0]->uri);
-	return $pictureOnTop[0];
+	// Convert style image
+	$pictureOnTop[0]->uri = entity_load('image_style', '2000_par_600')->buildUrl($pictureOnTop[0]->uri);
+	//$pictureOnTop[0]->uri = file_create_url($pictureOnTop[0]->uri);
+
+	// add to global var data
+	$data['pictureOnTop'] = $pictureOnTop[0];
+
+	/*
+	* Get description
+	*/
+	$query = db_query("
+		SELECT b.body_value FROM node__body b where b.entity_id = ".$nid."
+	");
+
+	$descro = $query->fetchAll();
+
+	// add to global var data
+	$data['description'] = $descro[0];
+
+	/*
+	* Get videos
+	*/
+	$query = db_query("
+		SELECT v.field_video_ens_value FROM aveyron.node__field_video_ens v where v.entity_id = $nid
+	");
+
+	$videos = $query->fetchAll();
+
+	// add to global var data
+	$data['videos'] = $videos;
+
+
+
+	/*
+	* Get pictures's gallerie
+	*/
+	$query = db_query("
+		SELECT f.uri, g.field_gallery_alt,
+		g.field_gallery_title
+		from file_managed f
+		join node__field_gallery g
+		on f.fid = g.field_gallery_target_id
+		where g.entity_id = $nid
+	");
+
+	$pictures = $query->fetchAll();
+
+	foreach ($pictures as $key => $picture) {
+
+		$picture->uri = entity_load('image_style', '500_par_350')->buildUrl($picture->uri);
+
+	}
+
+	// add to global var data
+	$data['pictures'] = $pictures;
+
+
+
+	return $data;
 
 }

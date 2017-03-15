@@ -38,7 +38,7 @@ class list_ensController extends ControllerBase {
 		*/
 		$query = db_query("
 			SELECT n.title
-			FROM aveyron.node_field_data n
+			FROM node_field_data n
 			where n.type = 'thematique'
 		");
 
