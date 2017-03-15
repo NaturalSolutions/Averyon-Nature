@@ -56,13 +56,18 @@
 		var nbLongerENS = parseInt(nbENS / 5);
 
 		// calc number of row we'll display with 3 ENS by row and the special display each 5 ENS
-		var nbRowOfENS = parseInt(nbENS / 3);
+		var nbRowOfENS = parseInt((nbENS - nbLongerENS) / 3);
 
-		console.log(nbRowOfENS);
+		console.log("nbENS", nbENS);
+		console.log("nbRowOfENS", nbRowOfENS);
+		console.log("nbLongerENS", nbLongerENS);
 
+
+		var cptOfENS = 0;
 		allENS.forEach(function(ens) {
 
-
+			//For each ENS we'll ceate his block
+			var oneHtmlENS = "";
 
 		});
 
