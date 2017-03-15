@@ -3,8 +3,77 @@
 	<div class="row fold1">
 		<div class="col-lg-12 noPadding">
 			<img src="{{ data.imageOnTop.uri }}" alt="{{ data.imageOnTop.field_image_on_top_alt }}" title="{{ data.imageOnTop.field_image_on_top_title }}">
-		</div>
-	</div>
 
-</div>
-<!-- <pre>{{  dump(data) }}</pre> -->
+			<div class="row buttonThematiqueRow">
+				<div class="col-lg-12">
+					<button class="btn btn-primary all selected">Tout</button>
+				{% for thematique in data.thematiques %}
+				    <button class="btn btn-primary {{thematique.title}} inverse">{{thematique.title}}</button>
+				{% endfor %}
+				</div>
+			</div>
+
+			<p class="arianne">Accueil > <b>les espaces naturels</b></p>
+
+		</div>
+	</div> <!-- fin fold1 -->
+
+	<div class="container ensContainer">
+
+		<!-- <div class="row">
+
+			{% for ens in data.ensFold2 %}
+
+				to alter display sometimes
+				{% if loop.index is divisibleby(6) %}
+
+						<div class="col-md-8 ens{{loop.index}} big">{{ens.title}}</div>
+
+				{% else %}
+
+					<div class="col-md-4 small">{{ens.title}}</div>
+
+				{% endif %}
+
+			{% endfor %}
+
+		</div> -->
+	</div><!-- fin ensContainer -->
+
+</div> <!-- fin wrapper -->
+<pre>{{  dump(data) }}</pre>
+
+<script>
+
+	var displayENS = function(thematique){
+
+		//console.log("allENS", allENS);
+
+		// get number of all ENS
+		var nbENS = allENS.length;
+
+		// calc a number of ENS with different displayed in front
+		var nbLongerENS = parseInt(nbENS / 5);
+
+		// calc number of row we'll display with 3 ENS by row and the special display each 5 ENS
+		var nbRowOfENS = parseInt(nbENS / 3);
+
+		console.log(nbRowOfENS);
+
+		allENS.forEach(function(ens) {
+
+
+
+		});
+
+
+
+		//var hmltENS = '<div class="col-md-8"></div>'+
+
+		//$(".ensContainer").append(hmltENS);
+
+	}
+
+	var allENS = {{ data.ensFold2|json_encode()|raw }};
+	displayENS("all");
+</script>
