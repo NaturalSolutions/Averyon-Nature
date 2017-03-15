@@ -11172,4 +11172,34 @@ body.path-les-espaces-naturels div.main-container section div.wrapper div.fold1 
   font-weight: normal;
   letter-spacing: 1px;
 }
+body.path-les-espaces-naturels div.main-container section div.wrapper div.container .ens {
+  position: relative;
+  height: 300px;
+  padding: 5px;
+}
+body.path-les-espaces-naturels div.main-container section div.wrapper div.container .bg {
+  background-repeat: no-repeat !important;
+  background-position: center!important;
+  background-size: cover!important;
+  height: 100%;
+  width: 100%;
+}
+body.path-les-espaces-naturels div.main-container section div.wrapper div.container .abs {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: inherit;
+  box-sizing: border-box;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  width: 100%;
+  color: white;
+}
+body.path-les-espaces-naturels div.main-container section div.wrapper div.container .abs > div {
+  margin: auto;
+}
 /*# sourceMappingURL=style.css.map */
