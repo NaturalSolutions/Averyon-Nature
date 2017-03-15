@@ -4,6 +4,30 @@
  * Modify this file to override the Bootstrap Framework variables. You can copy
  * these variables directly from ../bootstrap/less/variables.less to this file.
  */
+@font-face {
+  font-family: 'Viper Nora';
+  src: url('../fonts/viper_nora.otf') format("opentype");
+}
+@font-face {
+  font-family: 'Proxima Nova Regular';
+  src: url('../fonts/Proxima Nova Regular.otf') format("opentype");
+}
+@font-face {
+  font-family: 'Proxima Nova Light';
+  src: url('../fonts/Proxima Nova Light.otf') format("opentype");
+}
+@font-face {
+  font-family: 'Proxima Nova Thin';
+  src: url('../fonts/ProximaNova-Thin_0.otf') format("opentype");
+}
+@font-face {
+  font-family: 'MyriadPro semiBold';
+  src: url('../fonts/MyriadPro-Semibold.otf') format("opentype");
+}
+@font-face {
+  font-family: 'MyriadPro Regular';
+  src: url('../fonts/Myriad Pro Regular.ttf') format("truetype");
+}
 /*
 //
 // Variables overriden
@@ -7089,32 +7113,6 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
     color: @navbar-default-color;
   }
 
-
-  .navbar-nav {
-
-    > li > a {
-
-    }
-    /*
-    > .active > a {
-      &,
-      &:hover,
-      &:focus {
-        color: @navbar-default-link-active-color;
-        background-color: @navbar-default-link-active-bg;
-      }
-    }
-    > .disabled > a {
-      &,
-      &:hover,
-      &:focus {
-        color: @navbar-default-link-disabled-color;
-        background-color: @navbar-default-link-disabled-bg;
-      }
-
-  }
-}
-  /*
   */
   /*
 
@@ -7331,6 +7329,31 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 }
 .navbar-default > div {
   padding: 0;
+}
+.navbar-default .navbar-nav {
+  /*> li > a {
+
+    }*/
+  /*
+    > .disabled > a {
+      &,
+      &:hover,
+      &:focus {
+        color: @navbar-default-link-disabled-color;
+        background-color: @navbar-default-link-disabled-bg;
+      }
+
+  }*/
+}
+.navbar-default .navbar-nav > .active > a {
+  color: #fff !important;
+  font-weight: bold;
+  /*&,
+      &:hover,
+      &:focus {
+        color: @navbar-default-link-active-color;
+        background-color: @navbar-default-link-active-bg;
+      }*/
 }
 .navbar-default .navbar-toggle {
   position: relative;
@@ -10171,30 +10194,6 @@ p:last-child,
 /*
 	Specific font for Homepage
 */
-@font-face {
-  font-family: 'Viper Nora';
-  src: url('../fonts/viper_nora.otf') format("opentype");
-}
-@font-face {
-  font-family: 'Proxima Nova Regular';
-  src: url('../fonts/Proxima Nova Regular.otf') format("opentype");
-}
-@font-face {
-  font-family: 'Proxima Nova Light';
-  src: url('../fonts/Proxima Nova Light.otf') format("opentype");
-}
-@font-face {
-  font-family: 'Proxima Nova Thin';
-  src: url('../fonts/ProximaNova-Thin_0.otf') format("opentype");
-}
-@font-face {
-  font-family: 'Myriad Pro semiBold';
-  src: url('../fonts/MyriadPro-Semibold.otf') format("opentype");
-}
-@font-face {
-  font-family: 'MyriadPro Light';
-  src: url('../fonts/MyriadPro-Light.otf') format("opentype");
-}
 body.path-frontpage h1 {
   font-family: 'Viper Nora';
   position: absolute;
@@ -10496,7 +10495,7 @@ body.path-frontpage section.wrapper div.fold3 div.map .pointEns.nidEns_22 {
   top: 233px;
 }
 body.path-frontpage section.wrapper div.fold3 div.map .pointEns a {
-  font-family: 'Myriad Pro semiBold';
+  font-family: 'MyriadPro semiBold';
   color: #484848;
   text-transform: uppercase;
   display: inline-block;
@@ -11116,7 +11115,7 @@ body.path-frontpage section.wrapper div.fold6 div.leftZone div.secondHalf div.Sp
 body.path-les-espaces-naturels h1 {
   font-family: 'Viper Nora';
   position: absolute;
-  top: 250px;
+  top: 94px;
   z-index: 2;
   left: 0;
   color: #fff;
@@ -11140,5 +11139,37 @@ body.path-les-espaces-naturels div.main-container section div.wrapper div.fold1 
 }
 body.path-les-espaces-naturels div.main-container section div.wrapper div.fold1 div.noPadding img {
   width: 100%;
+}
+body.path-les-espaces-naturels div.main-container section div.wrapper div.fold1 div.noPadding div.buttonThematiqueRow {
+  top: -110px;
+  position: relative;
+  text-align: center;
+}
+body.path-les-espaces-naturels div.main-container section div.wrapper div.fold1 div.noPadding div.buttonThematiqueRow button {
+  margin: 0 0.3%;
+  border: 0;
+  text-transform: uppercase;
+}
+body.path-les-espaces-naturels div.main-container section div.wrapper div.fold1 div.noPadding div.buttonThematiqueRow button:not(.selected) {
+  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 0;
+}
+body.path-les-espaces-naturels div.main-container section div.wrapper div.fold1 div.noPadding div.buttonThematiqueRow button:not(.selected):hover {
+  background-color: #ff7815;
+}
+body.path-les-espaces-naturels div.main-container section div.wrapper div.fold1 div.noPadding p.arianne {
+  font-family: 'MyriadPro Regular';
+  text-transform: uppercase;
+  top: -80px;
+  position: relative;
+  padding-left: 2%;
+  color: #f6f4f1;
+}
+body.path-les-espaces-naturels div.main-container section div.wrapper div.fold1 div.noPadding p.arianne b {
+  color: #fff;
+  font-family: 'MyriadPro semiBold';
+  font-weight: normal;
+  letter-spacing: 1px;
 }
 /*# sourceMappingURL=style.css.map */
