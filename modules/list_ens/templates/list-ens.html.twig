@@ -6,9 +6,13 @@
 
 			<div class="row buttonThematiqueRow">
 				<div class="col-lg-12">
-					<button class="btn btn-primary all selected">Tout</button>
+					<button class="js-btn-filter-ens btn btn-primary inverse selected" thematique="all">
+						Tout
+					</button>
 				{% for thematique in data.thematiques %}
-				    <button class="btn btn-primary {{thematique.title}} inverse">{{thematique.title}}</button>
+				    <button class="js-btn-filter-ens btn btn-primary inverse" thematique="{{thematique.title}}">
+				    	{{thematique.title}}
+				    </button>
 				{% endfor %}
 				</div>
 			</div>
@@ -18,41 +22,60 @@
 		</div>
 	</div> <!-- fin fold1 -->
 
+
 	<div class="container js-ens-container">
-
-
-		<div class="row">
 
 			{% for ens in data.ensFold2 %}
 				{% if loop.index == 1 or loop.index == 10 %}
-					<div class="ens col-md-8">
+					<div class="js-ens ens col-md-8" thematique="{{ens.thematique}}">
 				{% else %}
-					<div class="ens col-md-4">
+					<div class="js-ens ens col-md-4" thematique="{{ens.thematique}}">
 				{% endif %}
 						<div class="bg" style="background: url( {{ens.uri}} )">
 						</div>
-						<a class="abs" href="#">
+						<div class="abs">
+						<a href="#">
 							<div>
-								<h3>{{ens.title}}</h3>
-								<span class="distance"> KM</span>
+								<h2>{{ens.title}}</h2>
+								<span class="distance"> _ KM du départ</span>
 							</div>
 						</a>
+						</div>
 				</div>
 			{% endfor %}
 
-		</div>
-	</div><!-- fin ensContainer -->
+	</div>
 
 
 
 
 </div> <!-- fin wrapper -->
-<pre>{{  dump(data) }}</pre>
 
 <script>
 	document.addEventListener('DOMContentLoaded', function(event) {
 		var $ = jQuery;
-		var displayENS = function(thematique){
+
+		//quick & unoptimized
+		$('.js-btn-filter-ens').on('click', function(e){
+			$('.js-btn-filter-ens').each(function(){
+					$(this).removeClass('selected');
+			});
+			var thematique = $(e.currentTarget).attr('thematique');
+			$(e.currentTarget).addClass('selected');
+			$('.js-ens-container').find('.js-ens').each(function(){
+				if(thematique == 'all'){
+					$(this).removeClass('hide');
+					return;
+				}
+				if($(this).attr('thematique') === thematique){
+					$(this).removeClass('hide');
+				} else {
+					$(this).addClass('hide');
+				}
+			});
+		});
+
+/*		var displayENS = function(thematique){
 
 			// get number of all ENS
 			var nbENS = allENS.length;
@@ -63,7 +86,7 @@
 			var nbRowOfENS = parseInt((nbENS - nbLongerENS) / 3);
 			
 
-/*			allENS.forEach(function(ens, i) {
+			allENS.forEach(function(ens, i) {
 				var bg = ens;
 				var size = 'col-sm-4';
 				if(i === 0 || i === 9){
@@ -84,12 +107,12 @@
 				
 				$('.js-ens-container').append(ensTpl);
 
-			});*/
+			});
 
 		}
 
 		var allENS = {{ data.ensFold2|json_encode()|raw }};
-		displayENS("all");
+		displayENS("all");*/
 	  
 	});
 
