@@ -11172,4 +11172,46 @@ body.path-les-espaces-naturels div.main-container section div.wrapper div.fold1 
   font-weight: normal;
   letter-spacing: 1px;
 }
+body.page-node-type-ens h1 {
+  font-family: 'Viper Nora';
+  position: absolute;
+  top: 94px;
+  z-index: 2;
+  left: 0;
+  color: #fff;
+  text-align: center;
+  width: 100%;
+  border: 0;
+  padding: 0px 20%;
+  font-size: 4em;
+  line-height: 80px;
+  letter-spacing: 2px;
+}
+body.page-node-type-ens div.main-container section {
+  padding: 0;
+}
+body.page-node-type-ens div.main-container section div.wrapper {
+  /* margin-top: -134px; */
+  /* padding: 0; */
+}
+body.page-node-type-ens div.main-container section div.wrapper div.fold1 div.noPadding {
+  padding: 0 ;
+}
+body.page-node-type-ens div.main-container section div.wrapper div.fold1 div.noPadding img {
+  width: 100%;
+}
+body.page-node-type-ens div.main-container section div.wrapper div.fold1 div.noPadding p.arianne {
+  font-family: 'MyriadPro Regular';
+  text-transform: uppercase;
+  top: -80px;
+  position: relative;
+  padding-left: 2%;
+  color: #f6f4f1;
+}
+body.page-node-type-ens div.main-container section div.wrapper div.fold1 div.noPadding p.arianne b {
+  color: #fff;
+  font-family: 'MyriadPro semiBold';
+  font-weight: normal;
+  letter-spacing: 1px;
+}
 /*# sourceMappingURL=style.css.map */
