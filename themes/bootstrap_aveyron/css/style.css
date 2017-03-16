@@ -11259,4 +11259,7 @@ body.page-node-type-ens div.main-container section div.wrapper div.fold1 div.noP
   font-weight: normal;
   letter-spacing: 1px;
 }
+body.page-node-type-ens div.main-container section div.wrapper div.ensContainer #mapid {
+  height: 180px;
+}
 /*# sourceMappingURL=style.css.map */

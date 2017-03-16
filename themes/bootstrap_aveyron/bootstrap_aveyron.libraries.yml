@@ -27,7 +27,20 @@ swiper:
   js:
     scripts/swiper/swiper.min.js: {}
 
+leaflet:
+  version: 1.0.3
+  css:
+    theme:
+      css/leaflet/leaflet.css: {}
+  js:
+    scripts/leaflet/leaflet.js: {}
+
 script-hp:
   version: 1.x
   js:
     scripts/script-hp.js: {}
+
+script-ens:
+  version: 1.x
+  js:
+    scripts/script-ens.js: {}

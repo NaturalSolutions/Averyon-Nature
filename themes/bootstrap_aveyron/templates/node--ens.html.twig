@@ -66,6 +66,9 @@
  */
 #}
 
+{{ attach_library('bootstrap_aveyron/leaflet') }}
+{{ attach_library('bootstrap_aveyron/script-ens') }}
+
 <div class="container-fluid wrapper">
 
   <div class="row fold1">
@@ -81,6 +84,16 @@
 
     <pre>{{  dump(data) }}</pre>
 
+    <div id="mapid"></div>
+
   </div><!-- fin ensContainer -->
 
 </div> <!-- fin wrapper -->
+
+<script>
+
+  // encode data for use in js file (themes/bootstrap_aveyron/scripts/script-ens.js)
+  var geoDataStarterPoint = {{ data.depart|json_encode()|raw }};
+  var geoDataTracePoint = {{ data.trace|json_encode()|raw }};
+
+</script>
