@@ -170,6 +170,46 @@ function getContent($nid){
 	/*
 	* Get taxons
 	*/
+	$query = db_query("
+		SELECT d.title, d.nid, m.uri, p.field_poster_alt, p.field_poster_title
+		FROM node_field_data d
+		join node__field_taxa x
+		on x.field_taxa_target_id = d.nid
+		join node__field_poster p
+		on p.entity_id = d.nid
+		join file_managed m
+		on m.fid = p.field_poster_target_id
+		where x.entity_id = $nid
+	");
+
+	$taxons = $query->fetchAll();
+
+	foreach ($taxons as $key => $taxon) {
+
+		// Convert style
+		$taxon->uri = entity_load('image_style', '500_par_350')->buildUrl($taxon->uri);
+
+		// Get audio
+		$query1 = db_query("
+			SELECT f.uri
+			from file_managed f
+			join node__field_audio a
+			on f.fid = a.field_audio_target_id
+			where a.entity_id = ".$taxon->nid
+		);
+
+		$audioTaxon = $query1->fetchAll();
+
+		// add to var if song exist
+		if(isset($audioTaxon[0])) {
+			$taxon->audio = $audioTaxon[0]->uri;
+		}
+
+
+	}
+
+	// add to global var data
+	$data['taxons'] = $taxons;
 
 	return $data;
 
