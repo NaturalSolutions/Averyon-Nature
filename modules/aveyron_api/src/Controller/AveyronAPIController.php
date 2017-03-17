@@ -6,7 +6,7 @@
  */
 
 /*
-Exemple : 
+Exemple :
 http://192.168.0.114/aveyron-pierre/api/enss?conditions=[{%22field%22:%22nid%22,%22value%22:[2,4],%22operator%22:%22in%22}]
 */
 
@@ -78,7 +78,7 @@ class AveyronAPIController extends ControllerBase {
     $taxonIds = array();
     foreach ($entities as $entity) {
       $item = array();
-      $thumbnail = $entity->field_thumbnail->entity;
+      //$thumbnail = $entity->field_thumbnail->entity;
       $poster = $entity->field_poster->entity;
       $geom = \geoPHP::load($entity->field_start_trace->value,'wkt');
       $itemId = (int) $entity->nid->value;
@@ -88,11 +88,13 @@ class AveyronAPIController extends ControllerBase {
         vid => (int) $entity->vid->value,
         title => $entity->title->value,
         startTrace => $geom ? json_decode($geom->out('json'), true) : null,
+        /*
         thumbnail => array(
           fid => $thumbnail->fid->value,
           url => file_create_url($thumbnail->uri->value),
           filesize => $thumbnail->filesize->value,
         ),
+        */
         poster => array(
           fid => $poster->fid->value,
           url => file_create_url($poster->uri->value),
@@ -128,8 +130,19 @@ class AveyronAPIController extends ControllerBase {
       return new Response(null, 404);
     }
     $serializer = \Drupal::service('serializer');
-    $thumbnail = $entity->field_thumbnail->entity;
-    $poster = $entity->field_poster->entity;
+    /*$query = db_query("
+      SELECT f.uri, g.field_gallery_alt,
+      g.field_gallery_title
+      from file_managed f
+      join node__field_gallery g
+      on f.fid = g.field_gallery_target_id
+      where g.entity_id = $id limit 1"
+    );
+
+    $poster = $query->fetchAll();
+    $poster[0]->uri = entity_load('image_style', '500_par_350')->buildUrl($poster[0]->uri);
+    */
+
     $geom = \geoPHP::load($entity->field_start_trace->value,'wkt');
     $geomTrace = \geoPHP::load($entity->field_trace->value,'wkt');
     $result = array(
@@ -138,16 +151,15 @@ class AveyronAPIController extends ControllerBase {
       title => $entity->title->value,
       startPoint => json_decode($geom->out('json'), true),
       trace => json_decode($geomTrace->out('json'), true),
-      thumbnail => array(
+      /*poster => array(
+        url => $poster[0]->uri
+      ),*/
+      /*thumbnail => array(
         fid => $thumbnail->fid->value,
         url => file_create_url($thumbnail->uri->value),
         filesize => $thumbnail->filesize->value,
       ),
-      poster => array(
-        fid => $poster->fid->value,
-        url => file_create_url($poster->uri->value),
-        filesize => $poster->filesize->value,
-      ),
+      */
       description => $entity->body->value,
       descriptionShort => substr($entity->body->summary, 0, 255),
       gallery => array(),
@@ -232,17 +244,17 @@ class AveyronAPIController extends ControllerBase {
     $taxa = array();
     $serializer = \Drupal::service('serializer');
     foreach ($entities as $entity) {
-      $thumbnail = $entity->field_thumbnail->entity;
+      //$thumbnail = $entity->field_thumbnail->entity;
       $poster = $entity->field_poster->entity;
       $item = array(
         id => (int) $entity->nid->value,
         vid => (int) $entity->vid->value,
         title => $entity->title->value,
-        thumbnail => array(
+        /*thumbnail => array(
           fid => $thumbnail->fid->value,
           url => file_create_url($thumbnail->uri->value),
           filesize => $thumbnail->filesize->value,
-        ),
+        ),*/
         poster => array(
           fid => $poster->fid->value,
           url => file_create_url($poster->uri->value),

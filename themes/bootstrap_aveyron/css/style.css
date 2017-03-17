@@ -11146,9 +11146,10 @@ body.path-les-espaces-naturels div.main-container section div.wrapper div.fold1 
   min-height: 620px;
   background-repeat: no-repeat;
   background-position: 50% 50%;
-  background-size: cover;
   -webkit-background-size: cover;
   -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 body.path-les-espaces-naturels div.main-container section div.wrapper div.fold1 div.noPadding div.buttonThematiqueRow {
   width: 100%;
@@ -11314,7 +11315,6 @@ body.page-node-type-ens div.main-container section {
 body.page-node-type-ens div.main-container section div.wrapper {
   margin-top: -66px;
   margin-bottom: 50px;
-  /* padding: 0; */
 }
 body.page-node-type-ens div.main-container section div.wrapper div.fold1 div.noPadding {
   padding: 0 ;
@@ -11324,14 +11324,15 @@ body.page-node-type-ens div.main-container section div.wrapper div.fold1 div.noP
   min-height: 620px;
   background-repeat: no-repeat;
   background-position: 50% 50%;
-  background-size: cover;
   -webkit-background-size: cover;
   -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 body.page-node-type-ens div.main-container section div.wrapper div.fold1 div.noPadding p.arianne {
   font-family: 'MyriadPro Regular';
   text-transform: uppercase;
-  top: -80px;
+  top: -38px;
   position: relative;
   padding-left: 2%;
   color: #f6f4f1;

@@ -21,7 +21,6 @@
 		</div>
 	</div> <!-- fin fold1 -->
 
-
 	<div class="container js-ens-container">
 
 			{% for ens in data.ensFold2 %}
@@ -33,7 +32,7 @@
 						<div class="bg" style="background: url( {{ens.uri}} )">
 						</div>
 						<div class="abs">
-						<a href="#">
+						<a href="node/{{ens.entity_id}}">
 							<div>
 								<h2>{{ens.title}}</h2>
 								<span class="distance"> _ KM du départ</span>
