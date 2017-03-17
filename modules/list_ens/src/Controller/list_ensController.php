@@ -70,7 +70,7 @@ class list_ensController extends ControllerBase {
 
 			//Convert uri to the good style
 			if( $key == 0 )	$picture->uri = entity_load('image_style', '1000_par_700')->buildUrl($picture->uri);
-			else $picture->uri = entity_load('image_style', '500_par_350')->buildUrl($picture->uri);
+			else $picture->uri = entity_load('image_style', '760_par_400')->buildUrl($picture->uri);
 
 			//  get title
 			//	SELECT title FROM aveyron.node_field_data where vid = 1;

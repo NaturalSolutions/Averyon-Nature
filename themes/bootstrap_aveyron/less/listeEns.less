@@ -2,14 +2,14 @@ body.path-les-espaces-naturels {
     h1 {
         font-family: 'Viper Nora';
         position: absolute;
-        top: 94px;
+        top: 163px;
         z-index: 2;
         left: 0;
         color: #fff;
         text-align: center;
         width: 100%;
         border: 0;
-        padding: 0px 20%;
+        padding: 0px 2%;
         font-size: 4em;
         line-height: 80px;
         letter-spacing: 2px;
@@ -18,22 +18,30 @@ body.path-les-espaces-naturels {
         section{
             padding: 0;
             div.wrapper{
-                margin-top: -134px;
-                /* padding: 0; */
+                margin-top: -66px;
+                margin-bottom: 50px;
                 div.fold1{
                     div.noPadding{
                         padding: 0 ;
-                        img{
+                        div.imgOnTop{
                             width: 100%;
+                            min-height: 620px;
+                            background-repeat: no-repeat;
+                            background-position: 50% 50%;
+                            background-size: cover;
+                            -webkit-background-size: cover;
+                            -moz-background-size: cover;
                         }
                         div.buttonThematiqueRow{
-                            top: -110px;
+                            width: 100%;
+                            top: -100px;
+                            margin: 0;
                             position: relative;
                             text-align: center;
                             button{
-                                margin: 0 0.3%;
+                                margin: 0 5px;
                                 border: 0;
-                                background-color: rgba(255, 255, 255, 0.85);
+                                background-color: rgba(255, 255, 255, 0.9);
                                 text-transform: uppercase;
                                 border: 0;
                                 &.selected, &:hover{
@@ -85,10 +93,10 @@ body.path-les-espaces-naturels {
                             display: flex;
                             flex-direction: column;
 
-                            text-transform: uppercase;                        
+                            text-transform: uppercase;
                             color : white;
                             font-family: "Proxima Nova Regular";
-                            
+
                             word-spacing: 5px;
                             background: rgba(0,0,0, 0.1);
                             transition: .3s ease background;
@@ -98,18 +106,92 @@ body.path-les-espaces-naturels {
                             }
                             &>div{
                                 margin: auto;
+                                padding: 0 15px;
                             }
                             h2{
                                 //generic?
+                                font-family: "Proxima Nova semiBold";
                                 font-weight: 600;
                             }
                             span.distance{
                                 letter-spacing: 1px;
+                                padding-left: 25px;
+                                background: url(../images/pinsMap.png) no-repeat 0% 0px;
+                                background-size: 11px;
+                                text-transform: uppercase;
+                                font-family: 'Proxima Nova Regular';
                             }
-
                         }
                     }
                 }
+            }
+        }
+    }
+}
+
+//- de 768
+@media (max-width: 767px) {
+    body.path-les-espaces-naturels {
+        h1{
+            padding: 0 44px;
+            top: 82px;
+        }
+        div.main-container section div.wrapper div.fold1 div.noPadding{
+            height: 665px;
+            p.arianne{
+                top: -160px;
+            }
+            div.buttonThematiqueRow{
+                padding: 0 15px;
+                top: -170px;
+                button{
+                    margin-bottom: 20px;
+                }
+            }
+        }
+    }
+}
+//- de 480
+@media (max-width: @screen-xs-min) {
+    body.path-les-espaces-naturels div.main-container section div.wrapper div.container .ens {
+        height: 300px;
+    }
+    body.path-les-espaces-naturels {
+        div.main-container section div.wrapper div.fold1 {
+            margin-bottom: 20px;
+            div.noPadding{
+                height: auto;
+                p.arianne{
+                    top: -340px;
+                }
+                div.buttonThematiqueRow{
+                    top: 30px;
+                    button{
+                        margin: 0 auto;
+                        width: 95%;
+                        margin-bottom: 15px;
+                        border: 1px solid @btn-primary-border;
+                    }
+                }
+            }
+        }
+    }
+}
+@media (max-width: 350px) {
+    body.path-les-espaces-naturels {
+        h1{
+            padding: 0;
+            font-size: 3.5em;
+        }
+        div.main-container section div.wrapper div.container{
+            .abs a > div{
+                padding: 0;
+                h2{
+                    font-size: 1.6em;
+                }
+            }
+            .ens {
+                height: 250px;
             }
         }
     }
