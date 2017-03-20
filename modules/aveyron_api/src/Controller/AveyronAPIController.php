@@ -130,18 +130,9 @@ class AveyronAPIController extends ControllerBase {
       return new Response(null, 404);
     }
     $serializer = \Drupal::service('serializer');
-    /*$query = db_query("
-      SELECT f.uri, g.field_gallery_alt,
-      g.field_gallery_title
-      from file_managed f
-      join node__field_gallery g
-      on f.fid = g.field_gallery_target_id
-      where g.entity_id = $id limit 1"
-    );
 
-    $poster = $query->fetchAll();
-    $poster[0]->uri = entity_load('image_style', '500_par_350')->buildUrl($poster[0]->uri);
-    */
+    //$poster = $query->fetchAll();
+    //$poster[0]->uri = entity_load('image_style', '500_par_350')->buildUrl($poster[0]->uri);
 
     $geom = \geoPHP::load($entity->field_start_trace->value,'wkt');
     $geomTrace = \geoPHP::load($entity->field_trace->value,'wkt');
@@ -151,31 +142,54 @@ class AveyronAPIController extends ControllerBase {
       title => $entity->title->value,
       startPoint => json_decode($geom->out('json'), true),
       trace => json_decode($geomTrace->out('json'), true),
-      /*poster => array(
-        url => $poster[0]->uri
-      ),*/
-      /*thumbnail => array(
-        fid => $thumbnail->fid->value,
-        url => file_create_url($thumbnail->uri->value),
-        filesize => $thumbnail->filesize->value,
-      ),
-      */
       description => $entity->body->value,
       descriptionShort => substr($entity->body->summary, 0, 255),
       gallery => array(),
       taxonIds => array(),
     );
 
-    $gallery = $entity->field_gallery;
+    /*
+    * Gallery - 1st picture is used for like main presentation image
+    */
+    $query = db_query("
+      SELECT f.uri, g.field_gallery_alt,
+      g.field_gallery_title
+      from file_managed f
+      join node__field_gallery g
+      on f.fid = g.field_gallery_target_id
+      where g.entity_id = $id"
+    );
+
+    $gallery = $query->fetchAll();
     foreach ($gallery as $img) {
       //TODO
-      $imgData = json_decode($serializer->serialize($img, 'json', ['plugin_id' => 'entity']));
+      $img->uri = entity_load('image_style', '900_par_600')->buildUrl($img->uri);
       $result['gallery'][] = array(
-        fid => $imgData->target_id,
-        url => $imgData->url,
+        url => $img->uri
       );
-      //$result['gallery'][] = json_decode($serializer->serialize($img, 'json', ['plugin_id' => 'entity']));
     }
+
+    $query = db_query("
+      SELECT f.uri, g.field_gallery_alt,
+      g.field_gallery_title
+      from file_managed f
+      join node__field_gallery g
+      on f.fid = g.field_gallery_target_id
+      where g.entity_id = $id limit 1"
+    );
+    $thumbnail = $query->fetchAll();
+    $thumbnail[0]->uri = entity_load('image_style', '200_par_200')->buildUrl($thumbnail[0]->uri);
+
+    $result['thumbnail'] = array(
+      thumbnail => $thumbnail[0]->uri
+    );
+
+    /*
+    * Thumb - 1st image of gallery with special style
+    */
+
+
+
     $taxa = $entity->field_taxa;
     foreach ($taxa as $taxon) {
       $result['taxonIds'][] = (int) $taxon->target_id;
