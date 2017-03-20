@@ -9,6 +9,10 @@
   src: url('../fonts/viper_nora.otf') format("opentype");
 }
 @font-face {
+  font-family: 'Proxima Nova semiBold';
+  src: url('../fonts/Proxima Nova Semibold.otf') format("opentype");
+}
+@font-face {
   font-family: 'Proxima Nova Regular';
   src: url('../fonts/Proxima Nova Regular.otf') format("opentype");
 }
@@ -11115,14 +11119,14 @@ body.path-frontpage section.wrapper div.fold6 div.leftZone div.secondHalf div.Sp
 body.path-les-espaces-naturels h1 {
   font-family: 'Viper Nora';
   position: absolute;
-  top: 94px;
+  top: 163px;
   z-index: 2;
   left: 0;
   color: #fff;
   text-align: center;
   width: 100%;
   border: 0;
-  padding: 0px 20%;
+  padding: 0px 2%;
   font-size: 4em;
   line-height: 80px;
   letter-spacing: 2px;
@@ -11131,23 +11135,32 @@ body.path-les-espaces-naturels div.main-container section {
   padding: 0;
 }
 body.path-les-espaces-naturels div.main-container section div.wrapper {
-  margin-top: -134px;
-  /* padding: 0; */
+  margin-top: -66px;
+  margin-bottom: 50px;
 }
 body.path-les-espaces-naturels div.main-container section div.wrapper div.fold1 div.noPadding {
   padding: 0 ;
 }
-body.path-les-espaces-naturels div.main-container section div.wrapper div.fold1 div.noPadding img {
+body.path-les-espaces-naturels div.main-container section div.wrapper div.fold1 div.noPadding div.imgOnTop {
   width: 100%;
+  min-height: 620px;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 body.path-les-espaces-naturels div.main-container section div.wrapper div.fold1 div.noPadding div.buttonThematiqueRow {
-  top: -110px;
+  width: 100%;
+  top: -100px;
+  margin: 0;
   position: relative;
   text-align: center;
 }
 body.path-les-espaces-naturels div.main-container section div.wrapper div.fold1 div.noPadding div.buttonThematiqueRow button {
-  margin: 0 0.3%;
-  background-color: rgba(255, 255, 255, 0.85);
+  margin: 0 5px;
+  background-color: rgba(255, 255, 255, 0.9);
   text-transform: uppercase;
   border: 0;
 }
@@ -11210,11 +11223,127 @@ body.path-les-espaces-naturels div.main-container section div.wrapper div.contai
 }
 body.path-les-espaces-naturels div.main-container section div.wrapper div.container .abs a > div {
   margin: auto;
+  padding: 0 15px;
 }
 body.path-les-espaces-naturels div.main-container section div.wrapper div.container .abs a h2 {
+  font-family: "Proxima Nova semiBold";
   font-weight: 600;
 }
 body.path-les-espaces-naturels div.main-container section div.wrapper div.container .abs a span.distance {
   letter-spacing: 1px;
+  padding-left: 25px;
+  background: url(../images/pinsMap.png) no-repeat 0% 0px;
+  background-size: 11px;
+  text-transform: uppercase;
+  font-family: 'Proxima Nova Regular';
+}
+@media (max-width: 767px) {
+  body.path-les-espaces-naturels h1 {
+    padding: 0 44px;
+    top: 82px;
+  }
+  body.path-les-espaces-naturels div.main-container section div.wrapper div.fold1 div.noPadding {
+    height: 665px;
+  }
+  body.path-les-espaces-naturels div.main-container section div.wrapper div.fold1 div.noPadding p.arianne {
+    top: -160px;
+  }
+  body.path-les-espaces-naturels div.main-container section div.wrapper div.fold1 div.noPadding div.buttonThematiqueRow {
+    padding: 0 15px;
+    top: -170px;
+  }
+  body.path-les-espaces-naturels div.main-container section div.wrapper div.fold1 div.noPadding div.buttonThematiqueRow button {
+    margin-bottom: 20px;
+  }
+}
+@media (max-width: 480px) {
+  body.path-les-espaces-naturels div.main-container section div.wrapper div.container .ens {
+    height: 300px;
+  }
+  body.path-les-espaces-naturels div.main-container section div.wrapper div.fold1 {
+    margin-bottom: 20px;
+  }
+  body.path-les-espaces-naturels div.main-container section div.wrapper div.fold1 div.noPadding {
+    height: auto;
+  }
+  body.path-les-espaces-naturels div.main-container section div.wrapper div.fold1 div.noPadding p.arianne {
+    top: -340px;
+  }
+  body.path-les-espaces-naturels div.main-container section div.wrapper div.fold1 div.noPadding div.buttonThematiqueRow {
+    top: 30px;
+  }
+  body.path-les-espaces-naturels div.main-container section div.wrapper div.fold1 div.noPadding div.buttonThematiqueRow button {
+    margin: 0 auto;
+    width: 95%;
+    margin-bottom: 15px;
+    border: 1px solid #fb6a00;
+  }
+}
+@media (max-width: 350px) {
+  body.path-les-espaces-naturels h1 {
+    padding: 0;
+    font-size: 3.5em;
+  }
+  body.path-les-espaces-naturels div.main-container section div.wrapper div.container .abs a > div {
+    padding: 0;
+  }
+  body.path-les-espaces-naturels div.main-container section div.wrapper div.container .abs a > div h2 {
+    font-size: 1.6em;
+  }
+  body.path-les-espaces-naturels div.main-container section div.wrapper div.container .ens {
+    height: 250px;
+  }
+}
+body.page-node-type-ens h1 {
+  font-family: 'Viper Nora';
+  position: absolute;
+  top: 163px;
+  z-index: 2;
+  left: 0;
+  color: #fff;
+  text-align: center;
+  width: 100%;
+  border: 0;
+  padding: 0px 20%;
+  font-size: 4em;
+  line-height: 80px;
+  letter-spacing: 2px;
+}
+body.page-node-type-ens div.main-container section {
+  padding: 0;
+}
+body.page-node-type-ens div.main-container section div.wrapper {
+  margin-top: -66px;
+  margin-bottom: 50px;
+}
+body.page-node-type-ens div.main-container section div.wrapper div.fold1 div.noPadding {
+  padding: 0 ;
+}
+body.page-node-type-ens div.main-container section div.wrapper div.fold1 div.noPadding div.imgOnTop {
+  width: 100%;
+  min-height: 620px;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+body.page-node-type-ens div.main-container section div.wrapper div.fold1 div.noPadding p.arianne {
+  font-family: 'MyriadPro Regular';
+  text-transform: uppercase;
+  top: -38px;
+  position: relative;
+  padding-left: 2%;
+  color: #f6f4f1;
+}
+body.page-node-type-ens div.main-container section div.wrapper div.fold1 div.noPadding p.arianne b {
+  color: #fff;
+  font-family: 'MyriadPro semiBold';
+  font-weight: normal;
+  letter-spacing: 1px;
+}
+body.page-node-type-ens div.main-container section div.wrapper div.ensContainer #mapid {
+  height: 180px;
 }
 /*# sourceMappingURL=style.css.map */
