@@ -8,6 +8,7 @@
 /*
 	this function to add many variable for this specific template
 */
+
 function hook_hp_preprocess_node__ens(&$variables){
 
 	// get current node ID
@@ -120,6 +121,10 @@ function getContent($nid){
 	");
 
 	$trace = $query->fetchAll();
+
+	// convert wkt to coord format used for leaflet layer
+	$trace = \geoPHP::load($trace[0]->field_trace_value,'wkt');
+	$trace = $trace ? json_decode($trace->out('json'), true) : null;
 
 	// add to global var data
 	$data['trace'] = $trace;
