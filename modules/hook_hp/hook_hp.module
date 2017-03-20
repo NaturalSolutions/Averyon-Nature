@@ -267,7 +267,14 @@ function getInfoFold5(){
 		SELECT v.field_video_ens_value FROM aveyron.node__field_video_ens v ORDER BY RAND() LIMIT 4
 	");
 
-	$infoFold5[2] = $query->fetchAll();
+	$videos = $query->fetchAll();
+	foreach ($videos as $key => $video) {
+
+		$video->field_video_ens_value = explode("http://dai.ly/", $video->field_video_ens_value)[1];
+
+	}
+
+	$infoFold5[2] = $videos;
 
 	return $infoFold5;
 }
