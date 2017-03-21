@@ -69,31 +69,87 @@
 {{ attach_library('bootstrap_aveyron/leaflet') }}
 {{ attach_library('bootstrap_aveyron/script-ens') }}
 
+<!-- total main content should not be indide a single region -->
+
+
 <div class="container-fluid wrapper">
 
-  <div class="row fold1">
-    <div class="col-lg-12 noPadding">
+  
+  <!-- should be generic -->
+  <div class="fold1 row">
+    <div class="col-lg-12 no-padding">
 
-      <div class="imgOnTop" alt="{{ data.pictureOnTop.field_poster_alt }}" title="{{ data.pictureOnTop.field_poster_title }}" style="background-image: url({{ data.pictureOnTop.uri }});"></div>
-      <p class="arianne">Accueil > les espaces naturels > <b>{{ label }}</b></p>
+      <div class="fold1-img" alt="{{ data.pictureOnTop.field_poster_alt }}" title="{{ data.pictureOnTop.field_poster_title }}" style="background-image: url({{ data.pictureOnTop.uri }});"></div>
+      <span class="arianne">Accueil > les espaces naturels > <b>{{ label }}</b></span>
 
     </div>
-  </div> <!-- fin fold1 -->
+  </div>
 
-  <div class="container ensContainer">
+  <section>
+    <div class="container">
 
-    <pre>{{  dump(data) }}</pre>
 
-    <div id="mapid"></div>
+      <div class="col-sm-7">
+        <h2>{{ title }}</h2>
+        <pre>
+          {{ dump(content) }}
+        </pre>
+      </div>
+
+      <div class="col-sm-offset-1 col-sm-4">
+        <h4>Carte de l'espace Naturel</h4>
+        <div id="map" class="map"></div>
+      </div>
+
+      <button class="btn">Voir la balade du site</button>
+
+      </div>
+    </section>
+      
+
+  <section class="clearfix">
+    {% for video in data.videos %}
+      <video class="col-sm-4" controls style="background: url( {{video.uri}} )">
+        Your browser does not support HTML5 video.
+      </video>
+    {% endfor %}
+  </section>
+
+
+
+  <section>
+    <div class="container">
+      <div class="clearfix">
+        <h2>Gallery</h2>
+        <div class="col-sm-8 no-padding">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur minus labore quo consequatur magnam, culpa velit est quae possimus nostrum numquam, doloribus quos eos aliquam. Debitis ex odit vitae iusto.</p>
+        </div>
+      </div>
+      <div class="clearfix">
+        <div class="col-sm-8"></div>
+        <div class="col-sm-4">
+          <h5>Informations</h5>
+            <p>
+              Lorem ipsum dolor sit amet <br>
+              Lorem ipsum dolor sit amet <br>
+              Lorem ipsum dolor sit amet <br>
+              Lorem ipsum dolor sit amet <br>
+            </p>
+            <br>
+            <p>
+              Lorem ipsum dolor sit amet <br>
+              Lorem ipsum dolor sit amet <br>
+              Lorem ipsum dolor sit amet <br>
+              Lorem ipsum dolor sit amet <br>
+            </p>
+          <h5>Thematique similaire</h5>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
 
   </div><!-- fin ensContainer -->
 
 </div> <!-- fin wrapper -->
-
-<script>
-
-  // encode data for use in js file (themes/bootstrap_aveyron/scripts/script-ens.js)
-  var geoDataStarterPoint = {{ data.depart|json_encode()|raw }};
-  var geoDataTracePoint = {{ data.trace|json_encode()|raw }};
-
-</script>
