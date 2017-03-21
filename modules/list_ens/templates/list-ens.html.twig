@@ -1,33 +1,39 @@
 <div class="container-fluid wrapper">
 
-	<div class="row fold1">
-		<div class="col-lg-12 noPadding">
-			<div class="imgOnTop" alt="{{ data.imageOnTop.field_image_on_top_alt }}" title="{{ data.imageOnTop.field_image_on_top_title }}" style="background-image: url({{ data.imageOnTop.uri }});"></div>
-			<div class="row buttonThematiqueRow">
-				<div class="col-lg-12">
-					<button class="js-btn-filter-ens btn btn-primary inverse selected" thematique="all">
-						Tout
-					</button>
-				{% for thematique in data.thematiques %}
-				    <button class="js-btn-filter-ens btn btn-primary inverse" thematique="{{thematique.title}}">
-				    	{{thematique.title}}
-				    </button>
-				{% endfor %}
-				</div>
-			</div>
 
-			<p class="arianne">Accueil > <b>les espaces naturels</b></p>
+<!-- should be genereic -->
+  <div class="fold1 row">
+    <div class="col-lg-12 no-padding">
 
-		</div>
-	</div> <!-- fin fold1 -->
+    <div class="fold1-img" alt="{{ data.imageOnTop.field_image_on_top_alt }}" title="{{ data.imageOnTop.field_image_on_top_title }}" style="background-image: url({{ data.imageOnTop.uri }});"></div>
+
+
+      <div class="row filter-btns">
+      	<div class="col-lg-12">
+      		<button class="js-btn-filter-ens btn btn-primary inverse selected" thematique="all">
+      			Tout
+      		</button>
+      	{% for thematique in data.thematiques %}
+      	    <button class="js-btn-filter-ens btn btn-primary inverse" thematique="{{thematique.title}}">
+      	    	{{thematique.title}}
+      	    </button>
+      	{% endfor %}
+      	</div>
+      </div>
+
+      <span class="arianne">Accueil > les espaces naturels > <b>{{ label }}</b></p>
+
+    </div>
+  </div>
+
 
 	<div class="container js-ens-container">
 
 			{% for ens in data.ensFold2 %}
 				{% if loop.index == 1 or loop.index == 10 %}
-					<div class="js-ens ens col-md-8" thematique="{{ens.thematique}}">
+					<div class="js-ens img-block-link col-md-8" thematique="{{ens.thematique}}">
 				{% else %}
-					<div class="js-ens ens col-md-4" thematique="{{ens.thematique}}">
+					<div class="js-ens img-block-link col-md-4" thematique="{{ens.thematique}}">
 				{% endif %}
 						<div class="bg" style="background: url( {{ens.uri}} )">
 						</div>
@@ -43,9 +49,6 @@
 			{% endfor %}
 
 	</div>
-
-
-
 
 </div> <!-- fin wrapper -->
 
