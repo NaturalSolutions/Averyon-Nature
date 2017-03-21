@@ -9721,7 +9721,7 @@ body.navbar-is-static-top {
   margin-top: 0;
 }
 body.navbar-is-fixed-top {
-  margin-top: 65px;
+  margin-top: -1px;
 }
 body.navbar-is-fixed-bottom {
   padding-bottom: 65px;
@@ -10215,7 +10215,7 @@ body.path-frontpage h1 {
 }
 body.path-frontpage section.wrapper {
   /* min-height: 3000px;*/
-  margin-top: -134px;
+  /* margin-top: -134px; */
 }
 body.path-frontpage section.wrapper div.fold1 {
   position: relative;
@@ -11119,7 +11119,7 @@ body.path-frontpage section.wrapper div.fold6 div.leftZone div.secondHalf div.Sp
 body.path-les-espaces-naturels h1 {
   font-family: 'Viper Nora';
   position: absolute;
-  top: 163px;
+  top: 230px;
   z-index: 2;
   left: 0;
   color: #fff;
@@ -11135,7 +11135,6 @@ body.path-les-espaces-naturels div.main-container section {
   padding: 0;
 }
 body.path-les-espaces-naturels div.main-container section div.wrapper {
-  margin-top: -66px;
   margin-bottom: 50px;
 }
 body.path-les-espaces-naturels div.main-container section div.wrapper div.fold1 div.noPadding {
@@ -11240,7 +11239,7 @@ body.path-les-espaces-naturels div.main-container section div.wrapper div.contai
 @media (max-width: 767px) {
   body.path-les-espaces-naturels h1 {
     padding: 0 44px;
-    top: 82px;
+    top: 150px;
   }
   body.path-les-espaces-naturels div.main-container section div.wrapper div.fold1 div.noPadding {
     height: 665px;
@@ -11297,7 +11296,7 @@ body.path-les-espaces-naturels div.main-container section div.wrapper div.contai
 body.page-node-type-ens h1 {
   font-family: 'Viper Nora';
   position: absolute;
-  top: 163px;
+  top: 230px;
   z-index: 2;
   left: 0;
   color: #fff;
@@ -11313,7 +11312,6 @@ body.page-node-type-ens div.main-container section {
   padding: 0;
 }
 body.page-node-type-ens div.main-container section div.wrapper {
-  margin-top: -66px;
   margin-bottom: 50px;
 }
 body.page-node-type-ens div.main-container section div.wrapper div.fold1 div.noPadding {
@@ -11345,5 +11343,16 @@ body.page-node-type-ens div.main-container section div.wrapper div.fold1 div.noP
 }
 body.page-node-type-ens div.main-container section div.wrapper div.ensContainer #mapid {
   height: 180px;
+}
+@media (max-width: 767px) {
+  body.page-node-type-ens h1 {
+    padding: 0 44px;
+    top: 150px;
+  }
+}
+@media (max-width: 480px) {
+  body.page-node-type-ens h1 {
+    padding: 0;
+  }
 }
 /*# sourceMappingURL=style.css.map */

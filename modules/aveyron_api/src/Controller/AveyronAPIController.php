@@ -322,9 +322,9 @@ class AveyronAPIController extends ControllerBase {
       }
       $result['questions'][] = array(
         "id" => (int) $question->nid->value,
-        "vid" => (int) $question->vid->value,
+        /*"vid" => (int) $question->vid->value, useless for quiz */
         "title" => $question->title->value,
-        "poster" => file_create_url($question->field_poster->entity->uri->value),
+        "poster" => entity_load('image_style', '900_par_600')->buildUrl($question->field_poster->entity->uri->value),
         "goodAnswer" => (int) $question->field_good_answer[0]->value,
         "answers" => $answers,
       );
@@ -339,11 +339,13 @@ class AveyronAPIController extends ControllerBase {
     $query->condition('type', 'taxon');
 
     $conditions = $request->get('conditions');
-    if (is_string($conditions)) {
-        $conditions = json_decode($conditions, true);
-    }
-    foreach ($conditions as $key => $condition) {
-      $query->condition($condition['field'], $condition['value'], $condition['operator'] ? $condition['operator'] : '=');
+    if(isset($conditions)){
+      if (is_string($conditions)) {
+          $conditions = json_decode($conditions, true);
+      }
+      foreach ($conditions as $key => $condition) {
+        $query->condition($condition['field'], $condition['value'], $condition['operator'] ? $condition['operator'] : '=');
+      }
     }
 
     try {
@@ -358,36 +360,117 @@ class AveyronAPIController extends ControllerBase {
     $taxa = array();
     $serializer = \Drupal::service('serializer');
     foreach ($entities as $entity) {
-      //$thumbnail = $entity->field_thumbnail->entity;
       $poster = $entity->field_poster->entity;
       $item = array(
         "id" => (int) $entity->nid->value,
         "vid" => (int) $entity->vid->value,
         "title" => $entity->title->value,
-        /*thumbnail => array(
-          fid => $thumbnail->fid->value,
-          url => file_create_url($thumbnail->uri->value),
-          filesize => $thumbnail->filesize->value,
-        ),*/
-        "poster" => array(
-          "fid" => $poster->fid->value,
-          "url" => file_create_url($poster->uri->value),
-          "filesize" => $poster->filesize->value,
-        ),
         "description" => $entity->body->summary,
         "descriptionShort" => substr($entity->body->summary, 0, 255),
+        "poster" => array(),
+        "thumbnail" => array(),
         "gallery" => array(),
+        "categorie" => array()
       );
-      $gallery = $entity->field_gallery;
+
+      $id = $entity->nid->value;
+
+      /*
+      * Poster - 1st image of gallery with special style
+      */
+      $query = db_query("
+        SELECT f.uri, f.fid, g.field_gallery_alt,
+        g.field_gallery_title
+        from file_managed f
+        join node__field_gallery g
+        on f.fid = g.field_gallery_target_id
+        where g.entity_id = $id limit 1"
+      );
+      $poster = $query->fetchAll();
+      $poster[0]->uri = entity_load('image_style', '900_par_600')->buildUrl($poster[0]->uri);
+      $item['poster'] = array(
+        "url" => $poster[0]->uri,
+        "fid" => (int) $poster[0]->fid
+      );
+
+      /*
+      * Thumb - 1st image of gallery with special style
+      */
+      $query = db_query("
+        SELECT f.uri, f.fid, g.field_gallery_alt,
+        g.field_gallery_title
+        from file_managed f
+        join node__field_gallery g
+        on f.fid = g.field_gallery_target_id
+        where g.entity_id = $id limit 1"
+      );
+
+      $thumbnail = $query->fetchAll();
+      $thumbnail[0]->uri = entity_load('image_style', '200_par_200')->buildUrl($thumbnail[0]->uri);
+      $item['thumbnail'] = array(
+        "url" => $thumbnail[0]->uri,
+        "fid" => (int) $thumbnail[0]->fid
+      );
+
+
+      /*
+      * Gallery - 1st picture is used for like main presentation image
+      */
+      $query = db_query("
+        SELECT f.uri, f.fid, g.field_gallery_alt,
+        g.field_gallery_title
+        from file_managed f
+        join node__field_gallery g
+        on f.fid = g.field_gallery_target_id
+        where g.entity_id = $id"
+      );
+
+      $gallery = $query->fetchAll();
       foreach ($gallery as $img) {
         //TODO
-        $imgData = json_decode($serializer->serialize($img, 'json', ['plugin_id' => 'entity']));
+        $img->uri = entity_load('image_style', '900_par_600')->buildUrl($img->uri);
         $item['gallery'][] = array(
-          "fid" => $imgData->target_id,
-          "url" => $imgData->url,
+          "url" => $img->uri,
+          "fid" => (int) $img->fid
         );
-        //$result['gallery'][] = json_decode($serializer->serialize($img, 'json', ['plugin_id' => 'entity']));
       }
+
+      /*
+      * Catégorie
+      */
+      $query = db_query("
+        SELECT t.field_tag_value FROM aveyron.node__field_tag t
+        where t.entity_id = $id
+      ");
+
+      $categorie = $query->fetchAll();
+      $categorie = $categorie[0]->field_tag_value;
+      $item["categorie"] = $categorie;
+
+      /*
+      * Audio
+      */
+      $query = db_query("
+        SELECT f.uri, f.fid
+        from file_managed f
+        join node__field_audio g
+        on f.fid = g.field_audio_target_id
+        where g.entity_id = $id
+      ");
+
+      $audio = $query->fetchAll();
+
+      if(isset($audio) && count($audio) > 0){
+
+        $audio = file_create_url($audio[0]->uri);
+        $item["audio"] = $audio;
+
+      }
+      /*
+      $audio = $audio[0]->field_tag_value;
+      $item["audio"] = $audio;
+      */
+
       $taxa[] = $item;
     }
 
