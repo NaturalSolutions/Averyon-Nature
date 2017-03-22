@@ -10319,8 +10319,10 @@ div.fold1 span.arianne {
 /*
 	Specific font for Homepage
 */
-body.path-frontpage section {
-  padding: 15px!important;
+body.path-frontpage {
+  /* section{
+		padding: 15px!important;
+	} */
 }
 body.path-frontpage section.wrapper {
   /* min-height: 3000px;*/
