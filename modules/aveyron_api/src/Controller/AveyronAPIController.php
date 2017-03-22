@@ -35,8 +35,8 @@ class AveyronAPIController extends ControllerBase {
       $items = array();
       foreach ($entities as $entity) {
         $items[] = array(
-          id => (int) $entity->nid->value,
-          vid => (int) $entity->vid->value
+          "id" => (int) $entity->nid->value,
+          "vid" => (int) $entity->vid->value
         );
       }
       $result[$type] = $items;
@@ -46,27 +46,32 @@ class AveyronAPIController extends ControllerBase {
   }
 
   public function enss( Request $request ) {
+
     $fullItemIds = $request->get('fullItemIds');
-    if (is_string($fullItemIds)) {
-        $fullItemIds = json_decode($fullItemIds, true);
-    }
-    foreach ($fullItemIds as &$fullItemId) {
-      if (is_string($fullItemId)) {
-        $fullItemId = (int) $fullItemId;
+    if(isset($fullItemIds)){
+      if (is_string($fullItemIds)) {
+          $fullItemIds = json_decode($fullItemIds, true);
+      }
+      foreach ($fullItemIds as $fullItemId) {
+        if (is_string($fullItemId)) {
+          $fullItemId = (int) $fullItemId;
+        }
       }
     }
 
     $query = \Drupal::entityQuery('node');
     $query->condition('status', 1);
     $query->condition('type', 'ens');
-
     $conditions = $request->get('conditions');
-    if (is_string($conditions)) {
-        $conditions = json_decode($conditions, true);
+    if(isset($conditions)){
+      if (is_string($conditions)) {
+          $conditions = json_decode($conditions, true);
+      }
+      foreach ($conditions as $key => $condition) {
+        $query->condition($condition['field'], $condition['value'], $condition['operator'] ? $condition['operator'] : '=');
+      }
     }
-    foreach ($conditions as $key => $condition) {
-      $query->condition($condition['field'], $condition['value'], $condition['operator'] ? $condition['operator'] : '=');
-    }
+
 
     $itemIds = $query->execute();
 
@@ -78,39 +83,83 @@ class AveyronAPIController extends ControllerBase {
     $taxonIds = array();
     foreach ($entities as $entity) {
       $item = array();
-      //$thumbnail = $entity->field_thumbnail->entity;
-      $poster = $entity->field_poster->entity;
+      //$poster = $entity->field_poster->entity;
       $geom = \geoPHP::load($entity->field_start_trace->value,'wkt');
       $itemId = (int) $entity->nid->value;
       $item = array(
-        //a => json_decode($serializer->serialize($thumbnail, 'json', ['plugin_id' => 'entity'])),
-        id => $itemId,
-        vid => (int) $entity->vid->value,
-        title => $entity->title->value,
-        startTrace => $geom ? json_decode($geom->out('json'), true) : null,
-        /*
-        thumbnail => array(
-          fid => $thumbnail->fid->value,
-          url => file_create_url($thumbnail->uri->value),
-          filesize => $thumbnail->filesize->value,
-        ),
-        */
-        poster => array(
-          fid => $poster->fid->value,
-          url => file_create_url($poster->uri->value),
-          filesize => $poster->filesize->value,
-        ),
-        descriptionShort => substr($entity->body->summary, 0, 255),
+        "id" => $itemId,
+        "vid" => (int) $entity->vid->value,
+        "title" => $entity->title->value,
+        "thematique" => array(),
+        "startTrace" => $geom ? json_decode($geom->out('json'), true) : null,
+        "descriptionShort" => substr($entity->body->summary, 0, 255),
+        "poster" => array(),
+        "thumbnail" => array()
       );
-      if (in_array($itemId, $fullItemIds)) {
-        $item['description'] = $entity->body->value;
-        $item['taxonIds'] = array();
-        $taxa = $entity->field_taxa;
-        foreach ($taxa as $taxon) {
-          $item['taxonIds'][] = (int) $taxon->target_id;
+
+      /*
+      * thematique
+      */
+      $query = db_query("
+        SELECT d.title
+        FROM node__field_thematique_ens e
+        join node_field_data d
+        on d.nid = e.field_thematique_ens_target_id
+        where e.entity_id = $itemId
+      ");
+
+      $thematique = $query->fetchAll();
+      $thematique = $thematique[0]->title;
+      $item["thematique"] = $thematique;
+
+      /*
+      * Thumb - 1st image of gallery with special style
+      */
+      $query = db_query("
+        SELECT f.uri, f.fid, g.field_gallery_alt,
+        g.field_gallery_title
+        from file_managed f
+        join node__field_gallery g
+        on f.fid = g.field_gallery_target_id
+        where g.entity_id = $itemId limit 1"
+      );
+
+      $thumbnail = $query->fetchAll();
+      $thumbnail[0]->uri = entity_load('image_style', '200_par_200')->buildUrl($thumbnail[0]->uri);
+      $item['thumbnail'] = array(
+        "url" => $thumbnail[0]->uri,
+        "fid" => (int) $thumbnail[0]->fid
+      );
+
+      /*
+      * Poster - 1st image of gallery with special style
+      */
+      $query = db_query("
+        SELECT f.uri, f.fid, g.field_gallery_alt,
+        g.field_gallery_title
+        from file_managed f
+        join node__field_gallery g
+        on f.fid = g.field_gallery_target_id
+        where g.entity_id = $itemId limit 1"
+      );
+      $poster = $query->fetchAll();
+      $poster[0]->uri = entity_load('image_style', '900_par_600')->buildUrl($poster[0]->uri);
+      $item['poster'] = array(
+        "url" => $poster[0]->uri,
+        "fid" => (int) $poster[0]->fid
+      );
+
+      if(isset($fullItemIds)){
+        if (in_array($itemId, $fullItemIds)) {
+          $item['description'] = $entity->body->value;
+          $item['taxonIds'] = array();
+          $taxa = $entity->field_taxa;
+          foreach ($taxa as $taxon) {
+            $item['taxonIds'][] = (int) $taxon->target_id;
+          }
         }
       }
-      //$item = $serializer->serialize($entity, 'json', ['plugin_id' => 'entity']);
+
       $items[] = $item;
     }
 
@@ -131,28 +180,62 @@ class AveyronAPIController extends ControllerBase {
     }
     $serializer = \Drupal::service('serializer');
 
-    //$poster = $query->fetchAll();
-    //$poster[0]->uri = entity_load('image_style', '500_par_350')->buildUrl($poster[0]->uri);
-
     $geom = \geoPHP::load($entity->field_start_trace->value,'wkt');
     $geomTrace = \geoPHP::load($entity->field_trace->value,'wkt');
     $result = array(
-      id => (int) $entity->nid->value,
-      vid => (int) $entity->vid->value,
-      title => $entity->title->value,
-      startPoint => json_decode($geom->out('json'), true),
-      trace => json_decode($geomTrace->out('json'), true),
-      description => $entity->body->value,
-      descriptionShort => substr($entity->body->summary, 0, 255),
-      gallery => array(),
-      taxonIds => array(),
+      "id" => (int) $entity->nid->value,
+      "vid" => (int) $entity->vid->value,
+      "title" => $entity->title->value,
+      "thematique" => null,
+      "startPoint" => json_decode($geom->out('json'), true),
+      "trace" => json_decode($geomTrace->out('json'), true),
+      "description" => $entity->body->value,
+      "descriptionShort" => substr($entity->body->summary, 0, 255),
+      "poster" => array(),
+      "thumbnail" => array(),
+      "gallery" => array(),
+      "videos" => array(),
+      "taxonIds" => array(),
+    );
+
+    /*
+    * thematique
+    */
+    $query = db_query("
+      SELECT d.title
+      FROM node__field_thematique_ens e
+      join node_field_data d
+      on d.nid = e.field_thematique_ens_target_id
+      where e.entity_id = $id
+    ");
+
+    $thematique = $query->fetchAll();
+    $thematique = $thematique[0]->title;
+    $result["thematique"] = $thematique;
+
+    /*
+    * Poster - 1st image of gallery with special style
+    */
+    $query = db_query("
+      SELECT f.uri, f.fid, g.field_gallery_alt,
+      g.field_gallery_title
+      from file_managed f
+      join node__field_gallery g
+      on f.fid = g.field_gallery_target_id
+      where g.entity_id = $id limit 1"
+    );
+    $poster = $query->fetchAll();
+    $poster[0]->uri = entity_load('image_style', '900_par_600')->buildUrl($poster[0]->uri);
+    $result['poster'] = array(
+      "url" => $poster[0]->uri,
+      "fid" => (int) $poster[0]->fid
     );
 
     /*
     * Gallery - 1st picture is used for like main presentation image
     */
     $query = db_query("
-      SELECT f.uri, g.field_gallery_alt,
+      SELECT f.uri, f.fid, g.field_gallery_alt,
       g.field_gallery_title
       from file_managed f
       join node__field_gallery g
@@ -165,29 +248,46 @@ class AveyronAPIController extends ControllerBase {
       //TODO
       $img->uri = entity_load('image_style', '900_par_600')->buildUrl($img->uri);
       $result['gallery'][] = array(
-        url => $img->uri
+        "url" => $img->uri,
+        "fid" => (int) $img->fid
       );
     }
 
+    /*
+    * Thumb - 1st image of gallery with special style
+    */
     $query = db_query("
-      SELECT f.uri, g.field_gallery_alt,
+      SELECT f.uri, f.fid, g.field_gallery_alt,
       g.field_gallery_title
       from file_managed f
       join node__field_gallery g
       on f.fid = g.field_gallery_target_id
       where g.entity_id = $id limit 1"
     );
+
     $thumbnail = $query->fetchAll();
     $thumbnail[0]->uri = entity_load('image_style', '200_par_200')->buildUrl($thumbnail[0]->uri);
-
     $result['thumbnail'] = array(
-      thumbnail => $thumbnail[0]->uri
+      "url" => $thumbnail[0]->uri,
+      "fid" => (int) $thumbnail[0]->fid
     );
 
     /*
-    * Thumb - 1st image of gallery with special style
+    * Videos
     */
+    $query = db_query("
+      SELECT v.field_video_ens_value FROM node__field_video_ens v where v.entity_id = $id
+    ");
 
+    $videos = $query->fetchAll();
+    $chanVideo = "https://api.dailymotion.com/videos?ids=";
+    foreach ($videos as $video) {
+      $video->field_video_ens_value = explode("http://dai.ly/", $video->field_video_ens_value)[1];
+      $chanVideo.=$video->field_video_ens_value.",";
+    }
+    $chanVideo = substr_replace($chanVideo, "", -1)."&fields=id,thumbnail_url,title,tiny_url";
+    // Example de call sur l'api Dailymotion : https://api.dailymotion.com/videos?ids=x5f5olp,x2c5umz&limit=30&fields=id,thumbnail_url,title,tiny_url
+    $result['videos'] = json_decode(file_get_contents($chanVideo));
 
 
     $taxa = $entity->field_taxa;
@@ -213,7 +313,7 @@ class AveyronAPIController extends ControllerBase {
     }
     $entities = $entityManager->getStorage('node')->loadMultiple($questionIds);
     $result = array(
-      questions => array()
+      "questions" => array()
     );
     foreach ($entities as $question) {
       $answers = array();
@@ -221,12 +321,12 @@ class AveyronAPIController extends ControllerBase {
         $answers[] = $answer->value;
       }
       $result['questions'][] = array(
-        id => (int) $question->nid->value,
-        vid => (int) $question->vid->value,
-        title => $question->title->value,
-        poster => file_create_url($question->field_poster->entity->uri->value),
-        goodAnswer => (int) $question->field_good_answer[0]->value,
-        answers => $answers,
+        "id" => (int) $question->nid->value,
+        /*"vid" => (int) $question->vid->value, useless for quiz */
+        "title" => $question->title->value,
+        "poster" => entity_load('image_style', '900_par_600')->buildUrl($question->field_poster->entity->uri->value),
+        "goodAnswer" => (int) $question->field_good_answer[0]->value,
+        "answers" => $answers,
       );
     }
 
@@ -239,11 +339,13 @@ class AveyronAPIController extends ControllerBase {
     $query->condition('type', 'taxon');
 
     $conditions = $request->get('conditions');
-    if (is_string($conditions)) {
-        $conditions = json_decode($conditions, true);
-    }
-    foreach ($conditions as $key => $condition) {
-      $query->condition($condition['field'], $condition['value'], $condition['operator'] ? $condition['operator'] : '=');
+    if(isset($conditions)){
+      if (is_string($conditions)) {
+          $conditions = json_decode($conditions, true);
+      }
+      foreach ($conditions as $key => $condition) {
+        $query->condition($condition['field'], $condition['value'], $condition['operator'] ? $condition['operator'] : '=');
+      }
     }
 
     try {
@@ -258,36 +360,117 @@ class AveyronAPIController extends ControllerBase {
     $taxa = array();
     $serializer = \Drupal::service('serializer');
     foreach ($entities as $entity) {
-      //$thumbnail = $entity->field_thumbnail->entity;
       $poster = $entity->field_poster->entity;
       $item = array(
-        id => (int) $entity->nid->value,
-        vid => (int) $entity->vid->value,
-        title => $entity->title->value,
-        /*thumbnail => array(
-          fid => $thumbnail->fid->value,
-          url => file_create_url($thumbnail->uri->value),
-          filesize => $thumbnail->filesize->value,
-        ),*/
-        poster => array(
-          fid => $poster->fid->value,
-          url => file_create_url($poster->uri->value),
-          filesize => $poster->filesize->value,
-        ),
-        description => $entity->body->summary,
-        descriptionShort => substr($entity->body->summary, 0, 255),
-        gallery => array(),
+        "id" => (int) $entity->nid->value,
+        "vid" => (int) $entity->vid->value,
+        "title" => $entity->title->value,
+        "description" => $entity->body->summary,
+        "descriptionShort" => substr($entity->body->summary, 0, 255),
+        "poster" => array(),
+        "thumbnail" => array(),
+        "gallery" => array(),
+        "categorie" => array()
       );
-      $gallery = $entity->field_gallery;
+
+      $id = $entity->nid->value;
+
+      /*
+      * Poster - 1st image of gallery with special style
+      */
+      $query = db_query("
+        SELECT f.uri, f.fid, g.field_gallery_alt,
+        g.field_gallery_title
+        from file_managed f
+        join node__field_gallery g
+        on f.fid = g.field_gallery_target_id
+        where g.entity_id = $id limit 1"
+      );
+      $poster = $query->fetchAll();
+      $poster[0]->uri = entity_load('image_style', '900_par_600')->buildUrl($poster[0]->uri);
+      $item['poster'] = array(
+        "url" => $poster[0]->uri,
+        "fid" => (int) $poster[0]->fid
+      );
+
+      /*
+      * Thumb - 1st image of gallery with special style
+      */
+      $query = db_query("
+        SELECT f.uri, f.fid, g.field_gallery_alt,
+        g.field_gallery_title
+        from file_managed f
+        join node__field_gallery g
+        on f.fid = g.field_gallery_target_id
+        where g.entity_id = $id limit 1"
+      );
+
+      $thumbnail = $query->fetchAll();
+      $thumbnail[0]->uri = entity_load('image_style', '200_par_200')->buildUrl($thumbnail[0]->uri);
+      $item['thumbnail'] = array(
+        "url" => $thumbnail[0]->uri,
+        "fid" => (int) $thumbnail[0]->fid
+      );
+
+
+      /*
+      * Gallery - 1st picture is used for like main presentation image
+      */
+      $query = db_query("
+        SELECT f.uri, f.fid, g.field_gallery_alt,
+        g.field_gallery_title
+        from file_managed f
+        join node__field_gallery g
+        on f.fid = g.field_gallery_target_id
+        where g.entity_id = $id"
+      );
+
+      $gallery = $query->fetchAll();
       foreach ($gallery as $img) {
         //TODO
-        $imgData = json_decode($serializer->serialize($img, 'json', ['plugin_id' => 'entity']));
+        $img->uri = entity_load('image_style', '900_par_600')->buildUrl($img->uri);
         $item['gallery'][] = array(
-          fid => $imgData->target_id,
-          url => $imgData->url,
+          "url" => $img->uri,
+          "fid" => (int) $img->fid
         );
-        //$result['gallery'][] = json_decode($serializer->serialize($img, 'json', ['plugin_id' => 'entity']));
       }
+
+      /*
+      * Catégorie
+      */
+      $query = db_query("
+        SELECT t.field_tag_value FROM aveyron.node__field_tag t
+        where t.entity_id = $id
+      ");
+
+      $categorie = $query->fetchAll();
+      $categorie = $categorie[0]->field_tag_value;
+      $item["categorie"] = $categorie;
+
+      /*
+      * Audio
+      */
+      $query = db_query("
+        SELECT f.uri, f.fid
+        from file_managed f
+        join node__field_audio g
+        on f.fid = g.field_audio_target_id
+        where g.entity_id = $id
+      ");
+
+      $audio = $query->fetchAll();
+
+      if(isset($audio) && count($audio) > 0){
+
+        $audio = file_create_url($audio[0]->uri);
+        $item["audio"] = $audio;
+
+      }
+      /*
+      $audio = $audio[0]->field_tag_value;
+      $item["audio"] = $audio;
+      */
+
       $taxa[] = $item;
     }
 
