@@ -128,6 +128,8 @@ class AveyronAPIController extends ControllerBase {
       $thumbnail[0]->uri = entity_load('image_style', '200_par_200')->buildUrl($thumbnail[0]->uri);
       $item['thumbnail'] = array(
         "url" => $thumbnail[0]->uri,
+        "alt" => $thumbnail[0]->field_gallery_alt,
+        "title" => $thumbnail[0]->field_gallery_title,
         "fid" => (int) $thumbnail[0]->fid
       );
 
@@ -146,6 +148,8 @@ class AveyronAPIController extends ControllerBase {
       $poster[0]->uri = entity_load('image_style', '900_par_600')->buildUrl($poster[0]->uri);
       $item['poster'] = array(
         "url" => $poster[0]->uri,
+        "alt" => $poster[0]->field_gallery_alt,
+        "title" => $poster[0]->field_gallery_title,
         "fid" => (int) $poster[0]->fid
       );
 
@@ -228,6 +232,8 @@ class AveyronAPIController extends ControllerBase {
     $poster[0]->uri = entity_load('image_style', '900_par_600')->buildUrl($poster[0]->uri);
     $result['poster'] = array(
       "url" => $poster[0]->uri,
+      "alt" => $poster[0]->field_gallery_alt,
+      "title" => $poster[0]->field_gallery_title,
       "fid" => (int) $poster[0]->fid
     );
 
@@ -244,12 +250,20 @@ class AveyronAPIController extends ControllerBase {
     );
 
     $gallery = $query->fetchAll();
+
     foreach ($gallery as $img) {
+
+      if($img->field_gallery_alt == 'faune' || $img->field_gallery_alt == 'flore' || $img->field_gallery_alt == 'paysage' || $img->field_gallery_alt == 'patrimoine') $tag = $img->field_gallery_alt;
+      else $tag = $thematique;
+
       //TODO
       $img->uri = entity_load('image_style', '900_par_600')->buildUrl($img->uri);
       $result['gallery'][] = array(
         "url" => $img->uri,
-        "fid" => (int) $img->fid
+        "alt" => $img->field_gallery_alt,
+        "title" => $img->field_gallery_title,
+        "fid" => (int) $img->fid,
+        "tag" => $tag
       );
     }
 
@@ -269,6 +283,8 @@ class AveyronAPIController extends ControllerBase {
     $thumbnail[0]->uri = entity_load('image_style', '200_par_200')->buildUrl($thumbnail[0]->uri);
     $result['thumbnail'] = array(
       "url" => $thumbnail[0]->uri,
+      "alt" => $thumbnail[0]->field_gallery_alt,
+      "title" => $thumbnail[0]->field_gallery_title,
       "fid" => (int) $thumbnail[0]->fid
     );
 

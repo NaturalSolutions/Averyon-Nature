@@ -1,4 +1,4 @@
-# La plateforme web de l'Aveyron-Nature (Drupal 8.2.6)
+# La plateforme web de l'Aveyron-Nature (Drupal 8.2.7)
 ![Aveyron Nature](https://raw.githubusercontent.com/gitkyo/Aveyron-Nature-Web/master/themes/bootstrap_aveyron/images/aveyron.gif  "Aveyron Nature")
 
 - Le répertoire "themes" contient le(s) themes versionné
