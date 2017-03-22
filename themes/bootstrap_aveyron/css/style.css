@@ -10195,6 +10195,9 @@ p:last-child,
     margin-bottom: 40px;
   }
 }
+body {
+  color: #262626;
+}
 h1 {
   text-transform: uppercase;
   font-family: 'Viper Nora';
@@ -10217,12 +10220,35 @@ h2 {
   word-spacing: 5px;
   font-family: "Proxima Nova semiBold";
   font-weight: 600;
+  margin: 20px 0px;
 }
 h3 {
   text-transform: uppercase;
   letter-spacing: 1px;
   color: white;
   font-family: "Proxima Nova Regular";
+}
+h4 {
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 1em;
+}
+h5 {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 100;
+  font-family: "Proxima Nova Regular";
+  font-size: 1.1em;
+  color: #262626;
+  margin: 20px 0px;
+}
+h5:after {
+  content: "";
+  margin: 10px 0px;
+  display: block;
+  height: 1px;
+  width: 40px;
+  background-color: #262626;
 }
 .no-padding {
   padding: 0px!important;
@@ -10231,8 +10257,10 @@ h3 {
   min-height: 500px;
 }
 section {
-  padding: 50px 0px;
   padding: 0px!important;
+}
+.section {
+  padding: 50px 0px!important;
 }
 b {
   color: #fff;
@@ -10315,6 +10343,20 @@ div.fold1 span.arianne {
   background-size: 11px;
   text-transform: uppercase;
   font-family: 'Proxima Nova Regular';
+}
+.img-block-link.alone {
+  padding: 0px;
+  height: 200px;
+}
+.img-block-link.alone .abs h2 {
+  letter-spacing: 2px;
+  font-family: 'Viper Nora';
+}
+video {
+  background-color: grey;
+}
+.content h3 {
+  color: #262626;
 }
 /*
 	Specific font for Homepage
