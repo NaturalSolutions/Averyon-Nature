@@ -1,4 +1,5 @@
 body.path-les-espaces-naturels {
+    /*
     h1 {
         font-family: 'Viper Nora';
         position: absolute;
@@ -92,43 +93,28 @@ body.path-les-espaces-naturels {
                             text-align: center;
                             display: flex;
                             flex-direction: column;
-
-                            text-transform: uppercase;
-                            color : white;
-                            font-family: "Proxima Nova Regular";
-
-                            word-spacing: 5px;
-                            background: rgba(0,0,0, 0.1);
-                            transition: .3s ease background;
-                            &:hover,&:focus{
-                                text-decoration: none;
-                                background: none;
-                            }
-                            &>div{
-                                margin: auto;
-                                padding: 0 15px;
-                            }
-                            h2{
-                                //generic?
-                                font-family: "Proxima Nova semiBold";
-                                font-weight: 600;
-                            }
-                            span.distance{
-                                letter-spacing: 1px;
-                                padding-left: 25px;
-                                background: url(../images/pinsMap.png) no-repeat 0% 0px;
-                                background-size: 11px;
-                                text-transform: uppercase;
-                                font-family: 'Proxima Nova Regular';
-                            }
-                        }
-                    }
-                }
-            }
+    */
+    div.filter-btns{
+        width: 100%;
+        top: -100px;
+        margin: 0;
+        position: relative;
+        text-align: center;
+        button{
+            background-color: rgba(255, 255, 255, 0.9);
+          margin: 0 5px;
+          border: 0;
+          text-transform: uppercase;
+          border: 0;
+          &.selected, &:hover{
+              background-color: @base-color-aveyron;
+              color:white;
+          }
         }
     }
 }
 
+/*
 //- de 768
 @media (max-width: 767px) {
     body.path-les-espaces-naturels {
@@ -196,3 +182,4 @@ body.path-les-espaces-naturels {
         }
     }
 }
+*/
