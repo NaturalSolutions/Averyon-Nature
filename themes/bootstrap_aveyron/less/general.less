@@ -1,4 +1,14 @@
 
+@color-h2-aveyron : #565656;
+@bg-point-map-fold3-aveyron : #484848;
+
+
+@main_color : rgb(38, 38, 38);
+
+body{
+	color: @main_color;
+}
+
 h1{
 	//"Evenements", "Gallerie", "ENS", "welcome (hp)"
 	text-transform: uppercase;
@@ -32,20 +42,42 @@ h2{
 	word-spacing: 5px;
 	font-family: "Proxima Nova semiBold";
 	font-weight: 600;
+	margin: 20px 0px;
 	//(hp)
 	//single ENS
 }
 
 h3{
+	//img block: spacies list, ens list
 	text-transform: uppercase;
 	letter-spacing: 1px;
 	color : white;
 	font-family: "Proxima Nova Regular";
-	//single ENS titles
-	&.hp{
+}
 
+h4{
+	//map title
+	text-transform: uppercase;
+	text-align: center;
+	font-size: 1em;
+}
+
+h5{
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 100;
+	font-family: "Proxima Nova Regular";
+	font-size: 1.1em;
+	color: @main_color;
+	margin: 20px 0px; 
+	&:after {
+	    content: "";
+	    margin: 10px 0px;
+	    display: block;
+	    height: 1px;
+	    width: 40px;
+			background-color: @main_color;
 	}
-	//img block: spacies list, ens list
 }
 
 .no-padding{
@@ -59,12 +91,12 @@ h3{
 //should be integrated otherwise
 //all  content should not be inside a section tag
 section{
-	padding: 50px 0px;
-	
 	padding: 0px!important;
 }
 
-
+.section{
+	padding: 50px 0px!important;
+}
 
 b{
   color: #fff;
@@ -109,58 +141,83 @@ div.fold1{
 
 //block img link
 .img-block-link{
-    position: relative;
-    height: 400px;
-    padding: 5px;
-    .bg{
-        background-repeat: no-repeat!important;
-        background-position: center!important;
-        background-size: cover!important;
-        height: 100%;
-        width: 100%;
-    }
-    .abs{
-        position: absolute;
-        height: 100%;
-        width: 100%;
-        top: 0;
-        left: 0;
-        padding: inherit;
-        a{
-            height: 100%;
-            width: 100%;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
+  position: relative;
+  height: 400px;
+  padding: 5px;
+  .bg{
+    background-repeat: no-repeat!important;
+    background-position: center!important;
+    background-size: cover!important;
+    height: 100%;
+    width: 100%;
+  }
+  .abs{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    padding: inherit;
+    a{
+      height: 100%;
+      width: 100%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
 
-            text-transform: uppercase;
-            color : white;
-            font-family: "Proxima Nova Regular";
+      text-transform: uppercase;
+      color : white;
+      font-family: "Proxima Nova Regular";
 
-            word-spacing: 5px;
-            background: rgba(0,0,0, 0.1);
-            transition: .3s ease background;
-            &:hover,&:focus{
-                text-decoration: none;
-                background: none;
-            }
-            &>div{
-                margin: auto;
-                padding: 0 15px;
-            }
-            h2{
-                //generic?
-                font-family: "Proxima Nova semiBold";
-                font-weight: 600;
-            }
-            span.distance{
-                letter-spacing: 1px;
-                padding-left: 25px;
-                background: url(../images/pinsMap.png) no-repeat 0% 0px;
-                background-size: 11px;
-                text-transform: uppercase;
-                font-family: 'Proxima Nova Regular';
-            }
-        }
+      word-spacing: 5px;
+      background: rgba(0,0,0, 0.1);
+      transition: .3s ease background;
+      &:hover,&:focus{
+          text-decoration: none;
+          background: none;
+      }
+      &>div{
+          margin: auto;
+          padding: 0 15px;
+      }
+      h2{
+          //generic?
+          font-family: "Proxima Nova semiBold";
+          font-weight: 600;
+      }
+      span.distance{
+          letter-spacing: 1px;
+          padding-left: 25px;
+          background: url(../images/pinsMap.png) no-repeat 0% 0px;
+          background-size: 11px;
+          text-transform: uppercase;
+          font-family: 'Proxima Nova Regular';
+      }
     }
+  }
+
+  &.alone{
+		padding: 0px;
+  	height: 200px;
+		.abs{
+			h2{
+				letter-spacing: 2px;
+				font-family: 'Viper Nora';
+			}
+		}
+  }
+}
+
+
+video{
+	background-color: grey;
+}
+
+
+
+//overwrite for editable content
+.content{
+	h3{
+		color: @main_color;
+	}
 }

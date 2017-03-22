@@ -74,7 +74,7 @@
 
 <div class="container-fluid wrapper">
 
-  
+
   <!-- should be generic -->
   <div class="fold1 row">
     <div class="col-lg-12 no-padding">
@@ -85,15 +85,24 @@
     </div>
   </div>
 
-  <section>
+  <section class="section">
     <div class="container">
-
-
       <div class="col-sm-7">
-        <h2>{{ title }}</h2>
-        <pre>
-          {{ dump(content) }}
-        </pre>
+        <div class="content">
+        <h2>Content?</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde rerum nostrum cumque, porro, omnis, doloremque, minus voluptates laboriosam ipsa iure error magnam accusamus eligendi nulla sunt. Repellat omnis vel minus.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio fugit adipisci deleniti modi nam amet alias, minima sapiente ratione necessitatibus. Repellendus, quam aperiam possimus minima doloribus, eligendi dignissimos. Magnam, exercitationem.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi corporis accusamus aperiam officia facere animi similique voluptas maiores nostrum aliquid magnam eveniet itaque odio non doloremque nemo, voluptate, repellat laudantium.</p>
+
+        <br><br>
+        <h3>Recommandations</h3>
+
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum inventore ipsam, eum tempora nulla tenetur qui vel excepturi, dolores voluptate nobis laudantium est, obcaecati reiciendis maxime placeat eveniet iste accusamus.
+        </div>
+        <br><br>
+        <div class="col-xs-12 text-center">
+          <button class="btn btn-primary inverse">Voir la balade du site</button>
+        </div>
       </div>
 
       <div class="col-sm-offset-1 col-sm-4">
@@ -105,26 +114,33 @@
 
       </div>
     </section>
-      
 
-  <section class="clearfix">
-    {% for video in data.videos %}
-      <video class="col-sm-4" controls style="background: url( {{video.uri}} )">
+
+
+  <section class="section row">
+    <div class="clearfix">
+    {% for video in content.field_video_ens %}
+      {# dump(video) #}
+      <video class="col-sm-4 no-padding" url=" {{ video.value }} " controls style="background-image: url( {{video.uri}} )">
         Your browser does not support HTML5 video.
       </video>
     {% endfor %}
+    </div>
   </section>
 
 
 
-  <section>
+  <section class="section">
     <div class="container">
+
       <div class="clearfix">
         <h2>Gallery</h2>
         <div class="col-sm-8 no-padding">
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur minus labore quo consequatur magnam, culpa velit est quae possimus nostrum numquam, doloribus quos eos aliquam. Debitis ex odit vitae iusto.</p>
         </div>
       </div>
+      <br>
+
       <div class="clearfix">
         <div class="col-sm-8"></div>
         <div class="col-sm-4">
@@ -143,13 +159,35 @@
               Lorem ipsum dolor sit amet <br>
             </p>
           <h5>Thematique similaire</h5>
+            <div class="img-block-link alone col-md-12" thematique="">
+              <div class="bg" style="background-image: url({{ data.similarsENS[0].uri }})">
+              </div>
+                <div class="abs">
+                <a href="node/">
+                  <div>
+                    <h2>Title</h2>
+                    <span class="distance"> _ KM du départ</span>
+                  </div>
+                </a>
+                </div>
+            </div>
 
         </div>
 
       </div>
+
     </div>
   </section>
+
+
 
   </div><!-- fin ensContainer -->
 
 </div> <!-- fin wrapper -->
+
+
+<script>
+  // encode data for use in js file (themes/bootstrap_aveyron/scripts/script-ens.js)
+  var geoDataStarterPoint = {{ data.depart|json_encode()|raw }};
+  var geoDataTracePoint = {{ data.trace|json_encode()|raw }};
+</script>
