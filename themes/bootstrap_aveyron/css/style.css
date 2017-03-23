@@ -9,6 +9,10 @@
   src: url('../fonts/viper_nora.otf') format("opentype");
 }
 @font-face {
+  font-family: 'Proxima Nova semiBold';
+  src: url('../fonts/Proxima Nova Semibold.otf') format("opentype");
+}
+@font-face {
   font-family: 'Proxima Nova Regular';
   src: url('../fonts/Proxima Nova Regular.otf') format("opentype");
 }
@@ -9717,7 +9721,7 @@ body.navbar-is-static-top {
   margin-top: 0;
 }
 body.navbar-is-fixed-top {
-  margin-top: 65px;
+  margin-top: -1px;
 }
 body.navbar-is-fixed-bottom {
   padding-bottom: 65px;
@@ -10191,27 +10195,180 @@ p:last-child,
     margin-bottom: 40px;
   }
 }
-/*
-	Specific font for Homepage
-*/
-body.path-frontpage h1 {
+body {
+  color: #262626;
+}
+h1 {
+  text-transform: uppercase;
   font-family: 'Viper Nora';
-  position: absolute;
-  top: 250px;
-  z-index: 2;
-  left: 0;
   color: #fff;
   text-align: center;
-  width: 100%;
   border: 0;
-  padding: 0px 20%;
   font-size: 4em;
   line-height: 80px;
   letter-spacing: 2px;
+  border: 0px!important;
+  z-index: 5;
+  padding: 0 20%;
+  position: absolute;
+  top: 163px;
+  width: 100%;
+  left: -15px;
+}
+h2 {
+  text-transform: uppercase;
+  word-spacing: 5px;
+  font-family: "Proxima Nova semiBold";
+  font-weight: 600;
+  margin: 20px 0px;
+}
+h3 {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: white;
+  font-family: "Proxima Nova Regular";
+}
+h4 {
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 1em;
+}
+h5 {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 100;
+  font-family: "Proxima Nova Regular";
+  font-size: 1.1em;
+  color: #262626;
+  margin: 20px 0px;
+}
+h5:after {
+  content: "";
+  margin: 10px 0px;
+  display: block;
+  height: 1px;
+  width: 40px;
+  background-color: #262626;
+}
+.no-padding {
+  padding: 0px!important;
+}
+#map {
+  min-height: 500px;
+}
+section {
+  padding: 0px!important;
+}
+.section {
+  padding: 50px 0px!important;
+}
+b {
+  color: #fff;
+  font-family: 'MyriadPro semiBold';
+  font-weight: normal;
+  letter-spacing: 1px;
+}
+div.wrapper {
+  margin-top: -66px;
+  margin-bottom: 50px;
+}
+div.fold1 {
+  padding: 0px;
+}
+div.fold1 div.fold1-img {
+  width: 100%;
+  min-height: 620px;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: cover;
+}
+div.fold1 span.arianne {
+  position: relative;
+  top: -38px;
+  font-family: 'MyriadPro Regular';
+  text-transform: uppercase;
+  padding-left: 2%;
+  color: #f6f4f1;
+}
+.img-block-link {
+  position: relative;
+  height: 400px;
+  padding: 5px;
+}
+.img-block-link .bg {
+  background-repeat: no-repeat !important;
+  background-position: center!important;
+  background-size: cover!important;
+  height: 100%;
+  width: 100%;
+}
+.img-block-link .abs {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  padding: inherit;
+}
+.img-block-link .abs a {
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  text-transform: uppercase;
+  color: white;
+  font-family: "Proxima Nova Regular";
+  word-spacing: 5px;
+  background: rgba(0, 0, 0, 0.1);
+  transition: .3s ease background;
+}
+.img-block-link .abs a:hover,
+.img-block-link .abs a:focus {
+  text-decoration: none;
+  background: none;
+}
+.img-block-link .abs a > div {
+  margin: auto;
+  padding: 0 15px;
+}
+.img-block-link .abs a h2 {
+  font-family: "Proxima Nova semiBold";
+  font-weight: 600;
+}
+.img-block-link .abs a span.distance {
+  letter-spacing: 1px;
+  padding-left: 25px;
+  background: url(../images/pinsMap.png) no-repeat 0% 0px;
+  background-size: 11px;
+  text-transform: uppercase;
+  font-family: 'Proxima Nova Regular';
+}
+.img-block-link.alone {
+  padding: 0px;
+  height: 200px;
+}
+.img-block-link.alone .abs h2 {
+  letter-spacing: 2px;
+  font-family: 'Viper Nora';
+}
+video {
+  background-color: grey;
+}
+.content h3 {
+  color: #262626;
+}
+/*
+	Specific font for Homepage
+*/
+body.path-frontpage {
+  /* section{
+		padding: 15px!important;
+	} */
 }
 body.path-frontpage section.wrapper {
   /* min-height: 3000px;*/
-  margin-top: -134px;
+  /* margin-top: -134px; */
 }
 body.path-frontpage section.wrapper div.fold1 {
   position: relative;
@@ -11112,64 +11269,262 @@ body.path-frontpage section.wrapper div.fold6 div.leftZone div.secondHalf div.Sp
     margin-left: -30px;
   }
 }
-body.path-les-espaces-naturels h1 {
-  font-family: 'Viper Nora';
-  position: absolute;
-  top: 94px;
-  z-index: 2;
-  left: 0;
-  color: #fff;
-  text-align: center;
+body.path-les-espaces-naturels {
+  /*
+    h1 {
+        font-family: 'Viper Nora';
+        position: absolute;
+        top: 230px;
+        z-index: 2;
+        left: 0;
+        color: #fff;
+        text-align: center;
+        width: 100%;
+        border: 0;
+        padding: 0px 2%;
+        font-size: 4em;
+        line-height: 80px;
+        letter-spacing: 2px;
+    }
+    div.main-container{
+        section{
+            padding: 0;
+            div.wrapper{
+                margin-bottom: 50px;
+                div.fold1{
+                    div.noPadding{
+                        padding: 0 ;
+                        div.imgOnTop{
+                            width: 100%;
+                            min-height: 620px;
+                            background-repeat: no-repeat;
+                            background-position: 50% 50%;
+                            -webkit-background-size: cover;
+                            -moz-background-size: cover;
+                            -o-background-size: cover;
+                            background-size: cover;
+                        }
+                        div.buttonThematiqueRow{
+                            width: 100%;
+                            top: -100px;
+                            margin: 0;
+                            position: relative;
+                            text-align: center;
+                            button{
+                                margin: 0 5px;
+                                border: 0;
+                                background-color: rgba(255, 255, 255, 0.9);
+                                text-transform: uppercase;
+                                border: 0;
+                                &.selected, &:hover{
+                                    background-color: @base-color-aveyron;
+                                    color:white;
+                                }
+                            }
+                        }
+                        p.arianne{
+                            font-family: 'MyriadPro Regular';
+                            text-transform: uppercase;
+                            top: -80px;
+                            position: relative;
+                            padding-left: 2%;
+                            color: #f6f4f1;
+                            b{
+                                color: #fff;
+                                font-family: 'MyriadPro semiBold';
+                                font-weight: normal;
+                                letter-spacing: 1px;
+                            }
+                        }
+                    }
+                }
+                div.container{
+                    .ens{
+                        position: relative;
+                        height: 400px;
+                        padding: 5px;
+                    }
+                    .bg{
+                        background-repeat: no-repeat!important;
+                        background-position: center!important;
+                        background-size: cover!important;
+                        height: 100%;
+                        width: 100%;
+                    }
+                    .abs{
+                        position: absolute;
+                        height: 100%;
+                        width: 100%;
+                        top: 0;
+                        left: 0;
+                        padding: inherit;
+                        a{
+                            height: 100%;
+                            width: 100%;
+                            text-align: center;
+                            display: flex;
+                            flex-direction: column;
+    */
+}
+body.path-les-espaces-naturels div.filter-btns {
   width: 100%;
-  border: 0;
-  padding: 0px 20%;
-  font-size: 4em;
-  line-height: 80px;
-  letter-spacing: 2px;
-}
-body.path-les-espaces-naturels div.main-container section {
-  padding: 0;
-}
-body.path-les-espaces-naturels div.main-container section div.wrapper {
-  margin-top: -134px;
-  /* padding: 0; */
-}
-body.path-les-espaces-naturels div.main-container section div.wrapper div.fold1 div.noPadding {
-  padding: 0 ;
-}
-body.path-les-espaces-naturels div.main-container section div.wrapper div.fold1 div.noPadding img {
-  width: 100%;
-}
-body.path-les-espaces-naturels div.main-container section div.wrapper div.fold1 div.noPadding div.buttonThematiqueRow {
-  top: -110px;
+  top: -100px;
+  margin: 0;
   position: relative;
   text-align: center;
 }
-body.path-les-espaces-naturels div.main-container section div.wrapper div.fold1 div.noPadding div.buttonThematiqueRow button {
-  margin: 0 0.3%;
-  border: 0;
-  text-transform: uppercase;
-}
-body.path-les-espaces-naturels div.main-container section div.wrapper div.fold1 div.noPadding div.buttonThematiqueRow button:not(.selected) {
-  background-color: rgba(255, 255, 255, 0.5);
+body.path-les-espaces-naturels div.filter-btns button {
   background-color: rgba(255, 255, 255, 0.9);
+  margin: 0 5px;
+  text-transform: uppercase;
   border: 0;
 }
-body.path-les-espaces-naturels div.main-container section div.wrapper div.fold1 div.noPadding div.buttonThematiqueRow button:not(.selected):hover {
+body.path-les-espaces-naturels div.filter-btns button.selected,
+body.path-les-espaces-naturels div.filter-btns button:hover {
   background-color: #ff7815;
+  color: white;
 }
-body.path-les-espaces-naturels div.main-container section div.wrapper div.fold1 div.noPadding p.arianne {
-  font-family: 'MyriadPro Regular';
-  text-transform: uppercase;
-  top: -80px;
-  position: relative;
-  padding-left: 2%;
-  color: #f6f4f1;
+/*
+//- de 768
+@media (max-width: 767px) {
+    body.path-les-espaces-naturels {
+        h1{
+            padding: 0 44px;
+            top: 150px;
+        }
+        div.main-container section div.wrapper div.fold1 div.noPadding{
+            height: 665px;
+            p.arianne{
+                top: -160px;
+            }
+            div.buttonThematiqueRow{
+                padding: 0 15px;
+                top: -170px;
+                button{
+                    margin-bottom: 20px;
+                }
+            }
+        }
+    }
 }
-body.path-les-espaces-naturels div.main-container section div.wrapper div.fold1 div.noPadding p.arianne b {
-  color: #fff;
-  font-family: 'MyriadPro semiBold';
-  font-weight: normal;
-  letter-spacing: 1px;
+//- de 480
+@media (max-width: @screen-xs-min) {
+    body.path-les-espaces-naturels div.main-container section div.wrapper div.container .ens {
+        height: 300px;
+    }
+    body.path-les-espaces-naturels {
+        div.main-container section div.wrapper div.fold1 {
+            margin-bottom: 20px;
+            div.noPadding{
+                height: auto;
+                p.arianne{
+                    top: -340px;
+                }
+                div.buttonThematiqueRow{
+                    top: 30px;
+                    button{
+                        margin: 0 auto;
+                        width: 95%;
+                        margin-bottom: 15px;
+                        border: 1px solid @btn-primary-border;
+                    }
+                }
+            }
+        }
+    }
 }
+@media (max-width: 350px) {
+    body.path-les-espaces-naturels {
+        h1{
+            padding: 0;
+            font-size: 3.5em;
+        }
+        div.main-container section div.wrapper div.container{
+            .abs a > div{
+                padding: 0;
+                h2{
+                    font-size: 1.6em;
+                }
+            }
+            .ens {
+                height: 250px;
+            }
+        }
+    }
+}
+*/
+/*
+body.page-node-type-ens {
+    h1 {
+        font-family: 'Viper Nora';
+        position: absolute;
+        top: 230px;
+        z-index: 2;
+        left: 0;
+        color: #fff;
+        text-align: center;
+        width: 100%;
+        border: 0;
+        padding: 0px 20%;
+        font-size: 4em;
+        line-height: 80px;
+        letter-spacing: 2px;
+    }
+    div.main-container{
+        section{
+            padding: 0;
+            div.wrapper{
+                margin-bottom: 50px;
+                div.fold1{
+                    div.noPadding{
+                        padding: 0 ;
+                        div.imgOnTop{
+                            width: 100%;
+                            min-height: 620px;
+                            background-repeat: no-repeat;
+                            background-position: 50% 50%;
+                            -webkit-background-size: cover;
+                            -moz-background-size: cover;
+                            -o-background-size: cover;
+                            background-size: cover;
+                        }
+                        p.arianne{
+                            font-family: 'MyriadPro Regular';
+                            text-transform: uppercase;
+                            top: -38px;
+                            position: relative;
+                            padding-left: 2%;
+                            color: #f6f4f1;
+                            b{
+                                color: #fff;
+                                font-family: 'MyriadPro semiBold';
+                                font-weight: normal;
+                                letter-spacing: 1px;
+                            }
+                        }
+                    }
+                }
+                div.ensContainer{
+                    #mapid { height: 180px; }
+                }
+            }
+        }
+    }
+}
+@media (max-width: 767px) {
+    body.page-node-type-ens {
+        h1{
+            padding: 0 44px;
+            top: 150px;
+        }
+    }
+}
+//- de 480
+@media (max-width: @screen-xs-min) {
+    body.page-node-type-ens {
+        h1{
+            padding: 0;
+        }
+    }
+}*/
 /*# sourceMappingURL=style.css.map */

@@ -1,0 +1,193 @@
+{#
+/**
+ * @file
+ * Theme override to display a node.
+ *
+ * Available variables:
+ * - node: The node entity with limited access to object properties and methods.
+     Only "getter" methods (method names starting with "get", "has", or "is")
+     and a few common methods such as "id" and "label" are available. Calling
+     other methods (such as node.delete) will result in an exception.
+ * - label: The title of the node.
+ * - content: All node items. Use {{ content }} to print them all,
+ *   or print a subset such as {{ content.field_example }}. Use
+ *   {{ content|without('field_example') }} to temporarily suppress the printing
+ *   of a given child element.
+ * - author_picture: The node author user entity, rendered using the "compact"
+ *   view mode.
+ * - metadata: Metadata for this node.
+ * - date: Themed creation date field.
+ * - author_name: Themed author name field.
+ * - url: Direct URL of the current node.
+ * - display_submitted: Whether submission information should be displayed.
+ * - attributes: HTML attributes for the containing element.
+ *   The attributes.class element may contain one or more of the following
+ *   classes:
+ *   - node: The current template type (also known as a "theming hook").
+ *   - node--type-[type]: The current node type. For example, if the node is an
+ *     "Article" it would result in "node--type-article". Note that the machine
+ *     name will often be in a short form of the human readable label.
+ *   - node--view-mode-[view_mode]: The View Mode of the node; for example, a
+ *     teaser would result in: "node--view-mode-teaser", and
+ *     full: "node--view-mode-full".
+ *   The following are controlled through the node publishing options.
+ *   - node--promoted: Appears on nodes promoted to the front page.
+ *   - node--sticky: Appears on nodes ordered above other non-sticky nodes in
+ *     teaser listings.
+ *   - node--unpublished: Appears on unpublished nodes visible only to site
+ *     admins.
+ * - title_attributes: Same as attributes, except applied to the main title
+ *   tag that appears in the template.
+ * - content_attributes: Same as attributes, except applied to the main
+ *   content tag that appears in the template.
+ * - author_attributes: Same as attributes, except applied to the author of
+ *   the node tag that appears in the template.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ * - view_mode: View mode; for example, "teaser" or "full".
+ * - teaser: Flag for the teaser state. Will be true if view_mode is 'teaser'.
+ * - page: Flag for the full page state. Will be true if view_mode is 'full'.
+ * - readmore: Flag for more state. Will be true if the teaser content of the
+ *   node cannot hold the main body content.
+ * - logged_in: Flag for authenticated user status. Will be true when the
+ *   current user is a logged-in member.
+ * - is_admin: Flag for admin user status. Will be true when the current user
+ *   is an administrator.
+ *
+ * @ingroup templates
+ *
+ * @see template_preprocess_node()
+ *
+ * @todo Remove the id attribute (or make it a class), because if that gets
+ *   rendered twice on a page this is invalid CSS for example: two lists
+ *   in different view modes.
+ */
+#}
+
+{{ attach_library('bootstrap_aveyron/leaflet') }}
+{{ attach_library('bootstrap_aveyron/script-ens') }}
+
+<!-- total main content should not be indide a single region -->
+
+
+<div class="container-fluid wrapper">
+
+
+  <!-- should be generic -->
+  <div class="fold1 row">
+    <div class="col-lg-12 no-padding">
+
+      <div class="fold1-img" alt="{{ data.pictureOnTop.field_poster_alt }}" title="{{ data.pictureOnTop.field_poster_title }}" style="background-image: url({{ data.pictureOnTop.uri }});"></div>
+      <span class="arianne">Accueil > les espaces naturels > <b>{{ label }}</b></span>
+
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="col-sm-7">
+        <div class="content">
+        <h2>Content?</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde rerum nostrum cumque, porro, omnis, doloremque, minus voluptates laboriosam ipsa iure error magnam accusamus eligendi nulla sunt. Repellat omnis vel minus.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio fugit adipisci deleniti modi nam amet alias, minima sapiente ratione necessitatibus. Repellendus, quam aperiam possimus minima doloribus, eligendi dignissimos. Magnam, exercitationem.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi corporis accusamus aperiam officia facere animi similique voluptas maiores nostrum aliquid magnam eveniet itaque odio non doloremque nemo, voluptate, repellat laudantium.</p>
+
+        <br><br>
+        <h3>Recommandations</h3>
+
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum inventore ipsam, eum tempora nulla tenetur qui vel excepturi, dolores voluptate nobis laudantium est, obcaecati reiciendis maxime placeat eveniet iste accusamus.
+        </div>
+        <br><br>
+        <div class="col-xs-12 text-center">
+          <button class="btn btn-primary inverse">Voir la balade du site</button>
+        </div>
+      </div>
+
+      <div class="col-sm-offset-1 col-sm-4">
+        <h4>Carte de l'espace Naturel</h4>
+        <div id="map" class="map"></div>
+      </div>
+
+      <button class="btn">Voir la balade du site</button>
+
+      </div>
+    </section>
+
+
+
+  <section class="section row">
+    <div class="clearfix">
+    {% for video in content.field_video_ens %}
+      {# dump(video) #}
+      <video class="col-sm-4 no-padding" url=" {{ video.value }} " controls style="background-image: url( {{video.uri}} )">
+        Your browser does not support HTML5 video.
+      </video>
+    {% endfor %}
+    </div>
+  </section>
+
+
+
+  <section class="section">
+    <div class="container">
+
+      <div class="clearfix">
+        <h2>Gallery</h2>
+        <div class="col-sm-8 no-padding">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur minus labore quo consequatur magnam, culpa velit est quae possimus nostrum numquam, doloribus quos eos aliquam. Debitis ex odit vitae iusto.</p>
+        </div>
+      </div>
+      <br>
+
+      <div class="clearfix">
+        <div class="col-sm-8"></div>
+        <div class="col-sm-4">
+          <h5>Informations</h5>
+            <p>
+              Lorem ipsum dolor sit amet <br>
+              Lorem ipsum dolor sit amet <br>
+              Lorem ipsum dolor sit amet <br>
+              Lorem ipsum dolor sit amet <br>
+            </p>
+            <br>
+            <p>
+              Lorem ipsum dolor sit amet <br>
+              Lorem ipsum dolor sit amet <br>
+              Lorem ipsum dolor sit amet <br>
+              Lorem ipsum dolor sit amet <br>
+            </p>
+          <h5>Thematique similaire</h5>
+            <div class="img-block-link alone col-md-12" thematique="">
+              <div class="bg" style="background-image: url({{ data.similarsENS[0].uri }})">
+              </div>
+                <div class="abs">
+                <a href="node/">
+                  <div>
+                    <h2>Title</h2>
+                    <span class="distance"> _ KM du départ</span>
+                  </div>
+                </a>
+                </div>
+            </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+
+  </div><!-- fin ensContainer -->
+
+</div> <!-- fin wrapper -->
+
+
+<script>
+  // encode data for use in js file (themes/bootstrap_aveyron/scripts/script-ens.js)
+  var geoDataStarterPoint = {{ data.depart|json_encode()|raw }};
+  var geoDataTracePoint = {{ data.trace|json_encode()|raw }};
+</script>

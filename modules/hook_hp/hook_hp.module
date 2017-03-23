@@ -63,7 +63,8 @@ function getSliderPictures(){
 	foreach ($picturesFold1 as $key => $picture) {
 
 		//Convert url of picturesFold1
-		$picture->uri = file_create_url($picture->uri);
+		//$picture->uri = file_create_url($picture->uri);
+		$picture->uri = entity_load('image_style', '2000_par_950')->buildUrl($picture->uri);
 	}
 
 	return $picturesFold1;
@@ -267,7 +268,14 @@ function getInfoFold5(){
 		SELECT v.field_video_ens_value FROM aveyron.node__field_video_ens v ORDER BY RAND() LIMIT 4
 	");
 
-	$infoFold5[2] = $query->fetchAll();
+	$videos = $query->fetchAll();
+	foreach ($videos as $key => $video) {
+
+		$video->field_video_ens_value = explode("http://dai.ly/", $video->field_video_ens_value)[1];
+
+	}
+
+	$infoFold5[2] = $videos;
 
 	return $infoFold5;
 }

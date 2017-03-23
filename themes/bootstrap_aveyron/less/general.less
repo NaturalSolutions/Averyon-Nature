@@ -1,0 +1,223 @@
+
+@color-h2-aveyron : #565656;
+@bg-point-map-fold3-aveyron : #484848;
+
+
+@main_color : rgb(38, 38, 38);
+
+body{
+	color: @main_color;
+}
+
+h1{
+	//"Evenements", "Gallerie", "ENS", "welcome (hp)"
+	text-transform: uppercase;
+	font-family: 'Viper Nora';
+	color: #fff;
+	text-align: center;
+	border: 0;
+	font-size: 4em;
+	line-height: 80px;
+	letter-spacing: 2px;
+	border: 0px!important;
+	z-index: 5;
+	
+
+	// not conviced by that especially for mobile
+	padding: 0 20%;
+	position: absolute;
+	top: 163px;
+	width: 100%;
+	left: -15px;
+
+
+	//single: events, spacies
+	&.black{
+			
+	}
+}
+
+h2{
+	text-transform: uppercase;
+	word-spacing: 5px;
+	font-family: "Proxima Nova semiBold";
+	font-weight: 600;
+	margin: 20px 0px;
+	//(hp)
+	//single ENS
+}
+
+h3{
+	//img block: spacies list, ens list
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	color : white;
+	font-family: "Proxima Nova Regular";
+}
+
+h4{
+	//map title
+	text-transform: uppercase;
+	text-align: center;
+	font-size: 1em;
+}
+
+h5{
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 100;
+	font-family: "Proxima Nova Regular";
+	font-size: 1.1em;
+	color: @main_color;
+	margin: 20px 0px; 
+	&:after {
+	    content: "";
+	    margin: 10px 0px;
+	    display: block;
+	    height: 1px;
+	    width: 40px;
+			background-color: @main_color;
+	}
+}
+
+.no-padding{
+	padding: 0px!important;
+}
+
+
+#map { min-height: 500px; }
+
+
+//should be integrated otherwise
+//all  content should not be inside a section tag
+section{
+	padding: 0px!important;
+}
+
+.section{
+	padding: 50px 0px!important;
+}
+
+b{
+  color: #fff;
+  font-family: 'MyriadPro semiBold';
+  font-weight: normal;
+  letter-spacing: 1px;
+}
+
+//normaly useless
+div.wrapper{
+  margin-top: -66px;
+  margin-bottom: 50px;
+}
+
+
+//encart
+div.fold1{
+	padding: 0px;
+  div.fold1-img{
+    width: 100%;
+    min-height: 620px;
+
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: cover;
+
+  }
+  span.arianne{
+    position: relative;
+    top: -38px;
+    font-family: 'MyriadPro Regular';
+    text-transform: uppercase;
+    padding-left: 2%;
+    color: #f6f4f1;
+  }
+
+}
+
+
+
+
+
+//block img link
+.img-block-link{
+  position: relative;
+  height: 400px;
+  padding: 5px;
+  .bg{
+    background-repeat: no-repeat!important;
+    background-position: center!important;
+    background-size: cover!important;
+    height: 100%;
+    width: 100%;
+  }
+  .abs{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    padding: inherit;
+    a{
+      height: 100%;
+      width: 100%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+
+      text-transform: uppercase;
+      color : white;
+      font-family: "Proxima Nova Regular";
+
+      word-spacing: 5px;
+      background: rgba(0,0,0, 0.1);
+      transition: .3s ease background;
+      &:hover,&:focus{
+          text-decoration: none;
+          background: none;
+      }
+      &>div{
+          margin: auto;
+          padding: 0 15px;
+      }
+      h2{
+          //generic?
+          font-family: "Proxima Nova semiBold";
+          font-weight: 600;
+      }
+      span.distance{
+          letter-spacing: 1px;
+          padding-left: 25px;
+          background: url(../images/pinsMap.png) no-repeat 0% 0px;
+          background-size: 11px;
+          text-transform: uppercase;
+          font-family: 'Proxima Nova Regular';
+      }
+    }
+  }
+
+  &.alone{
+		padding: 0px;
+  	height: 200px;
+		.abs{
+			h2{
+				letter-spacing: 2px;
+				font-family: 'Viper Nora';
+			}
+		}
+  }
+}
+
+
+video{
+	background-color: grey;
+}
+
+
+
+//overwrite for editable content
+.content{
+	h3{
+		color: @main_color;
+	}
+}

@@ -1,84 +1,121 @@
 <div class="container-fluid wrapper">
 
-	<div class="row fold1">
-		<div class="col-lg-12 noPadding">
-			<img src="{{ data.imageOnTop.uri }}" alt="{{ data.imageOnTop.field_image_on_top_alt }}" title="{{ data.imageOnTop.field_image_on_top_title }}">
 
-			<div class="row buttonThematiqueRow">
-				<div class="col-lg-12">
-					<button class="btn btn-primary all selected">Tout</button>
-				{% for thematique in data.thematiques %}
-				    <button class="btn btn-primary {{thematique.title}} inverse">{{thematique.title}}</button>
-				{% endfor %}
-				</div>
-			</div>
+<!-- should be genereic -->
+  <div class="fold1 row">
+    <div class="col-lg-12 no-padding">
 
-			<p class="arianne">Accueil > <b>les espaces naturels</b></p>
+    <div class="fold1-img" alt="{{ data.imageOnTop.field_image_on_top_alt }}" title="{{ data.imageOnTop.field_image_on_top_title }}" style="background-image: url({{ data.imageOnTop.uri }});"></div>
 
-		</div>
-	</div> <!-- fin fold1 -->
 
-	<div class="container ensContainer">
+      <div class="row filter-btns">
+      	<div class="col-lg-12">
+      		<button class="js-btn-filter-ens btn btn-primary inverse selected" thematique="all">
+      			Tout
+      		</button>
+      	{% for thematique in data.thematiques %}
+      	    <button class="js-btn-filter-ens btn btn-primary inverse" thematique="{{thematique.title}}">
+      	    	{{thematique.title}}
+      	    </button>
+      	{% endfor %}
+      	</div>
+      </div>
 
-		<!-- <div class="row">
+      <span class="arianne">Accueil > les espaces naturels > <b>{{ label }}</b></p>
+
+    </div>
+  </div>
+
+
+	<div class="container js-ens-container">
 
 			{% for ens in data.ensFold2 %}
-
-				to alter display sometimes
-				{% if loop.index is divisibleby(6) %}
-
-						<div class="col-md-8 ens{{loop.index}} big">{{ens.title}}</div>
-
+				{% if loop.index == 1 or loop.index == 10 %}
+					<div class="js-ens img-block-link col-md-8" thematique="{{ens.thematique}}">
 				{% else %}
-
-					<div class="col-md-4 small">{{ens.title}}</div>
-
+					<div class="js-ens img-block-link col-md-4" thematique="{{ens.thematique}}">
 				{% endif %}
-
+						<div class="bg" style="background: url( {{ens.uri}} )">
+						</div>
+						<div class="abs">
+						<a href="node/{{ens.entity_id}}">
+							<div>
+								<h2>{{ens.title}}</h2>
+								<span class="distance"> _ KM du départ</span>
+							</div>
+						</a>
+						</div>
+				</div>
 			{% endfor %}
 
-		</div> -->
-	</div><!-- fin ensContainer -->
+	</div>
 
 </div> <!-- fin wrapper -->
-<pre>{{  dump(data) }}</pre>
 
 <script>
+	document.addEventListener('DOMContentLoaded', function(event) {
+		var $ = jQuery;
 
-	var displayENS = function(thematique){
-
-		//console.log("allENS", allENS);
-
-		// get number of all ENS
-		var nbENS = allENS.length;
-
-		// calc a number of ENS with different displayed in front
-		var nbLongerENS = parseInt(nbENS / 5);
-
-		// calc number of row we'll display with 3 ENS by row and the special display each 5 ENS
-		var nbRowOfENS = parseInt((nbENS - nbLongerENS) / 3);
-
-		console.log("nbENS", nbENS);
-		console.log("nbRowOfENS", nbRowOfENS);
-		console.log("nbLongerENS", nbLongerENS);
-
-
-		var cptOfENS = 0;
-		allENS.forEach(function(ens) {
-
-			//For each ENS we'll ceate his block
-			var oneHtmlENS = "";
-
+		//quick & unoptimized
+		$('.js-btn-filter-ens').on('click', function(e){
+			$('.js-btn-filter-ens').each(function(){
+					$(this).removeClass('selected');
+			});
+			var thematique = $(e.currentTarget).attr('thematique');
+			$(e.currentTarget).addClass('selected');
+			$('.js-ens-container').find('.js-ens').each(function(){
+				if(thematique == 'all'){
+					$(this).removeClass('hide');
+					return;
+				}
+				if($(this).attr('thematique') === thematique){
+					$(this).removeClass('hide');
+				} else {
+					$(this).addClass('hide');
+				}
+			});
 		});
 
+/*		var displayENS = function(thematique){
+
+			// get number of all ENS
+			var nbENS = allENS.length;
+
+			// calc a number of ENS with different displayed in front
+			var nbLongerENS = parseInt(nbENS / 5);
+			// calc number of row we'll display with 3 ENS by row and the special display each 5 ENS
+			var nbRowOfENS = parseInt((nbENS - nbLongerENS) / 3);
 
 
-		//var hmltENS = '<div class="col-md-8"></div>'+
+			allENS.forEach(function(ens, i) {
+				var bg = ens;
+				var size = 'col-sm-4';
+				if(i === 0 || i === 9){
+					console.log(ens);
+					size = 'col-sm-8'
+				}
+				var ensTpl = '<div class="ens ' + size + '" >\
+						<div class="bg" style="background: url(' + ens.uri + ')">\
+						</div>\
+						<a class="abs" href="plouf">\
+							<div>\
+								<h3>' + ens.title + '</h3>\
+								<span class="distance"> KM</span>\
+							</div>\
+						</a>\
+				</div>';
 
-		//$(".ensContainer").append(hmltENS);
 
-	}
+				$('.js-ens-container').append(ensTpl);
 
-	var allENS = {{ data.ensFold2|json_encode()|raw }};
-	displayENS("all");
+			});
+
+		}
+
+		var allENS = {{ data.ensFold2|json_encode()|raw }};
+		displayENS("all");*/
+
+	});
+
+
 </script>

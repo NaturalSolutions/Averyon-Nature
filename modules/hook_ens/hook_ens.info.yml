@@ -1,0 +1,7 @@
+name: Hook Module for ENS
+description: Hook Module for ENS
+package: Custom
+author: Natural Solutions
+type: module
+version: 1.0
+core: 8.x
