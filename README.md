@@ -8,28 +8,28 @@
 
 # Liste des modules utilisé (www/modules)
 
-[admin_toolbar 8.x-1.18](https://ftp.drupal.org/files/projects/admin_toolbar-8.x-1.18.zip)  
-[backup_migrate 8.x-4.0-alpha1](https://ftp.drupal.org/files/projects/backup_migrate-8.x-4.0-alpha1.zip)  
-[captcha 8.x-1.0-beta1](https://ftp.drupal.org/files/projects/captcha-8.x-1.0-beta1.zip)  
-[devel 8.x-1.0-rc1](https://ftp.drupal.org/files/projects/devel-8.x-1.0-rc1.zip)  
-[geolocation 8.x-1.10](https://ftp.drupal.org/files/projects/geolocation-8.x-1.10.zip)  
-[honeypot 8.x-1.23](https://ftp.drupal.org/files/projects/honeypot-8.x-1.23.zip)  
-[xmlsitemap 8.x-1.0-alpha2](https://ftp.drupal.org/files/projects/xmlsitemap-8.x-1.0-alpha2.zip)  
-[Geofield 8.x-1.0-alpha2](https://ftp.drupal.org/files/projects/geofield-8.x-1.0-alpha2.zip)  
+[admin_toolbar 8.x-1.18](https://ftp.drupal.org/files/projects/admin_toolbar-8.x-1.18.zip)
+[backup_migrate 8.x-4.0-alpha1](https://ftp.drupal.org/files/projects/backup_migrate-8.x-4.0-alpha1.zip)
+[captcha 8.x-1.0-beta1](https://ftp.drupal.org/files/projects/captcha-8.x-1.0-beta1.zip)
+[devel 8.x-1.0-rc1](https://ftp.drupal.org/files/projects/devel-8.x-1.0-rc1.zip)
+[geolocation 8.x-1.10](https://ftp.drupal.org/files/projects/geolocation-8.x-1.10.zip)
+[honeypot 8.x-1.23](https://ftp.drupal.org/files/projects/honeypot-8.x-1.23.zip)
+[xmlsitemap 8.x-1.0-alpha2](https://ftp.drupal.org/files/projects/xmlsitemap-8.x-1.0-alpha2.zip)
+[Geofield 8.x-1.0-alpha2](https://ftp.drupal.org/files/projects/geofield-8.x-1.0-alpha2.zip)
 [Leaflet 8.x-1.0-beta1](https://ftp.drupal.org/files/projects/leaflet-8.x-1.0-beta1.zip)
 
 
 ## Installation de la dépendance geoPhp pour le module geofield
 Le tag --ignore-platform-reqs permet d'ignorer la version de php.
->composer require "phayes/geophp" --ignore-platform-reqs
-Executer cette commande à la racine du projet
+>composer require "phayes/geophp" --ignore-platform-reqs  
+Executer cette commande à la racine du projet lors d'une nouvelle installation ou une mise à jour du coeur
 
 # Démo
 [http://151.80.132.63/aveyron-demo/](http://151.80.132.63/aveyron-demo/)
 
 # Documentation
-[Documentation officiel D8](https://www.drupal.org/docs/8)  
-[Convention de nommage](https://www.drupal.org/node/318)  
+[Documentation officiel D8](https://www.drupal.org/docs/8)
+[Convention de nommage](https://www.drupal.org/node/318)
 [Drupal Bootstrap Documentation](http://drupal-bootstrap.org/api/bootstrap)
 
 ## Fond de carte IGN
