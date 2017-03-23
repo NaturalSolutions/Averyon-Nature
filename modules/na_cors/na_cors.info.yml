@@ -1,0 +1,8 @@
+name: cors
+description: Update Cors
+package: Custom
+type: module
+core: 8.x
+
+version: 0.1
+# Online doc to complete this file at "https://www.drupal.org/docs/8/creating-custom-modules/let-drupal-8-know-about-your-module-with-an-infoyml-file"
