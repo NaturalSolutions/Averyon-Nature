@@ -8,7 +8,7 @@ function layer_leaflet_leaflet_map_info() {
     'fadeAnimation'      => TRUE,
     'layerControl'       => FALSE,
     'maxZoom'            => 18,
-    'minZoom'            => 1,
+    'minZoom'            => 14,
     'scrollWheelZoom'    => TRUE,
     'touchZoom'          => TRUE,
     'trackResize'        => TRUE,
@@ -24,7 +24,7 @@ function layer_leaflet_leaflet_map_info() {
     'settings' => $default_settings,
     'layers' => array(
       'layer' => array(
-        'urlTemplate' => '//wxs.ign.fr/q4f3fb4nf3i3kc8ackm8z464/geoportail/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=GEOGRAPHICALGRIDSYSTEMS.MAPS&STYLE=normal&TILEMATRIXSET=PM&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}&FORMAT=image%2Fjpeg',
+        'urlTemplate' => '//wxs.ign.fr/keivyuqi9olxo91z3g5xvh5z/geoportail/wmts?service=WMTS&request=GetTile&version=1.0.0&tilematrixset=PM&tilematrix={z}&tilecol={x}&tilerow={y}&layer=GEOGRAPHICALGRIDSYSTEMS.MAPS&format=image/jpeg&style=normal',
         'options' => array(
           'attribution' => 'Carte IGN',
           'detectRetina' => TRUE,
