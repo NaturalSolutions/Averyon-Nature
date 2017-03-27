@@ -113,6 +113,22 @@ class AveyronAPIController extends ControllerBase {
       $item["thematique"] = $thematique;
 
       /*
+      * PDF
+      */
+      $query = db_query("
+        SELECT f.uri, f.fid
+        from file_managed f
+        join node__field_pdf_ens g
+        on f.fid = g.field_pdf_ens_target_id
+        where g.entity_id = $itemId"
+      );
+      $pdf = $query->fetchAll();
+      if(isset($pdf) && count($pdf) > 0){
+        $pdf = file_create_url($pdf[0]->uri);
+        $item["pdf"] = $pdf;
+      }
+
+      /*
       * Thumb - 1st image of gallery with special style
       */
       $query = db_query("
@@ -216,6 +232,22 @@ class AveyronAPIController extends ControllerBase {
     $thematique = $query->fetchAll();
     $thematique = $thematique[0]->title;
     $result["thematique"] = $thematique;
+
+    /*
+    * PDF
+    */
+    $query = db_query("
+      SELECT f.uri, f.fid
+      from file_managed f
+      join node__field_pdf_ens g
+      on f.fid = g.field_pdf_ens_target_id
+      where g.entity_id = $id"
+    );
+    $pdf = $query->fetchAll();
+    if(isset($pdf) && count($pdf) > 0){
+      $pdf = file_create_url($pdf[0]->uri);
+      $result["pdf"] = $pdf;
+    }
 
     /*
     * Poster - 1st image of gallery with special style
