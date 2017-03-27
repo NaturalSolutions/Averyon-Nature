@@ -18,7 +18,7 @@
 [Geofield 8.x-1.0-alpha2](https://ftp.drupal.org/files/projects/geofield-8.x-1.0-alpha2.zip)
 [Leaflet 8.x-1.0-beta1](https://ftp.drupal.org/files/projects/leaflet-8.x-1.0-beta1.zip)
 [Pathauto 8.x-1.0-rc1](https://ftp.drupal.org/files/projects/pathauto-8.x-1.0-rc1.zip)
-
+[Ctools 8.x-3.0-alpha27](https://ftp.drupal.org/files/projects/ctools-8.x-3.0-alpha27.zip)
 
 ## Installation de la dépendance geoPhp pour le module geofield
 Le tag --ignore-platform-reqs permet d'ignorer la version de php.
