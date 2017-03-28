@@ -102,17 +102,6 @@
   <div role="main" class="main-container {{ container }} js-quickedit-main-content">
     <div class="row">
 
-      {# Header #}
-      {% if page.header %}
-        {% block header %}
-          <div class="col-sm-12" role="heading">
-            <h1 class="page-header">
-              {{ titleFold1 }}
-            </h1>
-          </div>
-        {% endblock %}
-      {% endif %}
-
       {# Sidebar First #}
       {% if page.sidebar_first %}
         {% block sidebar_first %}
@@ -130,8 +119,10 @@
 
 
         <!-- Standard button -->
-        <div class="row fold1">
-
+        <div class="fold1">
+          <h1 class="col-sm-12 abs-auto">
+            {{ titleFold1 }}
+          </h1>
             <button type="button" class="btn btn-primary">Découvrir</button>
             <!-- Slider main container -->
             <div class="swiper-container">
