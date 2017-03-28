@@ -72,32 +72,21 @@
 <!-- total main content should not be indide a single region -->
 
 
-<div class="container-fluid wrapper">
+  <section class="headband" style="background-image: url({{ file_url(content.field_poster['#items'].entity.uri.value) }})">
+    <h1>{{ node.title.value }}</h1>
+    <span class="arianne">
+      Accueil > les espaces naturels >
+      <b>{{ label }}</b>
+    </span>
+  </section>
 
-
-  <!-- should be generic -->
-  <div class="fold1 row">
-    <div class="col-lg-12 no-padding">
-
-      <div class="fold1-img" alt="{{ data.pictureOnTop.field_poster_alt }}" title="{{ data.pictureOnTop.field_poster_title }}" style="background-image: url({{ data.pictureOnTop.uri }});"></div>
-      <span class="arianne">Accueil > les espaces naturels > <b>{{ label }}</b></span>
-
-    </div>
-  </div>
 
   <section class="section">
     <div class="container">
       <div class="col-sm-7">
         <div class="content">
         <h2>Content?</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde rerum nostrum cumque, porro, omnis, doloremque, minus voluptates laboriosam ipsa iure error magnam accusamus eligendi nulla sunt. Repellat omnis vel minus.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio fugit adipisci deleniti modi nam amet alias, minima sapiente ratione necessitatibus. Repellendus, quam aperiam possimus minima doloribus, eligendi dignissimos. Magnam, exercitationem.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi corporis accusamus aperiam officia facere animi similique voluptas maiores nostrum aliquid magnam eveniet itaque odio non doloremque nemo, voluptate, repellat laudantium.</p>
-
-        <br><br>
-        <h3>Recommandations</h3>
-
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum inventore ipsam, eum tempora nulla tenetur qui vel excepturi, dolores voluptate nobis laudantium est, obcaecati reiciendis maxime placeat eveniet iste accusamus.
+        {{ content.body }}
         </div>
         <br><br>
         <div class="col-xs-12 text-center">
@@ -110,21 +99,13 @@
         <div id="map" class="map"></div>
       </div>
 
-      <button class="btn">Voir la balade du site</button>
-
-      </div>
-    </section>
+    </div>
+  </section>
 
 
-
-  <section class="section row">
+  <section class="section">
     <div class="clearfix">
-    {% for video in content.field_video_ens %}
-      {# dump(video) #}
-      <video class="col-sm-4 no-padding" url=" {{ video.value }} " controls style="background-image: url( {{video.uri}} )">
-        Your browser does not support HTML5 video.
-      </video>
-    {% endfor %}
+    {{ content.field_video_ens }}
     </div>
   </section>
 
@@ -180,10 +161,6 @@
   </section>
 
 
-
-  </div><!-- fin ensContainer -->
-
-</div> <!-- fin wrapper -->
 
 
 <script>

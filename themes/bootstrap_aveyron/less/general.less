@@ -21,14 +21,6 @@ h1{
 	letter-spacing: 2px;
 	border: 0px!important;
 	z-index: 5;
-	
-
-	// not conviced by that especially for mobile
-	padding: 0 20%;
-	position: absolute;
-	top: 163px;
-	width: 100%;
-	left: -15px;
 
 
 	//single: events, spacies
@@ -84,6 +76,13 @@ h5{
 	padding: 0px!important;
 }
 
+.abs-auto{
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+
+
 
 #map { min-height: 500px; }
 
@@ -92,11 +91,11 @@ h5{
 //all  content should not be inside a section tag
 section{
 	padding: 0px!important;
+  &.section{
+    padding-top: 100px!important;
+  }
 }
 
-.section{
-	padding: 50px 0px!important;
-}
 
 b{
   color: #fff;
@@ -105,34 +104,53 @@ b{
   letter-spacing: 1px;
 }
 
-//normaly useless
-div.wrapper{
-  margin-top: -66px;
-  margin-bottom: 50px;
+
+.headband{
+  position: relative;
+  min-height: 620px;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: cover;
+  & h1{
+    position: absolute;
+    top: 200px;
+    width: 100%;
+    user-select: none;
+  }
+
+  & .arianne{
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+  }
+
+  & div.filter-btns{
+    position: absolute;
+    width: 100%;
+    bottom: 100px;
+    margin: 0;
+    text-align: center;
+    button{
+      background-color: rgba(255, 255, 255, 0.9);
+      margin: 0 5px;
+      border: 0;
+      text-transform: uppercase;
+      border: 0;
+      &.selected, &:hover{
+          background-color: @base-color-aveyron;
+          color:white;
+      }
+    }
+  }
+
 }
 
 
-//encart
-div.fold1{
-	padding: 0px;
-  div.fold1-img{
-    width: 100%;
-    min-height: 620px;
-
-    background-repeat: no-repeat;
-    background-position: 50% 50%;
-    background-size: cover;
-
-  }
-  span.arianne{
-    position: relative;
-    top: -38px;
-    font-family: 'MyriadPro Regular';
-    text-transform: uppercase;
-    padding-left: 2%;
-    color: #f6f4f1;
-  }
-
+span.arianne{
+  position: relative;
+  font-family: 'MyriadPro Regular';
+  text-transform: uppercase;
+  color: #f6f4f1;
 }
 
 
@@ -220,4 +238,8 @@ video{
 	h3{
 		color: @main_color;
 	}
+}
+
+footer.footer{
+  margin-top: 100px;
 }
