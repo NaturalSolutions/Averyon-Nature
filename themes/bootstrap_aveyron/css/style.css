@@ -10209,11 +10209,6 @@ h1 {
   letter-spacing: 2px;
   border: 0px!important;
   z-index: 5;
-  padding: 0 20%;
-  position: absolute;
-  top: 163px;
-  width: 100%;
-  left: -15px;
 }
 h2 {
   text-transform: uppercase;
@@ -10260,7 +10255,7 @@ section {
   padding: 0px!important;
 }
 .section {
-  padding: 50px 0px!important;
+  padding-top: 100px!important;
 }
 b {
   color: #fff;
@@ -10271,6 +10266,49 @@ b {
 div.wrapper {
   margin-top: -66px;
   margin-bottom: 50px;
+}
+.headband {
+  position: relative;
+  min-height: 620px;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: cover;
+}
+.headband h1 {
+  padding: 0 20%;
+  position: absolute;
+  top: 200px;
+  width: 100%;
+  user-select: none;
+}
+.headband .arianne {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+}
+.headband div.filter-btns {
+  position: absolute;
+  width: 100%;
+  bottom: 100px;
+  margin: 0;
+  text-align: center;
+}
+.headband div.filter-btns button {
+  background-color: rgba(255, 255, 255, 0.9);
+  margin: 0 5px;
+  text-transform: uppercase;
+  border: 0;
+}
+.headband div.filter-btns button.selected,
+.headband div.filter-btns button:hover {
+  background-color: #ff7815;
+  color: white;
+}
+span.arianne {
+  position: relative;
+  font-family: 'MyriadPro Regular';
+  text-transform: uppercase;
+  color: #f6f4f1;
 }
 div.fold1 {
   padding: 0px;
@@ -10357,6 +10395,9 @@ video {
 }
 .content h3 {
   color: #262626;
+}
+footer.footer {
+  margin-top: 100px;
 }
 /*
 	Specific font for Homepage
@@ -11269,262 +11310,7 @@ body.path-frontpage section.wrapper div.fold6 div.leftZone div.secondHalf div.Sp
     margin-left: -30px;
   }
 }
-body.path-les-espaces-naturels {
-  /*
-    h1 {
-        font-family: 'Viper Nora';
-        position: absolute;
-        top: 230px;
-        z-index: 2;
-        left: 0;
-        color: #fff;
-        text-align: center;
-        width: 100%;
-        border: 0;
-        padding: 0px 2%;
-        font-size: 4em;
-        line-height: 80px;
-        letter-spacing: 2px;
-    }
-    div.main-container{
-        section{
-            padding: 0;
-            div.wrapper{
-                margin-bottom: 50px;
-                div.fold1{
-                    div.noPadding{
-                        padding: 0 ;
-                        div.imgOnTop{
-                            width: 100%;
-                            min-height: 620px;
-                            background-repeat: no-repeat;
-                            background-position: 50% 50%;
-                            -webkit-background-size: cover;
-                            -moz-background-size: cover;
-                            -o-background-size: cover;
-                            background-size: cover;
-                        }
-                        div.buttonThematiqueRow{
-                            width: 100%;
-                            top: -100px;
-                            margin: 0;
-                            position: relative;
-                            text-align: center;
-                            button{
-                                margin: 0 5px;
-                                border: 0;
-                                background-color: rgba(255, 255, 255, 0.9);
-                                text-transform: uppercase;
-                                border: 0;
-                                &.selected, &:hover{
-                                    background-color: @base-color-aveyron;
-                                    color:white;
-                                }
-                            }
-                        }
-                        p.arianne{
-                            font-family: 'MyriadPro Regular';
-                            text-transform: uppercase;
-                            top: -80px;
-                            position: relative;
-                            padding-left: 2%;
-                            color: #f6f4f1;
-                            b{
-                                color: #fff;
-                                font-family: 'MyriadPro semiBold';
-                                font-weight: normal;
-                                letter-spacing: 1px;
-                            }
-                        }
-                    }
-                }
-                div.container{
-                    .ens{
-                        position: relative;
-                        height: 400px;
-                        padding: 5px;
-                    }
-                    .bg{
-                        background-repeat: no-repeat!important;
-                        background-position: center!important;
-                        background-size: cover!important;
-                        height: 100%;
-                        width: 100%;
-                    }
-                    .abs{
-                        position: absolute;
-                        height: 100%;
-                        width: 100%;
-                        top: 0;
-                        left: 0;
-                        padding: inherit;
-                        a{
-                            height: 100%;
-                            width: 100%;
-                            text-align: center;
-                            display: flex;
-                            flex-direction: column;
-    */
+body.page-node-type-ens video:nth-child(2) {
+  z-index: 2;
 }
-body.path-les-espaces-naturels div.filter-btns {
-  width: 100%;
-  top: -100px;
-  margin: 0;
-  position: relative;
-  text-align: center;
-}
-body.path-les-espaces-naturels div.filter-btns button {
-  background-color: rgba(255, 255, 255, 0.9);
-  margin: 0 5px;
-  text-transform: uppercase;
-  border: 0;
-}
-body.path-les-espaces-naturels div.filter-btns button.selected,
-body.path-les-espaces-naturels div.filter-btns button:hover {
-  background-color: #ff7815;
-  color: white;
-}
-/*
-//- de 768
-@media (max-width: 767px) {
-    body.path-les-espaces-naturels {
-        h1{
-            padding: 0 44px;
-            top: 150px;
-        }
-        div.main-container section div.wrapper div.fold1 div.noPadding{
-            height: 665px;
-            p.arianne{
-                top: -160px;
-            }
-            div.buttonThematiqueRow{
-                padding: 0 15px;
-                top: -170px;
-                button{
-                    margin-bottom: 20px;
-                }
-            }
-        }
-    }
-}
-//- de 480
-@media (max-width: @screen-xs-min) {
-    body.path-les-espaces-naturels div.main-container section div.wrapper div.container .ens {
-        height: 300px;
-    }
-    body.path-les-espaces-naturels {
-        div.main-container section div.wrapper div.fold1 {
-            margin-bottom: 20px;
-            div.noPadding{
-                height: auto;
-                p.arianne{
-                    top: -340px;
-                }
-                div.buttonThematiqueRow{
-                    top: 30px;
-                    button{
-                        margin: 0 auto;
-                        width: 95%;
-                        margin-bottom: 15px;
-                        border: 1px solid @btn-primary-border;
-                    }
-                }
-            }
-        }
-    }
-}
-@media (max-width: 350px) {
-    body.path-les-espaces-naturels {
-        h1{
-            padding: 0;
-            font-size: 3.5em;
-        }
-        div.main-container section div.wrapper div.container{
-            .abs a > div{
-                padding: 0;
-                h2{
-                    font-size: 1.6em;
-                }
-            }
-            .ens {
-                height: 250px;
-            }
-        }
-    }
-}
-*/
-/*
-body.page-node-type-ens {
-    h1 {
-        font-family: 'Viper Nora';
-        position: absolute;
-        top: 230px;
-        z-index: 2;
-        left: 0;
-        color: #fff;
-        text-align: center;
-        width: 100%;
-        border: 0;
-        padding: 0px 20%;
-        font-size: 4em;
-        line-height: 80px;
-        letter-spacing: 2px;
-    }
-    div.main-container{
-        section{
-            padding: 0;
-            div.wrapper{
-                margin-bottom: 50px;
-                div.fold1{
-                    div.noPadding{
-                        padding: 0 ;
-                        div.imgOnTop{
-                            width: 100%;
-                            min-height: 620px;
-                            background-repeat: no-repeat;
-                            background-position: 50% 50%;
-                            -webkit-background-size: cover;
-                            -moz-background-size: cover;
-                            -o-background-size: cover;
-                            background-size: cover;
-                        }
-                        p.arianne{
-                            font-family: 'MyriadPro Regular';
-                            text-transform: uppercase;
-                            top: -38px;
-                            position: relative;
-                            padding-left: 2%;
-                            color: #f6f4f1;
-                            b{
-                                color: #fff;
-                                font-family: 'MyriadPro semiBold';
-                                font-weight: normal;
-                                letter-spacing: 1px;
-                            }
-                        }
-                    }
-                }
-                div.ensContainer{
-                    #mapid { height: 180px; }
-                }
-            }
-        }
-    }
-}
-@media (max-width: 767px) {
-    body.page-node-type-ens {
-        h1{
-            padding: 0 44px;
-            top: 150px;
-        }
-    }
-}
-//- de 480
-@media (max-width: @screen-xs-min) {
-    body.page-node-type-ens {
-        h1{
-            padding: 0;
-        }
-    }
-}*/
 /*# sourceMappingURL=style.css.map */
