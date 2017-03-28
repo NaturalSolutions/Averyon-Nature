@@ -68,6 +68,10 @@ class list_ensController extends ControllerBase {
 
 		foreach ($picturesFold2 as $key => $picture) {
 
+			//Add alias path
+			$path_alias = \Drupal::service('path.alias_manager')->getAliasByPath("/node/".$picture->entity_id, $langcode);
+			$picture->url_alias = $path_alias;
+
 			//Convert uri to the good style
 			if( $key == 0 )	$picture->uri = entity_load('image_style', '1000_par_700')->buildUrl($picture->uri);
 			else $picture->uri = entity_load('image_style', '760_par_400')->buildUrl($picture->uri);
