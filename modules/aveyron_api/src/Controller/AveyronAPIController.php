@@ -24,7 +24,7 @@ class AveyronAPIController extends ControllerBase {
   public function vidsAction( Request $request ) {
     $entityManager = \Drupal::entityManager();
 
-    $types = array('ens', 'taxon');
+    $types = array('ens', 'taxon', 'thematique');
     $result = array();
     foreach ($types as $type) {
       $query = \Drupal::entityQuery('node');
@@ -39,10 +39,39 @@ class AveyronAPIController extends ControllerBase {
           "vid" => (int) $entity->vid->value
         );
       }
-      $result[$type] = $items;
+      if ($type == 'thematique')
+        $result['thematic'] = $items;
+      else
+        $result[$type] = $items;
+    }
+    
+    return new JsonResponse($result);
+  }
+
+  public function thematics( Request $request ) {
+    $query = \Drupal::entityQuery('node');
+    $query->condition('status', 1);
+    $query->condition('type', 'thematique');
+
+    $itemIds = $query->execute();
+    $entityManager = \Drupal::entityManager();
+    $entities = $entityManager->getStorage('node')->loadMultiple($itemIds);
+
+    $items = array();
+    foreach ($entities as $entity) {
+      $item = array();
+      $item = array(
+        "id" => (int) $entity->nid->value,
+        "vid" => (int) $entity->vid->value,
+        "title" => $entity->title->value,
+        "icon" => $entity->field_icon_name->value
+      );
+      $items[] = $item;
     }
 
-    return new JsonResponse($result);
+    $response = new JsonResponse($items);
+
+    return $response;
   }
 
   public function enss( Request $request ) {
@@ -90,7 +119,7 @@ class AveyronAPIController extends ControllerBase {
         "id" => $itemId,
         "vid" => (int) $entity->vid->value,
         "title" => $entity->title->value,
-        "thematique" => array(),
+        "thematic" => null,
         "startTrace" => $geom ? json_decode($geom->out('json'), true) : null,
         "descriptionShort" => substr($entity->body->summary, 0, 255),
         "poster" => array(),
@@ -101,7 +130,7 @@ class AveyronAPIController extends ControllerBase {
       * thematique
       */
       $query = db_query("
-        SELECT d.title
+        SELECT d.nid
         FROM node__field_thematique_ens e
         join node_field_data d
         on d.nid = e.field_thematique_ens_target_id
@@ -109,8 +138,7 @@ class AveyronAPIController extends ControllerBase {
       ");
 
       $thematique = $query->fetchAll();
-      $thematique = $thematique[0]->title;
-      $item["thematique"] = $thematique;
+      $item["thematic"] = (int) $thematique[0]->nid;
 
       /*
       * Thumb - 1st image of gallery with special style
@@ -190,7 +218,7 @@ class AveyronAPIController extends ControllerBase {
       "id" => (int) $entity->nid->value,
       "vid" => (int) $entity->vid->value,
       "title" => $entity->title->value,
-      "thematique" => null,
+      "thematic" => null,
       "startPoint" => json_decode($geom->out('json'), true),
       "trace" => json_decode($geomTrace->out('json'), true),
       "description" => $entity->body->value,
@@ -200,13 +228,14 @@ class AveyronAPIController extends ControllerBase {
       "gallery" => array(),
       "videos" => array(),
       "taxonIds" => array(),
+      "events" => array(),
     );
 
     /*
     * thematique
     */
     $query = db_query("
-      SELECT d.title
+      SELECT d.nid
       FROM node__field_thematique_ens e
       join node_field_data d
       on d.nid = e.field_thematique_ens_target_id
@@ -214,8 +243,7 @@ class AveyronAPIController extends ControllerBase {
     ");
 
     $thematique = $query->fetchAll();
-    $thematique = $thematique[0]->title;
-    $result["thematique"] = $thematique;
+    $result["thematic"] = (int) $thematique[0]->nid;
 
     /*
     * Poster - 1st image of gallery with special style
@@ -349,6 +377,37 @@ class AveyronAPIController extends ControllerBase {
     return new JsonResponse($result);
   }
 
+  public function ensEvents( $id, Request $request ) {
+    $serializer = \Drupal::service('serializer');
+    $entityManager = \Drupal::entityManager();
+
+    $entity = $entityManager->getStorage('node')->load($id);
+    if (!$entity->nid->value || $entity->getType() != 'ens') {
+      return new Response(null, 404);
+    }
+
+    $eventIds = array();
+    foreach ($entity->field_evenement_ens as $event) {
+      $eventIds[] = $event->target_id;
+    }
+    $entities = $entityManager->getStorage('node')->loadMultiple($eventIds);
+    $result = array();
+    foreach ($entities as $entity) {
+      $poster = $entity->field_poster->entity;
+      $result[] = array(
+        id => (int) $entity->nid->value,
+        title => $entity->title->value,
+        place => $entity->field_place->value,
+        moment => $entity->field_moment_evt->value,
+        poster => file_create_url($poster->uri->value),
+        description => $entity->body->value,
+        descriptionShort => $entity->body->summary,
+      );
+    }
+
+    return new JsonResponse($result);
+  }
+
   public function taxa( Request $request ) {
     $query = \Drupal::entityQuery('node');
     $query->condition('status', 1);
@@ -386,7 +445,7 @@ class AveyronAPIController extends ControllerBase {
         "poster" => array(),
         "thumbnail" => array(),
         "gallery" => array(),
-        "categorie" => array()
+        "category" => null
       );
 
       $id = $entity->nid->value;
@@ -461,7 +520,7 @@ class AveyronAPIController extends ControllerBase {
 
       $categorie = $query->fetchAll();
       $categorie = $categorie[0]->field_tag_value;
-      $item["categorie"] = $categorie;
+      $item["category"] = $categorie;
 
       /*
       * Audio
@@ -491,5 +550,78 @@ class AveyronAPIController extends ControllerBase {
     }
 
     return new JsonResponse($taxa);
+  }
+
+  public function events(Request $request) {
+    $query = \Drupal::entityQuery('node');
+    $query->condition('status', 1);
+    $query->condition('type', 'event');
+
+    $conditions = $request->get('conditions');
+    if (is_string($conditions)) {
+        $conditions = json_decode($conditions, true);
+    }
+    foreach ($conditions as $condition) {
+      $query->condition($condition['field'], $condition['value'], $condition['operator'] ? $condition['operator'] : '=');
+    }
+    /*$today = new DateTime(date('Y-m-d'), new DateTimeZone('Europe/Paris'));
+    $today->setTimezone(new DateTimeZone('UTC'));
+    $query->condition('field_dates.end_value', $today->format('Y-m-d'), '>=');*/
+
+    $sort = $request->get('sort');
+    if (!$sort) {
+      $sort = array(
+        'field' => 'created',
+        'direction' => 'ASC',
+      );
+    } elseif (is_string($sort)) {
+      $sort = json_decode($sort, true);
+    }
+    $query->sort($sort['field'], $sort['direction']);
+
+    try {
+      $entityIds = $query->execute();
+    } catch (Exception $e) {
+      return new JsonResponse($e);
+    }
+
+    $entityManager = \Drupal::entityManager();
+    $entities = $entityManager->getStorage('node')->loadMultiple($entityIds);
+
+    $items = array();
+    $serializer = \Drupal::service('serializer');
+    /*
+    $date = new DateTime('2000-01-01', new DateTimeZone('Pacific/Nauru'));
+    echo $date->format('Y-m-d H:i:sP') . "\n";
+    */
+    foreach ($entities as $entity) {
+      $poster = $entity->field_poster->entity;
+      /*$from = new DateTime($entity->field_dates->value, new DateTimeZone('UTC'));
+      $from->setTimezone(new DateTimeZone('Europe/Paris'));
+      $to = new DateTime($entity->field_dates->end_value, new DateTimeZone('UTC'));
+      $to->setTimezone(new DateTimeZone('Europe/Paris'));*/
+
+      $item = array(
+        id => (int) $entity->nid->value,
+        title => $entity->title->value,
+        place => $entity->field_place->value,
+        moment => $entity->field_moment_evt->value,
+        /*dateFrom => $from->format('c'),
+        dateTo => $to->format('c'),
+        displayHours => (bool) $entity->field_display_hours->value,*/
+        poster => file_create_url($poster->uri->value),
+        description => $entity->body->value,
+        descriptionShort => $entity->body->summary,
+        //enss => array(),
+      );
+      /*$enss = $entity->field_ens;
+      foreach ($enss as $ens) {
+        $ensData = json_decode($serializer->serialize($ens, 'json', ['plugin_id' => 'entity']));
+        $item['enss'][] = (int) $ensData->target_id;
+      }*/
+      $items[] = $item;
+    }
+
+    return new JsonResponse($items);
   }
 }

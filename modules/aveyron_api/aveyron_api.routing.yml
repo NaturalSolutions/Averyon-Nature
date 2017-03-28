@@ -28,9 +28,30 @@ aveyron_api.ens_quiz:
   requirements:
     _access: 'TRUE'
 
+aveyron_api.ens_events:
+  path: 'api/enss/{id}/events'
+  defaults: { _controller: '\Drupal\aveyron_api\Controller\AveyronAPIController::ensEvents' }
+  methods:  [GET]
+  requirements:
+    _access: 'TRUE'
+
 aveyron_api.taxa:
   path: 'api/taxa'
   defaults: { _controller: '\Drupal\aveyron_api\Controller\AveyronAPIController::taxa' }
+  methods:  [GET]
+  requirements:
+    _access: 'TRUE'
+
+aveyron_api.events:
+  path: 'api/events'
+  defaults: { _controller: '\Drupal\aveyron_api\Controller\AveyronAPIController::events' }
+  methods:  [GET]
+  requirements:
+    _access: 'TRUE'
+
+aveyron_api.thematics:
+  path: 'api/thematics'
+  defaults: { _controller: '\Drupal\aveyron_api\Controller\AveyronAPIController::thematics' }
   methods:  [GET]
   requirements:
     _access: 'TRUE'
