@@ -76,6 +76,13 @@ h5{
 	padding: 0px!important;
 }
 
+.abs-auto{
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+
+
 
 #map { min-height: 500px; }
 
@@ -84,23 +91,17 @@ h5{
 //all  content should not be inside a section tag
 section{
 	padding: 0px!important;
+  &.section{
+    padding-top: 100px!important;
+  }
 }
 
-.section{
-	padding-top: 100px!important;
-}
 
 b{
   color: #fff;
   font-family: 'MyriadPro semiBold';
   font-weight: normal;
   letter-spacing: 1px;
-}
-
-//normaly useless
-div.wrapper{
-  margin-top: -66px;
-  margin-bottom: 50px;
 }
 
 
@@ -111,7 +112,6 @@ div.wrapper{
   background-position: 50% 50%;
   background-size: cover;
   & h1{
-    padding: 0 20%;
     position: absolute;
     top: 200px;
     width: 100%;
@@ -145,6 +145,7 @@ div.wrapper{
 
 }
 
+
 span.arianne{
   position: relative;
   font-family: 'MyriadPro Regular';
@@ -152,27 +153,6 @@ span.arianne{
   color: #f6f4f1;
 }
 
-//encart
-div.fold1{
-	padding: 0px;
-  div.fold1-img{
-    width: 100%;
-    min-height: 620px;
-
-    background-repeat: no-repeat;
-    background-position: 50% 50%;
-    background-size: cover;
-  }
-  span.arianne{
-    position: relative;
-    top: -38px;
-    font-family: 'MyriadPro Regular';
-    text-transform: uppercase;
-    padding-left: 2%;
-    color: #f6f4f1;
-  }
-
-}
 
 
 
