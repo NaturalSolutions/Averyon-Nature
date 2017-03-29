@@ -1,10 +1,9 @@
 jQuery( document ).ready(function() {
 
 
-    var initMap = function(){
+
 
         // geoData to display map
-        console.log("geoDataTracePoint", geoDataTracePoint);
 
         // IGN layer - forbiden access with this IGN key
         /*
@@ -18,13 +17,14 @@ jQuery( document ).ready(function() {
         }).addTo(map);
         */
 
-        console.log("geoDataStarterPoint", geoDataStarterPoint);
+        var $ = jQuery; 
+        var quizzMap;
+        
         // OpenLayer layer example
         var map = L.map('map').setView(geoDataTracePoint.coordinates[0], 14);
         L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
-
 
 
         var polyline = L.polyline(
@@ -33,18 +33,32 @@ jQuery( document ).ready(function() {
                 weight: 5,
                 opacity: .7,
             }
-            ).addTo(map);
-
-    }
+        ).addTo(map);
 
 
+        //dirty
+        $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+            if($(e.currentTarget).attr('passed') === undefined && e.currentTarget.hash  === '#quizz'){
+              quizzMap = L.map('quizzMap').setView(geoDataTracePoint.coordinates[0], 14);
+              L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+                  attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+              }).addTo(quizzMap);
 
-    window.init = function() {
 
-        initMap();
+              var polyline = L.polyline(
+                  geoDataTracePoint.coordinates,            
+                  {
+                      weight: 5,
+                      opacity: .7,
+                  }
+              ).addTo(quizzMap);
+            }
+            $(e.currentTarget).attr('passed', 'true');
+        });
 
-    }
 
-    init(); // true
+
+
+
 
 });

@@ -71,6 +71,7 @@
 
 <!-- total main content should not be indide a single region -->
 
+
   <section class="headband" style="background-image: url({{ file_url(content.field_poster['#items'].entity.uri.value) }})">
     <h1>{{ node.title.value }}</h1>
     <span class="arianne">
@@ -80,6 +81,26 @@
 
 
 
+
+  <div class="container">
+    <ul class="col-xs-12 nav nav-tabs" role="tablist">
+
+      <li role="presentation" class="active">
+        <a href="#home" aria-controls="home" data-toggle="tab">Description</a>
+      </li>
+      <li role="presentation">
+        <a href="#spacies" aria-controls="spacies" data-toggle="tab">Les espèces</a>
+      </li>
+      <li role="presentation">
+        <a href="#quizz" aria-controls="quizz" data-toggle="tab">Quizz</a>
+      </li>
+    </ul>
+  </div>
+
+    
+<div class="tab-content">
+  <div class="tab-pane active" id="home">
+
   <section class="section">
     <div class="container">
       <div class="col-sm-7">
@@ -87,11 +108,10 @@
         <h2>{{ node.body.summary }}</h2>
         {{ content.body }}
         </div>
-        <br><br>
         <div class="col-xs-12 text-center">
 
 
-          <a href="{{ file_url(node.field_pdf_ens.entity.fileuri) }}" class="btn btn-primary inverse" target="_blank">Voir la balade du site</a>
+          <a href="{{ file_url(node.field_pdf_ens.entity.fileuri) }}" class="btn btn-primary inverse btn-main" target="_blank">Voir la balade du site</a>
         </div>
       </div>
 
@@ -108,7 +128,6 @@
     <div class="clearfix">
     {{ content.field_video_ens }}
 
-    {{dump(data)}}
     </div>
   </section>
 
@@ -147,9 +166,9 @@
               <div class="bg" style="background-image: url({{ data.similarsENS[0].uri }})">
               </div>
                 <div class="abs">
-                <a href="node/">
+                <a href="{{ url('<front>') }}{{ data.similarsENS[0].url_alias }} ">
                   <div>
-                    <h2>Title</h2>
+                    <h2>{{ data.similarsENS[0].title }}</h2>
                     <span class="distance"> _ KM du départ</span>
                   </div>
                 </a>
@@ -162,8 +181,72 @@
 
     </div>
   </section>
+  </div>
+
+  <div class="tab-pane" id="spacies">
+    <section class="section">
+      
+    </section>
+  </div>
+
+  <div class="tab-pane" id="quizz">
+    <section class="section">
+      <div class="container">
+
+        <div class="col-sm-8 col-xs-12">
+
+          {% for item in data.quizz %}
+            <article class="js-article-quizz quizz" answer="{{ item.answerCode }}">
+              <h3>{{ item.title }}</h3>
+              <div class="row img">
+                <img class="col-xs-12" src="{{item.uri}}" alt="{{item.field_poster_alt}}" title="{{item.field_poster_title}}">
+              </div>
+              <div class="row btns">
+              {% for prop in item.propositions %}
+                  <div class="col-xs-12 col-sm-4">
+                  <button class="btn btn-primary inverse full-width" value="prop.code">
+                    {{ prop.proposition }}
+                  </button>
+                  </div>
+              {% endfor %}
+              </div>
+            </article>
+          {% endfor %}
 
 
+          <div class="col-xs-12 text-center">
+              <button class="js-validate btn btn-primary btn-special btn-main inverse">Valider</button>
+            </div>
+          
+        </div>
+
+        <div class="col-sm-4">
+          <h4>Carte de l'espace Naturel</h4>
+          <div id="quizzMap" class="map"></div>
+          <h4>Thématique similaire</h4>
+
+
+          {% for ens in data.similarsENS %}
+          <div class="img-block-link alone col-md-12">
+            <div class="bg" style="background-image: url({{ ens.uri }})">
+            </div>
+              <div class="abs">
+              <a href="{{ url('<front>') }}{{ ens.url_alias }}">
+                <div>
+                  <h2>{{ ens.title}}</h2>
+                  <span class="distance"> _ KM du départ</span>
+                </div>
+              </a>
+              </div>
+          </div>
+          {% endfor %}
+
+        </div>
+      </div>
+    </section>
+  </div>
+
+</div>
 
 
 <script>

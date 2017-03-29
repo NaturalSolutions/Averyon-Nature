@@ -10218,15 +10218,17 @@ h2 {
   margin: 20px 0px;
 }
 h3 {
+  margin: 20px 0px;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: white;
-  font-family: "Proxima Nova Regular";
+  font-family: "Proxima Nova semiBold";
 }
 h4 {
   text-transform: uppercase;
   text-align: center;
   font-size: 1em;
+  letter-spacing: 2px;
+  margin: 25px;
 }
 h5 {
   text-transform: uppercase;
@@ -10253,14 +10255,19 @@ h5:after {
   right: 0;
   margin: 0 auto;
 }
-#map {
+.full-width {
+  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
+}
+.map {
   min-height: 500px;
 }
 section {
   padding: 0px!important;
 }
 section.section {
-  padding-top: 100px!important;
+  padding-top: 50px!important;
 }
 b {
   color: #fff;
@@ -10368,6 +10375,7 @@ span.arianne {
   font-family: 'Proxima Nova Regular';
 }
 .img-block-link.alone {
+  margin-bottom: 15px;
   padding: 0px;
   height: 200px;
 }
@@ -10378,11 +10386,48 @@ span.arianne {
 video {
   background-color: grey;
 }
-.content h3 {
-  color: #262626;
-}
 footer.footer {
   margin-top: 100px;
+}
+.nav {
+  margin: 0px 15px;
+}
+.nav.nav-tabs {
+  padding-top: 50px;
+}
+.nav.nav-tabs li {
+  margin-right: 100px;
+}
+.nav.nav-tabs li a {
+  padding-left: 2px;
+  color: #262626;
+  background-color: none;
+  border: none;
+  text-transform: uppercase;
+}
+.nav.nav-tabs li a:focus,
+.nav.nav-tabs li a:hover {
+  background: none;
+  border: none;
+}
+.nav.nav-tabs li.active a {
+  color: #13bd84;
+  border-bottom: 2px solid #13bd84;
+}
+.btn.btn-main {
+  margin-top: 75px;
+}
+.btn.btn-special {
+  margin-top: 0px;
+  padding: 11px 100px;
+  color: #13bd84;
+  border-color: #13bd84;
+}
+.btn.btn-special:focus,
+.btn.btn-special:hover {
+  background: #13bd84 !important;
+  color: white!important;
+  border-color: #13bd84 !important;
 }
 /*
 	Specific font for Homepage
@@ -11289,5 +11334,15 @@ body.path-frontpage div.fold6 div.leftZone div.secondHalf div.SpecialSmallBlock 
 }
 body.page-node-type-ens video:nth-child(2) {
   z-index: 2;
+}
+body.page-node-type-ens article.quizz {
+  margin-bottom: 100px;
+}
+body.page-node-type-ens article.quizz div.img {
+  max-height: 350px;
+  overflow: hidden;
+}
+body.page-node-type-ens article.quizz div.btns {
+  margin-top: 20px;
 }
 /*# sourceMappingURL=style.css.map */

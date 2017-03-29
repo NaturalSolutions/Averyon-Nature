@@ -4,6 +4,7 @@
 
 
 @main_color : rgb(38, 38, 38);
+@color_bis: rgb(19, 189, 132);
 
 body{
 	color: @main_color;
@@ -41,10 +42,10 @@ h2{
 
 h3{
 	//img block: spacies list, ens list
+  margin: 20px 0px;
 	text-transform: uppercase;
 	letter-spacing: 1px;
-	color : white;
-	font-family: "Proxima Nova Regular";
+	font-family: "Proxima Nova semiBold";
 }
 
 h4{
@@ -52,6 +53,8 @@ h4{
 	text-transform: uppercase;
 	text-align: center;
 	font-size: 1em;
+  letter-spacing: 2px;
+  margin: 25px;
 }
 
 h5{
@@ -82,9 +85,13 @@ h5{
   margin: 0 auto;
 }
 
+.full-width {
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+}
 
-
-#map { min-height: 500px; }
+.map { min-height: 500px; }
 
 
 //should be integrated otherwise
@@ -92,9 +99,10 @@ h5{
 section{
 	padding: 0px!important;
   &.section{
-    padding-top: 100px!important;
+    padding-top: 50px!important;
   }
 }
+
 
 
 b{
@@ -218,6 +226,7 @@ span.arianne{
   }
 
   &.alone{
+    margin-bottom: 15px;
 		padding: 0px;
   	height: 200px;
 		.abs{
@@ -235,14 +244,51 @@ video{
 }
 
 
-
-//overwrite for editable content
-.content{
-	h3{
-		color: @main_color;
-	}
-}
-
 footer.footer{
   margin-top: 100px;
+}
+
+
+.nav{
+  margin: 0px 15px;
+  &.nav-tabs{
+    padding-top: 50px;
+    li{
+      margin-right: 100px;
+      a{
+        padding-left: 2px;
+        color: @main_color;
+        background-color: none;
+        border: none;
+        text-transform: uppercase;
+        &:focus, &:hover{
+          background: none;
+          border: none;
+        }
+      }
+      &.active{
+        a{
+          color: @color_bis;
+          border-bottom: 2px solid @color_bis;
+        }
+      }
+    }
+  }
+}
+
+.btn{
+  &.btn-main{
+    margin-top: 75px;
+  }
+  &.btn-special{
+    margin-top: 0px;
+    padding: 11px 100px;
+    color: @color_bis;
+    border-color: @color_bis;
+    &:focus, &:hover{
+      background: @color_bis!important;
+      color: white!important;
+      border-color: @color_bis!important;
+    }
+  }
 }
