@@ -166,6 +166,7 @@ function getContent($nid){
 
 		//Add alias path
 		$path_alias = \Drupal::service('path.alias_manager')->getAliasByPath("/node/".$similarENS->nid, $langcode);
+		$path_alias = ltrim($path_alias, '/');
 		$similarENS->url_alias = $path_alias;
 
 		//Convert style image
@@ -199,6 +200,7 @@ function getContent($nid){
 
 		//Add alias path
 		$path_alias = \Drupal::service('path.alias_manager')->getAliasByPath("/node/".$taxon->nid, $langcode);
+		$path_alias = ltrim($path_alias, '/');
 		$taxon->url_alias = $path_alias;
 
 		// Convert style
@@ -225,6 +227,54 @@ function getContent($nid){
 
 	// add to global var data
 	$data['taxons'] = $taxons;
+
+	/*
+	* Get Quiz
+	*/
+	$query = db_query("
+		SELECT d.title, d.nid, m.uri, p.field_poster_alt, p.field_poster_title
+		FROM node_field_data d
+		join node__field_quiz x
+		on x.field_quiz_target_id = d.nid
+		join node__field_poster p
+		on p.entity_id = d.nid
+		join file_managed m
+		on m.fid = p.field_poster_target_id
+		where x.entity_id = $nid
+	");
+
+	$quizz = $query->fetchAll();
+
+
+	foreach ($quizz as $key => $quiz) {
+
+		// Convert style
+		$quiz->uri = entity_load('image_style', '900_par_600')->buildUrl($quiz->uri);
+
+		// Get propositions
+		$query = db_query("
+			SELECT a.field_answers_value as proposition, a.delta as code
+			FROM aveyron.node__field_answers a
+			where a.entity_id = $quiz->nid
+		");
+
+		$propositions = $query->fetchAll();
+		$quiz->propositions = $propositions;
+
+		// Get good answer
+		$query = db_query("
+			SELECT a.field_good_answer_value as code
+			FROM aveyron.node__field_good_answer a
+			where a.entity_id = $quiz->nid
+		");
+
+		$answer = $query->fetchAll();
+		$quiz->answerCode = $answer[0]->code;
+
+	}
+
+	// add to global var data
+	$data['quizz'] = $quizz;
 
 	return $data;
 
