@@ -1,4 +1,4 @@
-list_ens.content:
+gallery.content:
   path: 'galerie'
   defaults:
     _controller: '\Drupal\gallery\Controller\galleryController::content'
