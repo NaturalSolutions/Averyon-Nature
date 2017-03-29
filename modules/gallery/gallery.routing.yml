@@ -1,0 +1,7 @@
+list_ens.content:
+  path: 'galerie'
+  defaults:
+    _controller: '\Drupal\gallery\Controller\galleryController::content'
+    _title: 'Galerie'
+  requirements:
+    _access: 'TRUE'

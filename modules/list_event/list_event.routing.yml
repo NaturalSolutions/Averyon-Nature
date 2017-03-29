@@ -1,0 +1,7 @@
+list_event.content:
+  path: 'evenements'
+  defaults:
+    _controller: '\Drupal\list_event\Controller\list_eventController::content'
+    _title: 'Événements'
+  requirements:
+    _access: 'TRUE'

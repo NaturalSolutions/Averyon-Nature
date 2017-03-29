@@ -1,0 +1,14 @@
+<?php
+
+/**
+ * @file
+ * list_event module.
+ */
+
+function list_event_theme($existing, $type, $theme, $path) {
+   return array(
+     'list_event' => array(
+       'variables' => array('data' => NULL),
+     ),
+   );
+ }

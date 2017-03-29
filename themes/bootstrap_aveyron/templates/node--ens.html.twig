@@ -71,14 +71,13 @@
 
 <!-- total main content should not be indide a single region -->
 
-
   <section class="headband" style="background-image: url({{ file_url(content.field_poster['#items'].entity.uri.value) }})">
     <h1>{{ node.title.value }}</h1>
     <span class="arianne">
-      Accueil > les espaces naturels >
-      <b>{{ label }}</b>
+      <a href="{{ url('<front>') }}">Accueil</a> > <a href="{{ url('<front>') }}les-espaces-naturels">les espaces naturels</a> > <b>{{ label }}</b>
     </span>
   </section>
+
 
 
   <section class="section">
