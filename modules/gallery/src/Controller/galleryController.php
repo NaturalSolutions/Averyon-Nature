@@ -15,7 +15,6 @@ class galleryController extends ControllerBase {
 
 		$data = [];
 
-
 		/*
 		* Get first image on top
 		*/
@@ -40,7 +39,6 @@ class galleryController extends ControllerBase {
 		// add to global var data
 		$data['pictureOnTop'] = $pictureOnTop[0];
 
-
 		/*
 		* Get ENS pictures's gallerie
 		*/
@@ -63,7 +61,7 @@ class galleryController extends ControllerBase {
 		foreach ($picturesENS as $key => $pictureENS) {
 
 			//Add alias path
-			$path_alias = \Drupal::service('path.alias_manager')->getAliasByPath("/node/".$pictureENS->nid, $langcode);
+			$path_alias = \Drupal::service('path.alias_manager')->getAliasByPath("/node/".$pictureENS->nid);
 			$path_alias = ltrim($path_alias, '/');
 			$pictureENS->url_alias = $path_alias;
 
@@ -120,7 +118,7 @@ class galleryController extends ControllerBase {
 		foreach ($picturesTaxons as $key => $pictureTaxon) {
 
 			//Add alias path
-			$path_alias = \Drupal::service('path.alias_manager')->getAliasByPath("/node/".$pictureTaxon->nid, $langcode);
+			$path_alias = \Drupal::service('path.alias_manager')->getAliasByPath("/node/".$pictureTaxon->nid);
 			$path_alias = ltrim($path_alias, '/');
 			$pictureTaxon->url_alias = $path_alias;
 

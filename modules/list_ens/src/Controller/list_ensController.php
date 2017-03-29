@@ -68,7 +68,7 @@ class list_ensController extends ControllerBase {
 		foreach ($picturesFold2 as $key => $picture) {
 
 			//Add alias path
-			$path_alias = \Drupal::service('path.alias_manager')->getAliasByPath("/node/".$picture->entity_id, $langcode);
+			$path_alias = \Drupal::service('path.alias_manager')->getAliasByPath("/node/".$picture->entity_id);
 			$path_alias = ltrim($path_alias, '/');
 			$picture->url_alias = $path_alias;
 
