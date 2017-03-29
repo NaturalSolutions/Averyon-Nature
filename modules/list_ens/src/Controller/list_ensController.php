@@ -70,6 +70,7 @@ class list_ensController extends ControllerBase {
 
 			//Add alias path
 			$path_alias = \Drupal::service('path.alias_manager')->getAliasByPath("/node/".$picture->entity_id, $langcode);
+			$path_alias = ltrim($path_alias, '/');
 			$picture->url_alias = $path_alias;
 
 			//Convert uri to the good style
@@ -118,7 +119,4 @@ class list_ensController extends ControllerBase {
 
 	}
 
-	public function getThematique() {
-
-	}
 }
