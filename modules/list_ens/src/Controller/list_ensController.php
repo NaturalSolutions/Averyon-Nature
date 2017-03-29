@@ -48,7 +48,6 @@ class list_ensController extends ControllerBase {
 		/*
 		* FOLD 2 - Get ENS
 		*/
-
 		$query = db_query(
 			"
 			select f.uri, d.title as thematique, s.field_poster_alt, s.field_poster_title, s.entity_id, s.revision_id from node_revision a
@@ -67,6 +66,11 @@ class list_ensController extends ControllerBase {
 		$picturesFold2 = $query->fetchAll();
 
 		foreach ($picturesFold2 as $key => $picture) {
+
+			//Add alias path
+			$path_alias = \Drupal::service('path.alias_manager')->getAliasByPath("/node/".$picture->entity_id, $langcode);
+			$path_alias = ltrim($path_alias, '/');
+			$picture->url_alias = $path_alias;
 
 			//Convert uri to the good style
 			if( $key == 0 )	$picture->uri = entity_load('image_style', '1000_par_700')->buildUrl($picture->uri);
@@ -114,7 +118,4 @@ class list_ensController extends ControllerBase {
 
 	}
 
-	public function getThematique() {
-
-	}
 }
