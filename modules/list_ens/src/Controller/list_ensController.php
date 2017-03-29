@@ -48,7 +48,6 @@ class list_ensController extends ControllerBase {
 		/*
 		* FOLD 2 - Get ENS
 		*/
-
 		$query = db_query(
 			"
 			select f.uri, d.title as thematique, s.field_poster_alt, s.field_poster_title, s.entity_id, s.revision_id from node_revision a
