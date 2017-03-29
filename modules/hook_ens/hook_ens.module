@@ -182,7 +182,7 @@ function getContent($nid){
 	* Get taxons
 	*/
 	$query = db_query("
-		SELECT d.title, d.nid, m.uri, p.field_poster_alt, p.field_poster_title
+		SELECT d.title, d.nid, m.uri, p.field_poster_alt, p.field_poster_title, t.field_tag_value
 		FROM node_field_data d
 		join node__field_taxa x
 		on x.field_taxa_target_id = d.nid
@@ -190,6 +190,8 @@ function getContent($nid){
 		on p.entity_id = d.nid
 		join file_managed m
 		on m.fid = p.field_poster_target_id
+		join node__field_tag t
+		on t.entity_id = x.field_taxa_target_id
 		where x.entity_id = $nid
 	");
 
