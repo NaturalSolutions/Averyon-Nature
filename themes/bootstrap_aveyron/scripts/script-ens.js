@@ -18,7 +18,40 @@ jQuery( document ).ready(function() {
         */
 
         var $ = jQuery; 
-        var quizzMap;
+
+
+        $('.js-quizz-prop').on('click', function(e){
+            $(e.currentTarget).parent().parent().find('.js-quizz-prop').each(function(){
+                $(this).removeClass('active');
+            })
+            $(e.currentTarget).addClass('active');
+
+        });
+
+        var nbErros;
+        var nbOk;
+
+        $('.js-validate').on('click', function(){
+            $('.js-article-quizz').each(function(){
+                var answer = $(this).attr('answer');
+                $(this).find('.js-quizz-prop').each(function(){
+                    if($(this).attr('code') == answer){
+                        $(this).addClass('btn-success');
+                        if($(this).hasClass('active')){
+                            nbOk++;
+                        }
+                    } else {
+                        if($(this).hasClass('active')){
+                            nbErros++;
+                            $(this).addClass('btn-error');
+                        }
+                    }
+
+                });
+            });
+        });
+
+
         
         // OpenLayer layer example
         var map = L.map('map').setView(geoDataTracePoint.coordinates[0], 14);
@@ -35,8 +68,7 @@ jQuery( document ).ready(function() {
             }
         ).addTo(map);
 
-
-        //dirty
+        var quizzMap;
         $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
             if($(e.currentTarget).attr('passed') === undefined && e.currentTarget.hash  === '#quizz'){
               quizzMap = L.map('quizzMap').setView(geoDataTracePoint.coordinates[0], 14);
@@ -57,7 +89,7 @@ jQuery( document ).ready(function() {
         });
 
 
-
+        
 
 
 

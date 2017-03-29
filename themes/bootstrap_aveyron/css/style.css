@@ -10417,14 +10417,15 @@ footer.footer {
 .btn.btn-main {
   margin-top: 75px;
 }
-.btn.btn-special {
+.btn.btn-special,
+.btn.btn-special:focus {
   margin-top: 0px;
   padding: 11px 100px;
   color: #13bd84;
   border-color: #13bd84;
 }
-.btn.btn-special:focus,
-.btn.btn-special:hover {
+.btn.btn-special:hover,
+.btn.btn-special:focus:hover {
   background: #13bd84 !important;
   color: white!important;
   border-color: #13bd84 !important;
