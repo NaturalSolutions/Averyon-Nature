@@ -85,12 +85,14 @@
     <div class="container">
       <div class="col-sm-7">
         <div class="content">
-        <h2>Content?</h2>
+        <h2>{{ node.body.summary }}</h2>
         {{ content.body }}
         </div>
         <br><br>
         <div class="col-xs-12 text-center">
-          <button class="btn btn-primary inverse">Voir la balade du site</button>
+
+
+          <a href="{{ file_url(node.field_pdf_ens.entity.fileuri) }}" class="btn btn-primary inverse" target="_blank">Voir la balade du site</a>
         </div>
       </div>
 
@@ -106,6 +108,8 @@
   <section class="section">
     <div class="clearfix">
     {{ content.field_video_ens }}
+
+    {{dump(data)}}
     </div>
   </section>
 
