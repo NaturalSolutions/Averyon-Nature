@@ -5,9 +5,14 @@
 
 @main_color : rgb(38, 38, 38);
 @color_bis: rgb(19, 189, 132);
+@main_orange: rgb(251, 106, 0);
 
 body{
 	color: @main_color;
+}
+
+.region-content{
+  min-height: 1500px;
 }
 
 h1{
@@ -141,16 +146,8 @@ b{
     bottom: 100px;
     margin: 0;
     text-align: center;
-    button{
-      background-color: rgba(255, 255, 255, 0.9);
-      margin: 0 5px;
-      border: 0;
-      text-transform: uppercase;
-      border: 0;
-      &.selected, &:hover{
-          background-color: @base-color-aveyron;
-          color:white;
-      }
+    .btn-default{
+      border-color: transparent;
     }
   }
 
@@ -256,7 +253,7 @@ footer.footer{
     li{
       margin-right: 100px;
       a{
-        padding-left: 2px;
+        padding: 15px 0px;
         color: @main_color;
         background-color: none;
         border: none;
@@ -272,23 +269,6 @@ footer.footer{
           border-bottom: 2px solid @color_bis;
         }
       }
-    }
-  }
-}
-
-.btn{
-  &.btn-main{
-    margin-top: 75px;
-  }
-  &.btn-special, &.btn-special:focus{
-    margin-top: 0px;
-    padding: 11px 100px;
-    color: @color_bis;
-    border-color: @color_bis;
-    &:hover{
-      background: @color_bis!important;
-      color: white!important;
-      border-color: @color_bis!important;
     }
   }
 }

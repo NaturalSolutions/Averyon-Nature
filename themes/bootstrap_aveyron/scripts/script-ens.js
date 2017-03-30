@@ -23,6 +23,8 @@ jQuery( document ).ready(function() {
         $('.js-quizz-prop').on('click', function(e){
             $(e.currentTarget).parent().parent().find('.js-quizz-prop').each(function(){
                 $(this).removeClass('active');
+                $(this).removeClass('btn-success');
+                $(this).removeClass('btn-danger');
             })
             $(e.currentTarget).addClass('active');
 
@@ -43,10 +45,10 @@ jQuery( document ).ready(function() {
                     } else {
                         if($(this).hasClass('active')){
                             nbErros++;
-                            $(this).addClass('btn-error');
+                            $(this).addClass('btn-danger');
                         }
                     }
-
+                    $(this).removeClass('active');
                 });
             });
         });
