@@ -79,7 +79,7 @@
     </span>
   </section>
 
-  <!-- <pre>{{  dump(data) }}</pre> -->
+   <!-- <pre>{{  dump(data) }}</pre> -->
 
 
   <div class="container">
@@ -152,19 +152,7 @@
         <div class="col-sm-8"></div>
         <div class="col-sm-4">
           <h5>Informations</h5>
-            <p>
-              Lorem ipsum dolor sit amet <br>
-              Lorem ipsum dolor sit amet <br>
-              Lorem ipsum dolor sit amet <br>
-              Lorem ipsum dolor sit amet <br>
-            </p>
-            <br>
-            <p>
-              Lorem ipsum dolor sit amet <br>
-              Lorem ipsum dolor sit amet <br>
-              Lorem ipsum dolor sit amet <br>
-              Lorem ipsum dolor sit amet <br>
-            </p>
+            {{ data.info|raw }}
           <h5>Thematique similaire</h5>
             <div class="img-block-link alone col-md-12" thematique="">
               <div class="bg" style="background-image: url({{ data.similarsENS[0].uri }})">
