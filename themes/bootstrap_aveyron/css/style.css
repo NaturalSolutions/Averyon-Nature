@@ -4913,7 +4913,7 @@ input[type="button"].btn-block {
 // Base styles
 // --------------------------------------------------
 
-.btn { 
+.btn {
   display: inline-block;
   margin-bottom: 0; // For input.btn
   font-weight: @btn-font-weight;
@@ -4984,7 +4984,7 @@ input[type="button"].btn-block {
   padding: 11px 36px;
 }
 .btn:focus {
-  outline: 0!important;
+  outline-color: transparent !important;
 }
 .btn-main {
   margin: 75px;
@@ -5240,9 +5240,19 @@ fieldset[disabled] .btn-primary.focus {
   color: #ff7815;
   background-color: #fff;
 }
-.btn-primary:hover {
+.btn-primary.inverse {
   color: #ff7815;
   background-color: transparent;
+  border-color: #fb6a00;
+}
+.btn-primary.inverse.hover {
+  color: #fff;
+  background-color: #ff7815;
+  border-color: #fb6a00;
+}
+.btn-primary:hover {
+  color: #fff;
+  background-color: #fb6a00;
   border-color: #fb6a00;
 }
 .btn-special {
@@ -5716,7 +5726,7 @@ fieldset[disabled] .btn-danger.focus {
   background-color: #fff;
 }
 /*
-/* 
+/*
   &.btn-special, &.btn-special:focus{
     margin-top: 0px;
     padding: 11px 100px;
@@ -10725,6 +10735,7 @@ h2 {
   font-family: "Proxima Nova semiBold";
   font-weight: 600;
   margin: 20px 0px;
+  letter-spacing: 2px;
 }
 h3 {
   margin: 20px 0px;
@@ -10925,7 +10936,7 @@ body.path-frontpage div.fold1 {
 body.path-frontpage div.fold1 h1 {
   width: 900px;
   position: absolute;
-  top: 250px;
+  top: 355px;
 }
 body.path-frontpage div.fold1 div.fold1-img {
   width: 100%;
@@ -10942,7 +10953,7 @@ body.path-frontpage div.fold1 span.arianne {
   padding-left: 2%;
   color: #f6f4f1;
 }
-body.path-frontpage div.fold1 button {
+body.path-frontpage div.fold1 a {
   position: absolute;
   top: 600px;
   margin-left: -80px;
@@ -10959,9 +10970,8 @@ body.path-frontpage div.fold1 div.progressBar {
   width: 0;
   z-index: 99;
 }
-body.path-frontpage div.fold2 button {
-  margin: 0 auto;
-  display: inherit;
+body.path-frontpage div.fold2 a.seeMore {
+  display: inline-block;
   margin-top: 75px;
 }
 body.path-frontpage div.fold2 div.txtRow h2 {
@@ -11298,9 +11308,6 @@ body.path-frontpage div.fold4 div.wrapperFold4 div.textZone div.traitVertical {
   margin-top: -15px;
   margin-bottom: 20px;
 }
-body.path-frontpage div.fold4 div.wrapperFold4 div.textZone div.blockInTextZone {
-  cursor: pointer;
-}
 body.path-frontpage div.fold4 div.wrapperFold4 div.textZone div.blockInTextZone.isHovered div.iconPatrimoine {
   background: url(../images/icon_patrimoine_hover.jpg) no-repeat 50% 50%;
 }
@@ -11318,6 +11325,7 @@ body.path-frontpage div.fold4 div.wrapperFold4 div.textZone div.blockInTextZone.
 }
 body.path-frontpage div.fold4 div.wrapperFold4 div.textZone div.blockInTextZone.isHovered p.descroIcon {
   visibility: visible;
+  color: #262626;
 }
 body.path-frontpage div.fold4 div.wrapperFold4 div.textZone div.blockInTextZone div.iconFaune {
   background: url(../images/icon_faune.jpg) no-repeat 50% 50%;
@@ -11370,9 +11378,8 @@ body.path-frontpage div.fold5 p.subTitleFold5 {
   margin-top: 33px;
   margin-left: -90px;
 }
-body.path-frontpage div.fold5 button {
-  margin: 0 auto;
-  display: block;
+body.path-frontpage div.fold5 a {
+  margin-top: 60px;
 }
 body.path-frontpage div.fold5 div.videoRow {
   margin-top: 50px;
@@ -11431,7 +11438,7 @@ body.path-frontpage div.fold6 div.rightZone p {
   padding-right: 32%;
   font-family: 'Proxima Nova Light';
 }
-body.path-frontpage div.fold6 div.leftZone button {
+body.path-frontpage div.fold6 div.leftZone a {
   margin-left: 38%;
   margin-top: 50px;
 }
@@ -11631,6 +11638,10 @@ body.path-frontpage div.fold6 div.leftZone div.secondHalf div.SpecialSmallBlock 
   }
 }
 @media (max-width: 992px) {
+  body.path-frontpage div.fold1 h1 {
+    width: auto;
+    top: 300px;
+  }
   body.path-frontpage section.wrapper div.fold2 div.txtRow p.subTitleFold2 {
     padding: 0 17%;
   }
@@ -11683,7 +11694,7 @@ body.path-frontpage div.fold6 div.leftZone div.secondHalf div.SpecialSmallBlock 
     padding: 0 30%;
     margin-bottom: 90px;
   }
-  body.path-frontpage section.wrapper div.fold6 div.leftZone button {
+  body.path-frontpage section.wrapper div.fold6 div.leftZone a {
     margin-left: auto;
   }
   body.path-frontpage section.wrapper div.fold6 div.rightZone {
@@ -11694,12 +11705,14 @@ body.path-frontpage div.fold6 div.leftZone div.secondHalf div.SpecialSmallBlock 
     padding-right: 0;
   }
 }
-@media (max-width: 877px) {
-  body.path-frontpage section.wrapper div.fold1 button {
-    top: 650px;
-  }
-}
 @media (max-width: 767px) {
+  body.path-frontpage section.wrapper div.fold1 a {
+    top: 640px;
+  }
+  body.path-frontpage section.wrapper div.fold1 h1 {
+    font-size: 3.5em;
+    top: 270px;
+  }
   body.path-frontpage section.wrapper div.fold2 div.imagesRow img.image2 {
     padding-top: 6px;
   }
@@ -11758,21 +11771,17 @@ body.path-frontpage div.fold6 div.leftZone div.secondHalf div.SpecialSmallBlock 
   }
 }
 @media (max-width: 608px) {
-  body.path-frontpage section.wrapper div.fold1 button {
-    top: 760px;
-  }
   body.path-frontpage section.wrapper div.fold3 div.map {
     display: none;
   }
 }
-@media (max-width: 482px) {
-  body.path-frontpage section.wrapper div.fold1 button {
-    top: 850px;
-  }
-}
 @media (max-width: 480px) {
-  body.path-frontpage section.wrapper div.fold1 button {
-    top: 760px;
+  body.path-frontpage section.wrapper div.fold1 h1 {
+    font-size: 3.2em;
+    top: 225px;
+  }
+  body.path-frontpage section.wrapper div.fold1 a {
+    top: 740px;
   }
   body.path-frontpage section.wrapper div.fold2 div.txtRow p.subTitleFold2 {
     padding: 0 9%;
@@ -11783,12 +11792,12 @@ body.path-frontpage div.fold6 div.leftZone div.secondHalf div.SpecialSmallBlock 
   body.path-frontpage section.wrapper div.fold2 div.imagesRow div.relative div.absolute p {
     font-size: 0.8em;
   }
-  body.path-frontpage section.wrapper div.fold2 button {
+  body.path-frontpage section.wrapper div.fold2 a {
     width: 100%;
     padding: 11px 10px;
     font-size: 0.7em;
   }
-  body.path-frontpage section.wrapper div.fold5 button {
+  body.path-frontpage section.wrapper div.fold5 a {
     width: 100%;
     padding: 11px 10px;
     font-size: 0.9em;
@@ -11800,23 +11809,27 @@ body.path-frontpage div.fold6 div.leftZone div.secondHalf div.SpecialSmallBlock 
   body.path-frontpage section.wrapper div.fold6 div.leftZone {
     padding: 0 70px;
   }
-  body.path-frontpage section.wrapper div.fold6 div.leftZone button {
+  body.path-frontpage section.wrapper div.fold6 div.leftZone a {
     width: 100%;
     font-size: 0.8em;
   }
 }
 @media (max-width: 394px) {
-  body.path-frontpage section.wrapper div.fold1 button {
-    top: 865px;
-  }
   body.path-frontpage section.wrapper div.fold4 div.wrapperFold4 div.textZone h2 {
     font-size: 2.5em;
   }
-  body.path-frontpage section.wrapper div.fold6 div.leftZone button {
+  body.path-frontpage section.wrapper div.fold6 div.leftZone a {
     width: 155%;
     font-size: 0.7em;
     margin-left: -30px;
   }
+}
+section.headband div.filter-btns button {
+  margin: 0 5px;
+}
+section.headband div.filter-btns button.selected {
+  background-color: #ff7815;
+  color: #fff;
 }
 body.page-node-type-ens video:nth-child(2) {
   z-index: 2;

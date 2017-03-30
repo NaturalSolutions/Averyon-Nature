@@ -1,25 +1,26 @@
 
+	{{ attach_library('bootstrap_aveyron/script-list-ens') }}
 
-  <section class="headband" style="background-image: url({{ data.imageOnTop.uri }});">
-  	<h1>Les espaces naturels</h1>
+	<section class="headband" style="background-image: url({{ data.imageOnTop.uri }});">
+		<h1>Les espaces naturels</h1>
 
-  	<div class="filter-btns">
-  		<div class="col-lg-12">
-  			<button class="js-btn-filter-ens btn btn-default active" thematique="all">
-  				Tout
-  			</button>
-  		{% for thematique in data.thematiques %}
-  		    <button class="js-btn-filter-ens btn btn-default inverse" thematique="{{thematique.title}}">
-  		    	{{thematique.title}}
-  		    </button>
-  		{% endfor %}
-  		</div>
-  	</div>
+		<div class="filter-btns">
+			<div class="col-lg-12">
+				<button class="js-btn-filter-ens btn btn-default inverse selected" thematique="all">
+					Tout
+				</button>
+			{% for thematique in data.thematiques %}
+			    <button class="js-btn-filter-ens btn btn-default inverse" thematique="{{thematique.title}}">
+			    	{{thematique.title}}
+			    </button>
+			{% endfor %}
+			</div>
+		</div>
 
-  	<span class="arianne">
-  		<a href="{{ url('<front>') }}">Accueil</a> > <b>les espaces naturels</b>
-  	</span>
-  </section>
+		<span class="arianne">
+			<a href="{{ url('<front>') }}">Accueil</a> > <b>les espaces naturels</b>
+		</span>
+	</section>
 
    <!-- <pre>{{ dump(data) }}</pre> -->
 
@@ -46,32 +47,11 @@
 		</div>
 	</section>
 
-
 <script>
-	document.addEventListener('DOMContentLoaded', function(event) {
-		var $ = jQuery;
 
-		//quick & unoptimized
-		$('.js-btn-filter-ens').on('click', function(e){
-			$('.js-btn-filter-ens').each(function(){
-					$(this).removeClass('active');
-			});
-			var thematique = $(e.currentTarget).attr('thematique');
-			$(e.currentTarget).addClass('active');
-			$('.js-ens-container').find('.js-ens').each(function(){
-				if(thematique == 'all'){
-					$(this).removeClass('hide');
-					return;
-				}
-				if($(this).attr('thematique') === thematique){
-					$(this).removeClass('hide');
-				} else {
-					$(this).addClass('hide');
-				}
-			});
-		});
+/* To remove if it's useless
 
-/*		var displayENS = function(thematique){
+		var displayENS = function(thematique){
 
 			// get number of all ENS
 			var nbENS = allENS.length;
@@ -108,9 +88,12 @@
 		}
 
 		var allENS = {{ data.ensFold2|json_encode()|raw }};
-		displayENS("all");*/
+		displayENS("all");
 
 	});
 
+*/
+
 
 </script>
+

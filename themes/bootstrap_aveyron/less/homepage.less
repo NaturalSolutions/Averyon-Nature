@@ -14,8 +14,8 @@ body.path-frontpage{
 
 			h1{
 				width: 900px; //mobile break point should be on this param only
-			  position: absolute; // and remove this one
-			  top: 250px; // or this one
+				position: absolute; // and remove this one
+				top: 355px; // or this one
 			}
 
 
@@ -37,7 +37,7 @@ body.path-frontpage{
 			  color: #f6f4f1;
 			}
 
-			button{
+			a{
 				position: absolute;
 				top: 600px;
 				margin-left: -80px;
@@ -58,9 +58,8 @@ body.path-frontpage{
 
 
 		div.fold2{
-			button{
-				margin: 0 auto;
-				display: inherit;
+			a.seeMore{
+				display: inline-block;
 				margin-top: 75px;
 			}
 			div.txtRow{
@@ -410,7 +409,6 @@ body.path-frontpage{
 						margin-bottom: 20px;
 					}
 					div.blockInTextZone{
-						cursor: pointer;
 						&.isHovered{
 							div.iconPatrimoine{
 								background: url(../images/icon_patrimoine_hover.jpg) no-repeat 50% 50%;
@@ -429,6 +427,7 @@ body.path-frontpage{
 							}
 							p.descroIcon{
 								visibility: visible;
+								color: #262626;
 							}
 						}
 						div.iconFaune{
@@ -487,9 +486,8 @@ body.path-frontpage{
 				margin-top: 33px;
 				margin-left: -90px;
 			}
-			button{
-				margin: 0 auto;
-				display: block;
+			a{
+				margin-top: 60px;
 			}
 			div.videoRow{
 				margin-top: 50px;
@@ -551,7 +549,7 @@ body.path-frontpage{
 				}
 			}
 			div.leftZone{
-				button{
+				a{
 					margin-left: 38%;
 					margin-top: 50px;
 				}
@@ -748,7 +746,7 @@ body.path-frontpage{
 //- de 1200
 @media (max-width: @screen-lg-min) {
 	body.path-frontpage{
-		
+
 		section.wrapper {
 			div.fold3 {
 				div.map{
@@ -817,7 +815,10 @@ body.path-frontpage{
 //- de 992
 @media (max-width: @screen-md-min) {
 	body.path-frontpage{
-		
+		div.fold1 h1 {
+			width: auto;
+			top: 300px;
+		}
 		section.wrapper {
 			div.fold2 div.txtRow p.subTitleFold2{
 				padding: 0 17%;
@@ -877,7 +878,7 @@ body.path-frontpage{
 					text-align: center;
 					padding: 0 30%;
 					margin-bottom: 90px;
-					button{
+					a{
 						margin-left: auto;
 					}
 				}
@@ -893,22 +894,20 @@ body.path-frontpage{
 	}
 }
 
-@media (max-width: 877px) {
-	body.path-frontpage{
-		section.wrapper{
-			div.fold1{
-				button{
-					top: 650px;
-				}
-			}
-		}
-	}
-}
 
 // 768px
 @media (max-width: 767px) {
 
 	body.path-frontpage section.wrapper {
+		div.fold1 {
+			a{
+				top: 640px;
+			}
+			h1 {
+				font-size: 3.5em;
+				top: 270px;
+			}
+		}
 		div.fold2 div.imagesRow {
 			img.image2{
 				padding-top: 6px;
@@ -973,11 +972,6 @@ body.path-frontpage{
 @media (max-width: 608px) {
 	body.path-frontpage{
 		section.wrapper{
-			div.fold1{
-				button{
-					top: 760px;
-				}
-			}
 			div.fold3 div.map{
 				display: none;
 			}
@@ -985,25 +979,18 @@ body.path-frontpage{
 	}
 }
 
-@media (max-width: 482px) {
-	body.path-frontpage{
-		section.wrapper{
-			div.fold1{
-				button{
-					top: 850px;
-				}
-			}
-		}
-	}
-}
 
 //- de 480
 @media (max-width: @screen-xs-min) {
 	body.path-frontpage{
 		section.wrapper{
 			div.fold1{
-				button{
-					top: 760px;
+				h1 {
+					font-size: 3.2em;
+					top: 225px;
+				}
+				a{
+					top: 740px;
 				}
 			}
 			div.fold2{
@@ -1020,14 +1007,14 @@ body.path-frontpage{
 						}
 					}
 				}
-				button{
+				a{
 					width: 100%;
 					padding: 11px 10px;
 					font-size: 0.7em;
 				}
 			}
 			div.fold5 {
-				button{
+				a{
 					width: 100%;
 					padding: 11px 10px;
 					font-size: 0.9em;
@@ -1042,7 +1029,7 @@ body.path-frontpage{
 			div.fold6 {
 				div.leftZone {
 					padding: 0 70px;
-					button{
+					a{
 						width: 100%;
 						font-size: 0.8em;
 					}
@@ -1054,20 +1041,15 @@ body.path-frontpage{
 
 @media (max-width: 394px) {
 	body.path-frontpage{
-		
+
 		section.wrapper{
-			div.fold1{
-				button{
-					top: 865px;
-				}
-			}
 			div.fold4 {
 				div.wrapperFold4 div.textZone h2 {
 					font-size: 2.5em;
 				}
 			}
 			div.fold6 {
-				div.leftZone button {
+				div.leftZone a {
 					width: 155%;
 					font-size: 0.7em;
 					margin-left: -30px;
