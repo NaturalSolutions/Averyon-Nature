@@ -16,6 +16,30 @@ class galleryController extends ControllerBase {
 		$data = [];
 
 		/*
+		* Get first image on top
+		*/
+		$query = db_query("
+			SELECT f.uri, g.field_poster_alt,
+			g.field_poster_title
+			from file_managed f
+			join node__field_poster g
+			on f.fid = g.field_poster_target_id
+			join node_field_data d
+			on d.nid = g.entity_id
+			where d.type = 'ens'
+			ORDER BY RAND()
+			Limit 1
+		");
+
+		$pictureOnTop = $query->fetchAll();
+
+		// convert style
+		$pictureOnTop[0]->uri = entity_load('image_style', '2000_par_600')->buildUrl($pictureOnTop[0]->uri);
+
+		// add to global var data
+		$data['pictureOnTop'] = $pictureOnTop[0];
+
+		/*
 		* Get ENS pictures's gallerie
 		*/
 		$query = db_query("
@@ -37,7 +61,7 @@ class galleryController extends ControllerBase {
 		foreach ($picturesENS as $key => $pictureENS) {
 
 			//Add alias path
-			$path_alias = \Drupal::service('path.alias_manager')->getAliasByPath("/node/".$pictureENS->nid, $langcode);
+			$path_alias = \Drupal::service('path.alias_manager')->getAliasByPath("/node/".$pictureENS->nid);
 			$path_alias = ltrim($path_alias, '/');
 			$pictureENS->url_alias = $path_alias;
 
@@ -94,7 +118,7 @@ class galleryController extends ControllerBase {
 		foreach ($picturesTaxons as $key => $pictureTaxon) {
 
 			//Add alias path
-			$path_alias = \Drupal::service('path.alias_manager')->getAliasByPath("/node/".$pictureTaxon->nid, $langcode);
+			$path_alias = \Drupal::service('path.alias_manager')->getAliasByPath("/node/".$pictureTaxon->nid);
 			$path_alias = ltrim($path_alias, '/');
 			$pictureTaxon->url_alias = $path_alias;
 

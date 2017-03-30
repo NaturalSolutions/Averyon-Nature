@@ -165,7 +165,7 @@ function getContent($nid){
 	foreach ($similarsENS as $key => $similarENS) {
 
 		//Add alias path
-		$path_alias = \Drupal::service('path.alias_manager')->getAliasByPath("/node/".$similarENS->nid, $langcode);
+		$path_alias = \Drupal::service('path.alias_manager')->getAliasByPath("/node/".$similarENS->nid);
 		$path_alias = ltrim($path_alias, '/');
 		$similarENS->url_alias = $path_alias;
 
@@ -201,7 +201,7 @@ function getContent($nid){
 	foreach ($taxons as $key => $taxon) {
 
 		//Add alias path
-		$path_alias = \Drupal::service('path.alias_manager')->getAliasByPath("/node/".$taxon->nid, $langcode);
+		$path_alias = \Drupal::service('path.alias_manager')->getAliasByPath("/node/".$taxon->nid);
 		$path_alias = ltrim($path_alias, '/');
 		$taxon->url_alias = $path_alias;
 
