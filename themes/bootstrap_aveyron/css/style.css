@@ -5240,9 +5240,19 @@ fieldset[disabled] .btn-primary.focus {
   color: #ff7815;
   background-color: #fff;
 }
-.btn-primary:hover {
+.btn-primary.inverse {
   color: #ff7815;
   background-color: transparent;
+  border-color: #fb6a00;
+}
+.btn-primary.inverse.hover {
+  color: #fff;
+  background-color: #ff7815;
+  border-color: #fb6a00;
+}
+.btn-primary:hover {
+  color: #fff;
+  background-color: #fb6a00;
   border-color: #fb6a00;
 }
 .btn-special {
@@ -11813,6 +11823,13 @@ body.path-frontpage div.fold6 div.leftZone div.secondHalf div.SpecialSmallBlock 
     font-size: 0.7em;
     margin-left: -30px;
   }
+}
+section.headband div.filter-btns button {
+  margin: 0 5px;
+}
+section.headband div.filter-btns button.selected {
+  background-color: #ff7815;
+  color: #fff;
 }
 body.page-node-type-ens video:nth-child(2) {
   z-index: 2;

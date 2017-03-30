@@ -118,9 +118,19 @@
 
 .btn-primary{
   .button-variant(@btn-primary-color; @btn-primary-bg; @btn-primary-border);
-  &:hover{
+  &.inverse{
     color: @btn-primary-bg;
-    background-color: transparent;
+    background-color :  transparent;
+    border-color: @btn-primary-border;
+    &.hover{
+      color: #fff;
+      background-color :  @btn-primary-bg;
+      border-color: @btn-primary-border;
+    }
+  }
+  &:hover{
+    color: #fff;
+    background-color :  darken(@btn-primary-bg, 5%);
     border-color: @btn-primary-border;
   }
 }
