@@ -10216,6 +10216,7 @@ h2 {
   font-family: "Proxima Nova semiBold";
   font-weight: 600;
   margin: 20px 0px;
+  letter-spacing: 2px;
 }
 h3 {
   text-transform: uppercase;
@@ -10394,7 +10395,7 @@ body.path-frontpage div.fold1 {
 body.path-frontpage div.fold1 h1 {
   width: 900px;
   position: absolute;
-  top: 250px;
+  top: 355px;
 }
 body.path-frontpage div.fold1 div.fold1-img {
   width: 100%;
@@ -10411,7 +10412,7 @@ body.path-frontpage div.fold1 span.arianne {
   padding-left: 2%;
   color: #f6f4f1;
 }
-body.path-frontpage div.fold1 button {
+body.path-frontpage div.fold1 a {
   position: absolute;
   top: 600px;
   margin-left: -80px;
@@ -10428,9 +10429,8 @@ body.path-frontpage div.fold1 div.progressBar {
   width: 0;
   z-index: 99;
 }
-body.path-frontpage div.fold2 button {
-  margin: 0 auto;
-  display: inherit;
+body.path-frontpage div.fold2 a.seeMore {
+  display: inline-block;
   margin-top: 75px;
 }
 body.path-frontpage div.fold2 div.txtRow h2 {
@@ -10767,9 +10767,6 @@ body.path-frontpage div.fold4 div.wrapperFold4 div.textZone div.traitVertical {
   margin-top: -15px;
   margin-bottom: 20px;
 }
-body.path-frontpage div.fold4 div.wrapperFold4 div.textZone div.blockInTextZone {
-  cursor: pointer;
-}
 body.path-frontpage div.fold4 div.wrapperFold4 div.textZone div.blockInTextZone.isHovered div.iconPatrimoine {
   background: url(../images/icon_patrimoine_hover.jpg) no-repeat 50% 50%;
 }
@@ -10787,6 +10784,7 @@ body.path-frontpage div.fold4 div.wrapperFold4 div.textZone div.blockInTextZone.
 }
 body.path-frontpage div.fold4 div.wrapperFold4 div.textZone div.blockInTextZone.isHovered p.descroIcon {
   visibility: visible;
+  color: #262626;
 }
 body.path-frontpage div.fold4 div.wrapperFold4 div.textZone div.blockInTextZone div.iconFaune {
   background: url(../images/icon_faune.jpg) no-repeat 50% 50%;
@@ -11100,6 +11098,10 @@ body.path-frontpage div.fold6 div.leftZone div.secondHalf div.SpecialSmallBlock 
   }
 }
 @media (max-width: 992px) {
+  body.path-frontpage div.fold1 h1 {
+    width: auto;
+    top: 300px;
+  }
   body.path-frontpage section.wrapper div.fold2 div.txtRow p.subTitleFold2 {
     padding: 0 17%;
   }
@@ -11169,6 +11171,13 @@ body.path-frontpage div.fold6 div.leftZone div.secondHalf div.SpecialSmallBlock 
   }
 }
 @media (max-width: 767px) {
+  body.path-frontpage section.wrapper div.fold1 a {
+    top: 640px;
+  }
+  body.path-frontpage section.wrapper div.fold1 h1 {
+    font-size: 3.5em;
+    top: 270px;
+  }
   body.path-frontpage section.wrapper div.fold2 div.imagesRow img.image2 {
     padding-top: 6px;
   }
@@ -11240,8 +11249,12 @@ body.path-frontpage div.fold6 div.leftZone div.secondHalf div.SpecialSmallBlock 
   }
 }
 @media (max-width: 480px) {
-  body.path-frontpage section.wrapper div.fold1 button {
-    top: 760px;
+  body.path-frontpage section.wrapper div.fold1 h1 {
+    font-size: 3.2em;
+    top: 225px;
+  }
+  body.path-frontpage section.wrapper div.fold1 a {
+    top: 740px;
   }
   body.path-frontpage section.wrapper div.fold2 div.txtRow p.subTitleFold2 {
     padding: 0 9%;

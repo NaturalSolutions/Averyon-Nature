@@ -123,7 +123,7 @@
           <h1 class="col-sm-12 abs-auto">
             {{ titleFold1 }}
           </h1>
-            <button type="button" class="btn btn-primary">Découvrir</button>
+            <a href="les-espaces-naturels" class="btn btn-primary">Découvrir</a>
             <!-- Slider main container -->
             <div class="swiper-container">
             <!-- Additional required wrapper -->
@@ -150,36 +150,44 @@
                 </div>
             </div>
 
-            <!-- <pre>{{  dump(toto) }}</pre> -->
+            <!-- <pre>{{  dump(ensFold3) }}</pre> -->
 
             <div class="row imagesRow">
                 <div class="col-sm-8 left">
-                    <div class="relative">
-                        <div class="absolute">
-                            <h2>{{ ensFold2[0].title }}</h2>
-                            <p class="hidden"><span id="latLon" class="latLon">{{ ensFold2[0].gps }}</span><span id="valDistance"></span> KM du départ</p>
-                        </div>
-                        <img src="{{ ensFold2[0].uri }}" alt="{{ ensFold2[0].field_poster_alt }}" title="{{ ensFold2[0].field_poster_title }}">
-                    </div>
+                    <a href="{{ ensFold2[0].url_alias }}">
+                      <div class="relative">
+                          <div class="absolute">
+                              <h2>{{ ensFold2[0].title }}</h2>
+                              <p class="hidden"><span id="latLon" class="latLon">{{ ensFold2[0].gps }}</span><span id="valDistance"></span> KM du départ</p>
+                          </div>
+                          <img src="{{ ensFold2[0].uri }}" alt="{{ ensFold2[0].field_poster_alt }}" title="{{ ensFold2[0].field_poster_title }}">
+                      </div>
+                    </a>
                 </div>
                 <div class="col-sm-4 right">
-                    <div class="relative">
-                        <div class="absolute">
-                            <h2>{{ ensFold2[1].title }}</h2>
-                            <p class="hidden"><span id="latLon" class="latLon">{{ ensFold2[1].gps }}</span><span id="valDistance"></span> KM du départ</p>
-                        </div>
-                        <img class="image2" src="{{ ensFold2[1].uri }}" alt="{{ ensFold2[1].field_poster_alt }}" title="{{ ensFold2[1].field_poster_title }}">
-                    </div>
-                    <div class="relative">
-                        <div class="absolute">
-                            <h2>{{ ensFold2[2].title }}</h2>
-                            <p class="hidden"><span id="latLon" class="latLon">{{ ensFold2[2].gps }}</span><span id="valDistance"></span> KM du départ</p>
-                        </div>
-                        <img src="{{ ensFold2[2].uri }}" alt="{{ ensFold2[2].field_poster_alt }}" title="{{ ensFold2[2].field_poster_title }}">
-                    </div>
+                    <a href="{{ ensFold2[1].url_alias }}">
+                      <div class="relative">
+                          <div class="absolute">
+                              <h2>{{ ensFold2[1].title }}</h2>
+                              <p class="hidden"><span id="latLon" class="latLon">{{ ensFold2[1].gps }}</span><span id="valDistance"></span> KM du départ</p>
+                          </div>
+                          <img class="image2" src="{{ ensFold2[1].uri }}" alt="{{ ensFold2[1].field_poster_alt }}" title="{{ ensFold2[1].field_poster_title }}">
+                      </div>
+                    </a>
+                    <a href="{{ ensFold2[2].url_alias }}">
+                      <div class="relative">
+                          <div class="absolute">
+                              <h2>{{ ensFold2[2].title }}</h2>
+                              <p class="hidden"><span id="latLon" class="latLon">{{ ensFold2[2].gps }}</span><span id="valDistance"></span> KM du départ</p>
+                          </div>
+                          <img src="{{ ensFold2[2].uri }}" alt="{{ ensFold2[2].field_poster_alt }}" title="{{ ensFold2[2].field_poster_title }}">
+                      </div>
+                    </a>
                 </div>
             </div>
-            <button type="button" class="btn btn-primary inverse">voir plus d’espace naturels</button>
+            <center>
+              <a href="les-espaces-naturels" class="btn btn-primary inverse seeMore">voir plus d’espace naturels</a>
+            </center>
         </div>
 
         <div class="container-fluid fold3">
@@ -197,7 +205,7 @@
 
               {% for key,ens in ensFold3 %}
 
-                <div class="pointEns nidEns_{{ ens.nid }} index_{{ key }}"><span class="pointBtn"><span class="secondPoint"></span></span><a href="node/{{ ens.nid }}">{{ ens.title }}</a></div>
+                <div class="pointEns nidEns_{{ ens.nid }} index_{{ key }}"><span class="pointBtn"><span class="secondPoint"></span></span><a href="{{ ens.url_alias }}">{{ ens.title }}</a></div>
 
               {% endfor %}
 
@@ -211,7 +219,7 @@
                     <p class="titleEns">{{ ens.title }}</p>
                     <div class="descroEns">{{ ens.body_value|raw }}</div>
                   </div>
-                  <a type="button" href="node/{{ ens.nid }}" alt="{{ ens.title }}" title="{{ ens.title }}" class="btn btn-primary inverse">voir plus</a>
+                  <a type="button" href="{{ ens.url_alias }}" alt="{{ ens.title }}" title="{{ ens.title }}" class="btn btn-primary inverse">voir plus</a>
                 </div>
 
               {% endfor %}
@@ -237,43 +245,51 @@
               <h2>{{ ensFold4[4].field_titre_fold4_value }}</h2>
               <p class="subTitleFold4">{{ ensFold4[5].field_sous_titre_fold4_value }}</p>
 
-              <div class="row blockInTextZone rowFaune isHovered">
-                <div class="col-sm-2 iconFaune"></div>
-                <div class="col-sm-10">
-                  <p class="labelText">{{ ensFold4[0].field_illus_thematik_ens_alt }}</p>
-                  <p class="descroIcon">{{ ensFold4[0].field_illus_thematik_ens_title }}</p>
+              <a href="les-espaces-naturels?filtre=Faune">
+                <div class="row blockInTextZone rowFaune isHovered">
+                  <div class="col-sm-2 iconFaune"></div>
+                  <div class="col-sm-10">
+                    <p class="labelText">{{ ensFold4[0].field_illus_thematik_ens_alt }}</p>
+                    <p class="descroIcon">{{ ensFold4[0].field_illus_thematik_ens_title }}</p>
+                  </div>
                 </div>
-              </div>
+              </a>
 
               <div class="traitVertical"></div>
 
-              <div class="row blockInTextZone rowFlore">
-                <div class="col-sm-2 iconFlore"></div>
-                <div class="col-sm-10">
-                  <p class="labelText">{{ ensFold4[1].field_illus_thematik_ens_alt }}</p>
-                  <p class="descroIcon">{{ ensFold4[1].field_illus_thematik_ens_title }}</p>
+              <a href="les-espaces-naturels?filtre=Flore">
+                <div class="row blockInTextZone rowFlore">
+                  <div class="col-sm-2 iconFlore"></div>
+                  <div class="col-sm-10">
+                    <p class="labelText">{{ ensFold4[1].field_illus_thematik_ens_alt }}</p>
+                    <p class="descroIcon">{{ ensFold4[1].field_illus_thematik_ens_title }}</p>
+                  </div>
                 </div>
-              </div>
+              </a>
 
               <div class="traitVertical"></div>
 
-              <div class="row blockInTextZone rowPaysage">
-                <div class="col-sm-2 iconPaysage"></div>
-                <div class="col-sm-10">
-                  <p class="labelText">{{ ensFold4[2].field_illus_thematik_ens_alt }}</p>
-                  <p class="descroIcon">{{ ensFold4[2].field_illus_thematik_ens_title }}</p>
+              <a href="les-espaces-naturels?filtre=Paysage">
+                <div class="row blockInTextZone rowPaysage">
+                  <div class="col-sm-2 iconPaysage"></div>
+                  <div class="col-sm-10">
+                    <p class="labelText">{{ ensFold4[2].field_illus_thematik_ens_alt }}</p>
+                    <p class="descroIcon">{{ ensFold4[2].field_illus_thematik_ens_title }}</p>
+                  </div>
                 </div>
-              </div>
+              </a>
 
               <div class="traitVertical"></div>
 
-              <div class="row blockInTextZone rowPatrimoine">
-                <div class="col-sm-2 iconPatrimoine"></div>
-                <div class="col-sm-10">
-                  <p class="labelText">{{ ensFold4[3].field_illus_thematik_ens_alt }}</p>
-                  <p class="descroIcon">{{ ensFold4[3].field_illus_thematik_ens_title }}</p>
+              <a href="les-espaces-naturels?filtre=Patrimoine">
+                <div class="row blockInTextZone rowPatrimoine">
+                  <div class="col-sm-2 iconPatrimoine"></div>
+                  <div class="col-sm-10">
+                    <p class="labelText">{{ ensFold4[3].field_illus_thematik_ens_alt }}</p>
+                    <p class="descroIcon">{{ ensFold4[3].field_illus_thematik_ens_title }}</p>
+                  </div>
                 </div>
-              </div>
+              </a>
 
             </div>
 
@@ -305,7 +321,9 @@
 
           <div class="row">
             <div class="col-lg-12">
-              <button type="button" class="btn btn-primary inverse">voir la médiathèque</button>
+              <center>
+                  <a href="galerie" class="btn btn-primary inverse">voir la médiathèque</a>
+              </center>
             </div>
           </div>
 

@@ -1,25 +1,26 @@
 
+	{{ attach_library('bootstrap_aveyron/script-list-ens') }}
 
-  <section class="headband" style="background-image: url({{ data.imageOnTop.uri }});">
-  	<h1>Les espaces naturels</h1>
+	<section class="headband" style="background-image: url({{ data.imageOnTop.uri }});">
+		<h1>Les espaces naturels</h1>
 
-  	<div class="filter-btns">
-  		<div class="col-lg-12">
-  			<button class="js-btn-filter-ens btn btn-primary inverse selected" thematique="all">
-  				Tout
-  			</button>
-  		{% for thematique in data.thematiques %}
-  		    <button class="js-btn-filter-ens btn btn-primary inverse" thematique="{{thematique.title}}">
-  		    	{{thematique.title}}
-  		    </button>
-  		{% endfor %}
-  		</div>
-  	</div>
+		<div class="filter-btns">
+			<div class="col-lg-12">
+				<button class="js-btn-filter-ens btn btn-primary inverse selected" thematique="all">
+					Tout
+				</button>
+			{% for thematique in data.thematiques %}
+			    <button class="js-btn-filter-ens btn btn-primary inverse" thematique="{{thematique.title}}">
+			    	{{thematique.title}}
+			    </button>
+			{% endfor %}
+			</div>
+		</div>
 
-  	<span class="arianne">
-  		<a href="{{ url('<front>') }}">Accueil</a> > <b>les espaces naturels</b>
-  	</span>
-  </section>
+		<span class="arianne">
+			<a href="{{ url('<front>') }}">Accueil</a> > <b>les espaces naturels</b>
+		</span>
+	</section>
 
    <!-- <pre>{{ dump(data) }}</pre> -->
 
@@ -46,71 +47,3 @@
 		</div>
 	</section>
 
-
-<script>
-	document.addEventListener('DOMContentLoaded', function(event) {
-		var $ = jQuery;
-
-		//quick & unoptimized
-		$('.js-btn-filter-ens').on('click', function(e){
-			$('.js-btn-filter-ens').each(function(){
-					$(this).removeClass('selected');
-			});
-			var thematique = $(e.currentTarget).attr('thematique');
-			$(e.currentTarget).addClass('selected');
-			$('.js-ens-container').find('.js-ens').each(function(){
-				if(thematique == 'all'){
-					$(this).removeClass('hide');
-					return;
-				}
-				if($(this).attr('thematique') === thematique){
-					$(this).removeClass('hide');
-				} else {
-					$(this).addClass('hide');
-				}
-			});
-		});
-
-/*		var displayENS = function(thematique){
-
-			// get number of all ENS
-			var nbENS = allENS.length;
-
-			// calc a number of ENS with different displayed in front
-			var nbLongerENS = parseInt(nbENS / 5);
-			// calc number of row we'll display with 3 ENS by row and the special display each 5 ENS
-			var nbRowOfENS = parseInt((nbENS - nbLongerENS) / 3);
-
-
-			allENS.forEach(function(ens, i) {
-				var bg = ens;
-				var size = 'col-sm-4';
-				if(i === 0 || i === 9){
-					console.log(ens);
-					size = 'col-sm-8'
-				}
-				var ensTpl = '<div class="ens ' + size + '" >\
-						<div class="bg" style="background: url(' + ens.uri + ')">\
-						</div>\
-						<a class="abs" href="plouf">\
-							<div>\
-								<h3>' + ens.title + '</h3>\
-								<span class="distance"> KM</span>\
-							</div>\
-						</a>\
-				</div>';
-
-
-				$('.js-ens-container').append(ensTpl);
-
-			});
-
-		}
-
-		var allENS = {{ data.ensFold2|json_encode()|raw }};
-		displayENS("all");*/
-
-	});
-
-
-</script>
