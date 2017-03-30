@@ -68,7 +68,8 @@
   .button-variant(@btn-default-color; @btn-default-bg; @btn-default-border);
 }
 */
-.btn-primary {
+
+.btn{
   font-family: 'Proxima Nova Regular';
   text-transform: uppercase;
   border-radius: 20px;
@@ -76,18 +77,71 @@
   -moz-border-radius: 20px;
   letter-spacing: 1px;
   padding: 11px 36px;
-  .button-variant(@btn-primary-color; @btn-primary-bg; @btn-primary-border);
-  &.inverse{
+
+  &:focus{
+    outline-color: transparent;!important;
+  }
+
+}
+
+.btn-main{
+  margin: 75px
+}
+
+.btn-default {
+  &, &:focus, &:active{
     color: @btn-primary-bg;
-    background-color: transparent;
+    background-color: rgba(255,255,255,.95);
     border-color: @btn-primary-border;
-    &:hover{
-      .button-variant(@btn-primary-color; @btn-primary-bg; @btn-primary-border);
+  }
+
+  &:active,&:hover{
+    background-color: rgba(255,255,255,.95);
+  }  
+  &:active,&:focus{
+    background-color: rgba(255,255,255,.95);
+  }
+
+  &:hover{
+    .button-variant(@btn-primary-color; @btn-primary-bg; @btn-primary-border);
+  }
+
+  &.active{
+    &, &:hover, &:focus{
+      color: white!important;
+      background-color: @btn-primary-bg!important;
+      border-color: @btn-primary-border!important;
+      box-shadow: none!important;
     }
   }
 }
-/*
-// Success appears as green
+
+.btn-primary{
+  .button-variant(@btn-primary-color; @btn-primary-bg; @btn-primary-border);
+  &:hover{
+    color: @btn-primary-bg;
+    background-color: transparent;
+    border-color: @btn-primary-border;
+  }
+}
+
+.btn-special{
+  margin-top: 0px;
+  &, &:focus{
+    padding: 11px 100px;
+    color: @color_bis;
+    border-color: @color_bis;
+  }
+  &:hover{
+    background: @color_bis!important;
+    color: white!important;
+    border-color: @color_bis!important;
+  }
+}
+
+
+
+
 .btn-success {
   .button-variant(@btn-success-color; @btn-success-bg; @btn-success-border);
 }
@@ -103,6 +157,33 @@
 .btn-danger {
   .button-variant(@btn-danger-color; @btn-danger-bg; @btn-danger-border);
 }
+/*
+/* 
+  &.btn-special, &.btn-special:focus{
+    margin-top: 0px;
+    padding: 11px 100px;
+    color: @color_bis;
+    border-color: @color_bis;
+    &:hover{
+      background: @color_bis!important;
+      color: white!important;
+      border-color: @color_bis!important;
+    }
+  }
+  &.active{
+    color: white;
+    background-color: @main_orange;
+    border-color: @main_orange;
+    &:hover, &:focus{
+      color: white;
+      background-color: @main_orange;
+      border-color: @main_orange;
+    }
+  } */
+
+
+/*
+// Success appears as green
 
 
 // Link buttons
