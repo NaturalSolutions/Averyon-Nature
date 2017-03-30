@@ -47,3 +47,53 @@
 		</div>
 	</section>
 
+<script>
+
+/* To remove if it's useless
+
+		var displayENS = function(thematique){
+
+			// get number of all ENS
+			var nbENS = allENS.length;
+
+			// calc a number of ENS with different displayed in front
+			var nbLongerENS = parseInt(nbENS / 5);
+			// calc number of row we'll display with 3 ENS by row and the special display each 5 ENS
+			var nbRowOfENS = parseInt((nbENS - nbLongerENS) / 3);
+
+
+			allENS.forEach(function(ens, i) {
+				var bg = ens;
+				var size = 'col-sm-4';
+				if(i === 0 || i === 9){
+					console.log(ens);
+					size = 'col-sm-8'
+				}
+				var ensTpl = '<div class="ens ' + size + '" >\
+						<div class="bg" style="background: url(' + ens.uri + ')">\
+						</div>\
+						<a class="abs" href="plouf">\
+							<div>\
+								<h3>' + ens.title + '</h3>\
+								<span class="distance"> KM</span>\
+							</div>\
+						</a>\
+				</div>';
+
+
+				$('.js-ens-container').append(ensTpl);
+
+			});
+
+		}
+
+		var allENS = {{ data.ensFold2|json_encode()|raw }};
+		displayENS("all");
+
+	});
+
+*/
+
+
+</script>
+

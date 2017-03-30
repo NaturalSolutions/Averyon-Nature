@@ -4,9 +4,15 @@
 
 
 @main_color : rgb(38, 38, 38);
+@color_bis: rgb(19, 189, 132);
+@main_orange: rgb(251, 106, 0);
 
 body{
 	color: @main_color;
+}
+
+.region-content{
+  min-height: 1500px;
 }
 
 h1{
@@ -42,10 +48,10 @@ h2{
 
 h3{
 	//img block: spacies list, ens list
+  margin: 20px 0px;
 	text-transform: uppercase;
 	letter-spacing: 1px;
-	color : white;
-	font-family: "Proxima Nova Regular";
+	font-family: "Proxima Nova semiBold";
 }
 
 h4{
@@ -53,6 +59,8 @@ h4{
 	text-transform: uppercase;
 	text-align: center;
 	font-size: 1em;
+  letter-spacing: 2px;
+  margin: 25px;
 }
 
 h5{
@@ -83,9 +91,13 @@ h5{
   margin: 0 auto;
 }
 
+.full-width {
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+}
 
-
-#map { min-height: 500px; }
+.map { min-height: 500px; }
 
 
 //should be integrated otherwise
@@ -93,9 +105,10 @@ h5{
 section{
 	padding: 0px!important;
   &.section{
-    padding-top: 100px!important;
+    padding-top: 50px!important;
   }
 }
+
 
 
 b{
@@ -134,16 +147,8 @@ b{
     bottom: 100px;
     margin: 0;
     text-align: center;
-    button{
-      background-color: rgba(255, 255, 255, 0.9);
-      margin: 0 5px;
-      border: 0;
-      text-transform: uppercase;
-      border: 0;
-      &.selected, &:hover{
-          background-color: @base-color-aveyron;
-          color:white;
-      }
+    .btn-default{
+      border-color: transparent;
     }
   }
 
@@ -219,6 +224,7 @@ span.arianne{
   }
 
   &.alone{
+    margin-bottom: 15px;
 		padding: 0px;
   	height: 200px;
 		.abs{
@@ -236,14 +242,34 @@ video{
 }
 
 
-
-//overwrite for editable content
-.content{
-	h3{
-		color: @main_color;
-	}
-}
-
 footer.footer{
   margin-top: 100px;
+}
+
+
+.nav{
+  margin: 0px 15px;
+  &.nav-tabs{
+    padding-top: 50px;
+    li{
+      margin-right: 100px;
+      a{
+        padding: 15px 0px;
+        color: @main_color;
+        background-color: none;
+        border: none;
+        text-transform: uppercase;
+        &:focus, &:hover{
+          background: none;
+          border: none;
+        }
+      }
+      &.active{
+        a{
+          color: @color_bis;
+          border-bottom: 2px solid @color_bis;
+        }
+      }
+    }
+  }
 }
