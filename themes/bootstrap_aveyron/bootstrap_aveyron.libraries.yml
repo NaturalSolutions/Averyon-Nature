@@ -49,3 +49,4 @@ script-list-ens:
   version: 1.x
   js:
     scripts/script-list-ens.js: {}
+
