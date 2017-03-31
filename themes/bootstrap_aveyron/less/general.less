@@ -11,8 +11,18 @@ body{
 	color: @main_color;
 }
 
+header{
+  width: 0px;
+}
+
+
 .region-content{
   min-height: 1500px;
+
+  p{
+    line-height: 1.5em;
+  }
+
 }
 
 h1{
@@ -97,16 +107,23 @@ h5{
     max-width: 100%;
 }
 
-.map { min-height: 500px; }
+.map { min-height: 650px; }
 
 
 //should be integrated otherwise
 //all  content should not be inside a section tag
-section{
-	padding: 0px!important;
-  &.section{
-    padding-top: 50px!important;
+div.outer{
+  width: 100%;
+  height: 60px;
+  &.small{
+    height: 40px;
   }
+  &.big{
+    height: 80px;
+  }
+}
+section{
+  padding: 0px!important;
 }
 
 
@@ -127,7 +144,7 @@ b{
   background-size: cover;
   & h1{
     position: absolute;
-    top: 200px;
+    top: 208px;
     width: 100%;
     user-select: none;
   }
@@ -143,8 +160,8 @@ b{
 
   & div.filter-btns{
     position: absolute;
+    bottom: 50px;
     width: 100%;
-    bottom: 100px;
     margin: 0;
     text-align: center;
     .btn-default{
@@ -187,11 +204,11 @@ span.arianne{
     left: 0;
     padding: inherit;
     a{
+      display: flex;
+      position: relative;
       height: 100%;
       width: 100%;
       text-align: center;
-      display: flex;
-      flex-direction: column;
 
       text-transform: uppercase;
       color : white;
@@ -249,9 +266,7 @@ footer.footer{
 
 
 .nav{
-  margin: 0px 15px;
   &.nav-tabs{
-    padding-top: 50px;
     li{
       margin-right: 100px;
       a{
@@ -273,4 +288,11 @@ footer.footer{
       }
     }
   }
+}
+
+
+
+.gallery{
+  margin-left: -5px;
+  margin-right: -5px;
 }

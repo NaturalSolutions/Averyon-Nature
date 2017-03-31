@@ -89,6 +89,8 @@
 }
 
 .btn-default {
+
+
   &, &:focus, &:active{
     color: @btn-primary-bg;
     background-color: rgba(255,255,255,.95);
@@ -112,6 +114,16 @@
       background-color: @btn-primary-bg!important;
       border-color: @btn-primary-border!important;
       box-shadow: none!important;
+    }
+  }
+
+  &.btn-grey{
+    color: #bbb;
+    border-color: #bbb;
+    &.active{
+      color: @btn-primary-bg!important;
+      background-color: rgba(255,255,255,.95)!important;
+      border-color: @btn-primary-border!important;
     }
   }
 }
