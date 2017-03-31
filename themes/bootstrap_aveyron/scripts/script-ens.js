@@ -1,8 +1,5 @@
 jQuery( document ).ready(function() {
 
-
-
-
         // geoData to display map
 
         // IGN layer - forbiden access with this IGN key
@@ -18,6 +15,7 @@ jQuery( document ).ready(function() {
         */
 
         var $ = jQuery; 
+        var Shuffle = window.shuffle;
 
 
         $('.js-quizz-prop').on('click', function(e){
@@ -87,12 +85,8 @@ jQuery( document ).ready(function() {
                   }
               ).addTo(quizzMap);
             }
+
             $(e.currentTarget).attr('passed', 'true');
         });
-
-
-        
-
-
 
 });

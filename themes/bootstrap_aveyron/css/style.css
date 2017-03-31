@@ -10824,6 +10824,7 @@ b {
   text-align: center;
 }
 .headband div.filter-btns .btn-default {
+  margin: 0px 5px;
   border-color: transparent;
 }
 span.arianne {
@@ -11823,13 +11824,6 @@ body.path-frontpage div.fold6 div.leftZone div.secondHalf div.SpecialSmallBlock 
     font-size: 0.7em;
     margin-left: -30px;
   }
-}
-section.headband div.filter-btns button {
-  margin: 0 5px;
-}
-section.headband div.filter-btns button.selected {
-  background-color: #ff7815;
-  color: #fff;
 }
 body.page-node-type-ens video:nth-child(2) {
   z-index: 2;
