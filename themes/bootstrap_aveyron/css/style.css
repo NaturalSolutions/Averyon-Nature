@@ -11874,10 +11874,12 @@ body.path-frontpage div.fold6 div.leftZone div.secondHalf div.SpecialSmallBlock 
   }
 }
 body.page-node-type-ens iframe {
-  height: 400px;
+  height: 300px;
 }
-body.page-node-type-ens video:nth-child(2) {
-  z-index: 2;
+body.page-node-type-ens iframe:nth-child(2) {
+  height: 350px;
+  position: relative;
+  top: -25px;
 }
 body.page-node-type-ens article.quizz {
   margin-bottom: 100px;
