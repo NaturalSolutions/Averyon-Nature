@@ -81,6 +81,7 @@
 
    <!-- <pre>{{  dump(data) }}</pre> -->
 
+   <div class="outer"></div>
 
   <div class="container">
     <ul class="col-xs-12 nav nav-tabs" role="tablist">
@@ -98,18 +99,20 @@
   </div>
 
 
-<div class="tab-content">
-  <div class="tab-pane active" id="home">
 
-  <section class="section">
-    <div class="container">
+
+
+
+
+
+<div class="tab-content">
+
+
+  <div class="tab-pane active" id="home">
+   <div class="outer small"></div>
+   <section class="container">
       <div class="col-sm-7">
         <div class="content">
-        <!--  u
-          Juste use the h2 in the content.body
-          <h2>{{ node.body.summary }}</h2>
-          node.body.summary is used for mobile description list
-        -->
         {{ content.body }}
         </div>
         <div class="col-xs-12 text-center">
@@ -123,68 +126,129 @@
         <h4>Carte de l'espace Naturel</h4>
         <div id="map" class="map"></div>
       </div>
-
-    </div>
   </section>
 
+  <div class="outer big"></div>
+  <div class="outer"></div>
 
-  <section class="section">
-    <div class="clearfix">
+  <section class="clearfix">
     {{ content.field_video_ens }}
-
-    </div>
   </section>
 
+  <div class="outer"></div>
 
-
-  <section class="section">
-    <div class="container">
-
-      <div class="clearfix">
-        <h2>Gallery</h2>
-        <div class="col-sm-8 no-padding">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur minus labore quo consequatur magnam, culpa velit est quae possimus nostrum numquam, doloribus quos eos aliquam. Debitis ex odit vitae iusto.</p>
-        </div>
+  <section class="container">
+    <div class="clearfix">
+      <div class="col-sm-8">
+      <h2>Galerie</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur minus labore quo consequatur magnam, culpa velit est quae possimus nostrum numquam, doloribus quos eos aliquam. Debitis ex odit vitae iusto.</p>
       </div>
-      <br>
+    </div>
+    
+    <div class="outer small"></div>
 
-      <div class="clearfix">
-        <div class="col-sm-8"></div>
-        <div class="col-sm-4">
-          <h5>Informations</h5>
-            {{ data.info|raw }}
+    <div class="clearfix">
+      <div class="col-sm-8 clearfix gallery">
+        {{ content.field_gallery }}
+      </div>
+      <div class="col-sm-4 ens-infos">
+        <h5>Informations</h5>
+          {{ data.info|raw }}
+
+        <div class="wrapper">
           <h5>Thematique similaire</h5>
-            <div class="img-block-link alone col-md-12" thematique="">
-              <div class="bg" style="background-image: url({{ data.similarsENS[0].uri }})">
-              </div>
-                <div class="abs">
-                <a href="{{ url('<front>') }}{{ data.similarsENS[0].url_alias }} ">
-                  <div>
-                    <h2>{{ data.similarsENS[0].title }}</h2>
-                    <span class="distance"> _ KM du départ</span>
-                  </div>
-                </a>
-                </div>
+          <div class="img-block-link alone col-md-12" thematique="">
+            <div class="bg" style="background-image: url({{ data.similarsENS[0].uri }})">
             </div>
-
+            <div class="abs">
+              <a href="{{ url('<front>') }}{{ data.similarsENS[0].url_alias }} ">
+                <div>
+                  <h2>{{ data.similarsENS[0].title }}</h2>
+                  <span class="distance"> _ KM du départ</span>
+                </div>
+              </a>
+            </div>
+          </div>
         </div>
 
+        </div>
       </div>
-
-    </div>
-  </section>
-  </div>
-
-  <div class="tab-pane" id="spacies">
-    <section class="section">
 
     </section>
   </div>
 
-  <div class="tab-pane" id="quizz">
-    <section class="section">
-      <div class="container">
 
+
+
+
+
+
+
+  <div class="tab-pane spacies" id="spacies">
+    
+    <div class="outer"></div>
+
+    <section class="container">
+      <div class="col-xs-12">
+        <div class="pull-left">
+          <button class="js-btn-filter btn btn-default btn-grey active" thematique="all">Tout</button>
+          <button class="js-btn-filter btn btn-default btn-grey" thematique="faune">Faune</button>
+          <button class="js-btn-filter btn btn-default btn-grey" thematique="flore">Flore</button>
+        </div>
+        <div class="pull-right">
+          <!-- <button class="js-btn-filter btn btn-default btn-circle btn-grey">A</button>
+          <button class="js-btn-filter btn btn-default btn-circle btn-grey">B</button> -->
+        </div>
+      </div>
+    </section>
+
+    <div class="outer"></div>
+
+    <section class="js-figures container">
+      <div class="col-xs-12">
+        <div class="gallery clearfix">
+
+          {% for taxon in data.taxons %}
+            {% if loop.index == 3 or loop.index == 8 %}
+              <div class="js-figure img-block-link col-md-6" thematique="{{taxon.field_tag_value}}">
+            {% else %}
+              <div class="js-figure img-block-link col-md-3" thematique="{{taxon.field_tag_value}}">
+            {% endif %}
+                <div class="bg" style="background: url( {{taxon.uri}} )">
+                </div>
+                <div class="abs">
+                  <a href="{{taxon.url_alias}}">
+                    <div>
+                      <h2>{{taxon.title}}</h2>
+                      <span class="credit"> PHOTO: PHOTOGRAPH</span>
+                    </div>
+                    <figcaption>
+                        {{taxon.title}}                 
+                    </figcaption>
+                  </a>
+                </div>
+            </div>
+          {% endfor %}
+
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+  <div class="tab-pane" id="quizz">
+    <div class="outer small"></div>
+
+    <section class="container">
         <div class="col-sm-8 col-xs-12">
 
           {% for item in data.quizz %}
@@ -234,11 +298,11 @@
           {% endfor %}
 
         </div>
-      </div>
     </section>
   </div>
 
 </div>
+
 
 
 <script>

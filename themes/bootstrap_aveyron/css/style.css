@@ -5126,6 +5126,15 @@ fieldset[disabled] .btn-default:hover.focus {
   border-color: #fb6a00 !important;
   box-shadow: none!important;
 }
+.btn-default.btn-grey {
+  color: #bbb;
+  border-color: #bbb;
+}
+.btn-default.btn-grey.active {
+  color: #ff7815 !important;
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  border-color: #fb6a00 !important;
+}
 .btn-primary {
   color: #fff;
   background-color: #ff7815;
@@ -10717,8 +10726,14 @@ p:last-child,
 body {
   color: #262626;
 }
+header {
+  width: 0px;
+}
 .region-content {
   min-height: 1500px;
+}
+.region-content p {
+  line-height: 1.5em;
 }
 h1 {
   text-transform: uppercase;
@@ -10784,13 +10799,20 @@ h5:after {
   max-width: 100%;
 }
 .map {
-  min-height: 500px;
+  min-height: 650px;
+}
+div.outer {
+  width: 100%;
+  height: 60px;
+}
+div.outer.small {
+  height: 40px;
+}
+div.outer.big {
+  height: 80px;
 }
 section {
   padding: 0px!important;
-}
-section.section {
-  padding-top: 50px!important;
 }
 b {
   color: #fff;
@@ -10807,7 +10829,7 @@ b {
 }
 .headband h1 {
   position: absolute;
-  top: 200px;
+  top: 208px;
   width: 100%;
   user-select: none;
 }
@@ -10821,12 +10843,13 @@ b {
 }
 .headband div.filter-btns {
   position: absolute;
+  bottom: 50px;
   width: 100%;
-  bottom: 100px;
   margin: 0;
   text-align: center;
 }
 .headband div.filter-btns .btn-default {
+  margin: 0px 5px;
   border-color: transparent;
 }
 span.arianne {
@@ -10856,11 +10879,11 @@ span.arianne {
   padding: inherit;
 }
 .img-block-link .abs a {
+  display: flex;
+  position: relative;
   height: 100%;
   width: 100%;
   text-align: center;
-  display: flex;
-  flex-direction: column;
   text-transform: uppercase;
   color: white;
   font-family: "Proxima Nova Regular";
@@ -10904,12 +10927,6 @@ video {
 footer.footer {
   margin-top: 100px;
 }
-.nav {
-  margin: 0px 15px;
-}
-.nav.nav-tabs {
-  padding-top: 50px;
-}
 .nav.nav-tabs li {
   margin-right: 100px;
 }
@@ -10928,6 +10945,10 @@ footer.footer {
 .nav.nav-tabs li.active a {
   color: #13bd84;
   border-bottom: 2px solid #13bd84;
+}
+.gallery {
+  margin-left: -5px;
+  margin-right: -5px;
 }
 /*
 	Specific font for Homepage
@@ -11828,13 +11849,6 @@ body.path-frontpage div.fold6 div.leftZone div.secondHalf div.SpecialSmallBlock 
     margin-left: -30px;
   }
 }
-section.headband div.filter-btns button {
-  margin: 0 5px;
-}
-section.headband div.filter-btns button.selected {
-  background-color: #ff7815;
-  color: #fff;
-}
 @media (max-width: 992px) {
   section.headband div.filter-btns button {
     margin: 0 4px;
@@ -11863,8 +11877,13 @@ section.headband div.filter-btns button.selected {
     height: 300px;
   }
 }
-body.page-node-type-ens video:nth-child(2) {
-  z-index: 2;
+body.page-node-type-ens iframe {
+  height: 300px;
+}
+body.page-node-type-ens iframe:nth-child(2) {
+  height: 350px;
+  position: relative;
+  top: -25px;
 }
 body.page-node-type-ens article.quizz {
   margin-bottom: 100px;
@@ -11875,5 +11894,38 @@ body.page-node-type-ens article.quizz div.img {
 }
 body.page-node-type-ens article.quizz div.btns {
   margin-top: 20px;
+}
+body.page-node-type-ens .gallery div.img-block-link {
+  height: 150px;
+}
+body.page-node-type-ens .spacies div.img-block-link {
+  height: 250px;
+}
+body.page-node-type-ens .spacies div.img-block-link a h2 {
+  margin: 0px;
+  letter-spacing: 1px;
+}
+body.page-node-type-ens .spacies div.img-block-link a:hover,
+body.page-node-type-ens .spacies div.img-block-link a:focus {
+  background: rgba(251, 106, 0, 0.5) !important;
+}
+body.page-node-type-ens .spacies div.img-block-link a:hover > div,
+body.page-node-type-ens .spacies div.img-block-link a:focus > div {
+  opacity: 1;
+}
+body.page-node-type-ens .spacies div.img-block-link a:hover figcaption,
+body.page-node-type-ens .spacies div.img-block-link a:focus figcaption {
+  opacity: 0;
+}
+body.page-node-type-ens .spacies div.img-block-link a > div {
+  opacity: 0;
+  transition: all ease .2s;
+}
+body.page-node-type-ens .spacies div.img-block-link a figcaption {
+  opacity: 1;
+  transition: all ease .2s;
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
 }
 /*# sourceMappingURL=style.css.map */

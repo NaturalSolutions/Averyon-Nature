@@ -23,13 +23,14 @@ jQuery( document ).ready(function() {
 		//quick & unoptimized
 		$('.js-btn-filter-ens').on('click', function(e){
 			$('.js-btn-filter-ens').each(function(){
-					$(this).removeClass('selected');
+					$(this).removeClass('active');
 			});
 
-			if(filter) var thematique = filter;
-			else var thematique = $(e.currentTarget).attr('thematique');
+			var thematique;
+			if(filter) thematique = filter;
+			else thematique = $(e.currentTarget).attr('thematique');
 
-			$(e.currentTarget).addClass('selected');
+			$(e.currentTarget).addClass('active');
 			$('.js-ens-container').find('.js-ens').each(function(){
 				if(thematique == 'all'){
 					$(this).removeClass('hide');

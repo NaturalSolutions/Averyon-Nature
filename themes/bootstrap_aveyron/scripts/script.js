@@ -37,6 +37,8 @@ jQuery( document ).ready(function() {
 
   };
 
+  
+
   window.init = function() {
     toggleNavbar();
     checkHeader();
