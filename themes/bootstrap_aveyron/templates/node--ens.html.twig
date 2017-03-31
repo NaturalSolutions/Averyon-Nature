@@ -217,10 +217,10 @@
                 <div class="bg" style="background: url( {{taxon.uri}} )">
                 </div>
                 <div class="abs">
-                  <a href="{{taxon.url_alias}}">
+                  <a href="{{ url('<front>') }}{{taxon.url_alias}}">
                     <div>
                       <h2>{{taxon.title}}</h2>
-                      <span class="credit"> PHOTO: PHOTOGRAPH</span>
+                      <span class="credit"> PHOTO: {{taxon.field_poster_alt}}</span>
                     </div>
                     <figcaption>
                         {{taxon.title}}
