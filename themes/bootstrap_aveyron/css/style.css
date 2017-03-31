@@ -7489,6 +7489,9 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 .navbar-nav > li:nth-child(9):hover {
   background-image: url(../images/menu/icon_twt_hover.png);
 }
+.navbar-nav > li:hover > a.is-active {
+  color: #ff7815 !important;
+}
 .navbar-nav > li > a {
   color: #fff;
   padding-left: 130px;
@@ -10937,6 +10940,7 @@ body.path-frontpage div.fold1 h1 {
   width: 900px;
   position: absolute;
   top: 355px;
+  user-select: none;
 }
 body.path-frontpage div.fold1 div.fold1-img {
   width: 100%;

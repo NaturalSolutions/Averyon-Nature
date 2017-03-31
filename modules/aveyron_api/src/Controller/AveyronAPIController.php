@@ -44,7 +44,7 @@ class AveyronAPIController extends ControllerBase {
       else
         $result[$type] = $items;
     }
-    
+
     return new JsonResponse($result);
   }
 
@@ -143,7 +143,7 @@ class AveyronAPIController extends ControllerBase {
       /*
       * PDF
       */
-      $query = db_query("
+      /*$query = db_query("
         SELECT f.uri, f.fid
         from file_managed f
         join node__field_pdf_ens g
@@ -154,7 +154,7 @@ class AveyronAPIController extends ControllerBase {
       if(isset($pdf) && count($pdf) > 0){
         $pdf = file_create_url($pdf[0]->uri);
         $item["pdf"] = $pdf;
-      }
+      }*/
 
       /*
       * Thumb - 1st image of gallery with special style
@@ -235,6 +235,8 @@ class AveyronAPIController extends ControllerBase {
       "vid" => (int) $entity->vid->value,
       "title" => $entity->title->value,
       "thematic" => (int) $entity->field_thematique_ens->target_id,
+      "info" => null,
+      "pdf" => null,
       "startPoint" => json_decode($geom->out('json'), true),
       "trace" => json_decode($geomTrace->out('json'), true),
       "description" => $entity->body->value,
@@ -244,7 +246,7 @@ class AveyronAPIController extends ControllerBase {
       "gallery" => array(),
       "videos" => array(),
       "taxonIds" => array(),
-      "events" => array(),
+      /*"events" => array(),*/
     );
 
     /*
@@ -387,11 +389,25 @@ class AveyronAPIController extends ControllerBase {
     // Example de call sur l'api Dailymotion : https://api.dailymotion.com/videos?ids=x5f5olp,x2c5umz&limit=30&fields=id,thumbnail_url,title,tiny_url
     $result['videos'] = json_decode(file_get_contents($chanVideo));
 
-
+    /*
+    * Taxons
+    */
     $taxa = $entity->field_taxa;
     foreach ($taxa as $taxon) {
       $result['taxonIds'][] = (int) $taxon->target_id;
     }
+
+    /*
+    * Get Info
+    */
+    $query = db_query("
+      SELECT t.field_info_value
+      FROM node__field_info t
+      where t.entity_id = $id
+    ");
+    $info = $query->fetchAll();
+    // add to global var data
+    $result['info'] = $info[0]->field_info_value;
 
     return new JsonResponse($result);
   }
