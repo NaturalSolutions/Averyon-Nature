@@ -160,18 +160,25 @@ b{
 
   & div.filter-btns{
     position: absolute;
-    bottom: 50px;
+    bottom: 100px;
     width: 100%;
     margin: 0;
     text-align: center;
     .btn-default{
-      margin: 0px 5px;
+      margin-left: 5px;
+      margin-right: 5px;
       border-color: transparent;
     }
   }
 
 }
 
+div.filter-btns {
+  button{
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+}
 
 span.arianne{
   position: relative;
@@ -295,4 +302,14 @@ footer.footer{
 .gallery{
   margin-left: -5px;
   margin-right: -5px;
+}
+
+
+//- de 480
+@media (max-width: @screen-xs-min) {
+  div.outer{
+    &.big{
+      height: 0;
+    }
+  }
 }

@@ -7177,14 +7177,14 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   -ms-transform: translate(-100%, 0);
   -o-transform: translate(-100%, 0);
   transform: translate(-100%, 0);
-  background-color: #2f2f2f;
-  background-size: 150px;
+  background-color: #231f20;
+  background-size: 130px;
   width: 350px;
   position: fixed;
   overflow: hidden;
   height: 100% !important;
   padding-top: 270px;
-  background-image: url(../images/logo_aveyron.png);
+  background-image: url(../images/logo_aveyron.jpg);
   background-repeat: no-repeat;
   background-position: 50% 60px;
 }
@@ -10843,14 +10843,19 @@ b {
 }
 .headband div.filter-btns {
   position: absolute;
-  bottom: 50px;
+  bottom: 100px;
   width: 100%;
   margin: 0;
   text-align: center;
 }
 .headband div.filter-btns .btn-default {
-  margin: 0px 5px;
+  margin-left: 5px;
+  margin-right: 5px;
   border-color: transparent;
+}
+div.filter-btns button {
+  margin-left: 5px;
+  margin-right: 5px;
 }
 span.arianne {
   position: relative;
@@ -10949,6 +10954,11 @@ footer.footer {
 .gallery {
   margin-left: -5px;
   margin-right: -5px;
+}
+@media (max-width: 480px) {
+  div.outer.big {
+    height: 0;
+  }
 }
 /*
 	Specific font for Homepage
@@ -11849,6 +11859,10 @@ body.path-frontpage div.fold6 div.leftZone div.secondHalf div.SpecialSmallBlock 
     margin-left: -30px;
   }
 }
+/* .headband div.filter-btns {
+	bottom: 100px;
+}
+ */
 @media (max-width: 992px) {
   section.headband div.filter-btns button {
     margin: 0 4px;
