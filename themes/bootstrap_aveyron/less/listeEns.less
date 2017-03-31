@@ -1,0 +1,36 @@
+
+//- de 992
+@media (max-width: @screen-md-min) {
+	section.headband div.filter-btns button {
+	    margin: 0 4px;
+	}
+}
+
+//- de 768
+@media (max-width: @screen-sm-min) {
+	section.headband {
+		h1 {
+			top: 175px;
+		}
+		div.filter-btns button {
+			margin-bottom: 15px;
+		}
+	}
+}
+
+//- de 480
+@media (max-width: @screen-xs-min) {
+	section.headband div.filter-btns{
+		bottom: -320px;
+		button {
+			width: 100%;
+			border-color: @btn-primary-bg !important;
+		}
+	}
+	section.section{
+		padding-top: 325px !important;
+		.img-block-link {
+			height: 300px;
+		}
+	}
+}

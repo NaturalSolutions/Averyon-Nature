@@ -11825,6 +11825,34 @@ body.path-frontpage div.fold6 div.leftZone div.secondHalf div.SpecialSmallBlock 
     margin-left: -30px;
   }
 }
+@media (max-width: 992px) {
+  section.headband div.filter-btns button {
+    margin: 0 4px;
+  }
+}
+@media (max-width: 768px) {
+  section.headband h1 {
+    top: 175px;
+  }
+  section.headband div.filter-btns button {
+    margin-bottom: 15px;
+  }
+}
+@media (max-width: 480px) {
+  section.headband div.filter-btns {
+    bottom: -320px;
+  }
+  section.headband div.filter-btns button {
+    width: 100%;
+    border-color: #ff7815 !important;
+  }
+  section.section {
+    padding-top: 325px !important;
+  }
+  section.section .img-block-link {
+    height: 300px;
+  }
+}
 body.page-node-type-ens video:nth-child(2) {
   z-index: 2;
 }
