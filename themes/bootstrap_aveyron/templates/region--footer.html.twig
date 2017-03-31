@@ -40,7 +40,11 @@
 		<div class="col-md-3 block">
 			<p class="preTitle">navigation</p>
 			{% for link in infoFooter.links %}
-			    <a href="{{ link.link__uri }}">{{ link.title }}</a>
+				{% if link.link__uri == "" %}
+				    <a href="{{ url('<front>') }}">{{ link.title }}</a>
+				{% else %}
+			    	<a href="{{ link.link__uri }}">{{ link.title }}</a>
+				{% endif %}
 			{% endfor %}
 
 		</div>
