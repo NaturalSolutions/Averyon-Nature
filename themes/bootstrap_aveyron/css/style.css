@@ -10863,6 +10863,49 @@ span.arianne {
   text-transform: uppercase;
   color: #f6f4f1;
 }
+.gallery div.img-block-link {
+  height: 150px;
+}
+.spacies div.img-block-link,
+.pictures div.img-block-link {
+  height: 250px;
+}
+.spacies div.img-block-link a h2,
+.pictures div.img-block-link a h2 {
+  margin: 0px;
+  letter-spacing: 1px;
+}
+.spacies div.img-block-link a:hover,
+.pictures div.img-block-link a:hover,
+.spacies div.img-block-link a:focus,
+.pictures div.img-block-link a:focus {
+  background: rgba(251, 106, 0, 0.5) !important;
+}
+.spacies div.img-block-link a:hover > div,
+.pictures div.img-block-link a:hover > div,
+.spacies div.img-block-link a:focus > div,
+.pictures div.img-block-link a:focus > div {
+  opacity: 1;
+}
+.spacies div.img-block-link a:hover figcaption,
+.pictures div.img-block-link a:hover figcaption,
+.spacies div.img-block-link a:focus figcaption,
+.pictures div.img-block-link a:focus figcaption {
+  opacity: 0;
+}
+.spacies div.img-block-link a > div,
+.pictures div.img-block-link a > div {
+  opacity: 0;
+  transition: all ease .2s;
+}
+.spacies div.img-block-link a figcaption,
+.pictures div.img-block-link a figcaption {
+  opacity: 1;
+  transition: all ease .2s;
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+}
 .img-block-link {
   position: relative;
   height: 400px;
@@ -11926,38 +11969,5 @@ body.page-node-type-ens article.quizz div.img {
 }
 body.page-node-type-ens article.quizz div.btns {
   margin-top: 20px;
-}
-body.page-node-type-ens .gallery div.img-block-link {
-  height: 150px;
-}
-body.page-node-type-ens .spacies div.img-block-link {
-  height: 250px;
-}
-body.page-node-type-ens .spacies div.img-block-link a h2 {
-  margin: 0px;
-  letter-spacing: 1px;
-}
-body.page-node-type-ens .spacies div.img-block-link a:hover,
-body.page-node-type-ens .spacies div.img-block-link a:focus {
-  background: rgba(251, 106, 0, 0.5) !important;
-}
-body.page-node-type-ens .spacies div.img-block-link a:hover > div,
-body.page-node-type-ens .spacies div.img-block-link a:focus > div {
-  opacity: 1;
-}
-body.page-node-type-ens .spacies div.img-block-link a:hover figcaption,
-body.page-node-type-ens .spacies div.img-block-link a:focus figcaption {
-  opacity: 0;
-}
-body.page-node-type-ens .spacies div.img-block-link a > div {
-  opacity: 0;
-  transition: all ease .2s;
-}
-body.page-node-type-ens .spacies div.img-block-link a figcaption {
-  opacity: 1;
-  transition: all ease .2s;
-  position: absolute;
-  bottom: 15px;
-  left: 15px;
 }
 /*# sourceMappingURL=style.css.map */

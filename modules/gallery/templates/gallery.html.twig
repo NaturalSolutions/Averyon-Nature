@@ -1,3 +1,4 @@
+{{ attach_library('bootstrap_aveyron/script-gallery') }}
 <section class="headband" style="background-image: url({{ data.imageOnTop.uri }});">
 	<h1>{{ data.title }}</h1>
 
@@ -7,11 +8,61 @@
 </section>
 
 <pre>{{  dump(data) }}</pre>
-<!-- <pre>{#  dump(data) #}</pre> -->
 <div class="outer big"></div>
 
 <section class="section">
 	<div class="container">
+
+	<div class="outer"></div>
+
+	<section class="container">
+	  <div class="col-xs-12">
+	    <div class="pull-left filter-btns">
+	      <button class="js-btn-filter btn btn-default btn-grey active" thematique="all">Tout</button>
+	      <button class="js-btn-filter btn btn-default btn-grey" thematique="faune">Faune</button>
+	      <button class="js-btn-filter btn btn-default btn-grey" thematique="flore">Flore</button>
+	      <button class="js-btn-filter btn btn-default btn-grey" thematique="paysage">Paysage</button>
+	      <button class="js-btn-filter btn btn-default btn-grey" thematique="patrimoine">Patrimoine</button>
+	      <button class="js-btn-filter btn btn-default btn-grey" thematique="video">video</button>
+	    </div>
+	    <div class="pull-right">
+	      <!-- <button class="js-btn-filter btn btn-default btn-circle btn-grey">A</button>
+	      <button class="js-btn-filter btn btn-default btn-circle btn-grey">B</button> -->
+	    </div>
+	  </div>
+	</section>
+
+	<div class="outer"></div>
+
+	<section class="js-figures container pictures">
+	  <div class="col-xs-12">
+	    <div class="gallery clearfix">
+
+	      {% for picture in data.pictures %}
+	        {% if loop.index == 3 or loop.index == 8 %}
+	          <div class="js-figure img-block-link col-md-6" thematique="{{picture.tag}}">
+	        {% else %}
+	          <div class="js-figure img-block-link col-md-3" thematique="{{picture.tag}}">
+	        {% endif %}
+	            <div class="bg" style="background: url( {{picture.uri}} )">
+	            </div>
+	            <div class="abs">
+	              <a href="{{ url('<front>') }}{{picture.url_alias}}">
+	                <div>
+	                  <h2>{{picture.field_gallery_title}}</h2>
+	                  <span class="credit"> PHOTO: {{picture.field_gallery_alt}}</span>
+	                </div>
+	                <figcaption>
+	                    {{picture.field_gallery_title}}
+	                </figcaption>
+	              </a>
+	            </div>
+	        </div>
+	      {% endfor %}
+
+	    </div>
+	  </div>
+	</section>
 
 	</div>
 </section>

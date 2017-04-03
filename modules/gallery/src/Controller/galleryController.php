@@ -138,6 +138,23 @@ class galleryController extends ControllerBase {
 			array_push($data['pictures'], $pictureTaxon);
 		}
 
+		/*
+		* Get ens video
+		*/
+		$query = db_query("
+			SELECT v.field_video_ens_value FROM aveyron.node__field_video_ens v
+		");
+
+		$videos = $query->fetchAll();
+		foreach ($videos as $key => $video) {
+
+			$video->field_video_ens_value = explode("http://dai.ly/", $video->field_video_ens_value)[1];
+			$video->tag = "video";
+
+			// add in the main array
+			array_push($data['pictures'], $video);
+
+		}
 
 		// random sort
 		shuffle($data['pictures']);
