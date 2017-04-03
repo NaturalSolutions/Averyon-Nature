@@ -193,6 +193,7 @@ function getContent($nid){
 		join node__field_tag t
 		on t.entity_id = x.field_taxa_target_id
 		where x.entity_id = $nid
+		ORDER BY RAND()
 	");
 
 	$taxons = $query->fetchAll();
