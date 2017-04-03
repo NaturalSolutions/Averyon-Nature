@@ -16,28 +16,34 @@ class galleryController extends ControllerBase {
 		$data = [];
 
 		/*
+		* Get Title
+		*/
+		$query = db_query("
+			SELECT d.title FROM aveyron.node_field_data d where d.nid = 62
+		");
+
+		$title = $query->fetchAll();
+		$data['title'] = $title[0]->title;
+
+		/*
 		* Get first image on top
 		*/
 		$query = db_query("
-			SELECT f.uri, g.field_poster_alt,
-			g.field_poster_title
+			SELECT f.uri, s.field_image_on_top_alt,
+			s.field_image_on_top_title
 			from file_managed f
-			join node__field_poster g
-			on f.fid = g.field_poster_target_id
+			join node__field_image_on_top s
+			on f.fid = s.field_image_on_top_target_id
 			join node_field_data d
-			on d.nid = g.entity_id
-			where d.type = 'ens'
-			ORDER BY RAND()
-			Limit 1
+			on d.nid = s.entity_id
+			where d.nid = 62
 		");
 
-		$pictureOnTop = $query->fetchAll();
+		$imageOnTop = $query->fetchAll();
 
-		// convert style
-		$pictureOnTop[0]->uri = entity_load('image_style', '2000_par_600')->buildUrl($pictureOnTop[0]->uri);
-
-		// add to global var data
-		$data['pictureOnTop'] = $pictureOnTop[0];
+		//$ens->uri = entity_load('image_style', '470_par_750')->buildUrl($ens->uri);
+		$imageOnTop[0]->uri = file_create_url($imageOnTop[0]->uri);
+		$data['imageOnTop'] = $imageOnTop[0];
 
 		/*
 		* Get ENS pictures's gallerie
