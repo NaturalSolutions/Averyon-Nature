@@ -67,6 +67,11 @@ function getContent($nid){
 	");
 
 	$videos = $query->fetchAll();
+	foreach ($videos as $key => $video) {
+
+		$video->field_video_ens_value = explode("http://dai.ly/", $video->field_video_ens_value)[1];
+
+	}
 
 	// add to global var data
 	$data['videos'] = $videos;
@@ -94,7 +99,7 @@ function getContent($nid){
 	}
 
 	// add to global var data
-	$data['videos'] = $pictures;
+	$data['pictures'] = $pictures;
 
 
 	/*

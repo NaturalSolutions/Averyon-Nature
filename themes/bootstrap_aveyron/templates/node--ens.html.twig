@@ -132,7 +132,12 @@
   <div class="outer"></div>
 
   <section class="clearfix">
-    {{ content.field_video_ens }}
+    {% for video in data.videos %}
+
+      <iframe class="col-xs-12 col-sm-4 no-padding" frameborder="0" src="//www.dailymotion.com/embed/video/{{ video.field_video_ens_value }}" allowfullscreen></iframe>
+
+    {% endfor %}
+    {# content.field_video_ens #}
   </section>
 
   <div class="outer"></div>
