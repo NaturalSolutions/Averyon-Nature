@@ -272,7 +272,7 @@ function getContent($nid){
 		");
 
 		$answer = $query->fetchAll();
-		$quiz->answerCode = $answer[0]->code;
+		$quiz->answerCode = $answer[0]->code - 1;
 
 	}
 
