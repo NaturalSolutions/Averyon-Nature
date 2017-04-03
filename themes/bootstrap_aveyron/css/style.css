@@ -10905,6 +10905,23 @@ span.arianne {
   margin: auto;
   padding: 0 15px;
 }
+.img-block-link .abs a > div.bot {
+  position: absolute;
+  bottom: 0;
+  background-color: #f7f7f7;
+  width: 100%;
+  color: #474747;
+  text-align: left;
+  min-height: 70px;
+}
+.img-block-link .abs a > div.bot h2 {
+  font-size: 1.2em;
+  margin-bottom: 0;
+}
+.img-block-link .abs a > div.bot i {
+  font-family: "Proxima Nova Light";
+  font-size: 0.9em;
+}
 .img-block-link .abs a h2 {
   font-family: "Proxima Nova semiBold";
   font-weight: 600;

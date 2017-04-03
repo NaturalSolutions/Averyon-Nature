@@ -1,2 +1,33 @@
-<pre>{{  dump(data) }}</pre>
-<section>coucou la liste des events</section>
+<section class="headband" style="background-image: url({{ data.imageOnTop.uri }});">
+	<h1>{{ data.title }}</h1>
+
+	<span class="arianne">
+		<a href="{{ url('<front>') }}">Accueil</a> > <b>{{ data.title }}</b>
+	</span>
+</section>
+
+<!-- <pre>{#  dump(data) #}</pre> -->
+<div class="outer big"></div>
+
+<section class="section">
+	<div class="container">
+		{% for evt in data.events %}
+
+			<div class="col-md-4 oneEvent img-block-link">
+
+				<div class="bg" style="background: url( {{evt.uri}} )">
+				</div>
+				<div class="abs">
+					<a href="{{evt.url_alias}}">
+						<div class="bot">
+							<h2>{{evt.title}}</h2>
+							<i>{{ evt.date }} - {{ evt.lieu }}</i>
+						</div>
+					</a>
+				</div>
+
+			</div>
+
+		{% endfor %}
+	</div>
+</section>
