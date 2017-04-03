@@ -11122,6 +11122,7 @@ body.path-frontpage div.fold3 div.descroZone div.descroBlock {
   position: relative;
   max-width: 120%;
   padding: 20px 15% 15px 5%;
+  min-height: 210px;
 }
 body.path-frontpage div.fold3 div.descroZone div.descroBlock p.titleEns {
   font-family: 'Proxima Nova Thin';

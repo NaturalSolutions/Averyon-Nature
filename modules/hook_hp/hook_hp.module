@@ -188,7 +188,7 @@ function getTitleFold3(){
 function getEnsFold3(){
 
 	$query = db_query("
-		SELECT d.title, b.body_value, f.uri, n.nid, s.field_poster_alt, s.field_poster_title
+		SELECT d.title, b.body_summary, f.uri, n.nid, s.field_poster_alt, s.field_poster_title
 		FROM node_field_data d
 		join node n
 		on n.nid = d.nid
