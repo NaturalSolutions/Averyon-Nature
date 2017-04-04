@@ -199,7 +199,7 @@ span.arianne{
 .spacies, .pictures{
   div.img-block-link{
     height: 250px;
-    a{
+    a, div.zoom{
       h2{
         margin: 0px;
         letter-spacing: 1px;
@@ -239,6 +239,9 @@ span.arianne{
     background-size: cover!important;
     height: 100%;
     width: 100%;
+    &.bg-video{
+      background-size: 45px, cover !important;
+    }
   }
   .abs{
     position: absolute;
@@ -247,7 +250,7 @@ span.arianne{
     top: 0;
     left: 0;
     padding: inherit;
-    a{
+    a,div.zoom{
       display: flex;
       position: relative;
       height: 100%;

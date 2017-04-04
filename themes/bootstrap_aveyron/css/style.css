@@ -10871,35 +10871,53 @@ span.arianne {
   height: 250px;
 }
 .spacies div.img-block-link a h2,
-.pictures div.img-block-link a h2 {
+.pictures div.img-block-link a h2,
+.spacies div.img-block-link div.zoom h2,
+.pictures div.img-block-link div.zoom h2 {
   margin: 0px;
   letter-spacing: 1px;
 }
 .spacies div.img-block-link a:hover,
 .pictures div.img-block-link a:hover,
+.spacies div.img-block-link div.zoom:hover,
+.pictures div.img-block-link div.zoom:hover,
 .spacies div.img-block-link a:focus,
-.pictures div.img-block-link a:focus {
+.pictures div.img-block-link a:focus,
+.spacies div.img-block-link div.zoom:focus,
+.pictures div.img-block-link div.zoom:focus {
   background: rgba(251, 106, 0, 0.5) !important;
 }
 .spacies div.img-block-link a:hover > div,
 .pictures div.img-block-link a:hover > div,
+.spacies div.img-block-link div.zoom:hover > div,
+.pictures div.img-block-link div.zoom:hover > div,
 .spacies div.img-block-link a:focus > div,
-.pictures div.img-block-link a:focus > div {
+.pictures div.img-block-link a:focus > div,
+.spacies div.img-block-link div.zoom:focus > div,
+.pictures div.img-block-link div.zoom:focus > div {
   opacity: 1;
 }
 .spacies div.img-block-link a:hover figcaption,
 .pictures div.img-block-link a:hover figcaption,
+.spacies div.img-block-link div.zoom:hover figcaption,
+.pictures div.img-block-link div.zoom:hover figcaption,
 .spacies div.img-block-link a:focus figcaption,
-.pictures div.img-block-link a:focus figcaption {
+.pictures div.img-block-link a:focus figcaption,
+.spacies div.img-block-link div.zoom:focus figcaption,
+.pictures div.img-block-link div.zoom:focus figcaption {
   opacity: 0;
 }
 .spacies div.img-block-link a > div,
-.pictures div.img-block-link a > div {
+.pictures div.img-block-link a > div,
+.spacies div.img-block-link div.zoom > div,
+.pictures div.img-block-link div.zoom > div {
   opacity: 0;
   transition: all ease .2s;
 }
 .spacies div.img-block-link a figcaption,
-.pictures div.img-block-link a figcaption {
+.pictures div.img-block-link a figcaption,
+.spacies div.img-block-link div.zoom figcaption,
+.pictures div.img-block-link div.zoom figcaption {
   opacity: 1;
   transition: all ease .2s;
   position: absolute;
@@ -10918,6 +10936,9 @@ span.arianne {
   height: 100%;
   width: 100%;
 }
+.img-block-link .bg.bg-video {
+  background-size: 45px, cover !important;
+}
 .img-block-link .abs {
   position: absolute;
   height: 100%;
@@ -10926,7 +10947,8 @@ span.arianne {
   left: 0;
   padding: inherit;
 }
-.img-block-link .abs a {
+.img-block-link .abs a,
+.img-block-link .abs div.zoom {
   display: flex;
   position: relative;
   height: 100%;
@@ -10940,15 +10962,19 @@ span.arianne {
   transition: .3s ease background;
 }
 .img-block-link .abs a:hover,
-.img-block-link .abs a:focus {
+.img-block-link .abs div.zoom:hover,
+.img-block-link .abs a:focus,
+.img-block-link .abs div.zoom:focus {
   text-decoration: none;
   background: none;
 }
-.img-block-link .abs a > div {
+.img-block-link .abs a > div,
+.img-block-link .abs div.zoom > div {
   margin: auto;
   padding: 0 15px;
 }
-.img-block-link .abs a > div.bot {
+.img-block-link .abs a > div.bot,
+.img-block-link .abs div.zoom > div.bot {
   position: absolute;
   bottom: 0;
   background-color: #f7f7f7;
@@ -10957,19 +10983,23 @@ span.arianne {
   text-align: left;
   min-height: 70px;
 }
-.img-block-link .abs a > div.bot h2 {
+.img-block-link .abs a > div.bot h2,
+.img-block-link .abs div.zoom > div.bot h2 {
   font-size: 1.2em;
   margin-bottom: 0;
 }
-.img-block-link .abs a > div.bot i {
+.img-block-link .abs a > div.bot i,
+.img-block-link .abs div.zoom > div.bot i {
   font-family: "Proxima Nova Light";
   font-size: 0.9em;
 }
-.img-block-link .abs a h2 {
+.img-block-link .abs a h2,
+.img-block-link .abs div.zoom h2 {
   font-family: "Proxima Nova semiBold";
   font-weight: 600;
 }
-.img-block-link .abs a span.distance {
+.img-block-link .abs a span.distance,
+.img-block-link .abs div.zoom span.distance {
   letter-spacing: 1px;
   padding-left: 25px;
   background: url(../images/pinsMap.png) no-repeat 0% 0px;

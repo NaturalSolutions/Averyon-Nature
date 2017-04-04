@@ -27,6 +27,22 @@ swiper:
   js:
     scripts/swiper/swiper.min.js: {}
 
+bootstrap-dialog:
+  version: 1.x
+  css:
+    theme:
+      css/bootstrap-dialog/bootstrap-dialog.min.css: {}
+  js:
+    scripts/bootstrap-dialog/bootstrap-dialog.min.js: {}
+
+vanillabox:
+  version: 0.1.7
+  css:
+    theme:
+      css/vanillabox/vanillabox.css: {}
+  js:
+    scripts/vanillabox/jquery.vanillabox-0.1.7.min.js: {}
+
 leaflet:
   version: 1.0.3
   css:

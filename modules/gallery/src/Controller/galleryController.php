@@ -156,6 +156,9 @@ class galleryController extends ControllerBase {
 
 		}
 
+		// add to global var data
+		$data['videos'] = $videos;
+
 		// random sort
 		shuffle($data['pictures']);
 

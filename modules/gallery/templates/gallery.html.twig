@@ -1,4 +1,6 @@
 {{ attach_library('bootstrap_aveyron/script-gallery') }}
+{{ attach_library('bootstrap_aveyron/vanillabox') }}
+
 <section class="headband" style="background-image: url({{ data.imageOnTop.uri }});">
 	<h1>{{ data.title }}</h1>
 
@@ -7,7 +9,7 @@
 	</span>
 </section>
 
-<pre>{{  dump(data) }}</pre>
+<!-- <pre>{{  dump(data) }}</pre> -->
 <div class="outer big"></div>
 
 <section class="section">
@@ -40,22 +42,46 @@
 
 	      {% for picture in data.pictures %}
 	        {% if loop.index == 3 or loop.index == 8 %}
-	          <div class="js-figure img-block-link col-md-6" thematique="{{picture.tag}}">
+
+	          {% if picture.tag == "video" %}
+	          	<div class="js-figure video-figure img-block-link col-md-6" href="http://www.dailymotion.com/embed/video/{{picture.field_video_ens_value}}" thematique="{{picture.tag}}">
+          	  {% else %}
+	          	<div class="js-figure img-block-link col-md-6" href="{{picture.uri}}" thematique="{{picture.tag}}">
+	          {% endif %}
+
 	        {% else %}
-	          <div class="js-figure img-block-link col-md-3" thematique="{{picture.tag}}">
+
+	          {% if picture.tag == "video" %}
+	          	<div class="js-figure video-figure img-block-link col-md-3" href="http://www.dailymotion.com/embed/video/{{picture.field_video_ens_value}}" thematique="{{picture.tag}}">
+	          {% else %}
+	          	<div class="js-figure img-block-link col-md-3" href="{{picture.uri}}" thematique="{{picture.tag}}">
+	          {% endif %}
+
 	        {% endif %}
-	            <div class="bg" style="background: url( {{picture.uri}} )">
-	            </div>
+
+	            {% if picture.tag == "video" %}
+	            	<div class="bg bg-video {{ picture.field_video_ens_value }}" >
+	            	</div>
+	            {% else %}
+	            	<div class="bg" style="background: url( {{picture.uri}} )"></div>
+	            {% endif %}
+
 	            <div class="abs">
-	              <a href="{{ url('<front>') }}{{picture.url_alias}}">
+	              <!-- <a href="{# url('<front>') #}{#picture.url_alias#}"> -->
+	              <div class="zoom">
 	                <div>
 	                  <h2>{{picture.field_gallery_title}}</h2>
-	                  <span class="credit"> PHOTO: {{picture.field_gallery_alt}}</span>
+	                  <span class="credit">
+	                  {% if picture.field_gallery_alt != "" %}
+	                  	PHOTO: {{picture.field_gallery_alt}}
+	                  {% endif %}
+	                  </span>
 	                </div>
 	                <figcaption>
 	                    {{picture.field_gallery_title}}
 	                </figcaption>
-	              </a>
+	              </div>
+	              <!-- </a> -->
 	            </div>
 	        </div>
 	      {% endfor %}
@@ -66,3 +92,8 @@
 
 	</div>
 </section>
+
+<script>
+  // encode data for use in js file (themes/bootstrap_aveyron/scripts/script-gallery.js)
+  var videos = {{ data.videos|json_encode()|raw }};
+</script>
