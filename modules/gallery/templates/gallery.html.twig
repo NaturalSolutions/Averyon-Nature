@@ -1,12 +1,24 @@
 {{ attach_library('bootstrap_aveyron/script-gallery') }}
-{{ attach_library('bootstrap_aveyron/vanillabox') }}
+{{ attach_library('bootstrap_aveyron/fancybox') }}
 
 <section class="headband" style="background-image: url({{ data.imageOnTop.uri }});">
 	<h1>{{ data.title }}</h1>
 
+	<div class="filter-btns">
+		<div class="col-lg-12">
+			<button class="js-btn-filter btn btn-default  active" thematique="all">Tout</button>
+			<button class="js-btn-filter btn btn-default " thematique="faune">Faune</button>
+			<button class="js-btn-filter btn btn-default " thematique="flore">Flore</button>
+			<button class="js-btn-filter btn btn-default " thematique="paysage">Paysage</button>
+			<button class="js-btn-filter btn btn-default " thematique="patrimoine">Patrimoine</button>
+			<button class="js-btn-filter btn btn-default " thematique="video">video</button>
+		</div>
+	</div>
+
 	<span class="arianne">
 		<a href="{{ url('<front>') }}">Accueil</a> > <b>{{ data.title }}</b>
 	</span>
+
 </section>
 
 <!-- <pre>{{  dump(data) }}</pre> -->
@@ -15,26 +27,19 @@
 <section class="section">
 	<div class="container">
 
-	<div class="outer"></div>
+	<!-- <div class="outer"></div> -->
 
-	<section class="container">
-	  <div class="col-xs-12">
-	    <div class="pull-left filter-btns">
-	      <button class="js-btn-filter btn btn-default btn-grey active" thematique="all">Tout</button>
-	      <button class="js-btn-filter btn btn-default btn-grey" thematique="faune">Faune</button>
-	      <button class="js-btn-filter btn btn-default btn-grey" thematique="flore">Flore</button>
-	      <button class="js-btn-filter btn btn-default btn-grey" thematique="paysage">Paysage</button>
-	      <button class="js-btn-filter btn btn-default btn-grey" thematique="patrimoine">Patrimoine</button>
-	      <button class="js-btn-filter btn btn-default btn-grey" thematique="video">video</button>
-	    </div>
-	    <div class="pull-right">
-	      <!-- <button class="js-btn-filter btn btn-default btn-circle btn-grey">A</button>
-	      <button class="js-btn-filter btn btn-default btn-circle btn-grey">B</button> -->
-	    </div>
-	  </div>
-	</section>
+<!-- 	<section class="container">
+  <div class="col-xs-12">
 
-	<div class="outer"></div>
+    <div class="pull-right">
+      <button class="js-btn-filter btn btn-default btn-circle btn-grey">A</button>
+      <button class="js-btn-filter btn btn-default btn-circle btn-grey">B</button>
+    </div>
+  </div>
+</section> -->
+
+	<!-- <div class="outer"></div> -->
 
 	<section class="js-figures container pictures">
 	  <div class="col-xs-12">
@@ -44,17 +49,17 @@
 	        {% if loop.index == 3 or loop.index == 8 %}
 
 	          {% if picture.tag == "video" %}
-	          	<div class="js-figure video-figure img-block-link col-md-6" href="http://www.dailymotion.com/embed/video/{{picture.field_video_ens_value}}" thematique="{{picture.tag}}">
+	          	<div class="js-figure video-figure img-block-link col-md-6" href="http://www.dailymotion.com/embed/video/{{picture.field_video_ens_value}}" data-fancybox="group" thematique="{{picture.tag}}" data-caption="A découvrir sur : <a href='{{picture.url_alias}}'>{{picture.title}}</a>">
           	  {% else %}
-	          	<div class="js-figure img-block-link col-md-6" href="{{picture.uri}}" thematique="{{picture.tag}}">
+	          	<div class="js-figure img-block-link col-md-6" href="{{picture.uri}}" data-fancybox="group" thematique="{{picture.tag}}" data-caption="A découvrir sur : <a href='{{picture.url_alias}}'>{{picture.title}}</a> <br> {{picture.field_gallery_alt}}">
 	          {% endif %}
 
 	        {% else %}
 
 	          {% if picture.tag == "video" %}
-	          	<div class="js-figure video-figure img-block-link col-md-3" href="http://www.dailymotion.com/embed/video/{{picture.field_video_ens_value}}" thematique="{{picture.tag}}">
+	          	<div class="js-figure video-figure img-block-link col-md-3" href="http://www.dailymotion.com/embed/video/{{picture.field_video_ens_value}}" data-fancybox="group" thematique="{{picture.tag}}" data-caption="A découvrir sur : <a href='{{picture.url_alias}}'>{{picture.title}}</a>">
 	          {% else %}
-	          	<div class="js-figure img-block-link col-md-3" href="{{picture.uri}}" thematique="{{picture.tag}}">
+	          	<div class="js-figure img-block-link col-md-3" href="{{picture.uri}}" data-fancybox="group" thematique="{{picture.tag}}" data-caption="A découvrir sur : <a href='{{picture.url_alias}}'>{{picture.title}}</a> <br> {{picture.field_gallery_alt}}">
 	          {% endif %}
 
 	        {% endif %}
@@ -72,9 +77,9 @@
 	                <div>
 	                  <h2>{{picture.field_gallery_title}}</h2>
 	                  <span class="credit">
-	                  {% if picture.field_gallery_alt != "" %}
-	                  	PHOTO: {{picture.field_gallery_alt}}
-	                  {% endif %}
+	                  <!-- {% if picture.field_gallery_alt != "" %}
+	                  	{{picture.field_gallery_alt}}
+	                  {% endif %} -->
 	                  </span>
 	                </div>
 	                <figcaption>

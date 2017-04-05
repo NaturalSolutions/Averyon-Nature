@@ -10723,6 +10723,9 @@ p:last-child,
     margin-bottom: 40px;
   }
 }
+/*
+ The are already many variables color in varibale_override.less, to merge ?
+*/
 body {
   color: #262626;
 }
@@ -11044,6 +11047,34 @@ footer.footer {
 .gallery {
   margin-left: -5px;
   margin-right: -5px;
+}
+@media (max-width: 992px) {
+  section.headband div.filter-btns button {
+    margin: 0 4px;
+  }
+}
+@media (max-width: 768px) {
+  section.headband h1 {
+    top: 175px;
+  }
+  section.headband div.filter-btns button {
+    margin-bottom: 15px;
+  }
+}
+@media (max-width: 480px) {
+  section.headband div.filter-btns {
+    bottom: -320px;
+  }
+  section.headband div.filter-btns button {
+    width: 100%;
+    border-color: #ff7815 !important;
+  }
+  section.section {
+    padding-top: 325px !important;
+  }
+  section.section .img-block-link {
+    height: 300px;
+  }
 }
 @media (max-width: 480px) {
   div.outer.big {
@@ -11954,34 +11985,6 @@ body.path-frontpage div.fold6 div.leftZone div.secondHalf div.SpecialSmallBlock 
 	bottom: 100px;
 }
  */
-@media (max-width: 992px) {
-  section.headband div.filter-btns button {
-    margin: 0 4px;
-  }
-}
-@media (max-width: 768px) {
-  section.headband h1 {
-    top: 175px;
-  }
-  section.headband div.filter-btns button {
-    margin-bottom: 15px;
-  }
-}
-@media (max-width: 480px) {
-  section.headband div.filter-btns {
-    bottom: -320px;
-  }
-  section.headband div.filter-btns button {
-    width: 100%;
-    border-color: #ff7815 !important;
-  }
-  section.section {
-    padding-top: 325px !important;
-  }
-  section.section .img-block-link {
-    height: 300px;
-  }
-}
 body.page-node-type-ens iframe {
   height: 300px;
 }

@@ -50,7 +50,8 @@ class galleryController extends ControllerBase {
 		*/
 		$query = db_query("
 			SELECT f.uri, g.field_gallery_alt,
-			g.field_gallery_title,d.nid, e.field_thematique_ens_target_id
+			g.field_gallery_title,d.nid,
+			e.field_thematique_ens_target_id, d.title
 			from file_managed f
 			join node__field_gallery g
 			on f.fid = g.field_gallery_target_id
@@ -106,7 +107,7 @@ class galleryController extends ControllerBase {
 		* Get Taxons pictures's gallerie
 		*/
 		$query = db_query("
-			SELECT f.uri, g.field_gallery_alt,
+			SELECT f.uri, g.field_gallery_alt, d.title,
 			g.field_gallery_title,d.nid, t.field_tag_value as tag
 			from file_managed f
 			join node__field_gallery g
@@ -142,14 +143,26 @@ class galleryController extends ControllerBase {
 		* Get ens video
 		*/
 		$query = db_query("
-			SELECT v.field_video_ens_value FROM aveyron.node__field_video_ens v
+			SELECT v.field_video_ens_value , d.title, d.nid
+			FROM aveyron.node__field_video_ens v
+			join node_field_data d
+			on d.nid = v.entity_id
 		");
 
 		$videos = $query->fetchAll();
 		foreach ($videos as $key => $video) {
 
+			//Add alias path
+			$path_alias = \Drupal::service('path.alias_manager')->getAliasByPath("/node/".$video->nid);
+			$path_alias = ltrim($path_alias, '/');
+			$video->url_alias = $path_alias;
+
+			//crop string video url
 			$video->field_video_ens_value = explode("http://dai.ly/", $video->field_video_ens_value)[1];
 			$video->tag = "video";
+
+			// remove useless properties
+			unset($video->nid);
 
 			// add in the main array
 			array_push($data['pictures'], $video);

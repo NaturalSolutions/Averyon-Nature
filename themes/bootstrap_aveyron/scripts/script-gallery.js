@@ -15,80 +15,7 @@ jQuery( document ).ready(function() {
 
     var onClickPicture = function(){
 
-
-        //to display two galerie
-
-        $('.js-figure:not(.hide, .video-figure)').vanillabox({
-
-            closeButton: false,
-            loop: true,
-            repositionOnScroll: true,
-            type: 'image',
-            adjustToWindow: 'both'
-
-        });
-
-        $('.js-figure.video-figure:not(.hide)').vanillabox({
-
-            closeButton: false,
-            loop: true,
-            repositionOnScroll: true,
-            type: 'iframe',
-            adjustToWindow: 'both'
-
-        });
-
-
-
-        /*$('.js-figure:not(.hide)').vanillabox({
-
-            closeButton: false,
-            loop: true,
-            repositionOnScroll: true,
-            type: 'image',
-            type: 'iframe',
-            adjustToWindow: 'both'
-
-        });*/
-
-
-
-        /*$(".js-figure").click(function(event) {
-
-            BootstrapDialog.show({
-
-                message: function(dialog) {
-                    var $message = $('<div class="swiper-container">'+
-                                        '<div class="swiper-wrapper">'+
-                                            '<div class="swiper-slide">Slide 1</div>'+
-                                            '<div class="swiper-slide">Slide 2</div>'+
-                                            '<div class="swiper-slide">Slide 3</div>'+
-                                        '</div>'+
-                                        '<div class="swiper-button-prev"></div>'+
-                                        '<div class="swiper-button-next"></div>'+
-                                    '</div>');
-
-                    var pageToLoad = dialog.getData('pageToLoad');
-                    $message.load(pageToLoad);
-
-                    return $message;
-
-                }
-
-                //
-                //callback: function(result) {
-                //    // result will be true if button was click, while it will be false if users close the dialog directly.
-                //    alert('Result is: ');
-                 //   var mySwiper = new Swiper('.swiper-container', {
-                  //      speed: 400,
-                   //     spaceBetween: 100
-                   // });
-               // }
-
-
-            });
-
-        });*/
+        $(".js-figure").fancybox();
 
     }
 
@@ -116,52 +43,7 @@ jQuery( document ).ready(function() {
 
             // Need to remove old event
             $('.js-figure').off();
-
-            console.log('thematique', thematique);
-
-            if(thematique == "video"){
-                $('.js-figure.video-figure:not(.hide)').vanillabox({
-
-                    closeButton: false,
-                    loop: true,
-                    repositionOnScroll: true,
-                    type: 'iframe',
-                    adjustToWindow: 'both'
-
-                });
-            }else{
-                $('.js-figure:not(.hide, .video-figure)').vanillabox({
-
-                    closeButton: false,
-                    loop: true,
-                    repositionOnScroll: true,
-                    type: 'image',
-                    adjustToWindow: 'both'
-
-                });
-            }
-
-            // Reload vanillaBox with correct filter setted
-            /*$('.js-figure:not(.hide, .video-figure)').vanillabox({
-
-                closeButton: false,
-                loop: true,
-                repositionOnScroll: true,
-                type: 'image',
-                adjustToWindow: 'both'
-
-            });
-
-            $('.js-figure.video-figure:not(.hide)').vanillabox({
-
-                closeButton: false,
-                loop: true,
-                repositionOnScroll: true,
-                type: 'iframe',
-                adjustToWindow: 'both'
-
-            });*/
-
+            $(".js-figure:not(.hide)").fancybox();
 
         });
 
@@ -196,7 +78,7 @@ jQuery( document ).ready(function() {
                 $("."+videoApi.id).css("backgroundImage","url(themes/bootstrap_aveyron/images/icon_play_video.png), url("+videoApi.thumbnail_url+")");
 
                 // Add figcaption
-                $("."+videoApi.id).next().find('figcaption, .credit').text(videoApi.title);
+                $("."+videoApi.id).next().find('figcaption, h2').text(videoApi.title);
 
             });
 

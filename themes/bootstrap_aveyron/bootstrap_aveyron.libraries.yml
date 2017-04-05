@@ -27,21 +27,13 @@ swiper:
   js:
     scripts/swiper/swiper.min.js: {}
 
-bootstrap-dialog:
+fancybox:
   version: 1.x
   css:
     theme:
-      css/bootstrap-dialog/bootstrap-dialog.min.css: {}
+      css/fancybox/jquery.fancybox.min.css: {}
   js:
-    scripts/bootstrap-dialog/bootstrap-dialog.min.js: {}
-
-vanillabox:
-  version: 0.1.7
-  css:
-    theme:
-      css/vanillabox/vanillabox.css: {}
-  js:
-    scripts/vanillabox/jquery.vanillabox-0.1.7.min.js: {}
+    scripts/fancybox/jquery.fancybox.js: {}
 
 leaflet:
   version: 1.0.3
