@@ -94,7 +94,8 @@ function getContent($nid){
 
 	foreach ($pictures as $key => $picture) {
 
-		$picture->uri = entity_load('image_style', '500_par_350')->buildUrl($picture->uri);
+		//$picture->uri = entity_load('image_style', '500_par_350')->buildUrl($picture->uri);
+		$picture->uri = file_create_url($picture->uri);
 
 	}
 
@@ -212,7 +213,8 @@ function getContent($nid){
 		$taxon->url_alias = $path_alias;
 
 		// Convert style
-		$taxon->uri = entity_load('image_style', '500_par_350')->buildUrl($taxon->uri);
+		//$taxon->uri = entity_load('image_style', '500_par_350')->buildUrl($taxon->uri);
+		$taxon->uri = file_create_url($taxon->uri);
 
 		// Get audio
 		$query1 = db_query("

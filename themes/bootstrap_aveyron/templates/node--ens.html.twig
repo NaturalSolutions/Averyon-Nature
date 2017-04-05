@@ -158,15 +158,8 @@
 
 
         {% for picture in data.pictures %}
-          {% if loop.index == 3 or loop.index == 8 %}
 
-            <div class="js-figure img-block-link col-md-3" href="{{picture.uri}}" data-fancybox="group" thematique="{{picture.tag}}" data-caption="A découvrir sur : <a href='{{picture.url_alias}}'>{{picture.title}}</a> <br> {{picture.field_gallery_alt}}">
-
-          {% else %}
-
-            <div class="js-figure img-block-link col-md-6" href="{{picture.uri}}" data-fancybox="group" thematique="{{picture.tag}}" data-caption="A découvrir sur : <a href='{{picture.url_alias}}'>{{picture.title}}</a> <br> {{picture.field_gallery_alt}}">
-
-          {% endif %}
+            <div class="js-figure img-block-link col-md-4" href="{{picture.uri}}" data-fancybox="group" thematique="{{picture.tag}}" data-caption="{{picture.field_gallery_alt}}">
 
               <div class="bg" style="background: url( {{picture.uri}} )"></div>
               <div class="abs">
@@ -246,9 +239,9 @@
 
           {% for taxon in data.taxons %}
             {% if loop.index == 3 or loop.index == 8 %}
-              <div class="js-figure img-block-link col-md-6" thematique="{{taxon.field_tag_value}}">
+              <div class="js-figure img-block-link col-md-6" href="{{taxon.uri}}" data-fancybox="group2" thematique="{{taxon.field_tag_value}}" data-caption="A découvrir sur : <a href='{{ url('<front>') }}{{taxon.url_alias}}'>{{taxon.title}}</a> <br> {{taxon.field_poster_alt}}">
             {% else %}
-              <div class="js-figure img-block-link col-md-3" thematique="{{taxon.field_tag_value}}">
+              <div class="js-figure img-block-link col-md-3" href="{{taxon.uri}}" data-fancybox="group2" thematique="{{taxon.field_tag_value}}" data-caption="A découvrir sur : <a href='{{ url('<front>') }}{{taxon.url_alias}}'>{{taxon.title}}</a> <br> {{taxon.field_poster_alt}}">
             {% endif %}
                 <div class="bg" style="background: url( {{taxon.uri}} )">
                 </div>
@@ -256,7 +249,8 @@
                   <a href="{{ url('<front>') }}{{taxon.url_alias}}">
                     <div>
                       <h2>{{taxon.title}}</h2>
-                      <span class="credit"> PHOTO: {{taxon.field_poster_alt}}</span>
+                      <span class="credit">
+                      </span>
                     </div>
                     <figcaption>
                         {{taxon.title}}
