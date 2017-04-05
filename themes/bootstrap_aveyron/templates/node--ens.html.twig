@@ -67,6 +67,7 @@
 #}
 
 {{ attach_library('bootstrap_aveyron/leaflet') }}
+{{ attach_library('bootstrap_aveyron/fancybox') }}
 {{ attach_library('bootstrap_aveyron/script-ens') }}
 
 <!-- total main content should not be indide a single region -->
@@ -146,7 +147,7 @@
     <div class="clearfix">
       <div class="col-sm-8">
       <h2>Galerie</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur minus labore quo consequatur magnam, culpa velit est quae possimus nostrum numquam, doloribus quos eos aliquam. Debitis ex odit vitae iusto.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur minus labore quo consequatur magnam, culpa velit est quae possimus nostrum numquam, doloribus quos eos aliquam. Debitis ex odit vitae iusto. <a href="{{ url('<front>') }}galerie">En voir +</a></p>
       </div>
     </div>
 
@@ -154,7 +155,37 @@
 
     <div class="clearfix">
       <div class="col-sm-8 clearfix gallery">
-        {{ content.field_gallery }}
+
+
+        {% for picture in data.pictures %}
+          {% if loop.index == 3 or loop.index == 8 %}
+
+            <div class="js-figure img-block-link col-md-3" href="{{picture.uri}}" data-fancybox="group" thematique="{{picture.tag}}" data-caption="A découvrir sur : <a href='{{picture.url_alias}}'>{{picture.title}}</a> <br> {{picture.field_gallery_alt}}">
+
+          {% else %}
+
+            <div class="js-figure img-block-link col-md-6" href="{{picture.uri}}" data-fancybox="group" thematique="{{picture.tag}}" data-caption="A découvrir sur : <a href='{{picture.url_alias}}'>{{picture.title}}</a> <br> {{picture.field_gallery_alt}}">
+
+          {% endif %}
+
+              <div class="bg" style="background: url( {{picture.uri}} )"></div>
+              <div class="abs">
+                <div class="zoom">
+                  <div>
+                    <h2>{{picture.field_gallery_title}}</h2>
+                    <span class="credit">
+                    </span>
+                  </div>
+                  <figcaption>
+                      {{picture.field_gallery_title}}
+                  </figcaption>
+                </div>
+              </div>
+            </div>
+
+        {% endfor %}
+
+
       </div>
       <div class="col-sm-4 ens-infos">
         <h5>Informations</h5>

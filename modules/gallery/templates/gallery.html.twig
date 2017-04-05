@@ -1,5 +1,5 @@
-{{ attach_library('bootstrap_aveyron/script-gallery') }}
 {{ attach_library('bootstrap_aveyron/fancybox') }}
+{{ attach_library('bootstrap_aveyron/script-gallery') }}
 
 <section class="headband" style="background-image: url({{ data.imageOnTop.uri }});">
 	<h1>{{ data.title }}</h1>
@@ -26,20 +26,6 @@
 
 <section class="section">
 	<div class="container">
-
-	<!-- <div class="outer"></div> -->
-
-<!-- 	<section class="container">
-  <div class="col-xs-12">
-
-    <div class="pull-right">
-      <button class="js-btn-filter btn btn-default btn-circle btn-grey">A</button>
-      <button class="js-btn-filter btn btn-default btn-circle btn-grey">B</button>
-    </div>
-  </div>
-</section> -->
-
-	<!-- <div class="outer"></div> -->
 
 	<section class="js-figures container pictures">
 	  <div class="col-xs-12">
@@ -72,21 +58,16 @@
 	            {% endif %}
 
 	            <div class="abs">
-	              <!-- <a href="{# url('<front>') #}{#picture.url_alias#}"> -->
 	              <div class="zoom">
 	                <div>
 	                  <h2>{{picture.field_gallery_title}}</h2>
 	                  <span class="credit">
-	                  <!-- {% if picture.field_gallery_alt != "" %}
-	                  	{{picture.field_gallery_alt}}
-	                  {% endif %} -->
 	                  </span>
 	                </div>
 	                <figcaption>
 	                    {{picture.field_gallery_title}}
 	                </figcaption>
 	              </div>
-	              <!-- </a> -->
 	            </div>
 	        </div>
 	      {% endfor %}

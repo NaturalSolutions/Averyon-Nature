@@ -1,5 +1,11 @@
+{#
+/*
+ - Useless file at this moment :
+ - To be fast, I sipmly used the data field value in the custom Controller
+ - But I join this programical logic, may for next project
+ */
 {% for item in items %}
-		
+
 	 <div class="img-block-link col-md-4">
 	   <div class="bg" style="background: url({{ file_url(item.content['#item'].entity.uri.value) }} )">
 	   </div>
@@ -7,3 +13,4 @@
 
 
 {% endfor %}
+#}
