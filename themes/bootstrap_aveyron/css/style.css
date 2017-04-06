@@ -12028,4 +12028,49 @@ body.page-node-type-ens article.quizz div.img {
 body.page-node-type-ens article.quizz div.btns {
   margin-top: 20px;
 }
+body.page-node-type-event section.navPrevNext div.left img,
+body.page-node-type-event section.navPrevNext div.right img {
+  display: inline-block;
+  width: 60px;
+  border-radius: 50px;
+}
+body.page-node-type-event section.navPrevNext div.left div.rt,
+body.page-node-type-event section.navPrevNext div.right div.rt {
+  display: inline-block;
+}
+body.page-node-type-event section.navPrevNext div.left div.rt span,
+body.page-node-type-event section.navPrevNext div.right div.rt span {
+  width: 100%;
+  display: inline-block;
+}
+body.page-node-type-event section.navPrevNext div.left div.rt span:first-of-type,
+body.page-node-type-event section.navPrevNext div.right div.rt span:first-of-type {
+  color: blue;
+}
+body.page-node-type-event section.navPrevNext div.left {
+  float: left;
+  margin-left: 2%;
+}
+body.page-node-type-event section.navPrevNext div.right {
+  text-align: right;
+  float: right;
+  margin-right: 2%;
+}
+body.page-node-type-event section.section div.container {
+  padding: 0 10%;
+}
+body.page-node-type-event section.section h1 {
+  color: #262626;
+  font-family: "Proxima Nova semiBold";
+  text-align: left;
+  font-size: 3em;
+}
+body.page-node-type-event section.section div.info {
+  position: relative;
+  top: -30px;
+}
+body.page-node-type-event section.section div.content {
+  font-family: "Proxima Nova Light";
+  font-size: 1.1em;
+}
 /*# sourceMappingURL=style.css.map */
