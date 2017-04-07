@@ -70,7 +70,7 @@
 <!-- total main content should not be indide a single region -->
 
   <section class="headband" style="background-image: url({{ file_url(content.field_poster['#items'].entity.uri.value) }})">
-    <h1>{{ node.title.value }}</h1>
+    <!-- <h1>{{ node.title.value }}</h1> -->
     <span class="arianne">
       <a href="{{ url('<front>') }}">Accueil</a> > <b>{{ label }}</b>
     </span>
@@ -78,8 +78,42 @@
 
   <!-- <pre>{{  dump(data) }}</pre> -->
 
+  <section class="section navPrevNext">
+
+    <a class="left" href="{{ url('<front>') }}{{ data.taxons.prev.url_alias }}" title="Découvrir l'évènement : {{ data.taxons.prev.title }}">
+
+      <img src="{{ data.taxons.prev.uri }}" alt="">
+      <div class="rt">
+        <span>précédent</span>
+        <span>{{ data.taxons.prev.title }}</span>
+      </div>
+
+    </a>
+
+    <a class="right" href="{{ url('<front>') }}{{ data.taxons.next.url_alias }}" title="Découvrir l'évènement : {{ data.taxons.next.title }}">
+
+          <div class="rt">
+            <span>suivant</span>
+            <span>{{ data.taxons.next.title }}</span>
+          </div>
+          <img src="{{ data.taxons.next.uri }}" alt="">
+
+      </a>
+
+  </section>
+
   <section class="section">
     <div class="container">
+
+
+      <h1>{{ node.title.value }}</h1>
+      <div class="info">
+        <!-- <span>{{ data.taxons.lieu }}</span> - <span>{{ data.taxons.date }}</span> -->
+      </div>
+
+      <div class="content">
+        {{ data.taxons.description|raw }}
+      </div>
 
     </div>
   </section>

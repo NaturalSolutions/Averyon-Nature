@@ -11067,11 +11067,9 @@ footer.footer {
   margin-left: -5px;
   margin-right: -5px;
 }
-body.path-contact section {
-  padding: 0;
-}
 body.path-user section {
-  padding: 0;
+  padding: 230px 7% 20px 7% !important;
+  background-color: lightsalmon;
 }
 @media (max-width: 992px) {
   section.headband div.filter-btns button {
@@ -12028,33 +12026,55 @@ body.page-node-type-ens article.quizz div.img {
 body.page-node-type-ens article.quizz div.btns {
   margin-top: 20px;
 }
-body.page-node-type-event section.navPrevNext div.left img,
-body.page-node-type-event section.navPrevNext div.right img {
+body.page-node-type-event section.navPrevNext {
+  background-color: #f7f7f7;
+  padding: 20px 0 !important;
+  margin-bottom: 35px;
+}
+body.page-node-type-event section.navPrevNext a {
+  position: relative;
+  color: #262626;
+  display: inline-block;
+}
+body.page-node-type-event section.navPrevNext a:hover {
+  color: #262626;
+  text-decoration: none;
+}
+body.page-node-type-event section.navPrevNext a.left {
+  position: relative;
+  left: 2%;
+}
+body.page-node-type-event section.navPrevNext a.left div.rt {
+  left: 15px;
+}
+body.page-node-type-event section.navPrevNext a.right {
+  float: right;
+  text-align: right;
+  position: relative;
+  right: 2%;
+}
+body.page-node-type-event section.navPrevNext a.right div.rt {
+  right: 15px;
+}
+body.page-node-type-event section.navPrevNext a img {
   display: inline-block;
   width: 60px;
   border-radius: 50px;
 }
-body.page-node-type-event section.navPrevNext div.left div.rt,
-body.page-node-type-event section.navPrevNext div.right div.rt {
+body.page-node-type-event section.navPrevNext a div.rt {
   display: inline-block;
+  top: 10px;
+  position: relative;
 }
-body.page-node-type-event section.navPrevNext div.left div.rt span,
-body.page-node-type-event section.navPrevNext div.right div.rt span {
+body.page-node-type-event section.navPrevNext a div.rt span {
   width: 100%;
   display: inline-block;
+  text-transform: uppercase;
+  font-family: "Proxima Nova semiBold";
 }
-body.page-node-type-event section.navPrevNext div.left div.rt span:first-of-type,
-body.page-node-type-event section.navPrevNext div.right div.rt span:first-of-type {
-  color: blue;
-}
-body.page-node-type-event section.navPrevNext div.left {
-  float: left;
-  margin-left: 2%;
-}
-body.page-node-type-event section.navPrevNext div.right {
-  text-align: right;
-  float: right;
-  margin-right: 2%;
+body.page-node-type-event section.navPrevNext a div.rt span:first-of-type {
+  font-style: italic;
+  font-family: "Proxima Nova Light";
 }
 body.page-node-type-event section.section div.container {
   padding: 0 10%;
@@ -12072,5 +12092,84 @@ body.page-node-type-event section.section div.info {
 body.page-node-type-event section.section div.content {
   font-family: "Proxima Nova Light";
   font-size: 1.1em;
+}
+body.page-node-type-taxon section.navPrevNext {
+  background-color: #f7f7f7;
+  padding: 20px 0 !important;
+  margin-bottom: 35px;
+}
+body.page-node-type-taxon section.navPrevNext a {
+  position: relative;
+  color: #262626;
+  display: inline-block;
+}
+body.page-node-type-taxon section.navPrevNext a:hover {
+  color: #262626;
+  text-decoration: none;
+}
+body.page-node-type-taxon section.navPrevNext a.left {
+  position: relative;
+  left: 2%;
+}
+body.page-node-type-taxon section.navPrevNext a.left div.rt {
+  left: 15px;
+}
+body.page-node-type-taxon section.navPrevNext a.right {
+  float: right;
+  text-align: right;
+  position: relative;
+  right: 2%;
+}
+body.page-node-type-taxon section.navPrevNext a.right div.rt {
+  right: 15px;
+}
+body.page-node-type-taxon section.navPrevNext a img {
+  display: inline-block;
+  width: 60px;
+  border-radius: 50px;
+}
+body.page-node-type-taxon section.navPrevNext a div.rt {
+  display: inline-block;
+  top: 10px;
+  position: relative;
+}
+body.page-node-type-taxon section.navPrevNext a div.rt span {
+  width: 100%;
+  display: inline-block;
+  text-transform: uppercase;
+  font-family: "Proxima Nova semiBold";
+}
+body.page-node-type-taxon section.navPrevNext a div.rt span:first-of-type {
+  font-style: italic;
+  font-family: "Proxima Nova Light";
+}
+body.page-node-type-taxon section.section div.container {
+  padding: 0 10%;
+}
+body.page-node-type-taxon section.section h1 {
+  color: #262626;
+  font-family: "Proxima Nova semiBold";
+  text-align: left;
+  font-size: 3em;
+}
+body.page-node-type-taxon section.section div.info {
+  position: relative;
+  top: -30px;
+}
+body.page-node-type-taxon section.section div.content {
+  font-family: "Proxima Nova Light";
+  font-size: 1.1em;
+}
+body.page-node-type-page-contact h1 {
+  color: #262626;
+  font-family: "Proxima Nova semiBold";
+  text-align: left;
+  font-size: 3em;
+}
+body.page-node-type-page-contact div.field--name-field-info-footer {
+  margin-bottom: 50px;
+}
+body.page-node-type-page-contact section {
+  padding: 0;
 }
 /*# sourceMappingURL=style.css.map */
