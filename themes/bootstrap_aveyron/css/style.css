@@ -11112,6 +11112,12 @@ body.path-user section button {
   }
 }
 @media (max-width: 768px) {
+  .nav.nav-tabs li {
+    width: 100%;
+  }
+  .nav-tabs {
+    border-bottom: 0;
+  }
   section.headband h1 {
     top: 175px;
   }
@@ -12063,6 +12069,20 @@ body.page-node-type-ens article.quizz div.img {
 }
 body.page-node-type-ens article.quizz div.btns {
   margin-top: 20px;
+}
+@media (max-width: 768px) {
+  body.page-node-type-ens iframe {
+    height: 300px !important;
+    top: 0 !important;
+    margin-bottom: 2px;
+  }
+  body.page-node-type-ens div.ens-infos {
+    text-align: center;
+  }
+  body.page-node-type-ens div.ens-infos h5:after {
+    margin: 0 auto;
+    width: 45px;
+  }
 }
 body.page-node-type-event section.navPrevNext {
   background-color: #f7f7f7;
