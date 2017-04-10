@@ -45,6 +45,24 @@ function getContentContact($nid){
 	// add to global var data
 	$data['pictureOnTop'] = $pictureOnTop[0];
 
+	//Get intro
+	$query = db_query("
+		SELECT i.field_intro_contact_value
+		FROM node__field_intro_contact i
+	");
+
+	$intro = $query->fetchAll();
+	$data['intro'] = $intro[0]->field_intro_contact_value;
+
+	//Get address
+	$query = db_query("
+		SELECT i.field_infos_gris_value
+		FROM node__field_infos_gris i
+	");
+
+	$address = $query->fetchAll();
+	$data['address'] = $address[0]->field_infos_gris_value;
+
 
 	/*
 	* Get Event datas
