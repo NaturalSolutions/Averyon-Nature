@@ -11067,9 +11067,44 @@ footer.footer {
   margin-left: -5px;
   margin-right: -5px;
 }
+body.path-user footer.footer {
+  margin-top: 0px;
+}
 body.path-user section {
   padding: 230px 7% 20px 7% !important;
-  background-color: lightsalmon;
+  background: url(../images/bg-user.jpg) no-repeat 50% 50%;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+}
+body.path-user section p {
+  font-family: "Proxima Nova semiBold";
+  display: inline-block;
+  font-size: 1.5em;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 3px;
+  padding: 8px 1%;
+  color: #fff;
+}
+body.path-user section div.region-content {
+  min-height: 500px;
+  color: #fff;
+  width: 515px;
+  margin: 0 auto;
+  position: relative;
+  top: 20px;
+}
+body.path-user section div.logo {
+  background-image: url(../images/logo_aveyron.jpg);
+  background-repeat: no-repeat;
+  background-position: 50% 0%;
+  display: block;
+  width: 100px;
+  height: 150px;
+  background-size: 100%;
+}
+body.path-user section button {
+  margin-top: 30px;
 }
 @media (max-width: 992px) {
   section.headband div.filter-btns button {
@@ -11077,11 +11112,20 @@ body.path-user section {
   }
 }
 @media (max-width: 768px) {
+  .nav.nav-tabs li {
+    width: 100%;
+  }
+  .nav-tabs {
+    border-bottom: 0;
+  }
   section.headband h1 {
     top: 175px;
   }
   section.headband div.filter-btns button {
     margin-bottom: 15px;
+  }
+  body.path-user section div.region-content {
+    width: 95%;
   }
 }
 @media (max-width: 480px) {
@@ -12025,6 +12069,20 @@ body.page-node-type-ens article.quizz div.img {
 }
 body.page-node-type-ens article.quizz div.btns {
   margin-top: 20px;
+}
+@media (max-width: 768px) {
+  body.page-node-type-ens iframe {
+    height: 300px !important;
+    top: 0 !important;
+    margin-bottom: 2px;
+  }
+  body.page-node-type-ens div.ens-infos {
+    text-align: center;
+  }
+  body.page-node-type-ens div.ens-infos h5:after {
+    margin: 0 auto;
+    width: 45px;
+  }
 }
 body.page-node-type-event section.navPrevNext {
   background-color: #f7f7f7;
