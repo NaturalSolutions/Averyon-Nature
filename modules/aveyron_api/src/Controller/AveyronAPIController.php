@@ -340,15 +340,21 @@ class AveyronAPIController extends ControllerBase {
       else
         $tag = $result['thematic'];
 
-      //TODO
-      $img->uri = entity_load('image_style', '900_par_600')->buildUrl($img->uri);
+      //Buggy
+      /*$img->uri = entity_load('image_style', '900_par_600')->buildUrl($img->uri);
       $result['gallery'][] = array(
-        "url" => $img->uri,
+        "url" => file_create_url($img->uri->value),
         "alt" => $img->alt,
         "title" => $img->title,
         "fid" => (int) $img->target_id,
         "tag" => $tag
-      );
+      );*/
+      $data = json_decode($serializer->serialize($img, 'json', ['plugin_id' => 'entity']));
+      $data->tag = $tag;
+      $data->target_id = (int) $data->target_id;
+      //$data->url = entity_load('image_style', '900_par_600')->buildUrl($data->url);//$data->url;
+      $result['gallery'][] = $data;
+      //$result['gallery'][] = json_decode($serializer->serialize($img, 'json', ['plugin_id' => 'entity']));
     }
 
     /*
