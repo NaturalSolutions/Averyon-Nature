@@ -300,6 +300,20 @@ function getContent($nid){
 	// add to global var data
 	$data['info'] = $info[0]->field_info_value;
 
+	/*
+	* Get Recommandations
+	*/
+	$query = db_query("
+		SELECT t.field_recommandations_value
+		FROM node__field_recommandations t
+		where t.entity_id = $nid
+	");
+
+	$info = $query->fetchAll();
+
+	// add to global var data
+	$data['recommandations'] = $info[0]->field_recommandations_value;
+
 
 
 

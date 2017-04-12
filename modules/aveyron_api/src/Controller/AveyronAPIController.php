@@ -415,6 +415,21 @@ class AveyronAPIController extends ControllerBase {
     // add to global var data
     $result['info'] = $info[0]->field_info_value;
 
+    /*
+    * Get Info
+    */
+    $query = db_query("
+      SELECT t.field_recommandations_value
+      FROM node__field_recommandations t
+      where t.entity_id = $id
+    ");
+    $recommandations = $query->fetchAll();
+
+    if(isset($recommandations) && count($recommandations) > 0){
+      // add to global var data
+      $result['recommandations'] = $recommandations[0]->field_recommandations_value;
+    }
+
     return new JsonResponse($result);
   }
 
