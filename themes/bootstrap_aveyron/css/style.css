@@ -11106,6 +11106,9 @@ body.path-user section div.logo {
 body.path-user section button {
   margin-top: 30px;
 }
+body.page-node-type-page-partenaire section img {
+  background-size: cover;
+}
 @media (max-width: 992px) {
   section.headband div.filter-btns button {
     margin: 0 4px;
