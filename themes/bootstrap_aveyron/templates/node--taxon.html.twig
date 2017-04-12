@@ -66,6 +66,7 @@
  */
 #}
 
+{{ attach_library('bootstrap_aveyron/fancybox') }}
 
 <!-- total main content should not be indide a single region -->
 
@@ -114,11 +115,40 @@
         <audio src="{{ data.audio }}" controls></audio>
       {% endif %}
 
+      <div class="outer small"></div>
+
+      <div class="clearfix">
+        <div class="col-sm-12 clearfix gallery">
+
+
+          {% for picture in data.pictures %}
+
+              <div class="js-figure img-block-link col-md-4" href="{{picture.uri}}" data-fancybox="group" thematique="{{picture.tag}}" data-caption="{{picture.field_gallery_alt}}">
+
+                <div class="bg" style="background: url( {{picture.uri}} )"></div>
+                <div class="abs">
+                  <div class="zoom">
+                    <div>
+                      <h2>{{picture.field_gallery_title}}</h2>
+                      <span class="credit">
+                      </span>
+                    </div>
+                    <figcaption>
+                        {{picture.field_gallery_title}}
+                    </figcaption>
+                  </div>
+                </div>
+              </div>
+
+          {% endfor %}
+
+
+        </div>
+      </div>
+
+
     </div>
   </section>
 
 
 
-  <section class="section">
-
-  </section>
