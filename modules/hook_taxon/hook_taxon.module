@@ -73,6 +73,26 @@ function getContentTaxon($nid){
 	$data['taxons']->prev = $taxons[0];
 	$data['taxons']->next = $taxons[1];
 
+	/*
+	* Audio
+	*/
+	$query = db_query("
+	  SELECT f.uri, f.fid
+	  from file_managed f
+	  join node__field_audio g
+	  on f.fid = g.field_audio_target_id
+	  where g.entity_id = $nid
+	");
+
+	$audio = $query->fetchAll();
+
+	if(isset($audio) && count($audio) > 0){
+
+	  $audio = file_create_url($audio[0]->uri);
+	  $data["audio"] = $audio;
+
+	}
+
 
 
 

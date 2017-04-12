@@ -76,11 +76,9 @@
     </span>
   </section>
 
-  <!-- <pre>{{  dump(data) }}</pre> -->
-
   <section class="section navPrevNext">
 
-    <a class="left" href="{{ url('<front>') }}{{ data.taxons.prev.url_alias }}" title="Découvrir l'évènement : {{ data.taxons.prev.title }}">
+    <a class="left" href="{{ url('<front>') }}{{ data.taxons.prev.url_alias }}" title="Découvrir l'espèce : {{ data.taxons.prev.title }}">
 
       <img src="{{ data.taxons.prev.uri }}" alt="">
       <div class="rt">
@@ -90,7 +88,7 @@
 
     </a>
 
-    <a class="right" href="{{ url('<front>') }}{{ data.taxons.next.url_alias }}" title="Découvrir l'évènement : {{ data.taxons.next.title }}">
+    <a class="right" href="{{ url('<front>') }}{{ data.taxons.next.url_alias }}" title="Découvrir l'espèce : {{ data.taxons.next.title }}">
 
           <div class="rt">
             <span>suivant</span>
@@ -107,13 +105,14 @@
 
 
       <h1>{{ node.title.value }}</h1>
-      <div class="info">
-        <!-- <span>{{ data.taxons.lieu }}</span> - <span>{{ data.taxons.date }}</span> -->
-      </div>
 
       <div class="content">
         {{ data.taxons.description|raw }}
       </div>
+
+      {% if data.audio %}
+        <audio src="{{ data.audio }}" controls></audio>
+      {% endif %}
 
     </div>
   </section>
