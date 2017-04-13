@@ -59,26 +59,83 @@ jQuery( document ).ready(function() {
         */
         var map = function(){
 
+
+            var map = L.map("map").setView([geoDataTracePoint.coordinates[0][1],geoDataTracePoint.coordinates[0][0]], 14) ;
+            L.tileLayer(
+            'http://wxs.ign.fr/uxfc79ihyesfzukqvfqcev40/geoportail/wmts?service=WMTS&request=GetTile&version=1.0.0&tilematrixset=PM&tilematrix={z}&tilecol={x}&tilerow={y}&layer=GEOGRAPHICALGRIDSYSTEMS.MAPS&format=image/jpeg&style=normal',
+            {
+                minZoom:0,
+                maxZoom:18,
+                tileSize:256
+            }).addTo(map);
+
+            /* Function of Céline & Vincent
+            onMapModelReady() {
+                let center = L.latLng(this.mapModel.center.lat, this.mapModel.center.lng)
+                this._map = L
+                  .map(this.mapEl, {
+                    minZoom: this.mapModel.cacheZoom - 1,
+                    maxZoom: this.mapModel.cacheZoom,
+                  })
+                  .setView(center, this.mapModel.cacheZoom)
+
+                this.mapModel.tileLayer.addTo(this._map);
+
+                console.log(this._tourStart);
+
+                L.marker(center, { icon: this._icon })
+                  .bindPopup('Départ')
+                  .openPopup()
+                  .addTo(this._map);
+
+                console.log(this._trace);
+                this._trace = L.geoJSON(this._trace, {
+                  style: function (feature) {
+                    return {
+                      "color": "#4928d9",
+                      "weight": 8,
+                      "opacity": 0.8 };
+                  }//,
+                  // onEachFeature: function (feature, layer) {
+                  //     layer.bindPopup(this.tours[0].title);
+                  // }
+                }).addTo(this._map)
+                //this._map.fitBounds(this._trace.getBounds());
+
+                console.log(this.platform.platforms())
+                if (this.platform.is('cordova')) {
+                  this.watchConnection();
+                }
+              }
+            */
+
+
+
+            /* OpenLayer init map
             var map = L.map('map').setView(geoDataTracePoint.coordinates[0], 14);
             L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
                 attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             }).addTo(map);
 
-
             var polyline = L.polyline(
                 geoDataTracePoint.coordinates,
                 {
                     weight: 5,
-                    opacity: .7,
+                    opacity: 0.7,
                 }
-            ).addTo(map);
+            ).addTo(map);*/
+
+
+
 
             var quizzMap;
             $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
                 if($(e.currentTarget).attr('passed') === undefined && e.currentTarget.hash  === '#quizz'){
-                  quizzMap = L.map('quizzMap').setView(geoDataTracePoint.coordinates[0], 14);
-                  L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-                      attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                  quizzMap = L.map('quizzMap').setView([geoDataTracePoint.coordinates[0][1],geoDataTracePoint.coordinates[0][0]], 14);
+                  //L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+                  L.tileLayer('http://wxs.ign.fr/uxfc79ihyesfzukqvfqcev40/geoportail/wmts?service=WMTS&request=GetTile&version=1.0.0&tilematrixset=PM&tilematrix={z}&tilecol={x}&tilerow={y}&layer=GEOGRAPHICALGRIDSYSTEMS.MAPS&format=image/jpeg&style=normal', {
+                      //attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                      attribution: ''
                   }).addTo(quizzMap);
 
 
@@ -93,6 +150,7 @@ jQuery( document ).ready(function() {
 
                 $(e.currentTarget).attr('passed', 'true');
             });
+
 
         }
 
