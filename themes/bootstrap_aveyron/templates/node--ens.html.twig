@@ -241,9 +241,9 @@
 
           {% for taxon in data.taxons %}
             {% if loop.index == 3 or loop.index == 8 %}
-              <div class="js-figure img-block-link col-md-6" href="{{taxon.uri}}" data-fancybox="group2" thematique="{{taxon.field_tag_value}}" data-caption="A découvrir sur : <a href='{{ url('<front>') }}{{taxon.url_alias}}'>{{taxon.title}}</a> <br> {{taxon.field_poster_alt}}">
+              <div class="js-figure img-block-link col-md-6" href="{{taxon.uri}}" data-fancybox="group2" thematique="{{taxon.field_tag_value}}" data-caption="<a class='btn btn-primary' href='{{ url('<front>') }}{{taxon.url_alias}}'>voir la fiche {{taxon.title}}</a> <br> {{taxon.field_poster_alt}}">
             {% else %}
-              <div class="js-figure img-block-link col-md-3" href="{{taxon.uri}}" data-fancybox="group2" thematique="{{taxon.field_tag_value}}" data-caption="A découvrir sur : <a href='{{ url('<front>') }}{{taxon.url_alias}}'>{{taxon.title}}</a> <br> {{taxon.field_poster_alt}}">
+              <div class="js-figure img-block-link col-md-3" href="{{taxon.uri}}" data-fancybox="group2" thematique="{{taxon.field_tag_value}}" data-caption="<a class='btn btn-primary' href='{{ url('<front>') }}{{taxon.url_alias}}'>voir la fiche {{taxon.title}}</a> <br> {{taxon.field_poster_alt}}">
             {% endif %}
                 <div class="bg" style="background: url( {{taxon.uri}} )">
                 </div>
@@ -281,7 +281,7 @@
     <div class="outer small"></div>
 
     <section class="container">
-        <div class="col-sm-8 col-xs-12">
+        <div class="col-sm-8">
 
           {% for item in data.quizz %}
             <article class="js-article-quizz quizz" answer="{{ item.answerCode }}">
@@ -291,7 +291,7 @@
               </div>
               <div class="row btns">
               {% for prop in item.propositions %}
-                  <div class="col-xs-12 col-sm-4">
+                  <div class="col-lg-4">
                   <button class="js-quizz-prop btn btn-default full-width" code="{{prop.code}}">
                     {{ prop.proposition }}
                   </button>

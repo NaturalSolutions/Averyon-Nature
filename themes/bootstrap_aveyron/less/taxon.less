@@ -51,7 +51,7 @@ body.page-node-type-taxon{
 		}
 	}
 
-	section.section{
+	section:not(.navPrevNext){
 		div.container{
 			padding: 0 10%;
 		}
@@ -69,6 +69,32 @@ body.page-node-type-taxon{
 			font-family: "Proxima Nova Light";
 			font-size: 1.1em;
 		}
+	}
+
+}
+
+//- de 480
+@media (max-width: @screen-xs-min) {
+
+	body.page-node-type-taxon{
+
+		section.navPrevNext{
+			a.left,a.right{
+				width: 100%;
+				left: 0;
+				right: 0;
+				text-align: center;
+				padding-bottom: 20px;
+				background-color: #f7f7f7;
+				div.rt{
+					width: 100%;
+					left: 0;
+					top: 0;
+					right: 0;
+				}
+			}
+		}
+
 	}
 
 }

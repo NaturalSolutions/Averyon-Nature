@@ -7117,6 +7117,13 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
     overflow-y: auto;
   }
   */
+  /*
+  @media screen and (orientation:landscape) {
+    .region-navigation-collapsible{
+       width: 100%;
+    }
+  }
+  */
 }
 @media (min-width: 0) {
   .navbar-collapse {
@@ -7206,6 +7213,12 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 @media (max-width: 480px) {
   .navbar-collapse .region-navigation-collapsible {
     width: 100%;
+  }
+}
+@media (max-height: 570px) {
+  .navbar-collapse .region-navigation-collapsible {
+    padding-top: 190px;
+    background-position: 50% 30px;
   }
 }
 /*
@@ -11132,6 +11145,12 @@ body.page-node-type-page-partenaire section img {
   }
 }
 @media (max-width: 480px) {
+  body.path-galerie section.section {
+    padding-top: 370px !important;
+  }
+  body.path-galerie section.headband div.filter-btns {
+    bottom: -370px;
+  }
   section.headband div.filter-btns {
     bottom: -320px;
   }
@@ -12051,10 +12070,12 @@ body.path-frontpage div.fold6 div.leftZone div.secondHalf div.SpecialSmallBlock 
     margin-left: -30px;
   }
 }
-/* .headband div.filter-btns {
-	bottom: 100px;
+body.page-node-type-ens div.fancybox-caption {
+  text-align: center;
 }
- */
+body.page-node-type-ens div.fancybox-caption a {
+  text-decoration: none;
+}
 body.page-node-type-ens iframe {
   height: 300px;
 }
@@ -12073,6 +12094,14 @@ body.page-node-type-ens article.quizz div.img {
 body.page-node-type-ens article.quizz div.btns {
   margin-top: 20px;
 }
+body.page-node-type-ens article.quizz button {
+  padding: 11px 10px;
+}
+@media (max-width: 1200px) {
+  article.quizz div.btns > div {
+    margin-bottom: 15px;
+  }
+}
 @media (max-width: 768px) {
   body.page-node-type-ens iframe {
     height: 300px !important;
@@ -12085,6 +12114,12 @@ body.page-node-type-ens article.quizz div.btns {
   body.page-node-type-ens div.ens-infos h5:after {
     margin: 0 auto;
     width: 45px;
+  }
+}
+@media (max-width: 480px) {
+  div.spacies button {
+    width: 100%;
+    margin-bottom: 15px;
   }
 }
 body.page-node-type-event section.navPrevNext {
@@ -12137,22 +12172,40 @@ body.page-node-type-event section.navPrevNext a div.rt span:first-of-type {
   font-style: italic;
   font-family: "Proxima Nova Light";
 }
-body.page-node-type-event section.section div.container {
+body.page-node-type-event section:not(.navPrevNext) div.container {
   padding: 0 10%;
 }
-body.page-node-type-event section.section h1 {
+body.page-node-type-event section:not(.navPrevNext) h1 {
   color: #262626;
   font-family: "Proxima Nova semiBold";
   text-align: left;
   font-size: 3em;
 }
-body.page-node-type-event section.section div.info {
+body.page-node-type-event section:not(.navPrevNext) div.info {
   position: relative;
   top: -30px;
 }
-body.page-node-type-event section.section div.content {
+body.page-node-type-event section:not(.navPrevNext) div.content {
   font-family: "Proxima Nova Light";
   font-size: 1.1em;
+}
+@media (max-width: 480px) {
+  body.page-node-type-event section.navPrevNext a.left,
+  body.page-node-type-event section.navPrevNext a.right {
+    width: 100%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    padding-bottom: 20px;
+    background-color: #f7f7f7;
+  }
+  body.page-node-type-event section.navPrevNext a.left div.rt,
+  body.page-node-type-event section.navPrevNext a.right div.rt {
+    width: 100%;
+    left: 0;
+    top: 0;
+    right: 0;
+  }
 }
 body.page-node-type-taxon section.navPrevNext {
   background-color: #f7f7f7;
@@ -12204,22 +12257,40 @@ body.page-node-type-taxon section.navPrevNext a div.rt span:first-of-type {
   font-style: italic;
   font-family: "Proxima Nova Light";
 }
-body.page-node-type-taxon section.section div.container {
+body.page-node-type-taxon section:not(.navPrevNext) div.container {
   padding: 0 10%;
 }
-body.page-node-type-taxon section.section h1 {
+body.page-node-type-taxon section:not(.navPrevNext) h1 {
   color: #262626;
   font-family: "Proxima Nova semiBold";
   text-align: left;
   font-size: 3em;
 }
-body.page-node-type-taxon section.section div.info {
+body.page-node-type-taxon section:not(.navPrevNext) div.info {
   position: relative;
   top: -30px;
 }
-body.page-node-type-taxon section.section div.content {
+body.page-node-type-taxon section:not(.navPrevNext) div.content {
   font-family: "Proxima Nova Light";
   font-size: 1.1em;
+}
+@media (max-width: 480px) {
+  body.page-node-type-taxon section.navPrevNext a.left,
+  body.page-node-type-taxon section.navPrevNext a.right {
+    width: 100%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    padding-bottom: 20px;
+    background-color: #f7f7f7;
+  }
+  body.page-node-type-taxon section.navPrevNext a.left div.rt,
+  body.page-node-type-taxon section.navPrevNext a.right div.rt {
+    width: 100%;
+    left: 0;
+    top: 0;
+    right: 0;
+  }
 }
 body.page-node-type-page-contact h1 {
   color: #262626;

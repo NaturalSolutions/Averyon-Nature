@@ -1,5 +1,12 @@
 body.page-node-type-ens{
 
+  div.fancybox-caption{
+    text-align: center;
+   a{
+     text-decoration: none;
+   }
+  }
+
   iframe{
       height: 300px;
       &:nth-child(2){
@@ -21,7 +28,22 @@ body.page-node-type-ens{
     }
   }
 
+  //maybe generic or juste for quizz long button
+  article.quizz button{
+    padding: 11px 10px;
+  }
+
 }
+
+//- de 1200
+@media (max-width: @screen-lg-min) {
+  article.quizz{
+    div.btns > div{
+      margin-bottom: 15px;
+    }
+  }
+}
+
 
 //- de 768
 @media (max-width: @screen-sm-min) {
@@ -38,5 +60,14 @@ body.page-node-type-ens{
         width: 45px;
       }
     }
+  }
+}
+
+
+//- de 480
+@media (max-width: @screen-xs-min) {
+  div.spacies button{
+    width: 100%;
+    margin-bottom: 15px;
   }
 }

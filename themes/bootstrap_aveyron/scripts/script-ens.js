@@ -59,6 +59,10 @@ jQuery( document ).ready(function() {
         */
         var map = function(){
 
+            /*les deux variables de données :
+            var geoDataStarterPoint
+            var geoDataTracePoint*/
+
 
             var map = L.map("map").setView([geoDataTracePoint.coordinates[0][1],geoDataTracePoint.coordinates[0][0]], 14) ;
             L.tileLayer(
