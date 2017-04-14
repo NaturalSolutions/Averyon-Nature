@@ -73,7 +73,8 @@ class list_eventController extends ControllerBase {
 			$event->url_alias = $path_alias;
 
 			// convert style
-			$event->uri = entity_load('image_style', '500_par_350')->buildUrl($event->uri);
+			$event->uri = file_create_url($event->uri);
+			//$event->uri = entity_load('image_style', '500_par_350')->buildUrl($event->uri);
 
 			// remove useless properties
 			unset($event->nid);

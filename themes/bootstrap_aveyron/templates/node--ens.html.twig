@@ -70,9 +70,7 @@
 {{ attach_library('bootstrap_aveyron/fancybox') }}
 {{ attach_library('bootstrap_aveyron/script-ens') }}
 
-<!-- total main content should not be indide a single region -->
-
-
+  <!-- total main content should not be indide a single region -->
   <section class="headband" style="background-image: url({{ file_url(content.field_poster['#items'].entity.uri.value) }})">
     <h1>{{ node.title.value }}</h1>
     <span class="arianne">
@@ -292,7 +290,7 @@
               <div class="row btns">
               {% for prop in item.propositions %}
                   <div class="col-lg-4">
-                  <button class="js-quizz-prop btn btn-default full-width" code="{{prop.code}}">
+                  <button class="js-quizz-prop btn btn-default full-width" code="{{prop.code}}" title="{{ prop.proposition }}">
                     {{ prop.proposition }}
                   </button>
                   </div>

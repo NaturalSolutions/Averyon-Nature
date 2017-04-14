@@ -11342,10 +11342,14 @@ body.path-frontpage div.fold3 div.descroZone div.descroBlock p.titleEns {
 body.path-frontpage div.fold3 div.descroZone div.descroBlock div.descroEns p {
   font-family: 'Proxima Nova Light';
 }
-body.path-frontpage div.fold3 div.map {
+body.path-frontpage div.fold3 div.containerMap {
   position: relative;
+}
+body.path-frontpage div.fold3 div.map {
+  position: initial;
   height: 800px;
-  background: url(../images/background_map_fold3.jpg) no-repeat 50% 50%;
+  background: url(../images/background_map_fold3.jpg) no-repeat 90px 50%;
+  background-size: 750px;
 }
 body.path-frontpage div.fold3 div.map .pointEns {
   cursor: pointer;
@@ -11362,15 +11366,15 @@ body.path-frontpage div.fold3 div.map .pointEns:hover a {
   text-decoration: none;
 }
 body.path-frontpage div.fold3 div.map .pointEns.nidEns_4 {
-  left: 20%;
-  top: 323px;
+  left: 120px;
+  top: 325px;
 }
 body.path-frontpage div.fold3 div.map .pointEns.nidEns_4 span.pointBtn {
   right: 0;
   left: auto;
 }
 body.path-frontpage div.fold3 div.map .pointEns.nidEns_5 {
-  left: 39%;
+  left: 340px;
   top: 591px;
 }
 body.path-frontpage div.fold3 div.map .pointEns.nidEns_5 span.pointBtn {
@@ -11378,27 +11382,27 @@ body.path-frontpage div.fold3 div.map .pointEns.nidEns_5 span.pointBtn {
   left: auto;
 }
 body.path-frontpage div.fold3 div.map .pointEns.nidEns_6 {
-  left: 30%;
+  left: 233px;
   top: 401px;
 }
 body.path-frontpage div.fold3 div.map .pointEns.nidEns_7 {
-  left: 50%;
+  left: 478px;
   top: 141px;
 }
 body.path-frontpage div.fold3 div.map .pointEns.nidEns_8 {
-  left: 69%;
-  top: 567px;
+  left: 662px;
+  top: 560px;
 }
 body.path-frontpage div.fold3 div.map .pointEns.nidEns_9 {
-  left: 61%;
-  top: 606px;
+  left: 592px;
+  top: 596px;
 }
 body.path-frontpage div.fold3 div.map .pointEns.nidEns_10 {
-  left: 67%;
-  top: 536px;
+  left: 643px;
+  top: 532px;
 }
 body.path-frontpage div.fold3 div.map .pointEns.nidEns_11 {
-  left: 40.5%;
+  left: 355px;
   top: 549px;
 }
 body.path-frontpage div.fold3 div.map .pointEns.nidEns_11 span.pointBtn {
@@ -11406,19 +11410,19 @@ body.path-frontpage div.fold3 div.map .pointEns.nidEns_11 span.pointBtn {
   left: auto;
 }
 body.path-frontpage div.fold3 div.map .pointEns.nidEns_12 {
-  left: 51%;
+  left: 482px;
   top: 497px;
 }
 body.path-frontpage div.fold3 div.map .pointEns.nidEns_13 {
-  left: 42%;
-  top: 462px;
+  left: 367px;
+  top: 460px;
 }
 body.path-frontpage div.fold3 div.map .pointEns.nidEns_13 span.pointBtn {
   right: 0;
   left: auto;
 }
 body.path-frontpage div.fold3 div.map .pointEns.nidEns_14 {
-  left: 21%;
+  left: 120px;
   top: 450px;
 }
 body.path-frontpage div.fold3 div.map .pointEns.nidEns_14 span.pointBtn {
@@ -11426,7 +11430,7 @@ body.path-frontpage div.fold3 div.map .pointEns.nidEns_14 span.pointBtn {
   left: auto;
 }
 body.path-frontpage div.fold3 div.map .pointEns.nidEns_15 {
-  left: 21%;
+  left: 125px;
   top: 366px;
 }
 body.path-frontpage div.fold3 div.map .pointEns.nidEns_15 span.pointBtn {
@@ -11434,8 +11438,8 @@ body.path-frontpage div.fold3 div.map .pointEns.nidEns_15 span.pointBtn {
   left: auto;
 }
 body.path-frontpage div.fold3 div.map .pointEns.nidEns_16 {
-  left: 47%;
-  top: 636px;
+  left: 421px;
+  top: 623px;
   width: 110px;
   text-align: center;
 }
@@ -11444,19 +11448,19 @@ body.path-frontpage div.fold3 div.map .pointEns.nidEns_16 span.pointBtn {
   left: auto;
 }
 body.path-frontpage div.fold3 div.map .pointEns.nidEns_17 {
-  left: 66%;
-  top: 487px;
+  left: 640px;
+  top: 485px;
 }
 body.path-frontpage div.fold3 div.map .pointEns.nidEns_18 {
-  left: 57%;
+  left: 555px;
   top: 427px;
 }
 body.path-frontpage div.fold3 div.map .pointEns.nidEns_19 {
-  left: 49%;
+  left: 458px;
   top: 353px;
 }
 body.path-frontpage div.fold3 div.map .pointEns.nidEns_20 {
-  left: 40%;
+  left: 340px;
   top: 324px;
 }
 body.path-frontpage div.fold3 div.map .pointEns.nidEns_20 span.pointBtn {
@@ -11464,7 +11468,7 @@ body.path-frontpage div.fold3 div.map .pointEns.nidEns_20 span.pointBtn {
   left: auto;
 }
 body.path-frontpage div.fold3 div.map .pointEns.nidEns_21 {
-  left: 41%;
+  left: 347px;
   top: 286px;
 }
 body.path-frontpage div.fold3 div.map .pointEns.nidEns_21 span.pointBtn {
@@ -11472,8 +11476,8 @@ body.path-frontpage div.fold3 div.map .pointEns.nidEns_21 span.pointBtn {
   left: auto;
 }
 body.path-frontpage div.fold3 div.map .pointEns.nidEns_22 {
-  left: 47%;
-  top: 233px;
+  left: 425px;
+  top: 244px;
 }
 body.path-frontpage div.fold3 div.map .pointEns a {
   font-family: 'MyriadPro semiBold';
@@ -11532,6 +11536,9 @@ body.path-frontpage div.fold4 div.wrapperFold4 div.imageZone img {
 body.path-frontpage div.fold4 div.wrapperFold4 div.textZone {
   padding-right: 15%;
   padding-left: 8%;
+}
+body.path-frontpage div.fold4 div.wrapperFold4 div.textZone a:hover {
+  text-decoration: none;
 }
 body.path-frontpage div.fold4 div.wrapperFold4 div.textZone h2 {
   text-transform: uppercase;
@@ -11834,8 +11841,64 @@ body.path-frontpage div.fold6 div.leftZone div.secondHalf div.SpecialSmallBlock 
 }
 @media (max-width: 1200px) {
   body.path-frontpage section.wrapper div.fold3 div.map {
-    background-position: -100px 50%;
-    background-size: 125%;
+    background-position: -40px 50%;
+  }
+  body.path-frontpage section.wrapper div.fold3 div.map .nidEns_4 {
+    left: calc(120px - 138px);
+  }
+  body.path-frontpage section.wrapper div.fold3 div.map .nidEns_5 {
+    left: calc(340px - 138px);
+  }
+  body.path-frontpage section.wrapper div.fold3 div.map .nidEns_6 {
+    left: calc(233px - 138px);
+  }
+  body.path-frontpage section.wrapper div.fold3 div.map .nidEns_7 {
+    left: calc(478px - 138px);
+  }
+  body.path-frontpage section.wrapper div.fold3 div.map .nidEns_8 {
+    left: calc(662px - 138px);
+  }
+  body.path-frontpage section.wrapper div.fold3 div.map .nidEns_9 {
+    left: calc(592px - 138px);
+  }
+  body.path-frontpage section.wrapper div.fold3 div.map .nidEns_10 {
+    left: calc(643px - 138px);
+  }
+  body.path-frontpage section.wrapper div.fold3 div.map .nidEns_11 {
+    left: calc(355px - 138px);
+  }
+  body.path-frontpage section.wrapper div.fold3 div.map .nidEns_12 {
+    left: calc(482px - 138px);
+  }
+  body.path-frontpage section.wrapper div.fold3 div.map .nidEns_13 {
+    left: calc(367px - 138px);
+  }
+  body.path-frontpage section.wrapper div.fold3 div.map .nidEns_14 {
+    left: calc(120px - 138px);
+  }
+  body.path-frontpage section.wrapper div.fold3 div.map .nidEns_15 {
+    left: calc(125px - 138px);
+  }
+  body.path-frontpage section.wrapper div.fold3 div.map .nidEns_16 {
+    left: calc(421px - 138px);
+  }
+  body.path-frontpage section.wrapper div.fold3 div.map .nidEns_17 {
+    left: calc(640px - 138px);
+  }
+  body.path-frontpage section.wrapper div.fold3 div.map .nidEns_18 {
+    left: calc(555px - 138px);
+  }
+  body.path-frontpage section.wrapper div.fold3 div.map .nidEns_19 {
+    left: calc(458px - 138px);
+  }
+  body.path-frontpage section.wrapper div.fold3 div.map .nidEns_20 {
+    left: calc(340px - 138px);
+  }
+  body.path-frontpage section.wrapper div.fold3 div.map .nidEns_21 {
+    left: calc(347px - 138px);
+  }
+  body.path-frontpage section.wrapper div.fold3 div.map .nidEns_22 {
+    left: calc(425px - 138px);
   }
   body.path-frontpage section.wrapper div.fold3 div.descroZone {
     margin-top: 100px;
@@ -11873,7 +11936,8 @@ body.path-frontpage div.fold6 div.leftZone div.secondHalf div.SpecialSmallBlock 
 }
 @media (max-width: 1100px) {
   body.path-frontpage section.wrapper div.fold3 div.descroZone {
-    margin-top: 160px;
+    margin-top: 207px;
+    padding-left: 12%;
   }
   body.path-frontpage section.wrapper div.fold4 div.traitSpecial {
     left: 0px;
@@ -11890,6 +11954,70 @@ body.path-frontpage div.fold6 div.leftZone div.secondHalf div.SpecialSmallBlock 
   }
   body.path-frontpage section.wrapper div.fold2 div.txtRow p.subTitleFold2 {
     padding: 0 17%;
+  }
+  body.path-frontpage section.wrapper div.fold3 div.map {
+    background-position: 75px 50%;
+    width: 100%;
+  }
+  body.path-frontpage section.wrapper div.fold3 div.map .nidEns_4 {
+    left: calc(120px - 23px);
+  }
+  body.path-frontpage section.wrapper div.fold3 div.map .nidEns_5 {
+    left: calc(340px - 23px);
+  }
+  body.path-frontpage section.wrapper div.fold3 div.map .nidEns_6 {
+    left: calc(233px - 23px);
+  }
+  body.path-frontpage section.wrapper div.fold3 div.map .nidEns_7 {
+    left: calc(478px - 23px);
+  }
+  body.path-frontpage section.wrapper div.fold3 div.map .nidEns_8 {
+    left: calc(662px - 23px);
+  }
+  body.path-frontpage section.wrapper div.fold3 div.map .nidEns_9 {
+    left: calc(592px - 23px);
+  }
+  body.path-frontpage section.wrapper div.fold3 div.map .nidEns_10 {
+    left: calc(643px - 23px);
+  }
+  body.path-frontpage section.wrapper div.fold3 div.map .nidEns_11 {
+    left: calc(355px - 23px);
+  }
+  body.path-frontpage section.wrapper div.fold3 div.map .nidEns_12 {
+    left: calc(482px - 23px);
+  }
+  body.path-frontpage section.wrapper div.fold3 div.map .nidEns_13 {
+    left: calc(367px - 23px);
+  }
+  body.path-frontpage section.wrapper div.fold3 div.map .nidEns_14 {
+    left: calc(120px - 23px);
+  }
+  body.path-frontpage section.wrapper div.fold3 div.map .nidEns_15 {
+    left: calc(125px - 23px);
+  }
+  body.path-frontpage section.wrapper div.fold3 div.map .nidEns_16 {
+    left: calc(421px - 23px);
+  }
+  body.path-frontpage section.wrapper div.fold3 div.map .nidEns_17 {
+    left: calc(640px - 23px);
+  }
+  body.path-frontpage section.wrapper div.fold3 div.map .nidEns_18 {
+    left: calc(555px - 23px);
+  }
+  body.path-frontpage section.wrapper div.fold3 div.map .nidEns_19 {
+    left: calc(458px - 23px);
+  }
+  body.path-frontpage section.wrapper div.fold3 div.map .nidEns_20 {
+    left: calc(340px - 23px);
+  }
+  body.path-frontpage section.wrapper div.fold3 div.map .nidEns_21 {
+    left: calc(347px - 23px);
+  }
+  body.path-frontpage section.wrapper div.fold3 div.map .nidEns_22 {
+    left: calc(425px - 23px);
+  }
+  body.path-frontpage section.wrapper div.fold3 div.descroZone {
+    display: none;
   }
   body.path-frontpage section.wrapper div.fold3 div.descroZone a {
     width: 100%;
@@ -11967,6 +12095,9 @@ body.path-frontpage div.fold6 div.leftZone div.secondHalf div.SpecialSmallBlock 
   }
   body.path-frontpage section.wrapper div.fold2 div.imagesRow div.right {
     padding-left: 15px;
+  }
+  body.path-frontpage section.wrapper div.fold3 div.titleContainer {
+    display: none;
   }
   body.path-frontpage section.wrapper div.fold3 div.descroZone {
     margin-top: 30px;
@@ -12065,9 +12196,9 @@ body.path-frontpage div.fold6 div.leftZone div.secondHalf div.SpecialSmallBlock 
     font-size: 2.5em;
   }
   body.path-frontpage section.wrapper div.fold6 div.leftZone a {
-    width: 155%;
+    width: 185px;
     font-size: 0.7em;
-    margin-left: -30px;
+    margin-left: -5px;
   }
 }
 body.page-node-type-ens div.fancybox-caption {
@@ -12096,6 +12227,8 @@ body.page-node-type-ens article.quizz div.btns {
 }
 body.page-node-type-ens article.quizz button {
   padding: 11px 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 @media (max-width: 1200px) {
   article.quizz div.btns > div {
