@@ -67,11 +67,10 @@
 #}
 
 {{ attach_library('bootstrap_aveyron/leaflet') }}
+{{ attach_library('bootstrap_aveyron/fancybox') }}
 {{ attach_library('bootstrap_aveyron/script-ens') }}
 
-<!-- total main content should not be indide a single region -->
-
-
+  <!-- total main content should not be indide a single region -->
   <section class="headband" style="background-image: url({{ file_url(content.field_poster['#items'].entity.uri.value) }})">
     <h1>{{ node.title.value }}</h1>
     <span class="arianne">
@@ -114,6 +113,8 @@
       <div class="col-sm-7">
         <div class="content">
         {{ content.body }}
+        <br/>
+        {{ data.recommandations|raw }}
         </div>
         <div class="col-xs-12 text-center">
 
@@ -132,7 +133,12 @@
   <div class="outer"></div>
 
   <section class="clearfix">
-    {{ content.field_video_ens }}
+    {% for video in data.videos %}
+
+      <iframe class="col-xs-12 col-sm-4 no-padding" frameborder="0" src="//www.dailymotion.com/embed/video/{{ video.field_video_ens_value }}" allowfullscreen></iframe>
+
+    {% endfor %}
+    {# content.field_video_ens #}
   </section>
 
   <div class="outer"></div>
@@ -141,15 +147,38 @@
     <div class="clearfix">
       <div class="col-sm-8">
       <h2>Galerie</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur minus labore quo consequatur magnam, culpa velit est quae possimus nostrum numquam, doloribus quos eos aliquam. Debitis ex odit vitae iusto.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur minus labore quo consequatur magnam, culpa velit est quae possimus nostrum numquam, doloribus quos eos aliquam. Debitis ex odit vitae iusto. <a href="{{ url('<front>') }}galerie">En voir +</a></p>
       </div>
     </div>
-    
+
     <div class="outer small"></div>
 
     <div class="clearfix">
       <div class="col-sm-8 clearfix gallery">
-        {{ content.field_gallery }}
+
+
+        {% for picture in data.pictures %}
+
+            <div class="js-figure img-block-link col-md-4" href="{{picture.uri}}" data-fancybox="group" thematique="{{picture.tag}}" data-caption="{{picture.field_gallery_alt}}">
+
+              <div class="bg" style="background: url( {{picture.uri}} )"></div>
+              <div class="abs">
+                <div class="zoom">
+                  <div>
+                    <h2>{{picture.field_gallery_title}}</h2>
+                    <span class="credit">
+                    </span>
+                  </div>
+                  <figcaption>
+                      {{picture.field_gallery_title}}
+                  </figcaption>
+                </div>
+              </div>
+            </div>
+
+        {% endfor %}
+
+
       </div>
       <div class="col-sm-4 ens-infos">
         <h5>Informations</h5>
@@ -185,12 +214,12 @@
 
 
   <div class="tab-pane spacies" id="spacies">
-    
+
     <div class="outer"></div>
 
     <section class="container">
       <div class="col-xs-12">
-        <div class="pull-left">
+        <div class="pull-left filter-btns">
           <button class="js-btn-filter btn btn-default btn-grey active" thematique="all">Tout</button>
           <button class="js-btn-filter btn btn-default btn-grey" thematique="faune">Faune</button>
           <button class="js-btn-filter btn btn-default btn-grey" thematique="flore">Flore</button>
@@ -210,20 +239,21 @@
 
           {% for taxon in data.taxons %}
             {% if loop.index == 3 or loop.index == 8 %}
-              <div class="js-figure img-block-link col-md-6" thematique="{{taxon.field_tag_value}}">
+              <div class="js-figure img-block-link col-md-6" href="{{taxon.uri}}" data-fancybox="group2" thematique="{{taxon.field_tag_value}}" data-caption="<a class='btn btn-primary' href='{{ url('<front>') }}{{taxon.url_alias}}'>voir la fiche {{taxon.title}}</a> <br> {{taxon.field_poster_alt}}">
             {% else %}
-              <div class="js-figure img-block-link col-md-3" thematique="{{taxon.field_tag_value}}">
+              <div class="js-figure img-block-link col-md-3" href="{{taxon.uri}}" data-fancybox="group2" thematique="{{taxon.field_tag_value}}" data-caption="<a class='btn btn-primary' href='{{ url('<front>') }}{{taxon.url_alias}}'>voir la fiche {{taxon.title}}</a> <br> {{taxon.field_poster_alt}}">
             {% endif %}
                 <div class="bg" style="background: url( {{taxon.uri}} )">
                 </div>
                 <div class="abs">
-                  <a href="{{taxon.url_alias}}">
+                  <a href="{{ url('<front>') }}{{taxon.url_alias}}">
                     <div>
                       <h2>{{taxon.title}}</h2>
-                      <span class="credit"> PHOTO: PHOTOGRAPH</span>
+                      <span class="credit">
+                      </span>
                     </div>
                     <figcaption>
-                        {{taxon.title}}                 
+                        {{taxon.title}}
                     </figcaption>
                   </a>
                 </div>
@@ -249,7 +279,7 @@
     <div class="outer small"></div>
 
     <section class="container">
-        <div class="col-sm-8 col-xs-12">
+        <div class="col-sm-8">
 
           {% for item in data.quizz %}
             <article class="js-article-quizz quizz" answer="{{ item.answerCode }}">
@@ -259,8 +289,8 @@
               </div>
               <div class="row btns">
               {% for prop in item.propositions %}
-                  <div class="col-xs-12 col-sm-4">
-                  <button class="js-quizz-prop btn btn-default full-width" code="{{prop.code}}">
+                  <div class="col-lg-4">
+                  <button class="js-quizz-prop btn btn-default full-width" code="{{prop.code}}" title="{{ prop.proposition }}">
                     {{ prop.proposition }}
                   </button>
                   </div>

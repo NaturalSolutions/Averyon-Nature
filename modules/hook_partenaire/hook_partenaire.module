@@ -1,0 +1,62 @@
+<?php
+
+/**
+ * @file
+ * hook_partenaire module.
+ */
+
+/*
+	this function to add many variable for this specific template
+*/
+
+function hook_partenaire_preprocess_node__page_partenaire(&$variables){
+
+	// get current node ID
+	$node = \Drupal::routeMatch()->getParameter('node');
+
+	// get all data for the page
+	$data = getContentPart($node->id());
+
+	//set variables, get them from twig template
+	$variables['data'] = $data;
+
+}
+
+function getContentPart($nid){
+
+	$data = [];
+
+	/*
+	* Get partenaires datas
+	*/
+	$query = db_query("
+		SELECT m.uri, p.field_logo_des_partenaires_alt, p.field_logo_des_partenaires_title
+		from file_managed m
+		join node__field_logo_des_partenaires p
+		on p.field_logo_des_partenaires_target_id = m.fid
+		where p.entity_id = $nid
+	");
+
+	$parts = $query->fetchAll();
+
+	foreach ($parts as $key => $part) {
+
+		// convert style
+		$part->uri = file_create_url($part->uri);
+
+		//test if link in title attribute
+		$testLink = explode("http", $part->field_logo_des_partenaires_title);
+
+		if(count($testLink) > 1){
+
+			$part->link = $part->field_logo_des_partenaires_title;
+
+		}
+
+	}
+
+	$data['parts'] = $parts;
+
+	return $data;
+
+}

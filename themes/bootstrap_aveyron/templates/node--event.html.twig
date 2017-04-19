@@ -70,7 +70,7 @@
 <!-- total main content should not be indide a single region -->
 
   <section class="headband" style="background-image: url({{ file_url(content.field_poster['#items'].entity.uri.value) }})">
-    <h1>{{ node.title.value }}</h1>
+    <!-- <h1>{{ node.title.value }}</h1> -->
     <span class="arianne">
       <a href="{{ url('<front>') }}">Accueil</a> > <a href="{{ url('<front>') }}evenements">les événements</a> > <b>{{ label }}</b>
     </span>
@@ -78,14 +78,42 @@
 
   <!-- <pre>{{  dump(data) }}</pre> -->
 
-  <section class="section">
-    <div class="container">
+  <section class="section navPrevNext">
 
-    </div>
+    <a class="left" href="{{ url('<front>') }}{{ data.events.prev.url_alias }}" title="Découvrir l'évènement : {{ data.events.prev.title }}">
+
+      <img src="{{ data.events.prev.uri }}" alt="">
+      <div class="rt">
+        <span>précédent</span>
+        <span>{{ data.events.prev.title }}</span>
+      </div>
+
+    </a>
+
+    <a class="right" href="{{ url('<front>') }}{{ data.events.next.url_alias }}" title="Découvrir l'évènement : {{ data.events.next.title }}">
+
+          <div class="rt">
+            <span>suivant</span>
+            <span>{{ data.events.next.title }}</span>
+          </div>
+          <img src="{{ data.events.next.uri }}" alt="">
+
+      </a>
+
   </section>
 
+  <section class="">
+    <div class="container">
 
 
-  <section class="section">
+      <h1>{{ node.title.value }}</h1>
+      <div class="info">
+        <span>{{ data.events.lieu }}</span> - <span>{{ data.events.date }}</span>
+      </div>
 
+      <div class="content">
+        {{ data.events.description|raw }}
+      </div>
+
+    </div>
   </section>

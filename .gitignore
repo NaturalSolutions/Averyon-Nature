@@ -1,5 +1,5 @@
 updates/todo.txt
 themes/bootstrap_aveyron/node_modules
 .DS_Store
+*.map
 
-themes/bootstrap_aveyron/css/*

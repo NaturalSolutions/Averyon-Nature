@@ -16,35 +16,42 @@ class galleryController extends ControllerBase {
 		$data = [];
 
 		/*
+		* Get Title
+		*/
+		$query = db_query("
+			SELECT d.title FROM aveyron.node_field_data d where d.nid = 62
+		");
+
+		$title = $query->fetchAll();
+		$data['title'] = $title[0]->title;
+
+		/*
 		* Get first image on top
 		*/
 		$query = db_query("
-			SELECT f.uri, g.field_poster_alt,
-			g.field_poster_title
+			SELECT f.uri, s.field_image_on_top_alt,
+			s.field_image_on_top_title
 			from file_managed f
-			join node__field_poster g
-			on f.fid = g.field_poster_target_id
+			join node__field_image_on_top s
+			on f.fid = s.field_image_on_top_target_id
 			join node_field_data d
-			on d.nid = g.entity_id
-			where d.type = 'ens'
-			ORDER BY RAND()
-			Limit 1
+			on d.nid = s.entity_id
+			where d.nid = 62
 		");
 
-		$pictureOnTop = $query->fetchAll();
+		$imageOnTop = $query->fetchAll();
 
-		// convert style
-		$pictureOnTop[0]->uri = entity_load('image_style', '2000_par_600')->buildUrl($pictureOnTop[0]->uri);
-
-		// add to global var data
-		$data['pictureOnTop'] = $pictureOnTop[0];
+		//$ens->uri = entity_load('image_style', '470_par_750')->buildUrl($ens->uri);
+		$imageOnTop[0]->uri = file_create_url($imageOnTop[0]->uri);
+		$data['imageOnTop'] = $imageOnTop[0];
 
 		/*
 		* Get ENS pictures's gallerie
 		*/
 		$query = db_query("
 			SELECT f.uri, g.field_gallery_alt,
-			g.field_gallery_title,d.nid, e.field_thematique_ens_target_id
+			g.field_gallery_title,d.nid,
+			e.field_thematique_ens_target_id, d.title
 			from file_managed f
 			join node__field_gallery g
 			on f.fid = g.field_gallery_target_id
@@ -100,7 +107,7 @@ class galleryController extends ControllerBase {
 		* Get Taxons pictures's gallerie
 		*/
 		$query = db_query("
-			SELECT f.uri, g.field_gallery_alt,
+			SELECT f.uri, g.field_gallery_alt, d.title,
 			g.field_gallery_title,d.nid, t.field_tag_value as tag
 			from file_managed f
 			join node__field_gallery g
@@ -132,6 +139,38 @@ class galleryController extends ControllerBase {
 			array_push($data['pictures'], $pictureTaxon);
 		}
 
+		/*
+		* Get ens video
+		*/
+		$query = db_query("
+			SELECT v.field_video_ens_value , d.title, d.nid
+			FROM aveyron.node__field_video_ens v
+			join node_field_data d
+			on d.nid = v.entity_id
+		");
+
+		$videos = $query->fetchAll();
+		foreach ($videos as $key => $video) {
+
+			//Add alias path
+			$path_alias = \Drupal::service('path.alias_manager')->getAliasByPath("/node/".$video->nid);
+			$path_alias = ltrim($path_alias, '/');
+			$video->url_alias = $path_alias;
+
+			//crop string video url
+			$video->field_video_ens_value = explode("http://dai.ly/", $video->field_video_ens_value)[1];
+			$video->tag = "video";
+
+			// remove useless properties
+			unset($video->nid);
+
+			// add in the main array
+			array_push($data['pictures'], $video);
+
+		}
+
+		// add to global var data
+		$data['videos'] = $videos;
 
 		// random sort
 		shuffle($data['pictures']);

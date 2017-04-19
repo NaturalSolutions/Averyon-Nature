@@ -110,13 +110,13 @@
     .transition(transform 0.2s);
     .translate(-100%; 0);
     background-color: @navbar-collapsed-bg-aveyron;
-    background-size: 150px;
+    background-size: 130px;
     width: 350px;
     position: fixed;
     overflow: hidden;
     height: 100% !important;
     padding-top: 270px;
-    background-image: url(../images/logo_aveyron.png);
+    background-image: url(../images/logo_aveyron.jpg);
     background-repeat: no-repeat;
     background-position: 50% @navbar-item-padding-left-aveyron;
   }
@@ -143,6 +143,22 @@
       width: 100%;
     }
   }
+
+  // HEIGHT - de 570px
+  @media (max-height: 570px) {
+    .region-navigation-collapsible{
+      padding-top: 190px;
+      background-position: 50% 30px;
+    }
+  }
+
+  /*
+  @media screen and (orientation:landscape) {
+    .region-navigation-collapsible{
+       width: 100%;
+    }
+  }
+  */
 
 }
 /*
@@ -392,6 +408,11 @@
       left: 110px;
       &:hover{
         background-image: url(../images/menu/icon_twt_hover.png);
+      }
+    }
+    &:hover{
+      > a.is-active{
+        color: @navbar-default-link-hover-color !important;
       }
     }
     & > a{

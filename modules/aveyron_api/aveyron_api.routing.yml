@@ -55,3 +55,10 @@ aveyron_api.thematics:
   methods:  [GET]
   requirements:
     _access: 'TRUE'
+
+aveyron_api.medias:
+  path: 'api/medias'
+  defaults: { _controller: '\Drupal\aveyron_api\Controller\AveyronAPIController::medias' }
+  methods:  [GET]
+  requirements:
+    _access: 'TRUE'

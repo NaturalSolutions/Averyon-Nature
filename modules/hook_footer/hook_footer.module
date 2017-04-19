@@ -30,7 +30,8 @@ function getInfoFooter(){
 
 	foreach ($links as $key => $link) {
 
-		$link->link__uri = explode('internal:/', $link->link__uri)[1];
+		$tempLink = explode('internal:/', $link->link__uri);
+		if( count($tempLink) == 2 ) $link->link__uri = explode('internal:/', $link->link__uri)[1];
 
 	}
 

@@ -1,7 +1,5 @@
 jQuery( document ).ready(function() {
 
-        // geoData to display map
-
         // IGN layer - forbiden access with this IGN key
         /*
         var map = L.map("mapid").setView([48.845,2.424],10) ;
@@ -14,101 +12,188 @@ jQuery( document ).ready(function() {
         }).addTo(map);
         */
 
-        var $ = jQuery; 
-        var Shuffle = window.shuffle;
+        /*
+        * Quiz
+        */
+        var quizz = function(){
 
-
-        $('.js-btn-filter').on('click', function(e){
-            $('.js-btn-filter').each(function(){
-                $(this).removeClass('active');
-            });
-
-            $(e.currentTarget).addClass('active');
-            
-            var thematique = $(e.currentTarget).attr('thematique');
-            $('.js-figures').find('.js-figure').each(function(){
-                if(thematique == 'all'){
-                    $(this).removeClass('hide');
-                    return;
-                }
-                if($(this).attr('thematique') === thematique){
-                    $(this).removeClass('hide');
-                } else {
-                    $(this).addClass('hide');
-                }
-            });
-        });
-
-
-        $('.js-quizz-prop').on('click', function(e){
-            $(e.currentTarget).parent().parent().find('.js-quizz-prop').each(function(){
-                $(this).removeClass('active');
-                $(this).removeClass('btn-success');
-                $(this).removeClass('btn-danger');
-            })
-            $(e.currentTarget).addClass('active');
-
-        });
-
-        var nbErros;
-        var nbOk;
-
-        $('.js-validate').on('click', function(){
-            $('.js-article-quizz').each(function(){
-                var answer = $(this).attr('answer');
-                $(this).find('.js-quizz-prop').each(function(){
-                    if($(this).attr('code') == answer){
-                        $(this).addClass('btn-success');
-                        if($(this).hasClass('active')){
-                            nbOk++;
-                        }
-                    } else {
-                        if($(this).hasClass('active')){
-                            nbErros++;
-                            $(this).addClass('btn-danger');
-                        }
-                    }
+            $('.js-quizz-prop').on('click', function(e){
+                $(e.currentTarget).parent().parent().find('.js-quizz-prop').each(function(){
                     $(this).removeClass('active');
+                    $(this).removeClass('btn-success');
+                    $(this).removeClass('btn-danger');
+                })
+                $(e.currentTarget).addClass('active');
+
+            });
+
+            var nbErros;
+            var nbOk;
+
+            $('.js-validate').on('click', function(){
+                $('.js-article-quizz').each(function(){
+                    var answer = $(this).attr('answer');
+                    $(this).find('.js-quizz-prop').each(function(){
+                        if($(this).attr('code') == answer){
+                            $(this).addClass('btn-success');
+                            if($(this).hasClass('active')){
+                                nbOk++;
+                            }
+                        } else {
+                            if($(this).hasClass('active')){
+                                nbErros++;
+                                $(this).addClass('btn-danger');
+                            }
+                        }
+                        $(this).removeClass('active');
+                    });
                 });
             });
-        });
+
+        }
 
 
-        
-        // OpenLayer layer example
-        var map = L.map('map').setView(geoDataTracePoint.coordinates[0], 14);
-        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
+
+        /*
+        * Map
+        */
+        var map = function(){
+
+            /*les deux variables de données :
+            var geoDataStarterPoint
+            var geoDataTracePoint*/
+
+            /*console.log('geoDataTracePoint', geoDataTracePoint);*/
 
 
-        var polyline = L.polyline(
-            geoDataTracePoint.coordinates,            
+            var map = L.map("map").setView([geoDataTracePoint.coordinates[0][1],geoDataTracePoint.coordinates[0][0]], 14) ;
+            L.tileLayer(
+            'http://wxs.ign.fr/uxfc79ihyesfzukqvfqcev40/geoportail/wmts?service=WMTS&request=GetTile&version=1.0.0&tilematrixset=PM&tilematrix={z}&tilecol={x}&tilerow={y}&layer=GEOGRAPHICALGRIDSYSTEMS.MAPS&format=image/jpeg&style=normal',
             {
-                weight: 5,
-                opacity: .7,
-            }
-        ).addTo(map);
+                minZoom:0,
+                maxZoom:18,
+                tileSize:256
+            }).addTo(map);
 
-        var quizzMap;
-        $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-            if($(e.currentTarget).attr('passed') === undefined && e.currentTarget.hash  === '#quizz'){
-              quizzMap = L.map('quizzMap').setView(geoDataTracePoint.coordinates[0], 14);
-              L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-                  attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-              }).addTo(quizzMap);
+            var polyline = L.polyline(
+                geoDataTracePoint.coordinates,
+                {
+                    weight: 5,
+                    opacity: 0.7,
+                }
+            ).addTo(map);
+
+            /* Function of Céline & Vincent
+            onMapModelReady() {
+                let center = L.latLng(this.mapModel.center.lat, this.mapModel.center.lng)
+                this._map = L
+                  .map(this.mapEl, {
+                    minZoom: this.mapModel.cacheZoom - 1,
+                    maxZoom: this.mapModel.cacheZoom,
+                  })
+                  .setView(center, this.mapModel.cacheZoom)
+
+                this.mapModel.tileLayer.addTo(this._map);
+
+                console.log(this._tourStart);
+
+                L.marker(center, { icon: this._icon })
+                  .bindPopup('Départ')
+                  .openPopup()
+                  .addTo(this._map);
+
+                console.log(this._trace);
+                this._trace = L.geoJSON(this._trace, {
+                  style: function (feature) {
+                    return {
+                      "color": "#4928d9",
+                      "weight": 8,
+                      "opacity": 0.8 };
+                  }//,
+                  // onEachFeature: function (feature, layer) {
+                  //     layer.bindPopup(this.tours[0].title);
+                  // }
+                }).addTo(this._map)
+                //this._map.fitBounds(this._trace.getBounds());
+
+                console.log(this.platform.platforms())
+                if (this.platform.is('cordova')) {
+                  this.watchConnection();
+                }
+              }
+            */
 
 
-              var polyline = L.polyline(
-                  geoDataTracePoint.coordinates,            
-                  {
-                      weight: 5,
-                      opacity: .7,
-                  }
-              ).addTo(quizzMap);
-            }
 
-            $(e.currentTarget).attr('passed', 'true');
-        });
+            /* OpenLayer init map
+            var map = L.map('map').setView(geoDataTracePoint.coordinates[0], 14);
+            L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+            var polyline = L.polyline(
+                geoDataTracePoint.coordinates,
+                {
+                    weight: 5,
+                    opacity: 0.7,
+                }
+            ).addTo(map);
+            */
+
+
+
+
+            var quizzMap;
+            $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+                if($(e.currentTarget).attr('passed') === undefined && e.currentTarget.hash  === '#quizz'){
+                  quizzMap = L.map('quizzMap').setView([geoDataTracePoint.coordinates[0][1],geoDataTracePoint.coordinates[0][0]], 14);
+                  //L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+                  L.tileLayer('http://wxs.ign.fr/uxfc79ihyesfzukqvfqcev40/geoportail/wmts?service=WMTS&request=GetTile&version=1.0.0&tilematrixset=PM&tilematrix={z}&tilecol={x}&tilerow={y}&layer=GEOGRAPHICALGRIDSYSTEMS.MAPS&format=image/jpeg&style=normal', {
+                      //attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                      attribution: ''
+                  }).addTo(quizzMap);
+
+
+                  var polyline = L.polyline(
+                      geoDataTracePoint.coordinates,
+                      {
+                          weight: 5,
+                          opacity: .7,
+                      }
+                  ).addTo(quizzMap);
+                }
+
+                $(e.currentTarget).attr('passed', 'true');
+            });
+
+
+        }
+
+
+        // sort tab by url
+        var sortTab = function(filter){
+
+            if(filter == "especes") $("ul.nav.nav-tabs li:nth-of-type(2) > a").trigger('click');
+            else if(filter == "quizz") $("ul.nav.nav-tabs li:nth-of-type(3) > a").trigger('click');
+
+        }
+
+        window.init = function() {
+
+            // not used ?
+            var Shuffle = window.shuffle;
+
+            map();
+            quizz();
+            filterTaxonsThematic();
+
+            var filter;
+            filter = getUrlParameter('filtre');
+            if(filter !== undefined) sortTab(filter);
+
+        }
+
+        var $ = jQuery;
+        init(); // true
 
 });

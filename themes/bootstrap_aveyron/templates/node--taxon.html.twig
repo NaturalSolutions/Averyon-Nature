@@ -66,26 +66,89 @@
  */
 #}
 
+{{ attach_library('bootstrap_aveyron/fancybox') }}
 
 <!-- total main content should not be indide a single region -->
 
   <section class="headband" style="background-image: url({{ file_url(content.field_poster['#items'].entity.uri.value) }})">
-    <h1>{{ node.title.value }}</h1>
+    <!-- <h1>{{ node.title.value }}</h1> -->
     <span class="arianne">
       <a href="{{ url('<front>') }}">Accueil</a> > <b>{{ label }}</b>
     </span>
   </section>
 
-  <!-- <pre>{{  dump(data) }}</pre> -->
+  <section class="section navPrevNext">
 
-  <section class="section">
+    <a class="left" href="{{ url('<front>') }}{{ data.taxons.prev.url_alias }}" title="Découvrir l'espèce : {{ data.taxons.prev.title }}">
+
+      <img src="{{ data.taxons.prev.uri }}" alt="">
+      <div class="rt">
+        <span>précédent</span>
+        <span>{{ data.taxons.prev.title }}</span>
+      </div>
+
+    </a>
+
+    <a class="right" href="{{ url('<front>') }}{{ data.taxons.next.url_alias }}" title="Découvrir l'espèce : {{ data.taxons.next.title }}">
+
+          <div class="rt">
+            <span>suivant</span>
+            <span>{{ data.taxons.next.title }}</span>
+          </div>
+          <img src="{{ data.taxons.next.uri }}" alt="">
+
+      </a>
+
+  </section>
+
+  <section class="">
     <div class="container">
+
+
+      <h1>{{ node.title.value }}</h1>
+
+      <div class="content">
+        {{ data.taxons.description|raw }}
+      </div>
+
+      {% if data.audio %}
+        <audio src="{{ data.audio }}" controls></audio>
+      {% endif %}
+
+      <div class="outer small"></div>
+
+      <div class="clearfix">
+        <div class="col-sm-12 clearfix gallery">
+
+
+          {% for picture in data.pictures %}
+
+              <div class="js-figure img-block-link col-md-4" href="{{picture.uri}}" data-fancybox="group" thematique="{{picture.tag}}" data-caption="{{picture.field_gallery_alt}}">
+
+                <div class="bg" style="background: url( {{picture.uri}} )"></div>
+                <div class="abs">
+                  <div class="zoom">
+                    <div>
+                      <h2>{{picture.field_gallery_title}}</h2>
+                      <span class="credit">
+                      </span>
+                    </div>
+                    <figcaption>
+                        {{picture.field_gallery_title}}
+                    </figcaption>
+                  </div>
+                </div>
+              </div>
+
+          {% endfor %}
+
+
+        </div>
+      </div>
+
 
     </div>
   </section>
 
 
 
-  <section class="section">
-
-  </section>

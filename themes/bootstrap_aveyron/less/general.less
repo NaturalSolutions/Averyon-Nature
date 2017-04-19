@@ -1,4 +1,8 @@
 
+
+/*
+ The are already many variables color in varibale_override.less, to merge ?
+*/
 @color-h2-aveyron : #565656;
 @bg-point-map-fold3-aveyron : #484848;
 
@@ -160,18 +164,25 @@ b{
 
   & div.filter-btns{
     position: absolute;
-    bottom: 50px;
+    bottom: 100px;
     width: 100%;
     margin: 0;
     text-align: center;
     .btn-default{
-      margin: 0px 5px;
+      margin-left: 5px;
+      margin-right: 5px;
       border-color: transparent;
     }
   }
 
 }
 
+div.filter-btns {
+  button{
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+}
 
 span.arianne{
   position: relative;
@@ -182,7 +193,52 @@ span.arianne{
 
 
 
+div.fancybox-caption{
+  text-align: center;
+ a{
+   text-decoration: none;
+ }
+}
 
+.gallery{
+  div.img-block-link{
+    height: 150px;
+  }
+}
+
+.spacies, .pictures, .gallery{
+  div.img-block-link{
+    height: 250px;
+    a, div.zoom{
+      h2{
+        margin: 0px;
+        letter-spacing: 1px;
+        width: 100%;
+        word-break: break-word;
+      }
+      &:hover,&:focus{
+        background: rgba(251, 106, 0, .5)!important;
+        &>div{
+          opacity: 1;
+        }
+        figcaption{
+          opacity: 0;
+        }
+      }
+      &>div{
+        opacity: 0;
+        transition: all ease .2s;
+      }
+      figcaption{
+        opacity: 1;
+        transition: all ease .2s;
+        position: absolute;
+        bottom: 15px;
+        left: 15px;
+      }
+    }
+  }
+}
 
 //block img link
 .img-block-link{
@@ -195,6 +251,9 @@ span.arianne{
     background-size: cover!important;
     height: 100%;
     width: 100%;
+    &.bg-video{
+      background-size: 45px, cover !important;
+    }
   }
   .abs{
     position: absolute;
@@ -203,7 +262,7 @@ span.arianne{
     top: 0;
     left: 0;
     padding: inherit;
-    a{
+    a,div.zoom{
       display: flex;
       position: relative;
       height: 100%;
@@ -224,6 +283,23 @@ span.arianne{
       &>div{
           margin: auto;
           padding: 0 15px;
+          &.bot{
+            position: absolute;
+            bottom: 0;
+            background-color: #f7f7f7;
+            width: 100%;
+            color: #474747;
+            text-align: left;
+            min-height: 70px;
+            h2{
+              font-size: 1.2em;
+              margin-bottom: 0;
+            }
+            i{
+              font-family: "Proxima Nova Light";
+              font-size: 0.9em;
+            }
+          }
       }
       h2{
           //generic?
@@ -295,4 +371,121 @@ footer.footer{
 .gallery{
   margin-left: -5px;
   margin-right: -5px;
+}
+
+
+
+
+// Page user
+body.path-user{
+  footer.footer {
+      margin-top: 0px;
+  }
+  section{
+    padding: 230px 7% 20px 7% !important;
+    background: url(../images/bg-user.jpg) no-repeat 50% 50%;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    p{
+      font-family: "Proxima Nova semiBold";
+      display: inline-block;
+      font-size: 1.5em;
+      background: rgba(0,0,0,0.5);
+      border-radius: 3px;
+      padding: 8px 1%;
+      color: #fff;
+    }
+    div.region-content{
+      min-height: 500px;
+      color: #fff;
+      width: 515px;
+      margin: 0 auto;
+      position: relative;
+      top: 20px;
+    }
+    div.logo{
+      background-image: url(../images/logo_aveyron.jpg);
+      background-repeat: no-repeat;
+      background-position: 50% 0%;
+      display: block;
+      width: 100px;
+      height: 150px;
+      background-size: 100%;
+    }
+    button{
+      margin-top: 30px;
+    }
+  }
+}
+
+// Page partenaires
+body.page-node-type-page-partenaire{
+  section img{
+    background-size: cover;
+  }
+}
+
+//- de 992
+@media (max-width: @screen-md-min) {
+  section.headband div.filter-btns button {
+      margin: 0 4px;
+  }
+}
+
+//- de 768
+@media (max-width: @screen-sm-min) {
+  .nav.nav-tabs li {
+    width: 100%;
+  }
+  .nav-tabs {
+      border-bottom: 0;
+  }
+  section.headband {
+    h1 {
+      top: 175px;
+    }
+    div.filter-btns button {
+      margin-bottom: 15px;
+    }
+  }
+  body.path-user section div.region-content {
+    width: 95%;
+  }
+}
+
+//- de 480
+@media (max-width: @screen-xs-min) {
+
+  //specific galerie page
+  body.path-galerie {
+    section.section {
+        padding-top: 370px !important;
+    }
+    section.headband div.filter-btns {
+        bottom: -370px;
+    }
+  }
+  section.headband div.filter-btns{
+    bottom: -320px;
+    button {
+      width: 100%;
+      border-color: @btn-primary-bg !important;
+    }
+  }
+  section.section{
+    padding-top: 325px !important;
+    .img-block-link {
+      height: 300px;
+    }
+  }
+}
+
+//- de 480
+@media (max-width: @screen-xs-min) {
+  div.outer{
+    &.big{
+      height: 0;
+    }
+  }
 }

@@ -44,7 +44,7 @@ class AveyronAPIController extends ControllerBase {
       else
         $result[$type] = $items;
     }
-    
+
     return new JsonResponse($result);
   }
 
@@ -119,7 +119,7 @@ class AveyronAPIController extends ControllerBase {
         "id" => $itemId,
         "vid" => (int) $entity->vid->value,
         "title" => $entity->title->value,
-        "thematic" => null,
+        "thematic" => (int) $entity->field_thematique_ens->target_id,
         "startTrace" => $geom ? json_decode($geom->out('json'), true) : null,
         "descriptionShort" => substr($entity->body->summary, 0, 255),
         "poster" => array(),
@@ -129,7 +129,7 @@ class AveyronAPIController extends ControllerBase {
       /*
       * thematique
       */
-      $query = db_query("
+      /*$query = db_query("
         SELECT d.nid
         FROM node__field_thematique_ens e
         join node_field_data d
@@ -138,12 +138,12 @@ class AveyronAPIController extends ControllerBase {
       ");
 
       $thematique = $query->fetchAll();
-      $item["thematic"] = (int) $thematique[0]->nid;
+      $item["thematic"] = (int) $thematique[0]->nid;*/
 
       /*
       * PDF
       */
-      $query = db_query("
+      /*$query = db_query("
         SELECT f.uri, f.fid
         from file_managed f
         join node__field_pdf_ens g
@@ -154,7 +154,7 @@ class AveyronAPIController extends ControllerBase {
       if(isset($pdf) && count($pdf) > 0){
         $pdf = file_create_url($pdf[0]->uri);
         $item["pdf"] = $pdf;
-      }
+      }*/
 
       /*
       * Thumb - 1st image of gallery with special style
@@ -189,9 +189,9 @@ class AveyronAPIController extends ControllerBase {
         where g.entity_id = $itemId limit 1"
       );
       $poster = $query->fetchAll();
-      $poster[0]->uri = entity_load('image_style', '900_par_600')->buildUrl($poster[0]->uri);
       $item['poster'] = array(
-        "url" => $poster[0]->uri,
+        //"uri" => $poster[0]->uri,
+        "url" => entity_load('image_style', '900_par_600')->buildUrl($poster[0]->uri),
         "alt" => $poster[0]->field_gallery_alt,
         "title" => $poster[0]->field_gallery_title,
         "fid" => (int) $poster[0]->fid
@@ -234,7 +234,9 @@ class AveyronAPIController extends ControllerBase {
       "id" => (int) $entity->nid->value,
       "vid" => (int) $entity->vid->value,
       "title" => $entity->title->value,
-      "thematic" => null,
+      "thematic" => (int) $entity->field_thematique_ens->target_id,
+      "info" => null,
+      "pdf" => null,
       "startPoint" => json_decode($geom->out('json'), true),
       "trace" => json_decode($geomTrace->out('json'), true),
       "description" => $entity->body->value,
@@ -244,13 +246,13 @@ class AveyronAPIController extends ControllerBase {
       "gallery" => array(),
       "videos" => array(),
       "taxonIds" => array(),
-      "events" => array(),
+      /*"events" => array(),*/
     );
 
     /*
     * thematique
     */
-    $query = db_query("
+    /*$query = db_query("
       SELECT d.nid
       FROM node__field_thematique_ens e
       join node_field_data d
@@ -259,7 +261,7 @@ class AveyronAPIController extends ControllerBase {
     ");
 
     $thematique = $query->fetchAll();
-    $result["thematic"] = (int) $thematique[0]->nid;
+    $result["thematic"] = (int) $thematique[0]->nid;*/
 
     /*
     * PDF
@@ -300,7 +302,7 @@ class AveyronAPIController extends ControllerBase {
     /*
     * Gallery - 1st picture is used for like main presentation image
     */
-    $query = db_query("
+    /*$query = db_query("
       SELECT f.uri, f.fid, g.field_gallery_alt,
       g.field_gallery_title
       from file_managed f
@@ -325,6 +327,34 @@ class AveyronAPIController extends ControllerBase {
         "fid" => (int) $img->fid,
         "tag" => $tag
       );
+    }*/
+
+
+
+    $gallery = $entity->field_gallery;
+
+    foreach ($gallery as $img) {
+      $thematics = array('faune', 'flore', 'paysage', 'patrimoine');
+      if (in_array($img->alt, $thematics))
+        $tag = $img->alt;
+      else
+        $tag = $result['thematic'];
+
+      //Buggy
+      /*$img->uri = entity_load('image_style', '900_par_600')->buildUrl($img->uri);
+      $result['gallery'][] = array(
+        "url" => file_create_url($img->uri->value),
+        "alt" => $img->alt,
+        "title" => $img->title,
+        "fid" => (int) $img->target_id,
+        "tag" => $tag
+      );*/
+      $data = json_decode($serializer->serialize($img, 'json', ['plugin_id' => 'entity']));
+      $data->tag = $tag;
+      $data->target_id = (int) $data->target_id;
+      //$data->url = entity_load('image_style', '900_par_600')->buildUrl($data->url);//$data->url;
+      $result['gallery'][] = $data;
+      //$result['gallery'][] = json_decode($serializer->serialize($img, 'json', ['plugin_id' => 'entity']));
     }
 
     /*
@@ -365,10 +395,39 @@ class AveyronAPIController extends ControllerBase {
     // Example de call sur l'api Dailymotion : https://api.dailymotion.com/videos?ids=x5f5olp,x2c5umz&limit=30&fields=id,thumbnail_url,title,tiny_url
     $result['videos'] = json_decode(file_get_contents($chanVideo));
 
-
+    /*
+    * Taxons
+    */
     $taxa = $entity->field_taxa;
     foreach ($taxa as $taxon) {
       $result['taxonIds'][] = (int) $taxon->target_id;
+    }
+
+    /*
+    * Get Info
+    */
+    $query = db_query("
+      SELECT t.field_info_value
+      FROM node__field_info t
+      where t.entity_id = $id
+    ");
+    $info = $query->fetchAll();
+    // add to global var data
+    $result['info'] = $info[0]->field_info_value;
+
+    /*
+    * Get Info
+    */
+    $query = db_query("
+      SELECT t.field_recommandations_value
+      FROM node__field_recommandations t
+      where t.entity_id = $id
+    ");
+    $recommandations = $query->fetchAll();
+
+    if(isset($recommandations) && count($recommandations) > 0){
+      // add to global var data
+      $result['recommandations'] = $recommandations[0]->field_recommandations_value;
     }
 
     return new JsonResponse($result);
@@ -655,5 +714,60 @@ class AveyronAPIController extends ControllerBase {
     }
 
     return new JsonResponse($items);
+  }
+
+  public function medias( Request $request ) {
+    $serializer = \Drupal::service('serializer');
+    $entityManager = \Drupal::entityManager();
+
+    $query = \Drupal::entityQuery('node');
+    $query->condition('status', 1);
+    $query->condition('type', 'ens');
+    $ensIds = $query->execute();
+
+    $query = \Drupal::entityQuery('node');
+    $query->condition('status', 1);
+    $query->condition('type', 'taxon');
+    $taxonIds = $query->execute();
+
+    $itemIds = array_merge($ensIds, $taxonIds);
+    shuffle($itemIds);
+
+    $entityManager = \Drupal::entityManager();
+    $entities = $entityManager->getStorage('node')->loadMultiple($itemIds);
+    $photos = array();
+    $videoIds = array();
+    foreach ($entities as $entity) {
+      foreach ($entity->field_gallery as $img) {
+        $imgUri = $img->entity->getFileUri();
+        $photos[] = array(
+          poster => entity_load('image_style', '900_par_600')->buildUrl($imgUri),
+          thumbnail => entity_load('image_style', '200_par_200')->buildUrl($imgUri)
+        );
+      }
+      if (isset($entity->field_video_ens)) {
+        foreach ($entity->field_video_ens as $video) {
+          $videoIds[] = array_pop(explode("dai.ly/", $video->value));
+        }
+      }
+    }
+
+    $videos = array();
+    if (count($videoIds)) {
+      $videoIds = array_unique($videoIds);
+      $chanVideo = "https://api.dailymotion.com/videos?ids=". implode(',', $videoIds) ."&fields=id,thumbnail_480_url,title,tiny_url&limit=30";
+      $response = json_decode(file_get_contents($chanVideo), true);
+      $videos = $response['list'];
+      //Map some values for standardization
+      foreach ($videos as &$video) {
+        $video['link'] = $video['tiny_url'];
+        $video['thumbnail'] = $video['thumbnail_480_url'];
+      }
+    }
+
+    return new JsonResponse(array(
+      photos => $photos,
+      videos => $videos
+    ));
   }
 }

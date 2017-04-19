@@ -15,6 +15,16 @@ class list_ensController extends ControllerBase {
 
 		$data = [];
 
+		/*
+		* Get Title
+		*/
+		$query = db_query("
+			SELECT d.title FROM aveyron.node_field_data d where d.nid = 25
+		");
+
+		$title = $query->fetchAll();
+		$data['title'] = $title[0]->title;
+
 
 		/*
 		* FOLD 1 - Get image on top
@@ -25,6 +35,9 @@ class list_ensController extends ControllerBase {
 			from file_managed f
 			join node__field_image_on_top s
 			on f.fid = s.field_image_on_top_target_id
+			join node_field_data d
+			on d.nid = s.entity_id
+			where d.nid = 25
 		");
 
 		$pictureOnTop = $query->fetchAll();

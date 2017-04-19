@@ -1,37 +1,39 @@
-# La plateforme web de l'Aveyron-Nature (Drupal 8.2.7)
+# La plateforme web de l'Aveyron-Nature (Drupal 8.3.0)
 ![Aveyron Nature](https://raw.githubusercontent.com/gitkyo/Aveyron-Nature-Web/master/themes/bootstrap_aveyron/images/aveyron.gif  "Aveyron Nature")
 
-- Le répertoire "themes" contient le(s) themes versionné
+- Le répertoire "themes" contient le(s) themes versionné (actuellement [bootstrap-8.x-3.2.zip](https://ftp.drupal.org/files/projects/bootstrap-8.x-3.2.zip))
 - Le répertoire "doc" contient toutes les instructions (configuration, instllation, gestion de la base...)
 - Le répertoire "modules" contient les modules personalisé.
 - Le répertoire "ressources" contient les exports de configuration
 
 # Liste des modules utilisé (www/modules)
 
-[admin_toolbar 8.x-1.18](https://ftp.drupal.org/files/projects/admin_toolbar-8.x-1.18.zip)
-[backup_migrate 8.x-4.0-alpha1](https://ftp.drupal.org/files/projects/backup_migrate-8.x-4.0-alpha1.zip)
-[captcha 8.x-1.0-beta1](https://ftp.drupal.org/files/projects/captcha-8.x-1.0-beta1.zip)
-[devel 8.x-1.0-rc1](https://ftp.drupal.org/files/projects/devel-8.x-1.0-rc1.zip)
-[geolocation 8.x-1.10](https://ftp.drupal.org/files/projects/geolocation-8.x-1.10.zip)
-[honeypot 8.x-1.23](https://ftp.drupal.org/files/projects/honeypot-8.x-1.23.zip)
-[xmlsitemap 8.x-1.0-alpha2](https://ftp.drupal.org/files/projects/xmlsitemap-8.x-1.0-alpha2.zip)
-[Geofield 8.x-1.0-alpha2](https://ftp.drupal.org/files/projects/geofield-8.x-1.0-alpha2.zip)
-[Leaflet 8.x-1.0-beta1](https://ftp.drupal.org/files/projects/leaflet-8.x-1.0-beta1.zip)
-[Pathauto 8.x-1.0-rc1](https://ftp.drupal.org/files/projects/pathauto-8.x-1.0-rc1.zip)
-[Ctools 8.x-3.0-alpha27](https://ftp.drupal.org/files/projects/ctools-8.x-3.0-alpha27.zip)
+[admin_toolbar 8.x-1.19](https://ftp.drupal.org/files/projects/admin_toolbar-8.x-1.19.zip)  
+[backup_migrate 8.x-4.0-alpha2](https://ftp.drupal.org/files/projects/backup_migrate-8.x-4.0-alpha2.zip)  
+[captcha 8.x-1.0-beta1](https://ftp.drupal.org/files/projects/captcha-8.x-1.0-beta1.zip)  
+[devel 8.x-1.0-rc1](https://ftp.drupal.org/files/projects/devel-8.x-1.0-rc1.zip)  
+[geolocation 8.x-1.10](https://ftp.drupal.org/files/projects/geolocation-8.x-1.10.zip)  
+[honeypot 8.x-1.24](https://ftp.drupal.org/files/projects/honeypot-8.x-1.24.zip)  
+[xmlsitemap 8.x-1.0-alpha2](https://ftp.drupal.org/files/projects/xmlsitemap-8.x-1.0-alpha2.zip)  
+[Geofield 8.x-1.0-alpha2](https://ftp.drupal.org/files/projects/geofield-8.x-1.0-alpha2.zip)  
+[Leaflet 8.x-1.0-beta1](https://ftp.drupal.org/files/projects/leaflet-8.x-1.0-beta1.zip)  
+[Pathauto 8.x-1.0-rc1](https://ftp.drupal.org/files/projects/pathauto-8.x-1.0-rc1.zip)  
+[Ctools 8.x-3.0-beta1](https://ftp.drupal.org/files/projects/ctools-8.x-3.0-beta1.zip)  
+[token 8.x-1.0-rc1](https://ftp.drupal.org/files/projects/token-8.x-1.0-rc1.zip)  
+[Contact Storage 8.x-1.0-beta8](https://ftp.drupal.org/files/projects/contact_storage-8.x-1.0-beta8.zip)  
 
 ## Installation de la dépendance geoPhp pour le module geofield
 Le tag --ignore-platform-reqs permet d'ignorer la version de php.
->composer require "phayes/geophp" --ignore-platform-reqs  
+>composer require "phayes/geophp" --ignore-platform-reqs
 Executer cette commande à la racine du projet lors d'une nouvelle installation ou une mise à jour du coeur
 
 # Démo
 [http://151.80.132.63/aveyron-demo/](http://151.80.132.63/aveyron-demo/)
 
 # Documentation
-[Documentation officiel D8](https://www.drupal.org/docs/8)
-[Convention de nommage](https://www.drupal.org/node/318)
-[Drupal Bootstrap Documentation](http://drupal-bootstrap.org/api/bootstrap)
+[Documentation officiel D8](https://www.drupal.org/docs/8)  
+[Convention de nommage](https://www.drupal.org/node/318)  
+[Drupal Bootstrap Documentation](http://drupal-bootstrap.org/api/bootstrap)  
 
 ## Fond de carte IGN
 Pré-requis :

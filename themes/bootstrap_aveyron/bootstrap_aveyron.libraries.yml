@@ -27,6 +27,14 @@ swiper:
   js:
     scripts/swiper/swiper.min.js: {}
 
+fancybox:
+  version: 1.x
+  css:
+    theme:
+      css/fancybox/jquery.fancybox.min.css: {}
+  js:
+    scripts/fancybox/jquery.fancybox.js: {}
+
 leaflet:
   version: 1.0.3
   css:
@@ -49,4 +57,9 @@ script-list-ens:
   version: 1.x
   js:
     scripts/script-list-ens.js: {}
+
+script-gallery:
+  version: 1.x
+  js:
+    scripts/script-gallery.js: {}
 
