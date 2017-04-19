@@ -63,6 +63,8 @@ jQuery( document ).ready(function() {
             var geoDataStarterPoint
             var geoDataTracePoint*/
 
+            /*console.log('geoDataTracePoint', geoDataTracePoint);*/
+
 
             var map = L.map("map").setView([geoDataTracePoint.coordinates[0][1],geoDataTracePoint.coordinates[0][0]], 14) ;
             L.tileLayer(
@@ -72,6 +74,14 @@ jQuery( document ).ready(function() {
                 maxZoom:18,
                 tileSize:256
             }).addTo(map);
+
+            var polyline = L.polyline(
+                geoDataTracePoint.coordinates,
+                {
+                    weight: 5,
+                    opacity: 0.7,
+                }
+            ).addTo(map);
 
             /* Function of Céline & Vincent
             onMapModelReady() {
@@ -127,7 +137,8 @@ jQuery( document ).ready(function() {
                     weight: 5,
                     opacity: 0.7,
                 }
-            ).addTo(map);*/
+            ).addTo(map);
+            */
 
 
 

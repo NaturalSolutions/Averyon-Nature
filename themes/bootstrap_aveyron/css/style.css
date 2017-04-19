@@ -10879,6 +10879,12 @@ span.arianne {
   text-transform: uppercase;
   color: #f6f4f1;
 }
+div.fancybox-caption {
+  text-align: center;
+}
+div.fancybox-caption a {
+  text-decoration: none;
+}
 .gallery div.img-block-link {
   height: 150px;
 }
@@ -10895,6 +10901,8 @@ span.arianne {
 .gallery div.img-block-link div.zoom h2 {
   margin: 0px;
   letter-spacing: 1px;
+  width: 100%;
+  word-break: break-word;
 }
 .spacies div.img-block-link a:hover,
 .pictures div.img-block-link a:hover,
@@ -12200,12 +12208,6 @@ body.path-frontpage div.fold6 div.leftZone div.secondHalf div.SpecialSmallBlock 
     font-size: 0.7em;
     margin-left: -5px;
   }
-}
-body.page-node-type-ens div.fancybox-caption {
-  text-align: center;
-}
-body.page-node-type-ens div.fancybox-caption a {
-  text-decoration: none;
 }
 body.page-node-type-ens iframe {
   height: 300px;
