@@ -15,6 +15,7 @@ jQuery( document ).ready(function() {
         /*
         * Quiz
         */
+        //I could use a framework
         var quizz = function(){
 
             $('.js-quizz-prop').on('click', function(e){
@@ -27,11 +28,26 @@ jQuery( document ).ready(function() {
 
             });
 
-            var nbErros;
-            var nbOk;
+            var nbErrors = 0;
+            var nbOk = 0;
+            var nbQuestions = 0;
 
             $('.js-validate').on('click', function(){
+                var empty = true;
+
                 $('.js-article-quizz').each(function(){
+                    $(this).find('.js-quizz-prop').each(function(){
+                        if($(this).hasClass('active')){
+                            empty = false;
+                        }
+                    });
+                });
+                if(empty){
+                    return;
+                }
+
+                $('.js-article-quizz').each(function(){
+                    nbQuestions++;
                     var answer = $(this).attr('answer');
                     $(this).find('.js-quizz-prop').each(function(){
                         if($(this).attr('code') == answer){
@@ -41,14 +57,53 @@ jQuery( document ).ready(function() {
                             }
                         } else {
                             if($(this).hasClass('active')){
-                                nbErros++;
+                                nbErrors++;
                                 $(this).addClass('btn-danger');
                             }
                         }
                         $(this).removeClass('active');
                     });
                 });
+
+
+                $('#popup').fadeIn('fast');
+                var title = $('.js-title').html('');
+                var subTitle = $('.js-sub-title').html('');
+                if (nbErrors > (nbQuestions/3)){
+                    title.html('Vous pouvez encore vous améliorer!');
+                } else  {
+                    if(!nbErrors){
+                        title.html('Bravo!');
+                        subTitle.html('Toutes les réponses sont exactes!');
+                    } else {
+                        title.html('Félicitation!');
+                        subTitle.html('Vous avez passé le quizz!');
+                    }
+                }
+
             });
+
+            var close = function(){
+                nbErrors = 0;
+                nbOk = 0;
+                nbQuestions = 0;
+                $('#popup').fadeOut();
+            };
+
+            $('js-inner-popup').on('click', function(e){
+                console.log(e);
+                if($(e.target).hasClass('js-inner-popup')){
+                    close();
+                }
+            }); 
+
+            $('.js-btn-close').on('click', function(){
+                close();
+            }); 
+
+            setTimeout(function(){
+                close();
+            }, 1000);
 
         }
 
@@ -159,9 +214,6 @@ jQuery( document ).ready(function() {
         }
 
         window.init = function() {
-
-            // not used ?
-            var Shuffle = window.shuffle;
 
             map();
             quizz();

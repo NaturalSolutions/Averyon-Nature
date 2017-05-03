@@ -70,6 +70,14 @@
 {{ attach_library('bootstrap_aveyron/fancybox') }}
 {{ attach_library('bootstrap_aveyron/script-ens') }}
 
+  <div id="popup" class="popup">
+    <div class="js-inner-popup inner-popup">
+      <h2 class="js-title text-center">Bravo!</h2>
+      <h3 class="js-sub-title text-center"></h3>
+      <button class="js-btn-close btn btn-default btn-special">Retourner au quizz</button>
+    </div>
+  </div>
+
   <!-- total main content should not be indide a single region -->
   <section class="headband" style="background-image: url({{ file_url(content.field_poster['#items'].entity.uri.value) }})">
     <h1>{{ node.title.value }}</h1>
@@ -114,6 +122,7 @@
         <div class="content">
         {{ content.body }}
         <br/>
+        <h3>RECOMMANDATIONS</h3>
         {{ data.recommandations|raw }}
         </div>
         <div class="col-xs-12 text-center">
