@@ -120,7 +120,7 @@ class AveyronAPIController extends ControllerBase {
         "vid" => (int) $entity->vid->value,
         "title" => $entity->title->value,
         "thematic" => (int) $entity->field_thematique_ens->target_id,
-        "startTrace" => $geom ? json_decode($geom->out('json'), true) : null,
+        "startPoint" => $geom ? json_decode($geom->out('json'), true) : null,
         "descriptionShort" => substr($entity->body->summary, 0, 255),
         "poster" => array(),
         "thumbnail" => array()
@@ -236,6 +236,7 @@ class AveyronAPIController extends ControllerBase {
       "title" => $entity->title->value,
       "thematic" => (int) $entity->field_thematique_ens->target_id,
       "info" => null,
+      "reco" => $entity->field_recommandations->value,
       "pdf" => null,
       "startPoint" => json_decode($geom->out('json'), true),
       "trace" => json_decode($geomTrace->out('json'), true),
@@ -391,10 +392,16 @@ class AveyronAPIController extends ControllerBase {
       $video->field_video_ens_value = explode("http://dai.ly/", $video->field_video_ens_value)[1];
       $chanVideo.=$video->field_video_ens_value.",";
     }
-    $chanVideo = substr_replace($chanVideo, "", -1)."&fields=id,thumbnail_url,title,tiny_url";
+    $chanVideo = substr_replace($chanVideo, "", -1)."&fields=id,thumbnail_480_url,title,tiny_url";
     // Example de call sur l'api Dailymotion : https://api.dailymotion.com/videos?ids=x5f5olp,x2c5umz&limit=30&fields=id,thumbnail_url,title,tiny_url
-    $result['videos'] = json_decode(file_get_contents($chanVideo));
-
+    $videoData = json_decode(file_get_contents($chanVideo), true);
+    if (isset($videoData['list'])) {
+      foreach ($videoData['list'] as &$video) {
+        $video['link'] = $video['tiny_url'];
+        $video['thumbnail'] = $video['thumbnail_480_url'];
+      }
+      $result['videos'] = $videoData['list'];
+    }
     /*
     * Taxons
     */
@@ -483,18 +490,25 @@ class AveyronAPIController extends ControllerBase {
     }
     $entities = $entityManager->getStorage('node')->loadMultiple($eventIds);
     $result = array();
+    $serializer = \Drupal::service('serializer');
     foreach ($entities as $entity) {
       $poster = $entity->field_poster->entity;
+      //$result[] = json_decode($serializer->serialize($entity, 'json', ['plugin_id' => 'entity']));
       $result[] = array(
-        id => (int) $entity->nid->value,
-        title => $entity->title->value,
-        place => $entity->field_place->value,
-        moment => $entity->field_moment_evt->value,
-        poster => file_create_url($poster->uri->value),
-        description => $entity->body->value,
-        descriptionShort => $entity->body->summary,
+        'id' => (int) $entity->nid->value,
+        'created' => (int) $entity->created->value,
+        'title' => $entity->title->value,
+        'place' => $entity->field_place->value,
+        'moment' => $entity->field_moment_evt->value,
+        'poster' => file_create_url($poster->uri->value),
+        'description' => $entity->body->value,
+        'descriptionShort' => $entity->body->summary,
       );
     }
+
+    usort($result, function($a, $b) {
+      return $a['created'] > $b['created'] ? -1 : 1;
+    });
 
     return new JsonResponse($result);
   }
@@ -531,8 +545,8 @@ class AveyronAPIController extends ControllerBase {
         "id" => (int) $entity->nid->value,
         "vid" => (int) $entity->vid->value,
         "title" => $entity->title->value,
-        "description" => $entity->body->summary,
-        "descriptionShort" => substr($entity->body->summary, 0, 255),
+        "description" => $entity->body->value,
+        "descriptionShort" => $entity->body->summary,
         "poster" => array(),
         "thumbnail" => array(),
         "gallery" => array(),
@@ -693,16 +707,16 @@ class AveyronAPIController extends ControllerBase {
       $to->setTimezone(new DateTimeZone('Europe/Paris'));*/
 
       $item = array(
-        id => (int) $entity->nid->value,
-        title => $entity->title->value,
-        place => $entity->field_place->value,
-        moment => $entity->field_moment_evt->value,
+        'id' => (int) $entity->nid->value,
+        'title' => $entity->title->value,
+        'place' => $entity->field_place->value,
+        'moment' => $entity->field_moment_evt->value,
         /*dateFrom => $from->format('c'),
         dateTo => $to->format('c'),
         displayHours => (bool) $entity->field_display_hours->value,*/
-        poster => file_create_url($poster->uri->value),
-        description => $entity->body->value,
-        descriptionShort => $entity->body->summary,
+        'poster' => file_create_url($poster->uri->value),
+        'description' => $entity->body->value,
+        'descriptionShort' => $entity->body->summary,
         //enss => array(),
       );
       /*$enss = $entity->field_ens;
@@ -741,8 +755,8 @@ class AveyronAPIController extends ControllerBase {
       foreach ($entity->field_gallery as $img) {
         $imgUri = $img->entity->getFileUri();
         $photos[] = array(
-          poster => entity_load('image_style', '900_par_600')->buildUrl($imgUri),
-          thumbnail => entity_load('image_style', '200_par_200')->buildUrl($imgUri)
+          'poster' => entity_load('image_style', '900_par_600')->buildUrl($imgUri),
+          'thumbnail' => entity_load('image_style', '200_par_200')->buildUrl($imgUri)
         );
       }
       if (isset($entity->field_video_ens)) {
