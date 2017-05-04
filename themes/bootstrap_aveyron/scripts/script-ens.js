@@ -112,6 +112,18 @@ jQuery( document ).ready(function() {
         /*
         * Map
         */
+
+        var southWest = L.latLng(43.65, 1.8);
+        var northEast = L.latLng(44.9, 3.5);
+        var bounds = L.latLngBounds(southWest, northEast);
+
+        var _icon = L.icon({
+          iconUrl:'../themes/bootstrap_aveyron/images/leaflet/debut_ens.png',
+          iconRetinaUrl:'../themes/bootstrap_aveyron/images/leaflet/debut_ens@2x.png',
+          iconAnchor: [11, 22],
+          shadowUrl: '../themes/bootstrap_aveyron/images/leaflet/marker-shadow.png',
+        })
+
         var map = function(){
 
             /*les deux variables de données :
@@ -120,102 +132,70 @@ jQuery( document ).ready(function() {
 
             /*console.log('geoDataTracePoint', geoDataTracePoint);*/
 
-
-            var map = L.map("map").setView([geoDataTracePoint.coordinates[0][1],geoDataTracePoint.coordinates[0][0]], 14) ;
+            var center = L.latLng(geoDataStarterPoint.field_start_trace_lat, geoDataStarterPoint.field_start_trace_lon)
+            var map = L.map("map", { maxBounds: bounds }).setView(center, 14) ;
             L.tileLayer(
             'http://wxs.ign.fr/uxfc79ihyesfzukqvfqcev40/geoportail/wmts?service=WMTS&request=GetTile&version=1.0.0&tilematrixset=PM&tilematrix={z}&tilecol={x}&tilerow={y}&layer=GEOGRAPHICALGRIDSYSTEMS.MAPS&format=image/jpeg&style=normal',
             {
-                minZoom:0,
+                bounds: bounds,
+                minZoom:9,
                 maxZoom:18,
-                tileSize:256
+                tileSize:256,
+                attribution: 'Carte IGN'
             }).addTo(map);
 
-            var polyline = L.polyline(
-                geoDataTracePoint.coordinates,
-                {
-                    weight: 5,
-                    opacity: 0.7,
+            var startMarker = L.marker(center, { icon: _icon })
+              .bindPopup('Départ')
+              .openPopup();
+
+            var polyline = L.geoJSON(geoDataTracePoint, {
+              style: function (feature) {
+                return {
+                  "color": "#4928d9",
+                  "weight": 5,
+                  "opacity": 0.8 };
                 }
+            }
             ).addTo(map);
 
-            /* Function of Céline & Vincent
-            onMapModelReady() {
-                let center = L.latLng(this.mapModel.center.lat, this.mapModel.center.lng)
-                this._map = L
-                  .map(this.mapEl, {
-                    minZoom: this.mapModel.cacheZoom - 1,
-                    maxZoom: this.mapModel.cacheZoom,
-                  })
-                  .setView(center, this.mapModel.cacheZoom)
-
-                this.mapModel.tileLayer.addTo(this._map);
-
-                console.log(this._tourStart);
-
-                L.marker(center, { icon: this._icon })
-                  .bindPopup('Départ')
-                  .openPopup()
-                  .addTo(this._map);
-
-                console.log(this._trace);
-                this._trace = L.geoJSON(this._trace, {
-                  style: function (feature) {
-                    return {
-                      "color": "#4928d9",
-                      "weight": 8,
-                      "opacity": 0.8 };
-                  }//,
-                  // onEachFeature: function (feature, layer) {
-                  //     layer.bindPopup(this.tours[0].title);
-                  // }
-                }).addTo(this._map)
-                //this._map.fitBounds(this._trace.getBounds());
-
-                console.log(this.platform.platforms())
-                if (this.platform.is('cordova')) {
-                  this.watchConnection();
+            map.on('zoomend', function () {
+                var currentZoom = map.getZoom();
+                if (currentZoom < 12) {
+                    polyline.remove(map);
+                    startMarker.addTo(map);
                 }
-              }
-            */
-
-
-
-            /* OpenLayer init map
-            var map = L.map('map').setView(geoDataTracePoint.coordinates[0], 14);
-            L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-            }).addTo(map);
-
-            var polyline = L.polyline(
-                geoDataTracePoint.coordinates,
-                {
-                    weight: 5,
-                    opacity: 0.7,
+                else {
+                    polyline.addTo(map);
+                    startMarker.remove(map);
                 }
-            ).addTo(map);
-            */
-
-
-
+            });
 
             var quizzMap;
             $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
                 if($(e.currentTarget).attr('passed') === undefined && e.currentTarget.hash  === '#quizz'){
-                  quizzMap = L.map('quizzMap').setView([geoDataTracePoint.coordinates[0][1],geoDataTracePoint.coordinates[0][0]], 14);
+                  quizzMap = L.map('quizzMap', { maxBounds: bounds }).setView([geoDataTracePoint.coordinates[0][1],geoDataTracePoint.coordinates[0][0]], 14);
                   //L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
                   L.tileLayer('http://wxs.ign.fr/uxfc79ihyesfzukqvfqcev40/geoportail/wmts?service=WMTS&request=GetTile&version=1.0.0&tilematrixset=PM&tilematrix={z}&tilecol={x}&tilerow={y}&layer=GEOGRAPHICALGRIDSYSTEMS.MAPS&format=image/jpeg&style=normal', {
                       //attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                      attribution: ''
+                      bounds: bounds,
+                      minZoom:9,
+                      maxZoom:18,
+                      attribution: 'Carte IGN'
                   }).addTo(quizzMap);
 
+                  polyline.addTo(quizzMap);
 
-                  var polyline = L.polyline(
-                      geoDataTracePoint.coordinates,
-                      {
-                          weight: 5,
-                          opacity: .7,
+                  quizzMap.on('zoomend', function () {
+                      var currentZoom = quizzMap.getZoom();
+                      if (currentZoom < 12) {
+                          polyline.remove(quizzMap);
+                          startMarker.addTo(quizzMap);
                       }
-                  ).addTo(quizzMap);
+                      else {
+                          polyline.addTo(quizzMap);
+                          startMarker.remove(quizzMap);
+                      }
+                  });
                 }
 
                 $(e.currentTarget).attr('passed', 'true');
