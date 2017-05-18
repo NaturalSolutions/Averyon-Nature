@@ -291,7 +291,7 @@
         <div class="col-sm-8">
 
           {% for item in data.quizz %}
-            <article class="js-article-quizz quizz" answer="{{ item.answerCode }}">
+            <article class="js-article-quizz quizz" answer="{{ item.answerCode }}" proposition="0">
               <h3>{{ item.title }}</h3>
               <div class="row img">
                 <img class="col-xs-12" src="{{item.uri}}" alt="{{item.field_poster_alt}}" title="{{item.field_poster_title}}">

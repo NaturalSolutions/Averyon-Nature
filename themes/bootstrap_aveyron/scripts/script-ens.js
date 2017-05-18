@@ -25,7 +25,10 @@ jQuery( document ).ready(function() {
                     $(this).removeClass('btn-danger');
                 })
                 $(e.currentTarget).addClass('active');
-
+                var parent = $(e.currentTarget).parent().parent().parent();
+                console.log(parent);
+                var code = $(e.currentTarget).attr('code');
+                parent.attr('proposition', code);
             });
 
             var nbErrors = 0;
@@ -33,6 +36,26 @@ jQuery( document ).ready(function() {
             var nbQuestions = 0;
 
             $('.js-validate').on('click', function(){
+                
+
+                $('.js-article-quizz').each(function(){
+                    var propo = $(this).attr('proposition');
+                    var answer = $(this).attr('answer');
+                    
+                    if(propo == answer){
+                        console.log('success');
+                    } else {
+                        console.log('wrong');
+                    }
+
+                });
+
+
+                
+
+                return;
+
+
                 var empty = true;
 
                 $('.js-article-quizz').each(function(){
@@ -42,6 +65,7 @@ jQuery( document ).ready(function() {
                         }
                     });
                 });
+
                 if(empty){
                     return;
                 }

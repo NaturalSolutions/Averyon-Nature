@@ -10683,7 +10683,7 @@ ul {
 }
 .footer div.preFooter div.rightZone div.wrapperGris a.logoBlock {
   display: block;
-  background: url(../images/logo_cg_aveyron.jpg) no-repeat 50% 50%;
+  background: url(../images/logo_cg_aveyron.png) no-repeat 50% 50%;
   height: 110px;
 }
 .footer div.preFooter div.rightZone div.wrapperGris div.infoBlock {
@@ -10791,12 +10791,6 @@ header {
 .region-content p {
   line-height: 1.5em;
 }
-h1,
-h2,
-h3,
-h4 {
-  word-break: break-word;
-}
 h1 {
   text-transform: uppercase;
   font-family: 'Viper Nora';
@@ -10816,6 +10810,7 @@ h2 {
   font-weight: 600;
   margin: 20px 0px;
   letter-spacing: 2px;
+  font-size: 1.7em;
 }
 h3 {
   margin: 20px 0px;
@@ -11440,8 +11435,8 @@ body.path-frontpage div.fold3 div.map .pointEns.nidEns_4 span.pointBtn {
   left: auto;
 }
 body.path-frontpage div.fold3 div.map .pointEns.nidEns_5 {
-  left: 340px;
-  top: 591px;
+  left: 160px;
+  top: 431px;
 }
 body.path-frontpage div.fold3 div.map .pointEns.nidEns_5 span.pointBtn {
   right: 0;
@@ -11913,7 +11908,7 @@ body.path-frontpage div.fold6 div.leftZone div.secondHalf div.SpecialSmallBlock 
     left: calc(130px - 138px);
   }
   body.path-frontpage section.wrapper div.fold3 div.map .nidEns_5 {
-    left: calc(340px - 138px);
+    left: calc(160px - 138px);
   }
   body.path-frontpage section.wrapper div.fold3 div.map .nidEns_6 {
     left: calc(233px - 138px);
@@ -12029,7 +12024,7 @@ body.path-frontpage div.fold6 div.leftZone div.secondHalf div.SpecialSmallBlock 
     left: calc(130px - 23px);
   }
   body.path-frontpage section.wrapper div.fold3 div.map .nidEns_5 {
-    left: calc(340px - 23px);
+    left: calc(160px - 23px);
   }
   body.path-frontpage section.wrapper div.fold3 div.map .nidEns_6 {
     left: calc(233px - 23px);
