@@ -29,6 +29,10 @@ header{
 
 }
 
+h1, h2, h3, h4{
+  word-break: break-word;
+}
+
 h1{
 	//"Evenements", "Gallerie", "ENS", "welcome (hp)"
 	text-transform: uppercase;
@@ -489,5 +493,17 @@ body.page-node-type-page-partenaire{
     &.big{
       height: 0;
     }
+  }
+}
+
+
+.fancybox-caption-wrap{
+  padding: 60px 0px 0;
+}
+
+@media (max-height: 650px) {
+  .navbar-nav > li:nth-child(8), .navbar-nav > li:nth-child(9){
+    position: relative;
+    bottom: 0px;
   }
 }

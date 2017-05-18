@@ -15,24 +15,34 @@
  */
 #}
 
-<!-- <pre>{{ dump(infoFooter) }}</pre> -->
-
 <div class="row preFooter">
 	<div class="container">
 		<div class="col-md-6 leftZone">
-			<p>Suivez-nous <span class="icon_twt"></span><span class="icon_rss"></span></p>
-			<a href="#" class="news">Newsletter<br/><span>Inscrivez-vous !</span></a>
+			<div class="pull-right">
+				<p class="follow">Suivez-nous <span class="icon_twt"></span><span class="icon_rss"></span></p>
+			</div>
+			<div class="col-sm-8 col-xs-12 no-padding"><p>Découvrez l'application mobile!</p></div>
+			<div class="mobile">
+				<a href="#" class="btn">
+					<span class="icon icon-android"></span>
+					<span>Disponnible sur Google play</span>
+				</a>
+				<a href="#" class="btn">
+					<span class="icon icon-apple"></span>
+					<span>Disponnible sur Apple store</span>
+				</a>
+			</div>
 		</div>
 		<div class="col-md-6 rightZone">
 			<div class="row wrapperGris">
-				<div class="col-sm-2 logoBlock"></div>
+				<a href="http://aveyron.fr/" target="blank" class="col-sm-2 logoBlock"></a>
 				<div class="col-sm-4 infoBlock">
 					{{ infoFooter.address[0].field_infos_gris_value|raw }}
 				</div>
-				<div class="col-sm-6 contactBlock">
+				<a href="contact" class="col-sm-6 contactBlock">
 					<p class="preTitle">Contactez-nous </p>
 					<p>Retrouvez l’annuaire de tous nos services</p>
-				</div>
+				</a>
 			</div>
 		</div>
 	</div>
