@@ -14,6 +14,11 @@ jQuery( document ).ready(function() {
 
         /*
         * Quiz
+
+        Si pas toutes question: Ils vous restent des questions sans réponses.
+        Questions vrais/fausses répondues affichées (pas les réponses exactes)
+
+
         */
         //I could use a framework
         var quizz = function(){
@@ -26,75 +31,57 @@ jQuery( document ).ready(function() {
                 })
                 $(e.currentTarget).addClass('active');
                 var parent = $(e.currentTarget).parent().parent().parent();
-                console.log(parent);
                 var code = $(e.currentTarget).attr('code');
                 parent.attr('proposition', code);
+
             });
 
             var nbErrors = 0;
             var nbOk = 0;
             var nbQuestions = 0;
 
+            var nbEmpty = 0;
+
             $('.js-validate').on('click', function(){
                 
-
-                $('.js-article-quizz').each(function(){
-                    var propo = $(this).attr('proposition');
-                    var answer = $(this).attr('answer');
-                    
-                    if(propo == answer){
-                        console.log('success');
-                    } else {
-                        console.log('wrong');
-                    }
-
-                });
-
-
-                
-
-                return;
-
-
-                var empty = true;
-
-                $('.js-article-quizz').each(function(){
-                    $(this).find('.js-quizz-prop').each(function(){
-                        if($(this).hasClass('active')){
-                            empty = false;
-                        }
-                    });
-                });
-
-                if(empty){
-                    return;
-                }
-
                 $('.js-article-quizz').each(function(){
                     nbQuestions++;
+
+                    var propo = $(this).attr('proposition');
                     var answer = $(this).attr('answer');
-                    $(this).find('.js-quizz-prop').each(function(){
-                        if($(this).attr('code') == answer){
-                            $(this).addClass('btn-success');
-                            if($(this).hasClass('active')){
-                                nbOk++;
-                            }
+
+                    if(propo === 'none') {
+                        nbEmpty++;
+                    } else {
+                        var btnActive = $(this).find('.js-quizz-prop.active');
+                        btnActive.removeClass('active');
+                        
+                        if(propo == answer){
+                            nbOk ++;
+                            btnActive.addClass('btn-success');
                         } else {
-                            if($(this).hasClass('active')){
-                                nbErrors++;
-                                $(this).addClass('btn-danger');
-                            }
+                            nbErrors ++;
+                            btnActive.addClass('btn-danger');
                         }
-                        $(this).removeClass('active');
-                    });
+                    }
+
                 });
 
 
                 $('#popup').fadeIn('fast');
                 var title = $('.js-title').html('');
                 var subTitle = $('.js-sub-title').html('');
+
+
+                if(nbEmpty > 0){
+                    title.html('Il vous reste des questions sans réponses ;)');
+                    return;
+                }
+                
+
                 if (nbErrors > (nbQuestions/3)){
-                    title.html('Vous pouvez encore vous améliorer!');
+                    title.html('Essayez encore,');
+                    subTitle.html('Vous pouvez vous améliorer!');
                 } else  {
                     if(!nbErrors){
                         title.html('Bravo!');
@@ -105,17 +92,19 @@ jQuery( document ).ready(function() {
                     }
                 }
 
+                return;
+
             });
 
             var close = function(){
                 nbErrors = 0;
                 nbOk = 0;
                 nbQuestions = 0;
+                nbEmpty = 0;
                 $('#popup').fadeOut();
             };
 
             $('js-inner-popup').on('click', function(e){
-                console.log(e);
                 if($(e.target).hasClass('js-inner-popup')){
                     close();
                 }
