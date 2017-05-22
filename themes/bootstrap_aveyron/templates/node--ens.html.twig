@@ -70,6 +70,14 @@
 {{ attach_library('bootstrap_aveyron/fancybox') }}
 {{ attach_library('bootstrap_aveyron/script-ens') }}
 
+  <div id="popup" class="popup">
+    <div class="js-inner-popup inner-popup">
+      <h2 class="js-title text-center">Bravo!</h2>
+      <h3 class="js-sub-title text-center"></h3>
+      <button class="js-btn-close btn btn-default btn-special">Retourner au quizz</button>
+    </div>
+  </div>
+
   <!-- total main content should not be indide a single region -->
   <section class="headband" style="background-image: url({{ file_url(content.field_poster['#items'].entity.uri.value) }})">
     <h1>{{ node.title.value }}</h1>
@@ -114,6 +122,7 @@
         <div class="content">
         {{ content.body }}
         <br/>
+        <h3>RECOMMANDATIONS</h3>
         {{ data.recommandations|raw }}
         </div>
         <div class="col-xs-12 text-center">
@@ -147,7 +156,7 @@
     <div class="clearfix">
       <div class="col-sm-8">
       <h2>Galerie</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur minus labore quo consequatur magnam, culpa velit est quae possimus nostrum numquam, doloribus quos eos aliquam. Debitis ex odit vitae iusto. <a href="{{ url('<front>') }}galerie">En voir +</a></p>
+        <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur minus labore quo consequatur magnam, culpa velit est quae possimus nostrum numquam, doloribus quos eos aliquam. Debitis ex odit vitae iusto. --> <a href="{{ url('<front>') }}galerie">En voir +</a></p>
       </div>
     </div>
 
@@ -282,7 +291,7 @@
         <div class="col-sm-8">
 
           {% for item in data.quizz %}
-            <article class="js-article-quizz quizz" answer="{{ item.answerCode }}">
+            <article class="js-article-quizz quizz" answer="{{ item.answerCode }}" proposition="none">
               <h3>{{ item.title }}</h3>
               <div class="row img">
                 <img class="col-xs-12" src="{{item.uri}}" alt="{{item.field_poster_alt}}" title="{{item.field_poster_title}}">

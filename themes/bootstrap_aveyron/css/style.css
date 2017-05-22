@@ -4987,7 +4987,7 @@ input[type="button"].btn-block {
   outline-color: transparent !important;
 }
 .btn-main {
-  margin: 75px;
+  margin: 75px 0px;
 }
 .btn-default,
 .btn-default:focus,
@@ -10592,9 +10592,46 @@ ul {
   margin-top: 45px;
   border-top: 1px solid #E5E5E5;
 }
+.footer .follow {
+  float: right;
+  margin-right: 15px;
+}
+.footer .mobile a.btn {
+  color: white;
+  background: #606257;
+  padding: 10px;
+  border-radius: 0px;
+  text-transform: inherit;
+  margin: 5px 0px;
+  text-align: left;
+  font-size: 0.95em;
+  padding: 10px 20px;
+  border-radius: 3px;
+  min-width: 285px;
+  transition: all 0.1s ease;
+}
+.footer .mobile a.btn:hover {
+  background: #ff7815;
+}
+.footer .mobile a.btn span {
+  vertical-align: middle;
+  display: inline-block;
+}
+.footer .mobile a.btn span.icon {
+  width: 25px;
+  height: 25px;
+  background-size: contain!important;
+  margin-right: 20px;
+}
+.footer .mobile a.btn span.icon-android {
+  background: url(../images/Gstore.png) no-repeat center center;
+}
+.footer .mobile a.btn span.icon-apple {
+  background: url(../images/Astore.png) no-repeat center center;
+}
 .footer div.preFooter {
   min-height: 150px;
-  padding-top: 15px;
+  padding: 15px 0px;
   background: url(../images/colorBarPreFooter.jpg) no-repeat 50% 100% #31342a;
 }
 .footer div.preFooter div.leftZone p {
@@ -10644,8 +10681,9 @@ ul {
   padding: 10px 1%;
   background-color: #dfded8;
 }
-.footer div.preFooter div.rightZone div.wrapperGris div.logoBlock {
-  background: url(../images/logo_cg_aveyron.jpg) no-repeat 50% 50%;
+.footer div.preFooter div.rightZone div.wrapperGris a.logoBlock {
+  display: block;
+  background: url(../images/logo_cg_aveyron.png) no-repeat 50% 50%;
   height: 110px;
 }
 .footer div.preFooter div.rightZone div.wrapperGris div.infoBlock {
@@ -10655,18 +10693,20 @@ ul {
 .footer div.preFooter div.rightZone div.wrapperGris div.infoBlock p {
   font-size: 0.9em;
 }
-.footer div.preFooter div.rightZone div.wrapperGris div.contactBlock {
+.footer div.preFooter div.rightZone div.wrapperGris a.contactBlock {
+  display: block;
   background-color: #f3f5f2;
   text-align: center;
   padding: 10px 1%;
   margin-top: 10px;
 }
-.footer div.preFooter div.rightZone div.wrapperGris div.contactBlock p {
+.footer div.preFooter div.rightZone div.wrapperGris a.contactBlock p {
+  color: #262626;
   padding: 0 20%;
   font-size: 0.9em;
   font-family: 'Asap-Regular';
 }
-.footer div.preFooter div.rightZone div.wrapperGris div.contactBlock p.preTitle {
+.footer div.preFooter div.rightZone div.wrapperGris a.contactBlock p.preTitle {
   padding: 0;
   font-family: 'Asap-Bold';
   font-size: 1.3em;
@@ -10770,6 +10810,7 @@ h2 {
   font-weight: 600;
   margin: 20px 0px;
   letter-spacing: 2px;
+  font-size: 1.7em;
 }
 h3 {
   margin: 20px 0px;
@@ -10835,6 +10876,9 @@ b {
   font-family: 'MyriadPro semiBold';
   font-weight: normal;
   letter-spacing: 1px;
+}
+body.page-node-type-taxon .headband {
+  min-height: 970px;
 }
 .headband {
   position: relative;
@@ -11178,6 +11222,16 @@ body.page-node-type-page-partenaire section img {
     height: 0;
   }
 }
+.fancybox-caption-wrap {
+  padding: 60px 0px 0;
+}
+@media (max-height: 650px) {
+  .navbar-nav > li:nth-child(8),
+  .navbar-nav > li:nth-child(9) {
+    position: relative;
+    bottom: 0px;
+  }
+}
 /*
 	Specific font for Homepage
 */
@@ -11331,7 +11385,6 @@ body.path-frontpage div.fold3 div.descroZone img {
 }
 body.path-frontpage div.fold3 div.descroZone a {
   margin-left: -57%;
-  margin-top: 30px;
 }
 body.path-frontpage div.fold3 div.descroZone div.descroBlock {
   background-color: rgba(255, 255, 255, 0.8);
@@ -11374,16 +11427,16 @@ body.path-frontpage div.fold3 div.map .pointEns:hover a {
   text-decoration: none;
 }
 body.path-frontpage div.fold3 div.map .pointEns.nidEns_4 {
-  left: 120px;
-  top: 325px;
+  left: 130px;
+  top: 310px;
 }
 body.path-frontpage div.fold3 div.map .pointEns.nidEns_4 span.pointBtn {
   right: 0;
   left: auto;
 }
 body.path-frontpage div.fold3 div.map .pointEns.nidEns_5 {
-  left: 340px;
-  top: 591px;
+  left: 160px;
+  top: 431px;
 }
 body.path-frontpage div.fold3 div.map .pointEns.nidEns_5 span.pointBtn {
   right: 0;
@@ -11394,36 +11447,36 @@ body.path-frontpage div.fold3 div.map .pointEns.nidEns_6 {
   top: 401px;
 }
 body.path-frontpage div.fold3 div.map .pointEns.nidEns_7 {
-  left: 478px;
+  left: 500px;
   top: 141px;
 }
 body.path-frontpage div.fold3 div.map .pointEns.nidEns_8 {
-  left: 662px;
-  top: 560px;
+  left: 625px;
+  top: 535px;
 }
 body.path-frontpage div.fold3 div.map .pointEns.nidEns_9 {
-  left: 592px;
-  top: 596px;
+  left: 585px;
+  top: 565px;
 }
 body.path-frontpage div.fold3 div.map .pointEns.nidEns_10 {
-  left: 643px;
-  top: 532px;
+  left: 685px;
+  top: 515px;
 }
 body.path-frontpage div.fold3 div.map .pointEns.nidEns_11 {
   left: 355px;
-  top: 549px;
+  top: 479px;
 }
 body.path-frontpage div.fold3 div.map .pointEns.nidEns_11 span.pointBtn {
   right: 0;
   left: auto;
 }
 body.path-frontpage div.fold3 div.map .pointEns.nidEns_12 {
-  left: 482px;
-  top: 497px;
+  left: 440px;
+  top: 370px;
 }
 body.path-frontpage div.fold3 div.map .pointEns.nidEns_13 {
-  left: 367px;
-  top: 460px;
+  left: 175px;
+  top: 350px;
 }
 body.path-frontpage div.fold3 div.map .pointEns.nidEns_13 span.pointBtn {
   right: 0;
@@ -11446,8 +11499,8 @@ body.path-frontpage div.fold3 div.map .pointEns.nidEns_15 span.pointBtn {
   left: auto;
 }
 body.path-frontpage div.fold3 div.map .pointEns.nidEns_16 {
-  left: 421px;
-  top: 623px;
+  left: 425px;
+  top: 615px;
   width: 110px;
   text-align: center;
 }
@@ -11456,7 +11509,7 @@ body.path-frontpage div.fold3 div.map .pointEns.nidEns_16 span.pointBtn {
   left: auto;
 }
 body.path-frontpage div.fold3 div.map .pointEns.nidEns_17 {
-  left: 640px;
+  left: 660px;
   top: 485px;
 }
 body.path-frontpage div.fold3 div.map .pointEns.nidEns_18 {
@@ -11464,8 +11517,8 @@ body.path-frontpage div.fold3 div.map .pointEns.nidEns_18 {
   top: 427px;
 }
 body.path-frontpage div.fold3 div.map .pointEns.nidEns_19 {
-  left: 458px;
-  top: 353px;
+  left: 465px;
+  top: 340px;
 }
 body.path-frontpage div.fold3 div.map .pointEns.nidEns_20 {
   left: 340px;
@@ -11477,15 +11530,15 @@ body.path-frontpage div.fold3 div.map .pointEns.nidEns_20 span.pointBtn {
 }
 body.path-frontpage div.fold3 div.map .pointEns.nidEns_21 {
   left: 347px;
-  top: 286px;
+  top: 305px;
 }
 body.path-frontpage div.fold3 div.map .pointEns.nidEns_21 span.pointBtn {
   right: 0;
   left: auto;
 }
 body.path-frontpage div.fold3 div.map .pointEns.nidEns_22 {
-  left: 425px;
-  top: 244px;
+  left: 463px;
+  top: 165px;
 }
 body.path-frontpage div.fold3 div.map .pointEns a {
   font-family: 'MyriadPro semiBold';
@@ -11852,34 +11905,34 @@ body.path-frontpage div.fold6 div.leftZone div.secondHalf div.SpecialSmallBlock 
     background-position: -40px 50%;
   }
   body.path-frontpage section.wrapper div.fold3 div.map .nidEns_4 {
-    left: calc(120px - 138px);
+    left: calc(130px - 138px);
   }
   body.path-frontpage section.wrapper div.fold3 div.map .nidEns_5 {
-    left: calc(340px - 138px);
+    left: calc(160px - 138px);
   }
   body.path-frontpage section.wrapper div.fold3 div.map .nidEns_6 {
     left: calc(233px - 138px);
   }
   body.path-frontpage section.wrapper div.fold3 div.map .nidEns_7 {
-    left: calc(478px - 138px);
+    left: calc(500px - 138px);
   }
   body.path-frontpage section.wrapper div.fold3 div.map .nidEns_8 {
-    left: calc(662px - 138px);
+    left: calc(625px - 138px);
   }
   body.path-frontpage section.wrapper div.fold3 div.map .nidEns_9 {
-    left: calc(592px - 138px);
+    left: calc(585px - 138px);
   }
   body.path-frontpage section.wrapper div.fold3 div.map .nidEns_10 {
-    left: calc(643px - 138px);
+    left: calc(685px - 138px);
   }
   body.path-frontpage section.wrapper div.fold3 div.map .nidEns_11 {
     left: calc(355px - 138px);
   }
   body.path-frontpage section.wrapper div.fold3 div.map .nidEns_12 {
-    left: calc(482px - 138px);
+    left: calc(440px - 138px);
   }
   body.path-frontpage section.wrapper div.fold3 div.map .nidEns_13 {
-    left: calc(367px - 138px);
+    left: calc(175px - 138px);
   }
   body.path-frontpage section.wrapper div.fold3 div.map .nidEns_14 {
     left: calc(120px - 138px);
@@ -11888,16 +11941,16 @@ body.path-frontpage div.fold6 div.leftZone div.secondHalf div.SpecialSmallBlock 
     left: calc(125px - 138px);
   }
   body.path-frontpage section.wrapper div.fold3 div.map .nidEns_16 {
-    left: calc(421px - 138px);
+    left: calc(425px - 138px);
   }
   body.path-frontpage section.wrapper div.fold3 div.map .nidEns_17 {
-    left: calc(640px - 138px);
+    left: calc(660px - 138px);
   }
   body.path-frontpage section.wrapper div.fold3 div.map .nidEns_18 {
     left: calc(555px - 138px);
   }
   body.path-frontpage section.wrapper div.fold3 div.map .nidEns_19 {
-    left: calc(458px - 138px);
+    left: calc(465px - 138px);
   }
   body.path-frontpage section.wrapper div.fold3 div.map .nidEns_20 {
     left: calc(340px - 138px);
@@ -11906,7 +11959,7 @@ body.path-frontpage div.fold6 div.leftZone div.secondHalf div.SpecialSmallBlock 
     left: calc(347px - 138px);
   }
   body.path-frontpage section.wrapper div.fold3 div.map .nidEns_22 {
-    left: calc(425px - 138px);
+    left: calc(463px - 138px);
   }
   body.path-frontpage section.wrapper div.fold3 div.descroZone {
     margin-top: 100px;
@@ -11968,34 +12021,34 @@ body.path-frontpage div.fold6 div.leftZone div.secondHalf div.SpecialSmallBlock 
     width: 100%;
   }
   body.path-frontpage section.wrapper div.fold3 div.map .nidEns_4 {
-    left: calc(120px - 23px);
+    left: calc(130px - 23px);
   }
   body.path-frontpage section.wrapper div.fold3 div.map .nidEns_5 {
-    left: calc(340px - 23px);
+    left: calc(160px - 23px);
   }
   body.path-frontpage section.wrapper div.fold3 div.map .nidEns_6 {
     left: calc(233px - 23px);
   }
   body.path-frontpage section.wrapper div.fold3 div.map .nidEns_7 {
-    left: calc(478px - 23px);
+    left: calc(500px - 23px);
   }
   body.path-frontpage section.wrapper div.fold3 div.map .nidEns_8 {
-    left: calc(662px - 23px);
+    left: calc(625px - 23px);
   }
   body.path-frontpage section.wrapper div.fold3 div.map .nidEns_9 {
-    left: calc(592px - 23px);
+    left: calc(585px - 23px);
   }
   body.path-frontpage section.wrapper div.fold3 div.map .nidEns_10 {
-    left: calc(643px - 23px);
+    left: calc(685px - 23px);
   }
   body.path-frontpage section.wrapper div.fold3 div.map .nidEns_11 {
     left: calc(355px - 23px);
   }
   body.path-frontpage section.wrapper div.fold3 div.map .nidEns_12 {
-    left: calc(482px - 23px);
+    left: calc(440px - 23px);
   }
   body.path-frontpage section.wrapper div.fold3 div.map .nidEns_13 {
-    left: calc(367px - 23px);
+    left: calc(175px - 23px);
   }
   body.path-frontpage section.wrapper div.fold3 div.map .nidEns_14 {
     left: calc(120px - 23px);
@@ -12004,16 +12057,16 @@ body.path-frontpage div.fold6 div.leftZone div.secondHalf div.SpecialSmallBlock 
     left: calc(125px - 23px);
   }
   body.path-frontpage section.wrapper div.fold3 div.map .nidEns_16 {
-    left: calc(421px - 23px);
+    left: calc(425px - 23px);
   }
   body.path-frontpage section.wrapper div.fold3 div.map .nidEns_17 {
-    left: calc(640px - 23px);
+    left: calc(660px - 23px);
   }
   body.path-frontpage section.wrapper div.fold3 div.map .nidEns_18 {
     left: calc(555px - 23px);
   }
   body.path-frontpage section.wrapper div.fold3 div.map .nidEns_19 {
-    left: calc(458px - 23px);
+    left: calc(465px - 23px);
   }
   body.path-frontpage section.wrapper div.fold3 div.map .nidEns_20 {
     left: calc(340px - 23px);
@@ -12022,7 +12075,7 @@ body.path-frontpage div.fold6 div.leftZone div.secondHalf div.SpecialSmallBlock 
     left: calc(347px - 23px);
   }
   body.path-frontpage section.wrapper div.fold3 div.map .nidEns_22 {
-    left: calc(425px - 23px);
+    left: calc(463px - 23px);
   }
   body.path-frontpage section.wrapper div.fold3 div.descroZone {
     display: none;
@@ -12208,6 +12261,35 @@ body.path-frontpage div.fold6 div.leftZone div.secondHalf div.SpecialSmallBlock 
     font-size: 0.7em;
     margin-left: -5px;
   }
+}
+body.page-node-type-ens div.popup {
+  display: none;
+  z-index: 2000;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.2);
+  width: 100%;
+  height: 100%;
+}
+body.page-node-type-ens div.popup div.inner-popup {
+  height: 300px;
+  width: 350px;
+  background: white;
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  margin: auto;
+  padding: 50px;
+  border-radius: 3px;
+}
+body.page-node-type-ens div.popup div.inner-popup button {
+  position: absolute;
+  bottom: 0px;
+  border-radius: 0px;
+  margin: inherit;
+  width: 100%;
+  left: 0;
 }
 body.page-node-type-ens iframe {
   height: 300px;

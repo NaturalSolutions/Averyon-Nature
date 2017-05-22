@@ -47,11 +47,55 @@ ol, ul {
 
 // Footer.
 .footer {
+
+  .follow{
+    float: right;
+    margin-right: 15px;
+  }
+
+  .mobile{
+    a.btn{
+      color: white;
+      background: rgb(96, 98, 87);
+      border-radius: 0px;
+      padding: 10px;
+      border-radius: 0px;
+      text-transform: inherit;
+      margin: 5px 0px;
+      text-align: left;
+      font-size: 0.95em;
+      padding: 10px 20px;
+      border-radius: 3px;
+      min-width: 285px;
+      transition: all 0.1s ease;
+      &:hover{
+        background: rgb(255, 120, 21);
+      }
+      span{
+        vertical-align: middle;
+        display: inline-block;
+        &.icon{
+          width: 25px;
+          height: 25px;
+          background-size: contain!important;
+          margin-right: 20px;
+        }
+        &.icon-android{
+          background: url(../images/Gstore.png) no-repeat center center;
+        }
+        &.icon-apple{
+          background: url(../images/Astore.png) no-repeat center center;
+        }
+      }
+    }
+
+  }
+
   margin-top: 45px;
   border-top: 1px solid #E5E5E5;
   div.preFooter{
     min-height: 150px;
-    padding-top: 15px;
+    padding: 15px 0px;
     background: url(../images/colorBarPreFooter.jpg) no-repeat 50% 100% @bg-preFooter-aveyron;
     div.leftZone{
       p{
@@ -102,8 +146,9 @@ ol, ul {
         -moz-box-shadow: 1px 1px 4px rgba(0,0,0,0.6);
         padding: 10px 1%;
         background-color: @bg-wrapperBlock-preFooter-aveyron;
-        div.logoBlock{
-          background: url(../images/logo_cg_aveyron.jpg) no-repeat 50% 50%;
+        a.logoBlock{
+          display: block;
+          background: url(../images/logo_cg_aveyron.png) no-repeat 50% 50%;
           height: 110px;
         }
         div.infoBlock{
@@ -113,12 +158,14 @@ ol, ul {
             font-size: 0.9em;
           }
         }
-        div.contactBlock{
+        a.contactBlock{
+          display: block;
           background-color: @bg-btn-preFooter-aveyron;
           text-align: center;
           padding: 10px 1%;
           margin-top: 10px;
           p{
+            color: rgb(38, 38, 38);
             padding: 0 20%;
             font-size: 0.9em;
             font-family: 'Asap-Regular';
