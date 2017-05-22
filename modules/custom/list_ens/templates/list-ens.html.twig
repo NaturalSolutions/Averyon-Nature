@@ -1,0 +1,51 @@
+
+
+  {{ attach_library('bootstrap_aveyron/script-list-ens') }}
+
+  <section class="headband" style="background-image: url({{ data.imageOnTop.uri }});">
+  	<h1>{{ data.title }}</h1>
+
+  	<div class="filter-btns">
+  		<div class="col-lg-12">
+  			<button class="js-btn-filter-ens btn btn-default active" thematique="all">
+  				Tout
+  			</button>
+  		{% for thematique in data.thematiques %}
+  		    <button class="js-btn-filter-ens btn btn-default" thematique="{{thematique.title}}">
+  		    	{{thematique.title}}
+  		    </button>
+  		{% endfor %}
+  		</div>
+  	</div>
+
+  	<span class="arianne">
+  		<a href="{{ url('<front>') }}">Accueil</a> > <b>{{ data.title }}</b>
+  	</span>
+  </section>
+
+   <!-- <pre>{# dump(data) #}</pre> -->
+
+	<div class="outer big"></div>
+
+	<section class="section">
+		<div class="js-ens-container container">
+			{% for ens in data.ensFold2 %}
+				{% if loop.index == 1 or loop.index == 10 %}
+					<div class="js-ens img-block-link col-md-8" thematique="{{ens.thematique}}">
+				{% else %}
+					<div class="js-ens img-block-link col-md-4" thematique="{{ens.thematique}}">
+				{% endif %}
+						<div class="bg" style="background: url( {{ens.uri}} )">
+						</div>
+						<div class="abs">
+							<a href="{{ens.url_alias}}">
+							<div>
+								<h2>{{ens.title}}</h2>
+								<span class="distance"> _ KM du départ</span>
+							</div>
+						</a>
+						</div>
+				</div>
+			{% endfor %}
+		</div>
+	</section>

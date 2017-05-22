@@ -1,0 +1,78 @@
+<?php
+
+/**
+ * @file
+ * hook_footer module.
+ */
+
+/*
+	this function to add many variable for this specific template
+*/
+function hook_footer_preprocess_region__footer(&$variables){
+
+	$infoFooter = getInfoFooter();
+	$variables['infoFooter'] = $infoFooter;
+
+}
+
+function getInfoFooter(){
+
+	//Get link menu
+	$query = db_query("
+		SELECT m.title, m.link__uri FROM menu_link_content_data m
+		where m.menu_name = 'menu-du-site-web'
+		and m.title not like 'Facebook'
+		and m.title not like 'Twitter'
+		order by m.weight asc
+	");
+
+	$links = $query->fetchAll();
+
+	foreach ($links as $key => $link) {
+
+		$tempLink = explode('internal:/', $link->link__uri);
+		if( count($tempLink) == 2 ) $link->link__uri = explode('internal:/', $link->link__uri)[1];
+
+	}
+
+	$infoFooter['links'] = $links;
+
+	//Get infos
+	$query = db_query("
+		SELECT i.field_footer_zone_information_value
+		FROM node__field_footer_zone_information i
+	");
+
+	$infos = $query->fetchAll();
+	$infoFooter['infos'] = $infos;
+
+	//Get partenaires
+	$query = db_query("
+		SELECT i.field_footer_zone_partenaires_value
+		FROM node__field_footer_zone_partenaires i
+	");
+
+	$parts = $query->fetchAll();
+	$infoFooter['parts'] = $parts;
+
+	//Get liens externes
+	$query = db_query("
+		SELECT i.field_footer_zone_liens_value
+		FROM node__field_footer_zone_liens i
+	");
+
+	$external = $query->fetchAll();
+	$infoFooter['external'] = $external;
+
+	//Get address
+	$query = db_query("
+		SELECT i.field_infos_gris_value
+		FROM node__field_infos_gris i
+	");
+
+	$address = $query->fetchAll();
+	$infoFooter['address'] = $address;
+
+	return $infoFooter;
+
+}

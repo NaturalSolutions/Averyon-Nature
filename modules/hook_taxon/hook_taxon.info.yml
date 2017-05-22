@@ -1,7 +1,0 @@
-name: Hook Module for Taxon
-description: Hook Module for Taxon
-package: Custom
-author: Natural Solutions
-type: module
-version: 1.0
-core: 8.x

@@ -11132,6 +11132,9 @@ footer.footer {
   margin-left: -5px;
   margin-right: -5px;
 }
+body.path-cartographie iframe {
+  border: none;
+}
 body.path-user footer.footer {
   margin-top: 0px;
 }

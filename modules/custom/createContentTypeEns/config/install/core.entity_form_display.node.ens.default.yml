@@ -1,0 +1,25 @@
+# core.entity_form_display.node.ens.default.yml
+# This file tells Drupal how the form should be displayed when creating a new node of our custom content type.
+langcode: fr
+status: 0
+dependencies:
+    config:
+        - field.field.node.ens.body
+        - node.type.ens
+    module:
+        - text
+        - user
+id: node.ens.default
+targetEntityType: node
+bundle: ens
+mode: default
+content:
+    body:
+        label: hidden
+        #type: string
+        weight: 101
+        settings: {  }
+        third_party_settings: {  }
+    links:
+        weight: 100
+hidden: {  }

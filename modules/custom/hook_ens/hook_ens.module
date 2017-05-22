@@ -1,0 +1,322 @@
+<?php
+
+/**
+ * @file
+ * hook_ens module.
+ */
+
+/*
+	this function to add many variable for this specific template
+*/
+
+function hook_hp_preprocess_node__ens(&$variables){
+
+	// get current node ID
+	$node = \Drupal::routeMatch()->getParameter('node');
+
+	// get all data for the page
+	$data = getContent($node->id());
+
+	//set variables, get them from twig template
+	$variables['data'] = $data;
+
+}
+
+function getContent($nid){
+
+	$data = [];
+
+	/*
+	* Get picture on top for fold1
+	*/
+	$query = db_query("
+		SELECT f.uri, p.field_poster_alt,
+		p.field_poster_title
+		from file_managed f
+		join node__field_poster p
+		on f.fid = p.field_poster_target_id
+		where p.entity_id = $nid
+	");
+
+	$pictureOnTop = $query->fetchAll();
+
+	// Convert style image
+	$pictureOnTop[0]->uri = entity_load('image_style', '2000_par_600')->buildUrl($pictureOnTop[0]->uri);
+	//$pictureOnTop[0]->uri = file_create_url($pictureOnTop[0]->uri);
+
+	// add to global var data
+	$data['pictureOnTop'] = $pictureOnTop[0];
+
+	/*
+	* Get description
+	*/
+	$query = db_query("
+		SELECT b.body_value FROM node__body b where b.entity_id = ".$nid."
+	");
+
+	$descro = $query->fetchAll();
+
+	// add to global var data
+	$data['description'] = $descro[0];
+
+	/*
+	* Get videos
+	*/
+	$query = db_query("
+		SELECT v.field_video_ens_value FROM node__field_video_ens v where v.entity_id = $nid
+	");
+
+	$videos = $query->fetchAll();
+	foreach ($videos as $key => $video) {
+
+		$video->field_video_ens_value = explode("http://dai.ly/", $video->field_video_ens_value)[1];
+
+	}
+
+	// add to global var data
+	$data['videos'] = $videos;
+
+
+
+	/*
+	* Get pictures's gallerie
+	*/
+	$query = db_query("
+		SELECT f.uri, g.field_gallery_alt,
+		g.field_gallery_title
+		from file_managed f
+		join node__field_gallery g
+		on f.fid = g.field_gallery_target_id
+		where g.entity_id = $nid
+	");
+
+	$pictures = $query->fetchAll();
+
+	foreach ($pictures as $key => $picture) {
+
+		//$picture->uri = entity_load('image_style', '500_par_350')->buildUrl($picture->uri);
+		$picture->uri = file_create_url($picture->uri);
+
+	}
+
+	// add to global var data
+	$data['pictures'] = $pictures;
+
+
+	/*
+	* Get lat/lon value of ens
+	*/
+	$query = db_query("
+		SELECT t.field_start_trace_lat, t.field_start_trace_lon
+		FROM node__field_start_trace t
+		where t.entity_id = $nid
+	");
+
+	$latLon = $query->fetchAll();
+
+	// add to global var data
+	$data['depart'] = $latLon[0];
+
+	/*
+	* Get wkt trace value of ens
+	*/
+	$query = db_query("
+		SELECT t.field_trace_value
+		FROM node__field_trace t
+		where t.entity_id = $nid
+	");
+
+	$trace = $query->fetchAll();
+
+	// convert wkt to coord format used for leaflet layer
+	$trace = \geoPHP::load($trace[0]->field_trace_value,'wkt');
+	$trace = $trace ? json_decode($trace->out('json'), true) : null;
+
+	// add to global var data
+	$data['trace'] = $trace;
+
+
+	/*
+	* Get ens of similar thematique
+	*/
+	// 1st : get thematique id
+	$query = db_query("
+		SELECT t.field_thematique_ens_target_id
+		FROM node__field_thematique_ens t
+		where t.entity_id = $nid
+	");
+
+	$thematique = $query->fetchAll();
+
+	$thematiqueID = $thematique[0]->field_thematique_ens_target_id;
+
+	$query = db_query("
+		SELECT d.title, d.nid, u.field_start_trace_lat, u.field_start_trace_lon, m.uri
+		FROM node_field_data d
+		join node__field_thematique_ens t
+		on t.entity_id = d.nid
+		join node__field_start_trace u
+		on u.entity_id = d.nid
+		join node__field_poster p
+		on p.entity_id = d.nid
+		join file_managed m
+		on m.fid = p.field_poster_target_id
+		where t.field_thematique_ens_target_id = $thematiqueID
+		and d.nid <> $nid ORDER BY RAND() LIMIT 3
+	");
+
+	// 2nd : get ens title + poster + lat/lon
+	$similarsENS = $query->fetchAll();
+
+	foreach ($similarsENS as $key => $similarENS) {
+
+		//Add alias path
+		$path_alias = \Drupal::service('path.alias_manager')->getAliasByPath("/node/".$similarENS->nid);
+		$path_alias = ltrim($path_alias, '/');
+		$similarENS->url_alias = $path_alias;
+
+		//Convert style image
+		$similarENS->uri = entity_load('image_style', '500_par_350')->buildUrl($similarENS->uri);
+
+	}
+
+	// add to global var data
+	$data['similarsENS'] = $similarsENS;
+
+
+	/*
+	* Get taxons
+	*/
+	$query = db_query("
+		SELECT d.title, d.nid, m.uri, p.field_poster_alt, p.field_poster_title, t.field_tag_value
+		FROM node_field_data d
+		join node__field_taxa x
+		on x.field_taxa_target_id = d.nid
+		join node__field_poster p
+		on p.entity_id = d.nid
+		join file_managed m
+		on m.fid = p.field_poster_target_id
+		join node__field_tag t
+		on t.entity_id = x.field_taxa_target_id
+		where x.entity_id = $nid
+		ORDER BY RAND()
+	");
+
+	$taxons = $query->fetchAll();
+
+
+	foreach ($taxons as $key => $taxon) {
+
+		//Add alias path
+		$path_alias = \Drupal::service('path.alias_manager')->getAliasByPath("/node/".$taxon->nid);
+		$path_alias = ltrim($path_alias, '/');
+		$taxon->url_alias = $path_alias;
+
+		// Convert style
+		//$taxon->uri = entity_load('image_style', '500_par_350')->buildUrl($taxon->uri);
+		$taxon->uri = file_create_url($taxon->uri);
+
+		// Get audio
+		$query1 = db_query("
+			SELECT f.uri
+			from file_managed f
+			join node__field_audio a
+			on f.fid = a.field_audio_target_id
+			where a.entity_id = ".$taxon->nid
+		);
+
+		$audioTaxon = $query1->fetchAll();
+
+		// add to var if song exist
+		if(isset($audioTaxon[0])) {
+			$taxon->audio = $audioTaxon[0]->uri;
+		}
+
+
+	}
+
+	// add to global var data
+	$data['taxons'] = $taxons;
+
+	/*
+	* Get Quiz
+	*/
+	$query = db_query("
+		SELECT d.title, d.nid, m.uri, p.field_poster_alt, p.field_poster_title
+		FROM node_field_data d
+		join node__field_quiz x
+		on x.field_quiz_target_id = d.nid
+		join node__field_poster p
+		on p.entity_id = d.nid
+		join file_managed m
+		on m.fid = p.field_poster_target_id
+		where x.entity_id = $nid
+	");
+
+	$quizz = $query->fetchAll();
+
+
+	foreach ($quizz as $key => $quiz) {
+
+		// Convert style
+		$quiz->uri = entity_load('image_style', '900_par_600')->buildUrl($quiz->uri);
+
+		// Get propositions
+		$query = db_query("
+			SELECT a.field_answers_value as proposition, a.delta as code
+			FROM aveyron.node__field_answers a
+			where a.entity_id = $quiz->nid
+		");
+
+		$propositions = $query->fetchAll();
+		$quiz->propositions = $propositions;
+
+		// Get good answer
+		$query = db_query("
+			SELECT a.field_good_answer_value as code
+			FROM aveyron.node__field_good_answer a
+			where a.entity_id = $quiz->nid
+		");
+
+		$answer = $query->fetchAll();
+		$quiz->answerCode = $answer[0]->code - 1;
+
+	}
+
+	// add to global var data
+	$data['quizz'] = $quizz;
+
+	/*
+	* Get Info
+	*/
+	$query = db_query("
+		SELECT t.field_info_value
+		FROM node__field_info t
+		where t.entity_id = $nid
+	");
+
+	$info = $query->fetchAll();
+
+	// add to global var data
+	$data['info'] = $info[0]->field_info_value;
+
+	/*
+	* Get Recommandations
+	*/
+	$query = db_query("
+		SELECT t.field_recommandations_value
+		FROM node__field_recommandations t
+		where t.entity_id = $nid
+	");
+
+	$info = $query->fetchAll();
+
+	// add to global var data
+	$data['recommandations'] = $info[0]->field_recommandations_value;
+
+
+
+
+	return $data;
+
+}

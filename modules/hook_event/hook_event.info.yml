@@ -1,7 +1,0 @@
-name: Hook Module for Event
-description: Hook Module for Event
-package: Custom
-author: Natural Solutions
-type: module
-version: 1.0
-core: 8.x

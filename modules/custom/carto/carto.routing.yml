@@ -1,0 +1,7 @@
+carto.content:
+  path: 'cartographie'
+  defaults:
+    _controller: '\Drupal\carto\Controller\cartoController::content'
+    _title: 'Cartographie'
+  requirements:
+    _access: 'TRUE'

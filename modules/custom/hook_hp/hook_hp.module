@@ -1,0 +1,332 @@
+<?php
+
+/**
+ * @file
+ * hook_hp module.
+ */
+
+/*
+	this function to add many variable for this specific template
+*/
+function hook_hp_preprocess_page__front(&$variables){
+
+	$picturesFold1 = getSliderPictures();
+	$titleFold1 = getTitleFold1();
+
+	$titleFold2 = getTitleFold2();
+	$subTitleFold2 = getSubTitleFold2();
+	$ensFold2 = getEnsFold2();
+
+	$titleFold3 = getTitleFold3();
+	$ensFold3 = getEnsFold3();
+
+	$ensFold4 = getInfoFold4();
+
+	$infoFold5 = getInfoFold5();
+
+	$infoFold6 = getInfoFold6();
+
+	//set variables
+	$variables['picturesFold1'] = $picturesFold1;
+	$variables['titleFold1'] = $titleFold1;
+
+	$variables['titleFold2'] = $titleFold2;
+	$variables['subTitleFold2'] = $subTitleFold2;
+	$variables['ensFold2'] = $ensFold2;
+
+	$variables['titleFold3'] = $titleFold3;
+	$variables['ensFold3'] = $ensFold3;
+
+	$variables['ensFold4'] = $ensFold4;
+
+	$variables['infoFold5'] = $infoFold5;
+
+	$variables['infoFold6'] = $infoFold6;
+
+}
+
+function getSliderPictures(){
+
+	/*
+	SELECT f.filename FROM aveyron.file_managed f
+	join aveyron.node__field_slider s
+	on f.fid = s.field_slider_target_id
+	where s.entity_id = 1;
+	*/
+	$query = \Drupal::database()->select('file_managed', 'f');
+	$query->addField('f', 'filename');
+	$query->addField('f', 'uri');
+	$query->addField('s', 'field_slider_title');
+	$query->addField('s', 'field_slider_alt');
+	$query->join('node_revision__field_slider', 's', 'f.fid = s.field_slider_target_id');
+	$query->condition('s.entity_id', 1);
+	$picturesFold1 = $query->execute()->fetchAll();
+
+	foreach ($picturesFold1 as $key => $picture) {
+
+		//Convert url of picturesFold1
+		//$picture->uri = file_create_url($picture->uri);
+		$picture->uri = entity_load('image_style', '2000_par_950')->buildUrl($picture->uri);
+	}
+
+	return $picturesFold1;
+}
+
+function getTitleFold1(){
+
+	/*
+	SELECT t.field_titre_fold1_value
+	FROM aveyron.node__field_titre_fold1 t
+	WHERE t.entity_id = 1;
+	*/
+	$query = \Drupal::database()->select('node_revision__field_titre_fold1', 't');
+	$query->addField('t', 'field_titre_fold1_value');
+	$query->condition('t.entity_id', 1);
+	$titleFold1 = $query->execute()->fetchAll();
+	$titleFold1 = $titleFold1[0]->field_titre_fold1_value;
+
+	return $titleFold1;
+}
+
+function getTitleFold2(){
+
+	/*
+	SELECT t.field_titre_fold1_value
+	FROM aveyron.node__field_titre_fold1 t
+	WHERE t.entity_id = 1;
+	*/
+	$query = \Drupal::database()->select('node_revision__field_titre_fold2', 't');
+	$query->addField('t', 'field_titre_fold2_value');
+	$query->condition('t.entity_id', 1);
+	$titleFold2 = $query->execute()->fetchAll();
+	$titleFold2 = $titleFold2[0]->field_titre_fold2_value;
+
+	return $titleFold2;
+}
+
+function getSubTitleFold2(){
+
+	/*
+	SELECT t.field_titre_fold1_value
+	FROM aveyron.node__field_titre_fold1 t
+	WHERE t.entity_id = 1;
+	*/
+	$query = \Drupal::database()->select('node_revision__field_sous_titre_fold2', 't');
+	$query->addField('t', 'field_sous_titre_fold2_value');
+	$query->condition('t.entity_id', 1);
+	$subTitleFold2 = $query->execute()->fetchAll();
+	if (isset($subTitleFold2[0]->field_sous_titre_fold2_value))	$subTitleFold2 = $subTitleFold2[0]->field_sous_titre_fold2_value;
+	else $subTitleFold2 = '';
+
+	return $subTitleFold2;
+}
+
+function getEnsFold2(){
+
+
+	$query = db_query("select f.uri, s.field_poster_alt, s.field_poster_title, s.entity_id, s.revision_id from node_revision a
+		join node_revision__field_poster s
+		on s.revision_id = a.vid
+		join file_managed f
+		on f.fid = s.field_poster_target_id
+		join node_revision__field_ens_mis_en_avant_fold2 d
+		on a.nid = d.field_ens_mis_en_avant_fold2_target_id
+		where a.revision_timestamp = (select max(z.revision_timestamp) from node_revision z where z.nid = a.nid);"
+	);
+
+	$picturesFold2 = $query->fetchAll();
+
+	foreach ($picturesFold2 as $key => $picture) {
+
+		//Add alias path
+		$path_alias = \Drupal::service('path.alias_manager')->getAliasByPath("/node/".$picture->entity_id);
+		$path_alias = ltrim($path_alias, '/');
+		$picture->url_alias = $path_alias;
+
+		//Convert uri to the good style
+		if( $key == 0 )	$picture->uri = entity_load('image_style', '1000_par_700')->buildUrl($picture->uri);
+		else $picture->uri = entity_load('image_style', '500_par_350')->buildUrl($picture->uri);
+
+		//  get title
+		//	SELECT title FROM aveyron.node_field_data where vid = 1;
+
+		$query2 = \Drupal::database()->select('node_field_data', 'n');
+		$query2->addField('n', 'title');
+		$query2->condition('n.nid', $picture->entity_id);
+		$titleEnsFold2 = $query2->execute()->fetchAll();
+		$titleEnsFold2 = $titleEnsFold2[0]->title;
+		$picturesFold2[$key]->title = $titleEnsFold2;
+
+		//	Get GPS point of ENS :
+		//	SELECT t.field_start_trace_lat, t.field_start_trace_lon
+		//	FROM aveyron.node_revision__field_start_trace t
+		//	where t.revision_id = 10;
+
+		$query3 = \Drupal::database()->select('node_revision__field_start_trace', 't');
+		$query3->addField('t', 'field_start_trace_lat');
+		$query3->addField('t', 'field_start_trace_lon');
+		$query3->condition('t.revision_id', $picture->revision_id);
+		$GPSEnsFold2 = $query3->execute()->fetchAll();
+		$GPSEnsFold2 = $GPSEnsFold2[0]->field_start_trace_lat.';'.$GPSEnsFold2[0]->field_start_trace_lon;
+		$picturesFold2[$key]->gps = $GPSEnsFold2;
+
+	}
+
+	return $picturesFold2;
+
+}
+
+function getTitleFold3(){
+
+	$query = db_query("
+		SELECT t.field_titre_fold3_value FROM node__field_titre_fold3 t
+	");
+
+	$titleFold3 = $query->fetchAll();
+
+	return $titleFold3[0]->field_titre_fold3_value;
+}
+
+function getEnsFold3(){
+
+	$query = db_query("
+		SELECT d.title, b.body_summary, f.uri, n.nid, s.field_poster_alt, s.field_poster_title
+		FROM node_field_data d
+		join node n
+		on n.nid = d.nid
+		join node_revision__body b
+		on b.revision_id = d.vid
+		join node_revision__field_poster s
+		on s.revision_id = d.vid
+		join file_managed f
+		on f.fid = s.field_poster_target_id
+		WHERE n.type = 'ens'"
+	);
+
+	$ensFold3 = $query->fetchAll();
+
+	foreach ($ensFold3 as $key => $ens) {
+
+		//Add alias path
+		$path_alias = \Drupal::service('path.alias_manager')->getAliasByPath("/node/".$ens->nid);
+		$path_alias = ltrim($path_alias, '/');
+		$ens->url_alias = $path_alias;
+
+		$ens->uri = entity_load('image_style', '470_par_750')->buildUrl($ens->uri);
+
+	}
+
+	return $ensFold3;
+
+}
+
+function getInfoFold4(){
+
+	$query = db_query("
+		SELECT f.uri, s.field_illus_thematik_ens_alt,
+		s.field_illus_thematik_ens_title
+		from file_managed f
+		join node__field_illus_thematik_ens s
+		on f.fid = s.field_illus_thematik_ens_target_id
+	");
+
+	$ensFold4 = $query->fetchAll();
+
+	foreach ($ensFold4 as $key => $ens) {
+
+		$ens->uri = entity_load('image_style', '570_par_900')->buildUrl($ens->uri);
+
+	}
+
+	// Get title fold4
+	$query = db_query("
+		SELECT t.field_titre_fold4_value FROM node__field_titre_fold4 t
+	");
+
+	$titleFold4 = $query->fetchAll();
+
+	// Get subTitle fold4
+	$query = db_query("
+		SELECT t.field_sous_titre_fold4_value FROM node__field_sous_titre_fold4 t
+	");
+
+	$SubTitleFold4 = $query->fetchAll();
+
+	// Add to ens variable
+	$ensFold4[4] = $titleFold4[0];
+	$ensFold4[5] = $SubTitleFold4[0];
+
+	return $ensFold4;
+}
+
+function getInfoFold5(){
+
+	// Get title
+	$query = db_query("
+		SELECT t.field_titre_fold5_value FROM node__field_titre_fold5 t
+	");
+
+	$infoFold5 = $query->fetchAll();
+
+	// Get sub-title
+	$query = db_query("
+		SELECT t.field_sous_titre_fold5_value FROM node__field_sous_titre_fold5 t
+	");
+
+	$infoFold5[1] = $query->fetchAll()[0];
+
+	// Get ens video
+	$query = db_query("
+		SELECT v.field_video_ens_value FROM aveyron.node__field_video_ens v ORDER BY RAND() LIMIT 4
+	");
+
+	$videos = $query->fetchAll();
+	foreach ($videos as $key => $video) {
+
+		$video->field_video_ens_value = explode("http://dai.ly/", $video->field_video_ens_value)[1];
+
+	}
+
+	$infoFold5[2] = $videos;
+
+	return $infoFold5;
+}
+
+function getInfoFold6(){
+
+	// Get title
+	$query = db_query("
+		SELECT t.field_titre_fold6_value FROM node__field_titre_fold6 t
+	");
+
+	$infoFold6 = $query->fetchAll();
+
+	// Get sub-title
+	$query = db_query("
+		SELECT t.field_sous_titre_fold6_value FROM node__field_sous_titre_fold6 t
+	");
+
+	$infoFold6[1] = $query->fetchAll()[0];
+
+	// use this instagram access token generator http://instagram.pixelunion.net/
+	$access_token="769520940.1677ed0.b9d3f1ddacb24a01bd8d92b622a0a348";
+	$photo_count=13;
+
+
+	//Get instagram pics of tag - doesn't work
+	//$json_link="https://api.instagram.com/v1/tags/{nature}/media/recent?access_token={$access_token}&count={$photo_count}";
+
+	// Tuto : https://www.codeofaninja.com/2015/01/display-instagram-feed-website.html
+	// Doc  : https://www.instagram.com/developer/endpoints/users/
+	// Get token : http://instagram.pixelunion.net/
+
+	//Get photo of instagram account
+    $json_link="https://api.instagram.com/v1/users/self/media/recent/?access_token={$access_token}&count={$photo_count}";
+
+	$json = file_get_contents($json_link);
+	$obj = json_decode($json, true, 512, JSON_BIGINT_AS_STRING);
+
+	$infoFold6[2] = $obj;
+
+	return $infoFold6;
+}

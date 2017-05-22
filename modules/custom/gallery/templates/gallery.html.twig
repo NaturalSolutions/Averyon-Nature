@@ -1,0 +1,85 @@
+{{ attach_library('bootstrap_aveyron/fancybox') }}
+{{ attach_library('bootstrap_aveyron/script-gallery') }}
+
+<section class="headband" style="background-image: url({{ data.imageOnTop.uri }});">
+	<h1>{{ data.title }}</h1>
+
+	<div class="filter-btns">
+		<div class="col-lg-12">
+			<button class="js-btn-filter btn btn-default  active" thematique="all">Tout</button>
+			<button class="js-btn-filter btn btn-default " thematique="faune">Faune</button>
+			<button class="js-btn-filter btn btn-default " thematique="flore">Flore</button>
+			<button class="js-btn-filter btn btn-default " thematique="paysage">Paysage</button>
+			<button class="js-btn-filter btn btn-default " thematique="patrimoine">Patrimoine</button>
+			<button class="js-btn-filter btn btn-default " thematique="video">video</button>
+		</div>
+	</div>
+
+	<span class="arianne">
+		<a href="{{ url('<front>') }}">Accueil</a> > <b>{{ data.title }}</b>
+	</span>
+
+</section>
+
+<!-- <pre>{{  dump(data) }}</pre> -->
+<div class="outer big"></div>
+
+<section class="section">
+	<div class="container">
+
+	<section class="js-figures container pictures">
+	  <div class="col-xs-12">
+	    <div class="gallery clearfix">
+
+	      {% for picture in data.pictures %}
+	        {% if loop.index == 3 or loop.index == 8 %}
+
+	          {% if picture.tag == "video" %}
+	          	<div class="js-figure video-figure img-block-link col-md-6" href="http://www.dailymotion.com/embed/video/{{picture.field_video_ens_value}}" data-fancybox="group" thematique="{{picture.tag}}" data-caption="<a class='btn btn-primary' href='{{ url('<front>') }}{{picture.url_alias}}'>voir la fiche {{picture.title}} </a> <br> {{picture.title}} ">
+          	  {% else %}
+	          	<div class="js-figure img-block-link col-md-6" href="{{picture.uri}}" data-fancybox="group" thematique="{{picture.tag}}" data-caption="<a class='btn btn-primary' href='{{ url('<front>') }}{{picture.url_alias}}'>voir la fiche {{picture.title}} </a> <br> {{picture.field_gallery_alt}}">
+	          {% endif %}
+
+	        {% else %}
+
+	          {% if picture.tag == "video" %}
+	          	<div class="js-figure video-figure img-block-link col-md-3" href="http://www.dailymotion.com/embed/video/{{picture.field_video_ens_value}}" data-fancybox="group" thematique="{{picture.tag}}" data-caption="<a class='btn btn-primary' href='{{ url('<front>') }}{{picture.url_alias}}'>voir la fiche {{picture.title}} </a> <br> {{picture.title}}">
+	          {% else %}
+	          	<div class="js-figure img-block-link col-md-3" href="{{picture.uri}}" data-fancybox="group" thematique="{{picture.tag}}" data-caption="<a class='btn btn-primary' href='{{ url('<front>') }}{{picture.url_alias}}'>voir la fiche {{picture.title}} </a> <br> {{picture.field_gallery_alt}}">
+	          {% endif %}
+
+	        {% endif %}
+
+	            {% if picture.tag == "video" %}
+	            	<div class="bg bg-video {{ picture.field_video_ens_value }}" >
+	            	</div>
+	            {% else %}
+	            	<div class="bg" style="background: url( {{picture.uri}} )"></div>
+	            {% endif %}
+
+	            <div class="abs">
+	              <div class="zoom">
+	                <div>
+	                  <h2>{{picture.field_gallery_title}}</h2>
+	                  <span class="credit">
+	                  </span>
+	                </div>
+	                <figcaption>
+	                    {{picture.field_gallery_title}}
+	                </figcaption>
+	              </div>
+	            </div>
+	        </div>
+	      {% endfor %}
+
+	    </div>
+	  </div>
+	</section>
+
+	</div>
+</section>
+
+<script>
+  // encode data for use in js file (themes/bootstrap_aveyron/scripts/script-gallery.js)
+  var videos = {{ data.videos|json_encode()|raw }};
+</script>

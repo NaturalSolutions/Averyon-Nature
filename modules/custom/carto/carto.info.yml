@@ -1,0 +1,7 @@
+name: Page cartographie des ENS
+type: module
+description: Créer la page "Cartographie"
+author: Natural Solutions
+package: Custom
+version: 1.0
+core: 8.x
