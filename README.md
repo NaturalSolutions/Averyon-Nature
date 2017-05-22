@@ -4,6 +4,8 @@
 - Le répertoire "doc" contient toutes les instructions (configuration, instllation, gestion de la base...)
 - Le répertoire "modules/custom" contient les modules personalisé.
 
+# Les files, la base de donnée et le fichier "settings.local.php" ne sont pas versionnés -> Il faut les télécharger
+
 ## Installation de la dépendance geoPhp pour le module geofield
 Le tag --ignore-platform-reqs permet d'ignorer la version de php.  
 
