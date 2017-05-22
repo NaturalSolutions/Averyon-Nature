@@ -11245,6 +11245,13 @@ body.path-frontpage div.fold1 h1 {
   top: 355px;
   user-select: none;
 }
+body.path-frontpage div.fold1 div.swiper-slide p {
+  position: absolute;
+  bottom: 6px;
+  color: #fff;
+  right: 15px;
+  text-shadow: 3px 4px 4px #000;
+}
 body.path-frontpage div.fold1 div.fold1-img {
   width: 100%;
   min-height: 620px;

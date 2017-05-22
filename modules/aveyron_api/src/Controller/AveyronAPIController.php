@@ -756,7 +756,7 @@ class AveyronAPIController extends ControllerBase {
         $imgUri = $img->entity->getFileUri();
         $photos[] = array(
           'poster' => entity_load('image_style', '900_par_600')->buildUrl($imgUri),
-          'thumbnail' => entity_load('image_style', '200_par_200')->buildUrl($imgUri)
+          'thumbnail' => entity_load('image_style', '350_par_200')->buildUrl($imgUri)
         );
       }
       if (isset($entity->field_video_ens)) {

@@ -56,6 +56,8 @@ function getSliderPictures(){
 	$query = \Drupal::database()->select('file_managed', 'f');
 	$query->addField('f', 'filename');
 	$query->addField('f', 'uri');
+	$query->addField('s', 'field_slider_title');
+	$query->addField('s', 'field_slider_alt');
 	$query->join('node_revision__field_slider', 's', 'f.fid = s.field_slider_target_id');
 	$query->condition('s.entity_id', 1);
 	$picturesFold1 = $query->execute()->fetchAll();

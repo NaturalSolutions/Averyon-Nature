@@ -130,7 +130,10 @@
                 <div class="swiper-wrapper">
                 <!-- Slides -->
                     {% for picture in picturesFold1 %}
-                        <div class="swiper-slide"><img src="{{ picture.uri }}" /></div>
+                        <div class="swiper-slide">
+                          <img src="{{ picture.uri }}" />
+                          <p>{{ picture.field_slider_alt }}</p>
+                        </div>
                     {% endfor %}
                 </div>
             </div>
@@ -147,11 +150,11 @@
                     <h2>{{ titleFold2 }}</h2>
                     <div class="trait"></div>
                     <br><br><br>
-                    <!-- <p class="subTitleFold2">{{ subTitleFold2 }}</p> -->
+                    <!-- <p class="subTitleFold2">{# subTitleFold2 #}</p> -->
                 </div>
             </div>
 
-            <!-- <pre>{{  dump(ensFold3) }}</pre> -->
+            <!-- <pre>{#  dump(picturesFold1) #}</pre> -->
 
             <div class="row imagesRow">
                 <div class="col-sm-8 left">
@@ -405,3 +408,6 @@
     </footer>
   {% endblock %}
 {% endif %}
+
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-591efc0b6caaaede"></script>
