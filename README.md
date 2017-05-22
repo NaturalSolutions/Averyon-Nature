@@ -6,7 +6,9 @@
 
 ## Installation de la dépendance geoPhp pour le module geofield
 Le tag --ignore-platform-reqs permet d'ignorer la version de php.  
+
 >composer require "phayes/geophp" --ignore-platform-reqs  
+
 Executer cette commande à la racine du projet lors d'une nouvelle installation ou une mise à jour du coeur  
 
 # Démo
