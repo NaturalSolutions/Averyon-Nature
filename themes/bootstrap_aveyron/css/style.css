@@ -10913,6 +10913,13 @@ body.page-node-type-taxon .headband {
   margin-right: 5px;
   border-color: transparent;
 }
+span.credit {
+  position: absolute;
+  bottom: 6px;
+  color: #fff;
+  right: 15px;
+  text-shadow: 3px 4px 4px #000;
+}
 div.filter-btns button {
   margin-left: 5px;
   margin-right: 5px;
@@ -12313,8 +12320,10 @@ body.page-node-type-ens article.quizz {
   margin-bottom: 100px;
 }
 body.page-node-type-ens article.quizz div.img {
-  max-height: 350px;
   overflow: hidden;
+}
+body.page-node-type-ens article.quizz div.img img {
+  height: auto;
 }
 body.page-node-type-ens article.quizz div.btns {
   margin-top: 20px;
