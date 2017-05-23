@@ -9,8 +9,6 @@
 			<button class="js-btn-filter btn btn-default  active" thematique="all">Tout</button>
 			<button class="js-btn-filter btn btn-default " thematique="faune">Faune</button>
 			<button class="js-btn-filter btn btn-default " thematique="flore">Flore</button>
-			<button class="js-btn-filter btn btn-default " thematique="paysage">Paysage</button>
-			<button class="js-btn-filter btn btn-default " thematique="patrimoine">Patrimoine</button>
 			<button class="js-btn-filter btn btn-default " thematique="video">video</button>
 		</div>
 	</div>
@@ -39,9 +37,18 @@
 	        {% if loop.index == 3 or loop.index == 8 %}
 
 	          {% if picture.tag == "video" %}
+	          	
 	          	<div class="js-figure video-figure img-block-link col-md-6" href="http://www.dailymotion.com/embed/video/{{picture.field_video_ens_value}}" data-fancybox="group" thematique="{{picture.tag}}" data-caption="<a class='btn btn-primary' href='{{ url('<front>') }}{{picture.url_alias}}'>voir la fiche {{picture.title}} </a> <br> {{picture.title}} ">
           	  {% else %}
-	          	<div class="js-figure img-block-link col-md-6" href="{{picture.uri}}" data-fancybox="group" thematique="{{picture.tag}}" data-caption="<a class='btn btn-primary' href='{{ url('<front>') }}{{picture.url_alias}}'>voir la fiche {{picture.title}} </a> <br> {{picture.field_gallery_alt}}">
+
+							{% set tag = picture.tag %}
+							{% if picture.url_alias|split('/')[0] == "ens" %}
+								{% set tag = "" %}
+							{% endif %}
+
+
+
+	          	<div class="js-figure img-block-link col-md-6" href="{{picture.uri}}" data-fancybox="group" thematique="{{tag}}" data-caption="<a class='btn btn-primary' href='{{ url('<front>') }}{{picture.url_alias}}'>voir la fiche {{picture.title}} </a> <br> {{picture.field_gallery_alt}}">
 	          {% endif %}
 
 	        {% else %}
@@ -49,7 +56,13 @@
 	          {% if picture.tag == "video" %}
 	          	<div class="js-figure video-figure img-block-link col-md-3" href="http://www.dailymotion.com/embed/video/{{picture.field_video_ens_value}}" data-fancybox="group" thematique="{{picture.tag}}" data-caption="<a class='btn btn-primary' href='{{ url('<front>') }}{{picture.url_alias}}'>voir la fiche {{picture.title}} </a> <br> {{picture.title}}">
 	          {% else %}
-	          	<div class="js-figure img-block-link col-md-3" href="{{picture.uri}}" data-fancybox="group" thematique="{{picture.tag}}" data-caption="<a class='btn btn-primary' href='{{ url('<front>') }}{{picture.url_alias}}'>voir la fiche {{picture.title}} </a> <br> {{picture.field_gallery_alt}}">
+	          
+		          {% set tag = picture.tag %}
+		          {% if picture.url_alias|split('/')[0] == "ens" %}
+		          	{% set tag = "" %}
+		          {% endif %}
+
+	          	<div class="js-figure img-block-link col-md-3" href="{{picture.uri}}" data-fancybox="group" thematique="{{tag}}" data-caption="<a class='btn btn-primary' href='{{ url('<front>') }}{{picture.url_alias}}'>voir la fiche {{picture.title}} </a> <br> {{picture.field_gallery_alt}}">
 	          {% endif %}
 
 	        {% endif %}
