@@ -611,7 +611,8 @@ class AveyronAPIController extends ControllerBase {
         $img->uri = entity_load('image_style', '900_par_600')->buildUrl($img->uri);
         $item['gallery'][] = array(
           "url" => $img->uri,
-          "fid" => (int) $img->fid
+          "fid" => (int) $img->fid,
+          "alt" => $img->field_gallery_alt,
         );
       }
 
