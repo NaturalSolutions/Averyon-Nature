@@ -714,9 +714,7 @@ $settings['container_yamls'][] = $app_root . '/' . $site_path . '/services.yml';
  * For example:
  * @code
  */
- $settings['trusted_host_patterns'] = array(
-   '^151\.80\.132\.63$'
- );
+ #$settings['trusted_host_patterns'] = array('^http://espacenature.aveyron.fr$');
  /*
  * @endcode
  * will allow the site to run off of all variants of example.com and
