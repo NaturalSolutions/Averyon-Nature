@@ -309,7 +309,8 @@ function getInfoFold6(){
 	$infoFold6[1] = $query->fetchAll()[0];
 
 	// use this instagram access token generator http://instagram.pixelunion.net/
-	$access_token="769520940.1677ed0.b9d3f1ddacb24a01bd8d92b622a0a348";
+	//$access_token="769520940.1677ed0.b9d3f1ddacb24a01bd8d92b622a0a348";
+	$access_token="5372234506.1677ed0.063c4aa88499431a8fa679d4dd9085f0";
 	$photo_count=13;
 
 
@@ -326,7 +327,7 @@ function getInfoFold6(){
 	$json = file_get_contents($json_link);
 	$obj = json_decode($json, true, 512, JSON_BIGINT_AS_STRING);
 
-	$infoFold6[2] = $obj;
+	$infoFold6[2] = $json_link;
 
 	return $infoFold6;
 }
