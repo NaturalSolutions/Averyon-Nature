@@ -10855,6 +10855,53 @@ h5:after {
   min-width: 100%;
   max-width: 100%;
 }
+a.fixedBandeau {
+  position: fixed;
+  top: 50px;
+  right: -14%;
+  border: 1px solid #f27115;
+  border-radius: 4px;
+  font-family: 'Proxima Nova Regular', sans-serif !important;
+  padding: 10px 14%;
+  text-decoration: none;
+  color: #fff;
+  letter-spacing: 1px;
+  font-size: 1.2em;
+  z-index: 99999;
+  -ms-transform: rotate(7deg);
+  -webkit-transform: rotate(7deg);
+  transform: rotate(29deg);
+  background: #ed8f21;
+  background: -webkit-linear-gradient(left, #ed8f21 0, #f27115 100%);
+  background: -o-linear-gradient(left, #ed8f21 0, #f27115 100%);
+  background: linear-gradient(to right, #ed8f21 0, #f27115 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ed8f21', endColorstr='#f27115', GradientType=1);
+}
+a.fixedBandeau:visited {
+  color: #fff;
+}
+@media (max-width: 480px) {
+  a.fixedBandeau {
+    padding: 10px 0;
+    transform: none;
+    -moz-transform: none;
+    /* IE 9 */
+    -ms-transform: none;
+    /* IE 9 */
+    -webkit-transform: none;
+    /* Chrome, Safari, Opera */
+    padding: 8px 0;
+    width: 100%;
+    text-align: center;
+    right: auto;
+    display: block;
+    top: inherit;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+  }
+}
 .map {
   min-height: 650px;
 }
