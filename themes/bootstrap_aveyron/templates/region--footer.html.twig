@@ -58,7 +58,7 @@
 				{% if link.link__uri == "" %}
 				    <a href="{{ url('<front>') }}">{{ link.title }}</a>
 				{% else %}
-			    	<a href="{{ link.link__uri }}">{{ link.title }}</a>
+			    	<a href="{{ url('<front>') }}{{ link.link__uri }}">{{ link.title }}</a>
 				{% endif %}
 			{% endfor %}
 
