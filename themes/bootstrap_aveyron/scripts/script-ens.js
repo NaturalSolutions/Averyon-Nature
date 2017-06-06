@@ -148,7 +148,7 @@ jQuery( document ).ready(function() {
             var center = L.latLng(geoDataStarterPoint.field_start_trace_lat, geoDataStarterPoint.field_start_trace_lon)
             var map = L.map("map", { maxBounds: bounds }).setView(center, 14) ;
             L.tileLayer(
-            'http://wxs.ign.fr/uxfc79ihyesfzukqvfqcev40/geoportail/wmts?service=WMTS&request=GetTile&version=1.0.0&tilematrixset=PM&tilematrix={z}&tilecol={x}&tilerow={y}&layer=GEOGRAPHICALGRIDSYSTEMS.MAPS&format=image/jpeg&style=normal',
+            'http://wxs.ign.fr/keivyuqi9olxo91z3g5xvh5z/geoportail/wmts?service=WMTS&request=GetTile&version=1.0.0&tilematrixset=PM&tilematrix={z}&tilecol={x}&tilerow={y}&layer=GEOGRAPHICALGRIDSYSTEMS.MAPS&format=image/jpeg&style=normal',
             {
                 bounds: bounds,
                 minZoom:9,
