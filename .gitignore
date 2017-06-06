@@ -18,5 +18,12 @@ sites/*/tmp
 # Ignore paths that contain generated content.
 tmp/
 
+# for base_path on virtual host instance (dev, demo...)
+.htaccess
+
+# composer files
+vendor/composer/installed.json
+vendor/behat/mink/
+
 # ssl file
 0D9EF05B394CC2A0C0023FBFB70F24F6.txt
