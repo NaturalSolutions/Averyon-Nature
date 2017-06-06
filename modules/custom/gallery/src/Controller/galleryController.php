@@ -60,6 +60,7 @@ class galleryController extends ControllerBase {
 			join node__field_thematique_ens e
 			on e.entity_id = d.nid
 			where d.type = 'ens'
+			and d.status = 1
 			ORDER BY RAND()
 		");
 
@@ -148,6 +149,15 @@ class galleryController extends ControllerBase {
 			join node_field_data d
 			on d.nid = v.entity_id
 		");
+
+		/* Try to distinct
+		$query = db_query("
+			SELECT v.field_video_ens_value , d.title, d.nid
+			FROM aveyron.node__field_video_ens v
+			join node_field_data d
+			on d.nid = v.entity_id
+			group by v.field_video_ens_value
+		");*/
 
 		$videos = $query->fetchAll();
 		foreach ($videos as $key => $video) {
