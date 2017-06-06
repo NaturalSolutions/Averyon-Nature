@@ -12279,6 +12279,10 @@ body.path-frontpage div.fold6 div.leftZone div.secondHalf div.SpecialSmallBlock 
     margin-left: -5px;
   }
 }
+body.page-node-type-ens a.watchPDF {
+  position: relative;
+  z-index: 1;
+}
 body.page-node-type-ens div.popup {
   display: none;
   z-index: 2000;
