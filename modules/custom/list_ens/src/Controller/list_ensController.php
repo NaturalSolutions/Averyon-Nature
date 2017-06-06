@@ -95,6 +95,7 @@ class list_ensController extends ControllerBase {
 
 		where n.type = 'ens'
 		and d.status = 1
+		and s.entity_id <> 6
 		;
 		"
 		);
