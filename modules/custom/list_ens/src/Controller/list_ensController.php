@@ -61,7 +61,7 @@ class list_ensController extends ControllerBase {
 		/*
 		* FOLD 2 - Get ENS
 		*/
-		$query = db_query(
+		/*$query = db_query(
 			"
 			select f.uri, d.title as thematique, s.field_poster_alt, s.field_poster_title, s.entity_id, s.revision_id from node_revision a
 			join node_revision__field_poster s
@@ -74,6 +74,29 @@ class list_ensController extends ControllerBase {
 			on d.nid = t.field_thematique_ens_target_id
 			where a.revision_timestamp = (select max(z.revision_timestamp) from node_revision z where z.nid = a.nid);
 			"
+		);*/
+
+
+		$query = db_query(
+		"
+		SELECT f.uri, d.title as thematique, s.field_poster_alt, s.field_poster_title, s.entity_id, s.revision_id, d.status FROM aveyron.node n
+
+		join aveyron.node__field_poster s
+		on s.entity_id = n.nid
+
+		join aveyron.node__field_thematique_ens t
+		on t.entity_id = s.entity_id
+
+		join aveyron.node_field_data d
+		on d.nid = t.field_thematique_ens_target_id
+
+		join aveyron.file_managed f
+		on f.fid = s.field_poster_target_id
+
+		where n.type = 'ens'
+		and d.status = 1
+		;
+		"
 		);
 
 		$picturesFold2 = $query->fetchAll();
