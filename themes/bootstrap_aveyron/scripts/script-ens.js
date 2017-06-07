@@ -1,26 +1,8 @@
 jQuery( document ).ready(function() {
 
-        // IGN layer - forbiden access with this IGN key
-        /*
-        var map = L.map("mapid").setView([48.845,2.424],10) ;
-        L.tileLayer(
-        'http://wxs.ign.fr/keivyuqi9olxo91z3g5xvh5z/geoportail/wmts?service=WMTS&request=GetTile&version=1.0.0&tilematrixset=PM&tilematrix={z}&tilecol={x}&tilerow={y}&layer=GEOGRAPHICALGRIDSYSTEMS.MAPS&format=image/jpeg&style=normal',
-        {
-                minZoom:0,
-                maxZoom:18,
-                tileSize:256
-        }).addTo(map);
-        */
-
-        /*
-        * Quiz
-
-        Si pas toutes question: Ils vous restent des questions sans réponses.
-        Questions vrais/fausses répondues affichées (pas les réponses exactes)
 
 
-        */
-        //I could use a framework
+
         var quizz = function(){
 
             $('.js-quizz-prop').on('click', function(e){
