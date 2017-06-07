@@ -1,5 +1,7 @@
 jQuery( document ).ready(function() {
 
+    var geoloc = false;
+    var $ = jQuery;
 
     var startGallery = function(){
     //slideshow on en parle
@@ -20,8 +22,34 @@ jQuery( document ).ready(function() {
         });
     }
 
-    function calcPositionFromLatLonENS(currentPosUser) {
+    function displayNearestEns(){
+        var distances = [];
 
+        jQuery('.js-ens').each(function(i, el) {
+            $(this).attr('id', 'ens' + i);
+            var distance = $(this).find('.latLon').html();
+            distances[i] = { id : 'ens' + i, distance: distance }
+            $(this).addClass('hidden');
+        });
+
+        function compare(a,b) {
+          if (a.distance < b.distance)
+            return -1;
+          if (a.distance > b.distance)
+            return 1;
+          return 0;
+        }
+
+        distances.sort(compare);
+        
+        $($.find('.js-ens:eq(2)')[0]).css('margin-top', '0px');
+        $($.find('#' + distances[0].id)[0]).removeClass('hidden col-sm-4').addClass('col-sm-8 left');
+        $($.find('#' + distances[1].id)[0]).removeClass('hidden').addClass('right').css('margin-top', '5px');
+        $($.find('#' + distances[2].id)[0]).removeClass('hidden').addClass('right');
+    }
+
+
+    function calcPositionFromLatLonENS(currentPosUser) {
         var lat1 = currentPosUser.coords.latitude;
         var lon1 = currentPosUser.coords.longitude;
 
@@ -39,7 +67,9 @@ jQuery( document ).ready(function() {
             jQuery(this).html(distance).parent().removeClass('hidden');
 
         });
+        
 
+        displayNearestEns();
 
         function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
             var R = 6371; // Radius of the earth in km
@@ -112,9 +142,11 @@ jQuery( document ).ready(function() {
     }
 
     var displayLocationFold2 = function(){
+        $($.find('.js-ens:eq(0)')[0]).removeClass('hidden col-sm-4').addClass('col-sm-8 left');
+        $($.find('.js-ens:eq(1)')[0]).removeClass('hidden').addClass('right');
+        $($.find('.js-ens:eq(2)')[0]).removeClass('hidden').addClass('right').css('margin-top', '5px');
 
         getPosUser();
-
     }
 
 

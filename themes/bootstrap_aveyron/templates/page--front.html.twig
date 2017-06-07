@@ -158,38 +158,24 @@
 
             <!-- <pre>{#  dump(picturesFold1) #}</pre> -->
 
+
+
             <div class="row imagesRow">
-                <div class="col-sm-8 left">
-                    <a href="{{ ensFold2[0].url_alias }}">
+
+
+              {% for key,ens in ensFold2 %}
+                <div class="col-sm-4 hidden js-ens">
+                    <a href="{{ ens.url_alias }}">
                       <div class="relative">
                           <div class="absolute">
-                              <h2>{{ ensFold2[0].title }}</h2>
-                              <p class="hidden"><span id="latLon" class="latLon">{{ ensFold2[0].gps }}</span><span id="valDistance"></span> KM du départ</p>
+                              <h2>{{ ens.title }}</h2>
+                              <p class="hidden"><span id="latLon" class="latLon">{{ ens.gps }}</span><span id="valDistance"></span> KM du départ</p>
                           </div>
-                          <img src="{{ ensFold2[0].uri }}" alt="{{ ensFold2[0].field_poster_alt }}" title="{{ ensFold2[0].field_poster_title }}">
+                          <img src="{{ ens.uri }}" alt="{{ ens.field_poster_alt }}" title="{{ ens.field_poster_title }}">
                       </div>
                     </a>
                 </div>
-                <div class="col-sm-4 right">
-                    <a href="{{ ensFold2[1].url_alias }}">
-                      <div class="relative">
-                          <div class="absolute">
-                              <h2>{{ ensFold2[1].title }}</h2>
-                              <p class="hidden"><span id="latLon" class="latLon">{{ ensFold2[1].gps }}</span><span id="valDistance"></span> KM du départ</p>
-                          </div>
-                          <img class="image2" src="{{ ensFold2[1].uri }}" alt="{{ ensFold2[1].field_poster_alt }}" title="{{ ensFold2[1].field_poster_title }}">
-                      </div>
-                    </a>
-                    <a href="{{ ensFold2[2].url_alias }}">
-                      <div class="relative">
-                          <div class="absolute">
-                              <h2>{{ ensFold2[2].title }}</h2>
-                              <p class="hidden"><span id="latLon" class="latLon">{{ ensFold2[2].gps }}</span><span id="valDistance"></span> KM du départ</p>
-                          </div>
-                          <img src="{{ ensFold2[2].uri }}" alt="{{ ensFold2[2].field_poster_alt }}" title="{{ ensFold2[2].field_poster_title }}">
-                      </div>
-                    </a>
-                </div>
+              {% endfor %}
             </div>
 
             <center>

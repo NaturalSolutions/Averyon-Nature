@@ -123,15 +123,27 @@ function getSubTitleFold2(){
 
 function getEnsFold2(){
 
+	$query = db_query(
+	"
+	SELECT f.uri, d.title as thematique, s.field_poster_alt, s.field_poster_title, s.entity_id, s.revision_id, d.status FROM aveyron.node n
 
-	$query = db_query("select f.uri, s.field_poster_alt, s.field_poster_title, s.entity_id, s.revision_id from node_revision a
-		join node_revision__field_poster s
-		on s.revision_id = a.vid
-		join file_managed f
-		on f.fid = s.field_poster_target_id
-		join node_revision__field_ens_mis_en_avant_fold2 d
-		on a.nid = d.field_ens_mis_en_avant_fold2_target_id
-		where a.revision_timestamp = (select max(z.revision_timestamp) from node_revision z where z.nid = a.nid);"
+	join aveyron.node__field_poster s
+	on s.entity_id = n.nid
+
+	join aveyron.node__field_thematique_ens t
+	on t.entity_id = s.entity_id
+
+	join aveyron.node_field_data d
+	on d.nid = t.field_thematique_ens_target_id
+
+	join aveyron.file_managed f
+	on f.fid = s.field_poster_target_id
+
+	where n.type = 'ens'
+	and d.status = 1
+	and s.entity_id <> 6
+	;
+	"
 	);
 
 	$picturesFold2 = $query->fetchAll();
@@ -144,8 +156,7 @@ function getEnsFold2(){
 		$picture->url_alias = $path_alias;
 
 		//Convert uri to the good style
-		if( $key == 0 )	$picture->uri = entity_load('image_style', '1000_par_700')->buildUrl($picture->uri);
-		else $picture->uri = entity_load('image_style', '500_par_350')->buildUrl($picture->uri);
+		$picture->uri = entity_load('image_style', '1000_par_700')->buildUrl($picture->uri);
 
 		//  get title
 		//	SELECT title FROM aveyron.node_field_data where vid = 1;
@@ -169,6 +180,9 @@ function getEnsFold2(){
 		$GPSEnsFold2 = $query3->execute()->fetchAll();
 		$GPSEnsFold2 = $GPSEnsFold2[0]->field_start_trace_lat.';'.$GPSEnsFold2[0]->field_start_trace_lon;
 		$picturesFold2[$key]->gps = $GPSEnsFold2;
+
+
+
 
 	}
 
