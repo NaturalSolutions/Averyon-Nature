@@ -32,6 +32,7 @@ function hook_hp_preprocess_page__front(&$variables){
 
 	$variables['titleFold2'] = $titleFold2;
 	$variables['subTitleFold2'] = $subTitleFold2;
+	shuffle($ensFold2);
 	$variables['ensFold2'] = $ensFold2;
 
 	$variables['titleFold3'] = $titleFold3;

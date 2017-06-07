@@ -143,6 +143,7 @@ class list_ensController extends ControllerBase {
 
 		}
 
+		shuffle($picturesFold2);
 		$data['ensFold2'] = $picturesFold2;
 
 		/*

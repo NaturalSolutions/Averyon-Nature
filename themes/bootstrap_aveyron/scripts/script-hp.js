@@ -32,6 +32,7 @@ jQuery( document ).ready(function() {
             $(this).addClass('hidden');
         });
 
+        //sort
         function compare(a,b) {
           if (a.distance < b.distance)
             return -1;
@@ -42,10 +43,26 @@ jQuery( document ).ready(function() {
 
         distances.sort(compare);
         
-        $($.find('.js-ens:eq(2)')[0]).css('margin-top', '0px');
-        $($.find('#' + distances[0].id)[0]).removeClass('hidden col-sm-4').addClass('col-sm-8 left');
-        $($.find('#' + distances[1].id)[0]).removeClass('hidden').addClass('right').css('margin-top', '5px');
-        $($.find('#' + distances[2].id)[0]).removeClass('hidden').addClass('right');
+        //display
+        var j = 0;
+        jQuery('.js-ens').each(function(i, el) {
+            if($(this).attr('id') === distances[0].id ||$(this).attr('id') === distances[2].id || $(this).attr('id') === distances[1].id){
+                
+                if(j === 0){
+                    $(this).removeClass('hidden')
+                    $(this).removeClass('col-sm-4').addClass('col-sm-8 left').css('margin-top', '0px');
+                }
+                if(j === 1){
+                    $(this).addClass('right');
+                    $(this).removeClass('hidden').css('margin-top', '0px');
+                }
+                if(j === 2){
+                    $(this).addClass('right').css('margin-top', '6px');
+                    $(this).removeClass('hidden')
+                }
+                j++;
+            }
+        });
     }
 
 
@@ -144,7 +161,7 @@ jQuery( document ).ready(function() {
     var displayLocationFold2 = function(){
         $($.find('.js-ens:eq(0)')[0]).removeClass('hidden col-sm-4').addClass('col-sm-8 left');
         $($.find('.js-ens:eq(1)')[0]).removeClass('hidden').addClass('right');
-        $($.find('.js-ens:eq(2)')[0]).removeClass('hidden').addClass('right').css('margin-top', '5px');
+        $($.find('.js-ens:eq(2)')[0]).removeClass('hidden').addClass('right').css('margin-top', '6px');
 
         getPosUser();
     }
