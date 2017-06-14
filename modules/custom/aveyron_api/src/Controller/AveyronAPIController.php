@@ -753,7 +753,7 @@ class AveyronAPIController extends ControllerBase {
     $photos = array();
     $photo = array();
     $videoIds = array();
-    $categorie = array();
+    $category = array();
     $gallery =  array();
     foreach ($entities as $entity) {
       $id = $entity->nid->value;
@@ -767,11 +767,11 @@ class AveyronAPIController extends ControllerBase {
           where t.entity_id = $id
         ");
 
-        $categorie = $query->fetchAll();
+        $category = $query->fetchAll();
 
-        if (isset($categorie)) {
-          $categorie = $categorie[0]->field_tag_value;
-          $photo['categorie'] = $categorie;
+        if (isset($category)) {
+          $category = $category[0]->field_tag_value;
+          $photo['category'] = $category;
         }
         if (isset($imgUri)) {
           $photo['poster'] = entity_load('image_style', '900_par_600')->buildUrl($imgUri);
