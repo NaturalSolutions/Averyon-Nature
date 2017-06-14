@@ -25,7 +25,7 @@ jQuery( document ).ready(function() {
             var nbEmpty = 0;
 
             $('.js-validate').on('click', function(){
-                
+
                 $('.js-article-quizz').each(function(){
                     nbQuestions++;
 
@@ -37,7 +37,7 @@ jQuery( document ).ready(function() {
                     } else {
                         var btnActive = $(this).find('.js-quizz-prop.active');
                         btnActive.removeClass('active');
-                        
+
                         if(propo == answer){
                             nbOk ++;
                             btnActive.addClass('btn-success');
@@ -59,7 +59,7 @@ jQuery( document ).ready(function() {
                     title.html('Il vous reste des questions sans réponses ;)');
                     return;
                 }
-                
+
 
                 if (nbErrors > (nbQuestions/3)){
                     title.html('Essayez encore,');
@@ -90,11 +90,11 @@ jQuery( document ).ready(function() {
                 if($(e.target).hasClass('js-inner-popup')){
                     close();
                 }
-            }); 
+            });
 
             $('.js-btn-close').on('click', function(){
                 close();
-            }); 
+            });
 
             setTimeout(function(){
                 close();
@@ -130,7 +130,7 @@ jQuery( document ).ready(function() {
             var center = L.latLng(geoDataStarterPoint.field_start_trace_lat, geoDataStarterPoint.field_start_trace_lon)
             var map = L.map("map", { maxBounds: bounds }).setView(center, 14) ;
             L.tileLayer(
-            'http://wxs.ign.fr/uxfc79ihyesfzukqvfqcev40/geoportail/wmts?service=WMTS&request=GetTile&version=1.0.0&tilematrixset=PM&tilematrix={z}&tilecol={x}&tilerow={y}&layer=GEOGRAPHICALGRIDSYSTEMS.MAPS&format=image/jpeg&style=normal',
+            'https://wxs.ign.fr/uxfc79ihyesfzukqvfqcev40/geoportail/wmts?service=WMTS&request=GetTile&version=1.0.0&tilematrixset=PM&tilematrix={z}&tilecol={x}&tilerow={y}&layer=GEOGRAPHICALGRIDSYSTEMS.MAPS&format=image/jpeg&style=normal',
             {
                 bounds: bounds,
                 minZoom:9,
@@ -170,7 +170,7 @@ jQuery( document ).ready(function() {
                 if($(e.currentTarget).attr('passed') === undefined && e.currentTarget.hash  === '#quizz'){
                   quizzMap = L.map('quizzMap', { maxBounds: bounds }).setView([geoDataTracePoint.coordinates[0][1],geoDataTracePoint.coordinates[0][0]], 14);
                   //L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-                  L.tileLayer('http://wxs.ign.fr/uxfc79ihyesfzukqvfqcev40/geoportail/wmts?service=WMTS&request=GetTile&version=1.0.0&tilematrixset=PM&tilematrix={z}&tilecol={x}&tilerow={y}&layer=GEOGRAPHICALGRIDSYSTEMS.MAPS&format=image/jpeg&style=normal', {
+                  L.tileLayer('https://wxs.ign.fr/uxfc79ihyesfzukqvfqcev40/geoportail/wmts?service=WMTS&request=GetTile&version=1.0.0&tilematrixset=PM&tilematrix={z}&tilecol={x}&tilerow={y}&layer=GEOGRAPHICALGRIDSYSTEMS.MAPS&format=image/jpeg&style=normal', {
                       //attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                       bounds: bounds,
                       minZoom:9,

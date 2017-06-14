@@ -143,36 +143,42 @@ class galleryController extends ControllerBase {
 		/*
 		* Get ens video
 		*/
+		// get distinct video url
 		$query = db_query("
-			SELECT v.field_video_ens_value , d.title, d.nid
-			FROM aveyron.node__field_video_ens v
+			SELECT distinct v.field_video_ens_value
+			FROM node__field_video_ens v
 			join node_field_data d
 			on d.nid = v.entity_id
 		");
 
-		/* Try to distinct
-		$query = db_query("
-			SELECT v.field_video_ens_value , d.title, d.nid
-			FROM aveyron.node__field_video_ens v
-			join node_field_data d
-			on d.nid = v.entity_id
-			group by v.field_video_ens_value
-		");*/
 
 		$videos = $query->fetchAll();
 		foreach ($videos as $key => $video) {
 
+			// new query to get title/nid
+			$query = db_query("
+				SELECT v.entity_id as nid, d.title
+				FROM node__field_video_ens v
+				join node_field_data d
+				on d.nid = v.entity_id
+				where v.field_video_ens_value = '$video->field_video_ens_value'
+			");
+
+			// get nid of video
+			$nvideo = $query->fetchAll();
+			$nidVideo = $nvideo[0]->nid;
+
+			// get title
+			$video->title = $nvideo[0]->title;
+
 			//Add alias path
-			$path_alias = \Drupal::service('path.alias_manager')->getAliasByPath("/node/".$video->nid);
+			$path_alias = \Drupal::service('path.alias_manager')->getAliasByPath("/node/".$nidVideo);
 			$path_alias = ltrim($path_alias, '/');
 			$video->url_alias = $path_alias;
 
 			//crop string video url
 			$video->field_video_ens_value = explode("http://dai.ly/", $video->field_video_ens_value)[1];
 			$video->tag = "video";
-
-			// remove useless properties
-			unset($video->nid);
 
 			// add in the main array
 			array_push($data['pictures'], $video);
