@@ -751,14 +751,50 @@ class AveyronAPIController extends ControllerBase {
     $entityManager = \Drupal::entityManager();
     $entities = $entityManager->getStorage('node')->loadMultiple($itemIds);
     $photos = array();
+    $photo = array();
     $videoIds = array();
+    $category = array();
+    $gallery =  array();
     foreach ($entities as $entity) {
+      $id = $entity->nid->value;
       foreach ($entity->field_gallery as $img) {
         $imgUri = $img->entity->getFileUri();
-        $photos[] = array(
-          'poster' => entity_load('image_style', '900_par_600')->buildUrl($imgUri),
-          'thumbnail' => entity_load('image_style', '350_par_200')->buildUrl($imgUri)
+        /*
+        * Catégorie
+        */
+        $query = db_query("
+          SELECT t.field_tag_value FROM aveyron.node__field_tag t
+          where t.entity_id = $id
+        ");
+
+        $category = $query->fetchAll();
+
+        if (isset($category)) {
+          $category = $category[0]->field_tag_value;
+          $photo['category'] = $category;
+        }
+        if (isset($imgUri)) {
+          $photo['poster'] = entity_load('image_style', '900_par_600')->buildUrl($imgUri);
+          $photo['thumbnail'] = entity_load('image_style', '350_par_200')->buildUrl($imgUri);
+        }
+        /*
+        * Gallery - retrieve credit (alt = credit)
+        */
+        $query = db_query("
+          SELECT g.field_gallery_alt
+          from file_managed f
+          join node__field_gallery g
+          on f.fid = g.field_gallery_target_id
+          where g.entity_id = $id"
         );
+
+        $gallery = $query->fetchAll();
+        foreach ($gallery as $imgG) {
+          $photo['alt'] = $imgG->field_gallery_alt;
+        }
+
+        $photos[] = $photo;
+
       }
       if (isset($entity->field_video_ens)) {
         foreach ($entity->field_video_ens as $video) {
@@ -779,7 +815,6 @@ class AveyronAPIController extends ControllerBase {
         $video['thumbnail'] = $video['thumbnail_480_url'];
       }
     }
-
     return new JsonResponse(array(
       photos => $photos,
       videos => $videos
